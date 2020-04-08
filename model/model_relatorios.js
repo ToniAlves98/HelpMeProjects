@@ -8,8 +8,21 @@ function readRelatorios(callback) {
     });
 };
 
-function setRelatorios(nomeRelatorio, callback) {
-    global.connect.con.query('SET nomeRelatorio, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from relatorio WHERE nomeRelatorio = ?', function(err, rows, fields) {
+function saveRelatorio(nomeRelatorio, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, callback) {
+    var linha = { nomeRelatorio: nomeRelatorio, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador: Utilizador_idUtilizador };
+    var query = global.connect.con.query('INSERT INTO relatorio SET ?', linha, function(err, rows, fields) {
+        console.log(query.sql);
+        if (!err) {
+            console.log("Number of records inserted: " + rows.affectedRows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+}
+
+function setRelatorios(nomeRelatorio,AreaConhecimento_idAreaConhecimento,Utilizador_idUtilizador, callback) {
+    var linha = { nomeRelatorio: nomeRelatorio, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador: Utilizador_idUtilizador};
+    global.connect.con.query('UPDATE relatorio SET nomeRelatorio, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador WHERE nomeRelatorio = ?', linha, function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }
@@ -35,5 +48,7 @@ function deleteRelatorio(nomeRelatorio, callback) {
 
 module.exports = {
     readRelatorios: readRelatorios,
-    deleteRelatorio: deleteRelatorio
+    deleteRelatorio: deleteRelatorio,
+    setRelatorios: setRelatorios,
+    saveRelatorio: saveRelatorio
     }
