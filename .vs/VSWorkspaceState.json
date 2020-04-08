@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\controller",
+    "\\model",
+    "\\views",
+    "\\views\\admin",
+    "\\views\\admin\\css",
+    "\\views\\admin\\pages"
+  ],
+  "SelectedNode": "\\views\\admin\\pages\\utilizador.html",
+  "PreviewInSolutionExplorer": false
+}

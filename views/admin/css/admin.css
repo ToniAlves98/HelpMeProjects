@@ -1,0 +1,141 @@
+/* Modal adicionar e editar utilizador*/
+.gestaoUtilizador h1 {
+    color: #FD871F;
+    font-weight: bold;
+}
+
+.gestaoUtilizador form.user .form-control-user {
+    font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+}
+
+.gestaoUtilizador .form-control {
+    border-color: #FD871F;
+}
+
+    .gestaoUtilizador .form-control:focus {
+        border-color: #FF4500;
+        box-shadow: 0 0 0 0.1rem #FF4500;
+    }
+
+.gestaoUtilizador .close {
+    color: #FD871F;
+}
+
+    .gestaoUtilizador .close:hover,
+    .close:focus {
+        color: #FF4500;
+    }
+
+#btUtilizador {
+    font-size: 13px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btUtilizador:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+#descricao {
+    border-radius: 30px;
+}
+
+.gestaoUtilizador label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 3px;
+}
+
+.gestaoUtilizador .custom-checkbox {
+    position: relative;
+    width: 15px;
+    height: 15px;
+}
+
+/* Modal adicionar e editar evento*/
+.gestaoEvento h1 {
+    color: #FD871F;
+    font-weight: bold;
+}
+
+.gestaoEvento .form-control {
+    border-color: #FD871F;
+}
+
+    .gestaoEvento .form-control:focus {
+        border-color: #FF4500;
+        box-shadow: 0 0 0 0.1rem #FF4500;
+    }
+
+.gestaoEvento .close {
+    color: #FD871F;
+}
+
+    .gestaoEvento .close:hover,
+    .close:focus {
+        color: #FF4500;
+    }
+
+#btEvento {
+    font-size: 15px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btEvento:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+.gestaoEvento textarea {
+    border-radius: 1px;
+}
+
+/* Modal adicionar e editar relatorio*/
+.gestaoRelatorio h1 {
+    color: #FD871F;
+    font-weight: bold;
+}
+
+.gestaoRelatorio .form-control {
+    border-color: #FD871F;
+}
+
+    .gestaoRelatorio .form-control:focus {
+        border-color: #FF4500;
+        box-shadow: 0 0 0 0.1rem #FF4500;
+    }
+
+.gestaoRelatorio .close {
+    color: #FD871F;
+}
+
+    .gestaoRelatorio .close:hover,
+    .close:focus {
+        color: #FF4500;
+    }
+
+#btRelatorio {
+    font-size: 15px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btRelatorio:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+.gestaoRelatorio textarea {
+    border-radius: 1px;
+}

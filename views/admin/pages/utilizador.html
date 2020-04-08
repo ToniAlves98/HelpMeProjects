@@ -1,0 +1,564 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Help Me Projects - Admin</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-text mx-3">Administrador <p id="nome"></p></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Controlo de atividade
+            </div>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="utilizador.html">
+                    <i class="fas fa-users"></i>
+                    <span>Gestão utilizadores</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="eventos.html">
+                    <i class="far fa-calendar-check"></i>
+                    <span>Gestão eventos</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="relatorios.html">
+                    <i class="fas fa-book-open"></i>
+                    <span>Gestão relatórios</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+            <div class="sidebar-heading">
+                Controlo da plataforma
+            </div>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-chalkboard"></i>
+                    <span>Fórum</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <br />
+                    <h1 class="h3 mb-2 text-gray-800" style="font-weight:bold;">Gestão de utilizadores</h1>
+                    <br />
+
+                    <!-- Content Row -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex">
+                            <div class="mr-auto p-2"><h3 class="m-0 font-weight-bold" style="color:#FF4500;">Utilizadores</h3></div>
+                            <div class="p-2">
+                                <a href="#" class="btn btn-warning btn-icon-split" data-toggle="modal" data-target="#editar_utilizador">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-edit"></i>
+                                    </span>
+                                    <span class="text">Editar</span>
+                                </a>
+                            </div>
+                            <div class="p-2">
+                                <a href="#" class="btn btn-danger btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                    <span class="text">Eliminar</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Idade</th>
+                                            <th>Género</th>
+                                            <th>Profissão</th>
+                                            <th>Ramo Empresarial</th>
+                                            <th>Nº Empregados</th>
+                                            <th>Área de conhecimento</th>
+                                            <th>Ciclo de Estudo</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Descrição</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Help Me Projects &copy; 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+
+    <!--Modal editar utilziador-->
+    <div class="modal fadeIn gestaoUtilizador" id="editar_utilizador" role="dialog" aria-modal="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-lg-12 text-center">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <br />
+                        <h1>Editar Utilizador</h1>
+                    </div>
+                </div>
+                <div class="modal-body" style="padding: 40px 60px;">
+                    <div class="col-lg-12">
+                        <form id="formUtilizador" class="user text-center" method="post">
+                            <div class="form-group">
+                                <select class="form-control form-control-user" data-live-search="true" id="profissao" onchange="checkProfissao(this);">
+                                    <option disabled selected value="">Profissão</option>
+                                    <option value="Empresa">Empresa</option>
+                                    <option value="Gestor de Projetos">Gestor de Projetos</option>
+                                    <option value="Professor/Investigador">Professor/Investigador</option>
+                                    <option value="Estudante">Estudante</option>
+                                </select>
+                            </div>
+
+                            <!--Escolha de opções Profissão-->
+                            <!--Empresa-->
+                            <div id="Empresa" style="display: none;">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="ramoEp" aria-describedby="" placeholder="Ramo Empresarial">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control form-control-user" id="nEmpregados" aria-describedby="" placeholder="Nº de empregados">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control form-control-user" data-live-search="true" id="regiao">
+                                        <option value="" disabled selected>Região do país</option>
+                                        <option value="Alentejo">Alentejo</option>
+                                        <option value="Algarve">Algarve</option>
+                                        <option value="Beira Interior">Beira Interior</option>
+                                        <option value="Beira Litoral">Beira Litoral</option>
+                                        <option value="Entre Douro e Minho">Entre Douro e Minho</option>
+                                        <option value="Ribatejo e Oeste">Ribatejo e Oeste</option>
+                                        <option value="Região Autónoma dos Açores">Região Autónoma dos Açores</option>
+                                        <option value="Região Autónoma da Madeira">Região Autónoma da Madeira</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--Gestor de Projetos-->
+                            <div id="GP" style="display: none;">
+                                <div class="form-group text-center">
+                                    <label>Trabalha numa PME?</label><br />
+                                    <input type="checkbox" class="custom-checkbox" value="simPME" onclick="checkPME(this);"><label class="custom-label">Sim</label>
+                                    <input type="checkbox" class="custom-checkbox"><label class="custom-label">Não</label><br />
+                                </div>
+
+                                <div id="gpPME" style="display:none;">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="ramoEp" aria-describedby="" placeholder="Ramo Empresarial">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control form-control-user" id="nEmpregados" aria-describedby="" placeholder="Nº de empregados">
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control form-control-user" data-live-search="true" id="regiao">
+                                            <option value="" disabled selected>Região do país</option>
+                                            <option value="Alentejo">Alentejo</option>
+                                            <option value="Algarve">Algarve</option>
+                                            <option value="Beira Interior">Beira Interior</option>
+                                            <option value="Beira Litoral">Beira Litoral</option>
+                                            <option value="Entre Douro e Minho">Entre Douro e Minho</option>
+                                            <option value="Ribatejo e Oeste">Ribatejo e Oeste</option>
+                                            <option value="Região Autónoma dos Açores">Região Autónoma dos Açores</option>
+                                            <option value="Região Autónoma da Madeira">Região Autónoma da Madeira</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Professor/Investigador-->
+                            <div id="PI" style="display: none;">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="area" aria-describedby="" placeholder="Área Científica">
+                                </div>
+                            </div>
+                            <!--Estudante-->
+                            <div id="Estudante" style="display: none;">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="estudo" aria-describedby="" placeholder="Ciclo de Estudo">
+                                </div>
+                            </div>
+                            <!--Fim da escolha de profissões-->
+
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="nome" aria-describedby="" placeholder="Nome">
+                            </div>
+                            <div class="form-group" id="idadeDiv">
+                                <input type="number" class="form-control form-control-user" id="idade" aria-describedby="" placeholder="Idade">
+                            </div>
+                            <div class="form-group" id="generoDiv">
+                                <select class="form-control form-control-user" data-live-search="true" id="genero">
+                                    <option value="" disabled selected>Género</option>
+                                    <option value="Male">Masculino</option>
+                                    <option value="Female">Feminino</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" id="email" aria-describedby="email" placeholder="E-mail">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-user" id="password" aria-describedby="password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-user" id="cpassword" aria-describedby="password" placeholder="Confirmação de password">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control form-control-user textUti" id="descricao" name="message" rows="5" cols="30" placeholder="Pequeno texto de apresentação pessoal"></textarea>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <a type="submit" href="" id="btUtilizador" class="btn btn-primary btn-user btn-block">Editar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Check escolhas profissões-->
+    <script type="text/javascript">
+        function checkProfissao(that) {
+            if (that.value == "Empresa") {
+                document.getElementById("Empresa").style.display = "block";
+                document.getElementById("idadeDiv").style.display = "none";
+                document.getElementById("generoDiv").style.display = "none";
+                document.getElementById("GP").style.display = "none";
+                document.getElementById("PI").style.display = "none";
+                document.getElementById("Estudante").style.display = "none";
+            } else if (that.value == "Gestor de Projetos") {
+                document.getElementById("Empresa").style.display = "none";
+                document.getElementById("idadeDiv").style.display = "block";
+                document.getElementById("generoDiv").style.display = "block";
+                document.getElementById("GP").style.display = "block";
+                document.getElementById("PI").style.display = "none";
+                document.getElementById("Estudante").style.display = "none";
+            } else if (that.value == "Professor/Investigador") {
+                document.getElementById("Empresa").style.display = "none";
+                document.getElementById("idadeDiv").style.display = "block";
+                document.getElementById("generoDiv").style.display = "block";
+                document.getElementById("GP").style.display = "none";
+                document.getElementById("PI").style.display = "block";
+                document.getElementById("Estudante").style.display = "none";
+            } else if (that.value == "Estudante") {
+                document.getElementById("Empresa").style.display = "none";
+                document.getElementById("idadeDiv").style.display = "block";
+                document.getElementById("generoDiv").style.display = "block";
+                document.getElementById("GP").style.display = "none";
+                document.getElementById("PI").style.display = "none";
+                document.getElementById("Estudante").style.display = "block";
+            }
+            else {
+                document.getElementById("Empresa").style.display = "none";
+                document.getElementById("GP").style.display = "none";
+                document.getElementById("PI").style.display = "none";
+                document.getElementById("Estudante").style.display = "none";
+            }
+        }
+    </script>
+
+
+    <!--Check GP-->
+    <script type="text/javascript">
+        function checkPME(that) {
+            if (that.value == "simPME" && that.checked) {
+                document.getElementById("gpPME").style.display = "block";
+            } else {
+                document.getElementById("gpPME").style.display = "none";
+            }
+        }
+    </script>
+
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/datatables-demo.js"></script>
+
+</body>
+
+</html>

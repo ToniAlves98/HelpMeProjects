@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+   
+<head>
+    <meta charset="utf-8" />
+    <title>Help Me Projects</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="FlameOnePage freebie theme for web startups by FairTech SEO." name="description" />
+    <meta content="FairTech" name="author" />
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="../vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/forum.css" rel="stylesheet" type="text/css" />
+    <link href="../css/sobre-nos.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+
+
+    <!-- Carousel >
+    <script src="js/carousel.js"></script-->
+    <link rel="stylesheet" href="../css/carousel.css" />
+    <!-- /Carousel -->
+
+</head>
+   
+  
+    <body id="body" data-spy="scroll" data-target=".header">
+
+        <header class="header navbar-fixed-top">
+            <nav class="navbar" role="navigation">
+                <div class="container">
+                    <div class="menu-container js_nav-item">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="toggle-icon"></span>
+                        </button>
+
+                        <div class="logo">
+                            <a class="logo-wrap" href="#body">
+                                <img class="logo-img logo-img-main" src="../img/helpmeprojects_light.png" alt="FlameOnePage Logo">
+                                <img class="logo-img logo-img-active" src="../img/helpmeprojects_dark.png" alt="FlameOnePage Dark Logo">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="collapse navbar-collapse nav-collapse">
+
+                        <div class="language-switcher">
+                            <ul class="nav-lang">
+                                <li><a class="active" href="#">PT</a></li>
+                                <li><a href="#">EN</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-container">
+                            <ul class="nav navbar-nav navbar-nav-right">
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="index.html">Página Inicial</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="eventos.html">Eventos</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#services">Relatórios</a></li>
+                                <li class="js_nav-item nav-item">
+                                    <a class="nav-item-child nav-item-hover" onclick="menu()">Noções base</a><div id="menu" style="display:none">
+                                        <p onclick="alert('popup')" style="color:white">O que é um projeto?</p>
+                                        <p class="panel-drop" onclick="alert('popup')" style="color:white">O que é a gestão de projetos?</p>
+                                        <p class="panel-drop" onclick="alert('popup')" style="color:white">Qual o papel do gestor?</p>
+                                    </div>
+                                </li>
+                                <li class="js_nav-item nav-item">
+                                    <a class="nav-item-child nav-item-hover" onclick="menu2()">Informação</a><div id="menu2" style="display:none">
+                                        <p onclick="alert('popup')" style="color:white">Normas de Gestão de Projetos</p>
+                                        <p class="panel-drop" onclick="alert('popup')" style="color:white">Temas Mais Falados na Gestão de Projetos</p>
+                                        <p class="panel-drop" onclick="alert('popup')" style="color:white">Projetos financiados pela ANI</p>
+                                        <p class="panel-drop" onclick="alert('popup')" style="color:white">Comissão Europeia</p>
+                                    </div>
+                                </li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#" data-toggle="modal" data-target="#login">Login</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="carousel-inner" role="listbox">
+            <div style=" width: 100%">
+                <img class="img-responsive" src="../img/1920x1080/201.jpg" alt="Slider Image">
+                <div class="container">
+                    <div class="carousel-centered">
+                        <div class="margin-b-40">
+                            <h1 class="carousel-title">HelPME Projects</h1>
+                            <p class="color-white">A finalidade deste projeto é o desenvolvimento de uma plataforma  <br /> interativa de apoio às práticas de gestão de projetos nas pequenas e médias empresas.</p>
+                        </div>
+                        <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Sobre Nós</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--========== SLIDER ==========-->
+        <!--Modal Login-->
+        <div class="modal fadeIn" id="login" role="dialog" aria-modal="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-lg-12 text-center">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <br />
+                            <h1>Login</h1>
+                        </div>
+                    </div>
+                    <div class="modal-body" style="padding: 40px 60px;">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form id="formNewLogin" class="user text-center" method="post">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user" id="email" aria-describedby="" placeholder="E-mail">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" id="password" placeholder="Password">
+                                    </div>
+                                    <br />
+                                    <a href="#" id="btlogin" class="btn btn-primary btn-user btn-block">Login</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="text-center">
+                                    <a id="Req" class="small" href="#">Esqueceste a tua password?</a>
+                                </div>
+                                <div class="text-center">
+                                    <a id="Req" class="small" href="registo.html">Inscreve-te!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--========== PAGE LAYOUT ==========-->
+        <!-- Forum -->
+        <div id="about">
+            <div class="container">
+
+                <div class="row">
+                  <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
+                  <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch">
+                    <div class="content d-flex flex-column justify-content-center">
+                      <h3 data-aos="fade-in" data-aos-delay="100">Voluptatem dignissimos provident quasi</h3>
+                      <p data-aos="fade-in">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                      </p>
+                      <div class="row">
+                        <div class="col-md-6 icon-box" data-aos="fade-up">
+                          <i class="bx bx-receipt"></i>
+                          <h4><a href="#">Corporis voluptates sit</a></h4>
+                          <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                        </div>
+                        <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                          <i class="bx bx-cube-alt"></i>
+                          <h4><a href="#">Ullamco laboris nisi</a></h4>
+                          <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                        </div>
+                        <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                          <i class="bx bx-images"></i>
+                          <h4><a href="#">Labore consequatur</a></h4>
+                          <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                        </div>
+                        <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                          <i class="bx bx-shield"></i>
+                          <h4><a href="#">Beatae veritatis</a></h4>
+                          <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                        </div>
+                      </div>
+                    </div><!-- End .content-->
+                  </div>
+                </div>
+        
+              </div>
+        </div>
+        <!-- End Forum -->
+        <!--========== END PAGE LAYOUT ==========-->
+        <!--========== FOOTER ==========-->
+        <footer class="footer">
+            <!-- Copyright -->
+            <div class="content container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img class="footer-logo" src="../img/helpmeprojects_dark.png" alt="flameonepage Logo">
+                    </div>
+                    <div class="col-xs-6 text-right">
+					    <p>Mestrado em Gestão de Projeto de Engenharia</p>
+                        <p class="margin-b-0"><a class="fweight-700" href="#">Universidade do Minho</a></p>
+                    </div>
+                </div>
+                <!--// end row -->
+            </div>
+            <!-- End Copyright -->
+        </footer>
+        <!--========== END FOOTER ==========-->
+        <!-- dropdown -->
+        <script>
+            function menu() {
+                var x = document.getElementById("menu");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            };
+
+            function menu2() {
+                var x = document.getElementById("menu2");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            };
+			
+        </script>
+        <!-- /dropdown -->
+
+        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- CORE PLUGINS -->
+        <script src="../vendor/jquery.min.js" type="text/javascript"></script>
+        <script src="../vendor/jquery-migrate.min.js" type="text/javascript"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="../vendor/jquery.easing.js" type="text/javascript"></script>
+        <script src="../vendor/jquery.back-to-top.js" type="text/javascript"></script>
+        <script src="../vendor/jquery.smooth-scroll.js" type="text/javascript"></script>
+        <script src="../vendor/jquery.wow.min.js" type="text/javascript"></script>
+        <script src="../vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+        <script src="../vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+        <script src="../vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="../js/layout.min.js" type="text/javascript"></script>
+        <script src="../js/components/wow.min.js" type="text/javascript"></script>
+        <script src="../js/components/swiper.min.js" type="text/javascript"></script>
+        <script src="../js/components/masonry.min.js" type="text/javascript"></script>
+
+    </body>
+    <!-- END BODY -->
+</html>
