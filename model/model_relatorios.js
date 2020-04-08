@@ -8,6 +8,16 @@ function readRelatorios(callback) {
     });
 };
 
+function setRelatorios(nomeRelatorio, callback) {
+    global.connect.con.query('SET nomeRelatorio, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from relatorio WHERE nomeRelatorio = ?', function(err, rows, fields) {
+        if (!err) {
+            callback(null, rows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+};
+
 function deleteRelatorio(nomeRelatorio, callback) {
     var linha = { nomeRelatorio: nomeRelatorio };
     var query = global.connect.con.query('DELETE FROM relatorio WHERE nomeRelatorio = ?', linha, function(err, rows, fields) {
