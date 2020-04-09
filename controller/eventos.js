@@ -1,40 +1,3 @@
-$('#formEvento').validator().on('submit', function(e) {
-   
-    if (e.isDefaultPrevented()) {
-        alert("O Evento possui erros") 
-    }
-   
-    else {
-        event.preventDefault();
-        var data = {};
-        data.nomeEvento = $('#').val();
-        data.AreaConhecimento_idAreaConhecimento = $('#').val();
-        data.tipoEvento = $('#').val();
-        data.Utilizador_idUtilizador = $('#').val();
-        data.data_inicio = $('#').val();
-        data.data_fim = $('#').val();
-
-        console.log(data);
-       
-        $('#')[0].reset();
-    
-        $.ajax({
-            type: 'POST',
-            url: '/saveEvento',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            success: function(result) {
-                if (result.status == 200) {
-                    alert("Evento adicionado com sucesso");
-                }
-            },
-        });
-    }
-});
-
-
-
-
 $(document).ready(function () {
     getEventos();
 });
@@ -79,3 +42,76 @@ function getEventos() {
     });
 
 };
+
+$('#formEvento').validator().on('submit', function(e) {
+   
+    if (e.isDefaultPrevented()) {
+        alert("O Evento possui erros") 
+    }
+   
+    else {
+        event.preventDefault();
+        var data = {};
+        data.nomeEvento = $('#nomeEvento').val();
+        data.AreaConhecimento_idAreaConhecimento = $('#').val();
+        data.tipoEvento = $('#tipoEvento').val();
+        data.Utilizador_idUtilizador = $('#').val();
+        data.data_inicio = $('#inicioEvento').val();
+        data.data_fim = $('#fimEvento').val();
+
+        console.log(data);
+       
+        $('#')[0].reset();
+    
+        $.ajax({
+            type: 'POST',
+            url: '/saveEvento',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(result) {
+                if (result.status == 200) {
+                    alert("Evento adicionado com sucesso");
+                }
+            },
+        });
+    }
+});
+
+
+$('#editar_evento').validator().on('submit', function(e) {
+   
+    if (e.isDefaultPrevented()) {
+        alert("O Evento possui erros") 
+    }
+   
+    else {
+        event.preventDefault();
+        var data = {};
+        data.nomeEvento = $('#nomeEvento').val();
+        data.AreaConhecimento_idAreaConhecimento = $('#').val();
+        data.tipoEvento = $('#tipoEvento').val();
+        data.Utilizador_idUtilizador = $('#').val();
+        data.data_inicio = $('#inicioEvento').val();
+        data.data_fim = $('#fimEvento').val();
+
+        console.log(data);
+       
+        $('#')[0].reset();
+    
+        $.ajax({
+            type: 'PUT',
+            url: '/setEvento',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(result) {
+                if (result.status == 200) {
+                    alert("Evento editado com sucesso");
+                }
+            },
+        });
+    }
+});
+
+$("#formEvento").on("click", "#eliminarEvento", function() {
+    $(this).closest("tr").remove();
+ });

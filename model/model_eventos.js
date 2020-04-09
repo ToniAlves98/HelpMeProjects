@@ -21,6 +21,18 @@ function saveEvento(nomeEvento,AreaConhecimento_idAreaConhecimento, tipoEvento, 
     });
 }
 
+function setEvento(nomeEvento,AreaConhecimento_idAreaConhecimento, tipoEvento, Utilizador_idUtilizador, data_inicio, data_fim, callback) {
+    var post = { nomeEvento: nomeEvento, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, tipoEvento: tipoEvento, Utilizador_idUtilizador: Utilizador_idUtilizador, data_inicio: data_inicio, data_fim: data_fim };
+    var query = global.connect.con.query('UPDATE evento SET nomeEvento,AreaConhecimento_idAreaConhecimento, tipoEvento, Utilizador_idUtilizador, data_inicio, data_fim WHERE nomeEvento = ?', post, function(err, rows, fields) {
+        console.log(query.sql);
+        if (!err) {
+            console.log("Number of records inserted: " + rows.affectedRows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+}
+
 
 function deleteEvento(nomeEvento, callback) {
     var linha = { nomeEvento: nomeEvento };
@@ -37,5 +49,6 @@ function deleteEvento(nomeEvento, callback) {
 module.exports = {
     readEventos: readEventos,
     saveEvento: saveEvento,
-    deleteEvento: deleteEvento
+    deleteEvento: deleteEvento,
+    setEvento: setEvento
     }
