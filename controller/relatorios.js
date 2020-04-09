@@ -42,3 +42,73 @@ function getRelatorios() {
     });
 
 };
+
+$('#adicionar_relatorio').validator().on('submit', function(e) {
+   
+    if (e.isDefaultPrevented()) {
+        alert("O Relatório possui erros") 
+    }
+   
+    else {
+        event.preventDefault();
+        var data = {};
+        data.nomeEvento = $('#nomeEvento').val();
+        data.pdf = $('#pdf').val();
+        data.AreaConhecimento_idAreaConhecimento = $('#').val();
+        data.Utilizador_idUtilizador = $('#').val();
+    
+        console.log(data);
+       
+        $('#')[0].reset();
+    
+        $.ajax({
+            type: 'POST',
+            url: '/saveRelatorio',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(result) {
+                if (result.status == 200) {
+                    alert("Relatório adicionado com sucesso");
+                }
+            },
+        });
+    }
+});
+
+
+$('#editar_relatorio').validator().on('submit', function(e) {
+   
+    if (e.isDefaultPrevented()) {
+        alert("O Relatório possui erros") 
+    }
+   
+    else {
+        event.preventDefault();
+        var data = {};
+        data.nomeEvento = $('#nome_relatorio').val();
+        data.pdf = $('#pdf').val();
+        data.AreaConhecimento_idAreaConhecimento = $('#').val();
+        data.Utilizador_idUtilizador = $('#').val();
+        
+
+        console.log(data);
+       
+        $('#')[0].reset();
+    
+        $.ajax({
+            type: 'PUT',
+            url: '/setRelatorios',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(result) {
+                if (result.status == 200) {
+                    alert("Relatório editado com sucesso");
+                }
+            },
+        });
+    }
+});
+
+$("#formRelatorio").on("click", "#elimarRelatorio", function() {
+    $(this).closest("tr").remove();
+ });
