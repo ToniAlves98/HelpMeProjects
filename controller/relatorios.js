@@ -52,7 +52,7 @@ $('#adicionar_relatorio').validator().on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-        data.nomeEvento = $('#nomeEvento').val();
+        data.nomeEvento = $('#nome_relatorio').val();
         data.pdf = $('#pdf').val();
         data.AreaConhecimento_idAreaConhecimento = $('#').val();
         data.Utilizador_idUtilizador = $('#').val();
@@ -97,7 +97,7 @@ $('#editar_relatorio').validator().on('submit', function(e) {
     
         $.ajax({
             type: 'PUT',
-            url: '/setRelatorios',
+            url: '/setRelatorio',
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function(result) {
