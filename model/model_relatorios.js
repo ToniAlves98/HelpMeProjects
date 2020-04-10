@@ -1,5 +1,5 @@
 function readRelatorios(callback) {
-    global.connect.con.query('SELECT nomeRelatorio, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from relatorio', function(err, rows, fields) {
+    global.connect.con.query('SELECT nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from relatorio', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }
@@ -8,8 +8,8 @@ function readRelatorios(callback) {
     });
 };
 
-function saveRelatorio(nomeRelatorio, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, callback) {
-    var linha = { nomeRelatorio: nomeRelatorio, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador: Utilizador_idUtilizador };
+function saveRelatorio(nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, callback) {
+    var linha = { nomeRelatorio: nomeRelatorio, pdf: pdf, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador: Utilizador_idUtilizador };
     var query = global.connect.con.query('INSERT INTO relatorio SET ?', linha, function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
@@ -20,8 +20,8 @@ function saveRelatorio(nomeRelatorio, AreaConhecimento_idAreaConhecimento, Utili
     });
 }
 
-function setRelatorios(nomeRelatorio,AreaConhecimento_idAreaConhecimento,Utilizador_idUtilizador, callback) {
-    var linha = { nomeRelatorio: nomeRelatorio, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador: Utilizador_idUtilizador};
+function setRelatorio(nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento,Utilizador_idUtilizador, callback) {
+    var linha = { nomeRelatorio: nomeRelatorio, pdf:pdf, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador: Utilizador_idUtilizador};
     global.connect.con.query('UPDATE relatorio SET nomeRelatorio, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador WHERE nomeRelatorio = ?', linha, function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
@@ -49,6 +49,6 @@ function deleteRelatorio(nomeRelatorio, callback) {
 module.exports = {
     readRelatorios: readRelatorios,
     deleteRelatorio: deleteRelatorio,
-    setRelatorios: setRelatorios,
+    setRelatorio: setRelatorio,
     saveRelatorio: saveRelatorio
     }
