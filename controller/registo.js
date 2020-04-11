@@ -32,7 +32,7 @@ $$(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: '',
+            url: '/saveUtilizador',
             data: data,
             success: function (result) {
                 if (result.status == 200) {

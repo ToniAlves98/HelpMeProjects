@@ -1,5 +1,5 @@
 //função de gravação que recebe os parâmetros
-function save(nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil) {
+function saveUtilizador(nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil) {
     //receber os dados do formuário que são enviados por post e guarda em objeto JSON
     var post = {
         nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
@@ -16,7 +16,7 @@ function save(nome, idade, genero, profissao, email, password, descricao, ramo_e
     });
 }
 //função de leitura que retorna o resultado no callback
-function read(callback) {
+function readUtilizador(callback) {
     //criar e executar a query de leitura na BD
     global.connect.con.query('SELECT nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil from utilizador', function (err, rows, fields) {
         if (!err) {
@@ -27,8 +27,9 @@ function read(callback) {
             console.log('Erro na Query Query.', err);
     });
 };
+
 //exportar as funções
 module.exports = {
-    read: read,
-    save: save
+    read: readUtilizador,
+    save: saveUtilizador
 }
