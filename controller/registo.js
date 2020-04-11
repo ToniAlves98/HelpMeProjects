@@ -25,6 +25,7 @@ $$(document).ready(function () {
         data.email = $('#email').val();
         data.password = $('#password').val();
         data.descricao = $('#descricao').val();
+        data.perfil = 'Perfil público';
 
         console.log(data);
         $('#formNewRegisto')[0].reset();
