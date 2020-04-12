@@ -38,7 +38,7 @@ global.root = __dirname;
 global.connect = require('./bd.js');
 global.model_eventos = require('./model/model_eventos');
 global.model_relatorios = require('./model/model_relatorios');
-global.modelUtilizador = require('./model/model_utilizador');
+global.model_utilizador = require('./model/model_utilizador');
 global.admin_route = require('./controller/admin_route.js')
 
 

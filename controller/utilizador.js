@@ -2,12 +2,12 @@ $(document).ready(function () {
     getUtilizador();
 });
 
-
+/*
 //Carregar o registo de um novo utilzador
 ('#formNewRegisto').validator().on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
-        alert("Formulário com erros")
+        alert("Formulï¿½rio com erros")
     }
     else {
         event.preventDefault();
@@ -25,7 +25,7 @@ $(document).ready(function () {
         data.email = $('#email').val();
         data.password = $('#password').val();
         data.descricao = $('#descricao').val();
-        data.perfil = 'Perfil público';
+        data.perfil = 'Perfil pï¿½blico';
 
         console.log(data);
         $('#formNewRegisto')[0].reset();
@@ -36,10 +36,10 @@ $(document).ready(function () {
             data: data,
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Bem Vindo à HeplMe Projects")
+                    alert("Bem Vindo ï¿½ HeplMe Projects")
                 }
                 else {
-                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
+                    alert("O seu Registo nï¿½o foi efetuado, por favor tente outra vez");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -52,7 +52,7 @@ $(document).ready(function () {
     }
 });
 
-//Carregar dados para a página perfil utilziador
+//Carregar dados para a pï¿½gina perfil utilziador
 function dadosUtilizador() {
     var data = {};
     data.email = 'antonio@gmail.com';
@@ -96,7 +96,7 @@ function dadosUtilizador() {
 $('#formUtilizador').validator().on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
-        alert("formulário com erros")
+        alert("formulï¿½rio com erros")
     }
     else {
         event.preventDefault();
@@ -138,8 +138,8 @@ $('#formUtilizador').validator().on('submit', function (e) {
         });
     }
 });
-
-//Carregar dados para a página utilizador-admin
+*/
+//Carregar dados para a pï¿½gina utilizador-admin
 function getUtilizador() {
     var data = {};
 
@@ -157,7 +157,7 @@ function getUtilizador() {
             
                 txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
-                txt += "<tr><th>Nome</th><th>Idade</th><th>Género</th><th>Profissão</th><th>Ramo Empresarial</th><th>Nº Empregados</th><th>Região do País</th><th>Área de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descriºão</th></tr></thead><tbody>";
+                txt += "<tr><th>Nome</th><th>Idade</th><th>Gï¿½nero</th><th>Profissï¿½o</th><th>Ramo Empresarial</th><th>Nï¿½ Empregados</th><th>Regiï¿½o do Paï¿½s</th><th>ï¿½rea de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descriï¿½ï¿½o</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
                     txt += "<tr><td>" + row.nome + "</td><td>" + row.idade + "</td><td>" + row.genero + "</td><td>" + row.profissao +

@@ -85,7 +85,7 @@ global.helpme.post('/deleteEvento', function(req, res) {
 });
 
 //rota Gestao utilizadores
-//rota de gravação
+//rota de gravaï¿½ï¿½o
 global.helpme.post('/saveUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
     global.modelUtilizador.saveUtilziador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
@@ -95,7 +95,7 @@ global.helpme.post('/saveUtilizador', function (req, res) {
 
 //rota de leitura
 global.helpme.get('/readUtilizador', function (req, res) {
-    global.modelUtilizador.readUtilizador(function (err, data) {
+    global.model_utilizador.readUtilizador(function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }

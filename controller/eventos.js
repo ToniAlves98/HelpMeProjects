@@ -43,7 +43,8 @@ function getEventos() {
 
 };
 
-$('#formEvento').validator().on('submit', function(e) {
+
+$('#formNewEvento').on('submit', function(e) {
    
     if (e.isDefaultPrevented()) {
         alert("O Evento possui erros") 
@@ -53,15 +54,15 @@ $('#formEvento').validator().on('submit', function(e) {
         event.preventDefault();
         var data = {};
         data.nomeEvento = $('#nomeEvento').val();
-        data.AreaConhecimento_idAreaConhecimento = $('#').val();
+        //data.AreaConhecimento_idAreaConhecimento = $('#').val();
         data.tipoEvento = $('#tipoEvento').val();
-        data.Utilizador_idUtilizador = $('#').val();
+        // data.Utilizador_idUtilizador = $('#').val();
         data.data_inicio = $('#inicioEvento').val();
         data.data_fim = $('#fimEvento').val();
 
         console.log(data);
        
-        $('#')[0].reset();
+        $('#formNewEvento')[0].reset();
     
         $.ajax({
             type: 'POST',
@@ -78,7 +79,7 @@ $('#formEvento').validator().on('submit', function(e) {
 });
 
 
-$('#editar_evento').validator().on('submit', function(e) {
+$('#editar_evento').on('submit', function(e) {
    
     if (e.isDefaultPrevented()) {
         alert("O Evento possui erros") 
