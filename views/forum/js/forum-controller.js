@@ -2,7 +2,7 @@ $(document).ready(function() {
     console.log('Controller');
     getPerguntas();
 });
-
+/*
 function getPerguntas() {
     var data = {};
     data.root = {};
@@ -27,15 +27,15 @@ function getPerguntas() {
             alert("erro Get Perguntas");
         }
     });
-};
-/*
+};*/
+
 function getPerguntas() {
     $.ajax({
         type: 'GET',
-        url: '/perguntas',
+        url: '/lerPerguntas',
         success: function (data, status, request) {
             console.log(data);
             console.log(request);
         }
     });
-};*/
+};

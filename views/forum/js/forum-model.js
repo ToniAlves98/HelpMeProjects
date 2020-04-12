@@ -8,7 +8,7 @@ function login(nome, password, callback) {
         var json = JSON.parse(string);
     });*/
 
-    bd.con.query("SELECT * FROM areaconhecimento", function (err, result, fields) {
+    bd.con.query("SELECT * FROM utilizador", function (err, result) {
         if (err) throw err;
         console.log(result);
       });
