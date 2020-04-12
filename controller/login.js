@@ -27,24 +27,20 @@ $('#formNewLogin').validator().on('submit', function(e) {
            // contentType: 'application/json',
             success: function(result) {
                 console.log(result)
-                if (result.tipo == "utilizador") {
-                    
-                    document.cookie  = "idUtilizador=" + result.idUtilizador.toString() ;
+                if (result.email == "antonio@gmail.com") {
+
                     alert("Bem Vindo");
 
-                    window.location.assign("/PerfildoUtilizador");
+                    window.location.assign("/admin");
                 }
-                
-                else if (result.tipo =="administrador"){
+
+                else {
                     
                     alert("Bem Vindo");
-                    document.cookie  = result;
-                    window.location.assign("/"); 
+
+                    window.location.assign("/forum"); 
                 }
-                else {
-                    alert("LogIn sem sucesso")
-                    
-                }
+
                  $('#formNewLogin')[0].reset();
             },
             error: function(data) { console.log(data) }

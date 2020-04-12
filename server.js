@@ -38,10 +38,9 @@ global.root = __dirname;
 global.connect = require('./bd.js');
 global.model_eventos = require('./model/model_eventos.js');
 global.model_relatorios = require('./model/model_relatorios.js');
+global.modelUtilizador = require('./model/model_utilizador');
 global.admin_route = require('./controller/admin_route.js')
-//global.routesColaborador = require('./controller/rotas.js');
-global.modelRegisto = require('./model/model_utilizador');
-global.routeRegisto = require('./controller/registo_route.js');
+
 
 //ROTAS
 //rota forum
