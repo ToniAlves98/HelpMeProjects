@@ -18,7 +18,7 @@ global.bodyParser = require('body-parser');
 global.crypto = require('crypto'),
 
 
-//iniciar a aplicação
+//iniciar a aplicaï¿½ï¿½o
 global.helpme = global.express();
 global.helpme.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -28,7 +28,7 @@ global.helpme.use(function (req, res, next) {
 });
 global.helpme.use(global.bodyParser.json(), global.bodyParser.urlencoded({ extended: true }));
 
-//definir rotas estáticas para ficheiros
+//definir rotas estï¿½ticas para ficheiros
 global.helpme.use('/controller', global.express.static('controller'));
 global.helpme.use('/forum', global.express.static('views/forum'));
 global.helpme.use('/admin', global.express.static('views/admin'));
@@ -36,6 +36,9 @@ global.root = __dirname;
 
 //carregar ficheiros MVC
 global.connect = require('./bd.js');
+global.model_eventos = require('./model/model_eventos.js');
+global.model_relatorios = require('./model/model_relatorios.js');
+global.admin_route = require('./controller/admin_route.js')
 //global.routesColaborador = require('./controller/rotas.js');
 
 
@@ -47,6 +50,7 @@ global.helpme.get('/forum', function (req, res) {
 });
 
 //rota admin
+
 global.helpme.get('/admin', function (req, res) {
     global.helpme.use(global.express.static('views/admin'));
     global.helpme.use('/admin', global.express.static('views/admin'));
