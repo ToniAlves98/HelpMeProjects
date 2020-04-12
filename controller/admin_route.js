@@ -1,6 +1,6 @@
 //rotas relatorios
 
-global.app.get('/readRelatorios', function(req, res) {
+global.helpme.get('/readRelatorios', function(req, res) {
     global.model_relatorios.readRelatorios(function(err, data) {
         if (err) {
             console.log("ERROR : ", err);
@@ -13,7 +13,7 @@ global.app.get('/readRelatorios', function(req, res) {
 });
 
 
-global.app.post('/saveRelatorio', function(req, res) {
+global.helpme.post('/saveRelatorio', function(req, res) {
     req.sanitizeBody('nomeRelatorio').escape();
     req.sanitizeBody('pdf').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
@@ -23,7 +23,7 @@ global.app.post('/saveRelatorio', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.app.post('/setRelatorio', function(req, res) {
+global.helpme.post('/setRelatorio', function(req, res) {
     req.sanitizeBody('nomeRelatorio').escape();
     req.sanitizeBody('pdf').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
@@ -33,7 +33,7 @@ global.app.post('/setRelatorio', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.app.post('/deleteRelatorio', function(req, res) {
+global.helpme.post('/deleteRelatorio', function(req, res) {
     req.sanitizeBody('nomeRelatorio').escape();
     // console.log('body: ' + JSON.stringify(req.body));
     global.model_relatorios.deleteRelatorio(req.body.nomeRelatorio);
@@ -43,7 +43,7 @@ global.app.post('/deleteRelatorio', function(req, res) {
 
 //rotas eventos
 
-global.app.get('/readEventos', function(req, res) {
+global.helpme.get('/readEventos', function(req, res) {
     global.model_eventos.readEventos(function(err, data) {
         if (err) {
             console.log("ERROR : ", err);
@@ -56,7 +56,7 @@ global.app.get('/readEventos', function(req, res) {
 });
 
 
-global.app.post('/saveEvento', function(req, res) {
+global.helpme.post('/saveEvento', function(req, res) {
     req.sanitizeBody('nomeEvento').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
     req.sanitizeBody('tipoEvento').escape();
@@ -68,7 +68,7 @@ global.app.post('/saveEvento', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.app.post('/setEvento', function(req, res) {
+global.helpme.post('/setEvento', function(req, res) {
     req.sanitizeBody('nomeEvento').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
     req.sanitizeBody('tipoEvento').escape();
@@ -80,9 +80,11 @@ global.app.post('/setEvento', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.app.post('/deleteEvento', function(req, res) {
+global.helpme.post('/deleteEvento', function(req, res) {
     req.sanitizeBody('nomeEvento').escape();
     // console.log('body: ' + JSON.stringify(req.body));
     global.model_eventos.deleteEvento(req.body.nomeEvento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
+
+
