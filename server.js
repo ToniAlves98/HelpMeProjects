@@ -13,7 +13,7 @@ var port = 8080;
 
 //carregar bibliotecas globais
 global.http = require('http');
-//global.fs = require('fs');
+global.fs = require('fs');
 global.bodyParser = require('body-parser');
 global.crypto = require('crypto'),
 
@@ -40,8 +40,10 @@ global.model_eventos = require('./model/model_eventos.js');
 global.model_relatorios = require('./model/model_relatorios.js');
 global.admin_route = require('./controller/admin_route.js')
 //global.routesColaborador = require('./controller/rotas.js');
+global.modelRegisto = require('./model/model_utilizador');
+global.routeRegisto = require('./controller/registo_route.js');
 
-
+//ROTAS
 //rota forum
 global.helpme.get('/forum', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
