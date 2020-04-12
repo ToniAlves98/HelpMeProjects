@@ -51,13 +51,5 @@ global.helpme.get('/forum', function (req, res) {
     res.sendfile(global.root + '/views/forum/' + 'index.html');
 });
 
-//rota admin
-
-global.helpme.get('/admin', function (req, res) {
-    global.helpme.use(global.express.static('views/admin'));
-    global.helpme.use('/admin', global.express.static('views/admin'));
-    res.sendfile(global.root + '/views/admin/' + 'index.html');
-});
-
 
 global.helpme.listen(port);

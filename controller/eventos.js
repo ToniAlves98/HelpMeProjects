@@ -6,7 +6,7 @@ function getEventos() {
     var data = {};
 
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: '/readEventos',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
@@ -16,12 +16,12 @@ function getEventos() {
             console.log(data);
             if (request.status == 200) {
                 var txt = "";
-                txt += "<table>";
+                txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
                 txt += "<tr><th>Nome</th><th>Area de Conhecimento</th><th>Tipo</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
-                    txt += "<tr><td>" + row.nomeEvento + "</td><td>" + row.AreaConhecimento + "</td><td>" + row.tipoEvento + "</td> <td>" + row.Utilizador + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
+                    txt += "<tr><td>" + row.nomeEvento + "</td><td>" + row.AreaConhecimento_idAreaConhecimento + "</td><td>" + row.tipoEvento + "</td> <td>" + row.Utilizador_idUtilizador + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
 
                 });
                 txt += "</tbody></table>";

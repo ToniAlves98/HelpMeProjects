@@ -6,7 +6,7 @@ function getRelatorios() {
     var data = {};
 
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: '/readRelatorios',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
@@ -16,12 +16,13 @@ function getRelatorios() {
             console.log(data);
             if (request.status == 200) {
                 var txt = "";
-                txt += "<table>";
+            
+                txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
-                txt += "<tr><th>Título</th><th>Area de Conhecimento</th><th>Utilizador</th></tr></thead><tbody>";
+                txt += "<tr><th>Título</th><th>pdf</th><th>Area de Conhecimento</th><th>Utilizador</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
-                    txt += "<tr><td>" + row.nomeRelatorio + "</td><td>" + row.AreaConhecimento + "</td><td>" + row.Utilizador + "</td></tr>";
+                    txt += "<tr><td>" + row.nomeRelatorio + "</td><td>" + row.pdf + "</td><td>" + row.AreaConhecimento_idAreaConhecimento + "</td><td>" + row.Utilizador_idUtilizador + "</td></tr>";
 
                 });
                 txt += "</tbody></table>";

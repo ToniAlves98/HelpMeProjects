@@ -88,3 +88,10 @@ global.helpme.post('/deleteEvento', function(req, res) {
 });
 
 
+//rota admin
+
+global.helpme.get('/admin', function (req, res) {
+    global.helpme.use(global.express.static('views/admin'));
+    global.helpme.use('/admin', global.express.static('views/admin'));
+    res.sendfile(global.root + '/views/admin/' + 'index.html');
+});
