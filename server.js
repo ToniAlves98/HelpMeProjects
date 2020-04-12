@@ -36,8 +36,8 @@ global.root = __dirname;
 
 //carregar ficheiros MVC
 global.connect = require('./bd.js');
-global.model_eventos = require('./model/model_eventos.js');
-global.model_relatorios = require('./model/model_relatorios.js');
+global.model_eventos = require('./model/model_eventos');
+global.model_relatorios = require('./model/model_relatorios');
 global.modelUtilizador = require('./model/model_utilizador');
 global.admin_route = require('./controller/admin_route.js')
 
