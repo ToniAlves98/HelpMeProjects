@@ -30,6 +30,6 @@ function readUtilizador(callback) {
 
 //exportar as funções
 module.exports = {
-    read: readUtilizador,
-    save: saveUtilizador
+    readUtilizador: readUtilizador,
+    saveUtilizador: saveUtilizador
 }

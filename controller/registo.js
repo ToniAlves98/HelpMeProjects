@@ -1,5 +1,6 @@
-$$(document).ready(function () {
+$(document).ready(function () {
     dadosUtilizador();
+    getUtilizador();
 });
 
 
@@ -55,11 +56,11 @@ $$(document).ready(function () {
 //Carregar dados para a página perfil utilziador
 function dadosUtilizador() {
     var data = {};
-    data.email = $('#email').val();
+    data.email = 'antonio@gmail.com';
 
     $.ajax({
-        type: 'POST',
-        url: '',
+        type: 'GET',
+        url: '/readUtilizador',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
 
@@ -94,6 +95,7 @@ function dadosUtilizador() {
 
 //Carregar os dados atualziados pelo utilizador
 $('#formUtilizador').validator().on('submit', function (e) {
+
     if (e.isDefaultPrevented()) {
         alert("formulário com erros")
     }
@@ -122,7 +124,7 @@ $('#formUtilizador').validator().on('submit', function (e) {
             url: '/',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            success: function (data, status, request) {
+            success: function (result) {
                 if (result.status == 200) {
                     alert("submetido com sucesso");
                 }
@@ -137,3 +139,48 @@ $('#formUtilizador').validator().on('submit', function (e) {
         });
     }
 });
+
+//Carregar dados para a página utilizador-admin
+function getUtilizador() {
+    var data = {};
+
+    $.ajax({
+        type: "GET",
+        url: '/readUtilizador',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        
+
+        success: function (data, status, request) {
+            console.log(data);
+            if (request.status == 200) {
+                var txt = "";
+            
+                txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
+                txt += "<thead>";
+                txt += "<tr><th>Nome</th><th>Idade</th><th>Género</th><th>Profissão</th><th>Ramo Empresarial</th><th>Nº Empregados</th><th>Região do País</th><th>Área de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descriºão</th></tr></thead><tbody>";
+
+                data.forEach(function (row) {
+                    txt += "<tr><td>" + row.nome + "</td><td>" + row.idade + "</td><td>" + row.genero + "</td><td>" + row.profissao +
+                        "</td><td>" + row.ramo_emp + "</td><td>" + row.num_trabalhadores + "</td><td>" + row.regiao_pais + "</td><td>" + row.area_cientifica +
+                        "</td><td>" + row.ciclo_estudo + "</td><td>" + row.email + "</td><td>" + row.password + "</td><td>" + row.descricao + "</td></tr>";
+
+                });
+                txt += "</tbody></table>";
+
+                $("#tabela_utilizador").html(txt);
+            }
+            else {
+                console.log("Erro");
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+            console.log(textStatus);
+            console.log(errorThrown);
+
+        }
+
+    });
+
+};
