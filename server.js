@@ -1,13 +1,3 @@
-/*var connect = require('connect');
-var model = require('./bd.js');
-const express = require('express')
-const server = express()
-var serveStatic = require('serve-static');
-connect().use(serveStatic(__dirname + '/views/forum')).listen(8080, function(){
-    console.log('Server running on 8080...');
-}); */
-
-
 global.express = require('express')
 var port = 8080;
 
@@ -15,7 +5,8 @@ var port = 8080;
 global.http = require('http');
 global.fs = require('fs');
 global.bodyParser = require('body-parser');
-global.crypto = require('crypto'),
+global.expressValidator = require('express-validator');
+global.crypto = require('crypto');
 
 
 //iniciar a aplicacao
@@ -27,8 +18,9 @@ global.helpme.use(function (req, res, next) {
     next();
 });
 global.helpme.use(global.bodyParser.json(), global.bodyParser.urlencoded({ extended: true }));
+//global.helpme.user(global.expressValidator());
 
-//definir rotas est�ticas para ficheiros
+//definir rotas estáticas para ficheiros
 global.helpme.use('/controller', global.express.static('controller'));
 global.helpme.use('/forum', global.express.static('views/forum'));
 global.helpme.use('/admin', global.express.static('views/admin'));

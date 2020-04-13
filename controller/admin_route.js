@@ -11,7 +11,6 @@ global.helpme.get('/readRelatorios', function(req, res) {
     });
 });
 
-
 global.helpme.post('/saveRelatorio', function(req, res) {
     req.sanitizeBody('nomeRelatorio').escape();
     req.sanitizeBody('pdf').escape();
@@ -84,8 +83,9 @@ global.helpme.post('/deleteEvento', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
+
 //rota Gestao utilizadores
-//rota de grava��o
+//rota de gravação
 global.helpme.post('/saveUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
     global.modelUtilizador.saveUtilziador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,

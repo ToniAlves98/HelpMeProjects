@@ -1,13 +1,13 @@
 $(document).ready(function () {
     getUtilizador();
+    dadosUtilizador();
 });
 
-/*
 //Carregar o registo de um novo utilzador
 ('#formNewRegisto').validator().on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
-        alert("Formul�rio com erros")
+        alert("Formulário com erros")
     }
     else {
         event.preventDefault();
@@ -25,7 +25,7 @@ $(document).ready(function () {
         data.email = $('#email').val();
         data.password = $('#password').val();
         data.descricao = $('#descricao').val();
-        data.perfil = 'Perfil p�blico';
+        data.perfil = 'Perfil público';
 
         console.log(data);
         $('#formNewRegisto')[0].reset();
@@ -36,10 +36,11 @@ $(document).ready(function () {
             data: data,
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Bem Vindo � HeplMe Projects")
+                    alert("Bem Vindo à HeplMe Projects")
+                    window.location.assign("/forum");
                 }
                 else {
-                    alert("O seu Registo n�o foi efetuado, por favor tente outra vez");
+                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -52,7 +53,7 @@ $(document).ready(function () {
     }
 });
 
-//Carregar dados para a p�gina perfil utilziador
+//Carregar dados para a página perfil utilziador
 function dadosUtilizador() {
     var data = {};
     data.email = 'antonio@gmail.com';
@@ -96,7 +97,7 @@ function dadosUtilizador() {
 $('#formUtilizador').validator().on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
-        alert("formul�rio com erros")
+        alert("formulário com erros")
     }
     else {
         event.preventDefault();
@@ -138,8 +139,8 @@ $('#formUtilizador').validator().on('submit', function (e) {
         });
     }
 });
-*/
-//Carregar dados para a p�gina utilizador-admin
+
+//Carregar dados para a página utilizador-admin
 function getUtilizador() {
     var data = {};
 
@@ -157,7 +158,7 @@ function getUtilizador() {
             
                 txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
-                txt += "<tr><th>Nome</th><th>Idade</th><th>G�nero</th><th>Profiss�o</th><th>Ramo Empresarial</th><th>N� Empregados</th><th>Regi�o do Pa�s</th><th>�rea de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descri��o</th></tr></thead><tbody>";
+                txt += "<tr><th>Nome</th><th>Idade</th><th>Género</th><th>Profissão</th><th>Ramo Empresarial</th><th>Nº Empregados</th><th>Região do País</th><th>Área de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descrição</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
                     txt += "<tr><td>" + row.nome + "</td><td>" + row.idade + "</td><td>" + row.genero + "</td><td>" + row.profissao +
