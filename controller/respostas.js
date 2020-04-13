@@ -1,8 +1,8 @@
 $(document).ready(function () {
-    getPerguntas();
+    //getPergunta_resposta();
 });
-
-function getPerguntas() {
+/*
+function getPergunta_resposta() {
     var data = {};
 
     $.ajax({
@@ -17,14 +17,13 @@ function getPerguntas() {
             if (request.status == 200) {
                 var txt = "";
                 data.forEach(function (row) {
-                    txt+="<div class='panel panel-default'>";
-                    txt+="<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
-                    txt+="<h4 style='font-size: 15px'>";
-                    txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne'>"
-                    txt+=row.titulo_pergunta + "</a></h4><p onclick='seePergunta(idPergunta)'>" + row.pergunta + "</p></div></div>";
+                    txt+="<h2>"+ row.titulo_pergunta +"</h2>";
+                    txt+="<p><strong>" + row.Utilizador_idUtilizador + "</strong><p>Data</p>";
+                    txt+="<p style='border-bottom: 1px solid #515769;'>"+ row.pergunta +"</p>";
+                    txt+="<div style='border-bottom: 1px solid #515769;'>";
                 });
 
-                $("#perguntas_forum").html(txt);
+                $("#pergunta").html(txt);
             }
             else {
                 console.log("Erro");
@@ -39,8 +38,4 @@ function getPerguntas() {
 
     });
 
-};
-
-function seePergunta(id){
-    console.log('seePergunta');
-};
+};*/

@@ -18,7 +18,7 @@ global.bodyParser = require('body-parser');
 global.crypto = require('crypto'),
 
 
-//iniciar a aplica��o
+//iniciar a aplicacao
 global.helpme = global.express();
 global.helpme.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -40,8 +40,9 @@ global.model_eventos = require('./model/model_eventos');
 global.model_relatorios = require('./model/model_relatorios');
 global.model_utilizador = require('./model/model_utilizador');
 global.model_perguntas = require('./model/model_perguntas');
-global.admin_route = require('./controller/admin_route.js')
-
+global.model_perguntas = require('./model/model_respostas');
+global.admin_route = require('./controller/admin_route.js');
+global.admin_route = require('./controller/forum_route.js');
 
 //ROTAS
 //rota forum
