@@ -56,7 +56,7 @@ $(document).ready(function () {
 //Carregar dados para a página perfil utilziador
 function dadosUtilizador() {
     var data = {};
-    data.email = 'antonio@gmail.com';
+    data.idUtilizador = 1;
 
     $.ajax({
         type: 'GET',
