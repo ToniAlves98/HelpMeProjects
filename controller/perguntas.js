@@ -20,8 +20,8 @@ function getPerguntas() {
                     txt+="<div class='panel panel-default'>";
                     txt+="<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
                     txt+="<h4 style='font-size: 15px'>";
-                    txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne'>"
-                    txt+=row.titulo_pergunta + "</a></h4><p onclick='seePergunta(idPergunta)'>" + row.pergunta + "</p></div></div>";
+                    txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick='seePergunta("+ row.idPergunta +")'>"
+                    txt+=row.titulo_pergunta + "</a></h4><p>" + row.pergunta + "</p></div></div>";
                 });
 
                 $("#perguntas_forum").html(txt);
@@ -42,5 +42,8 @@ function getPerguntas() {
 };
 
 function seePergunta(id){
-    console.log('seePergunta');
+    console.log('seePergunta ' + id);
+    req.session.idPergunta = id;
+    console.log('session '+req.session.idPergunta);
+    window.location = "./perg_resp.html";
 };

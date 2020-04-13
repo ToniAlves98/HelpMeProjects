@@ -1,8 +1,10 @@
 $(document).ready(function () {
-    //getPergunta_resposta();
+
 });
-/*
-function getPergunta_resposta() {
+
+function getPergunta_resposta(id) {
+    console.log('getPerguntas_resposta');
+
     var data = {};
 
     $.ajax({
@@ -13,14 +15,20 @@ function getPergunta_resposta() {
         
 
         success: function (data, status, request) {
-            console.log(data);
             if (request.status == 200) {
                 var txt = "";
+
                 data.forEach(function (row) {
-                    txt+="<h2>"+ row.titulo_pergunta +"</h2>";
-                    txt+="<p><strong>" + row.Utilizador_idUtilizador + "</strong><p>Data</p>";
-                    txt+="<p style='border-bottom: 1px solid #515769;'>"+ row.pergunta +"</p>";
-                    txt+="<div style='border-bottom: 1px solid #515769;'>";
+                    console.log('id ' + id + ', idp ' + row.idPergunta);
+                    if(id == row.idPergunta){
+                        txt+="<h2>"+ row.titulo_pergunta +"</h2>";
+                        txt+="<p><strong>" + row.Utilizador_idUtilizador + "</strong><p>Data</p>";
+                        txt+="<p style='border-bottom: 1px solid #515769;'>"+ row.pergunta +"</p>";
+                        txt+="<div style='border-bottom: 1px solid #515769;'>";
+                    }
+                    else{
+                        console.log('id != idPergunta');
+                    }
                 });
 
                 $("#pergunta").html(txt);
@@ -38,4 +46,4 @@ function getPergunta_resposta() {
 
     });
 
-};*/
+};

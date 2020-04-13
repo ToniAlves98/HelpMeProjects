@@ -1,5 +1,5 @@
 function readRespostas(callback) {
-    global.connect.con.query('SELECT idPergunta, titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from pergunta', function(err, rows, fields) {
+    global.connect.con.query('SELECT idResposta, resposta, data_resposta, num_likes, Utilizador_idUtilizador, Pergunta_idPergunta, Pergunta_AreaConhecimento_idAreaConhecimento, Pergunta_Utilizador_idUtilizador from resposta', function(err, rows, fields) {
         if (!err) {
             console.log(rows);
             callback(null, rows);

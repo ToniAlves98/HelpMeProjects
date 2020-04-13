@@ -12,7 +12,7 @@ global.helpme.get('/readPerguntas', function(req, res) {
 });
 
 global.helpme.get('/readRespostas', function(req, res) {
-    global.model_perguntas.readRespostas(function(err, data) {
+    global.model_respostas.readRespostas(function(err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }

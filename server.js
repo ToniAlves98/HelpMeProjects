@@ -7,6 +7,8 @@ global.fs = require('fs');
 global.bodyParser = require('body-parser');
 global.expressValidator = require('express-validator');
 global.crypto = require('crypto');
+global.session = require('express-session');
+global.cookieParser = require('cookie-parser');
 
 
 //iniciar a aplicacao
@@ -19,6 +21,14 @@ global.helpme.use(function (req, res, next) {
 });
 global.helpme.use(global.bodyParser.json(), global.bodyParser.urlencoded({ extended: true }));
 //global.helpme.user(global.expressValidator());
+global.helpme.use(global.session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
+global.helpme.use(cookieParser());
+
 
 //definir rotas estáticas para ficheiros
 global.helpme.use('/controller', global.express.static('controller'));
