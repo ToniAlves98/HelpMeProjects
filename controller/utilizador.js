@@ -76,11 +76,11 @@ $('#formUtilizador').validator().on('submit', function (e) {
                 if (result.status == 200) {
                     alert("submetido com sucesso");
                     $("#formUtilziador")[0].reset();
-                    dadosUtilizador();
                 }
                 else {
                     console.log("Erro");
                 }
+                dadosUtilizador();
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log(xhr.responseText);

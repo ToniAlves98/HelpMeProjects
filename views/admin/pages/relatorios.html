@@ -67,7 +67,9 @@
                                 <input type="text" class="form-control form-control-user" id="nome_relatorio" aria-describedby="" placeholder="Nome do relatorio">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="pdf" placeholder="Ficheiro PDF">
+                                <input type="file" id="real-file" hidden="hidden" />
+                                    <button type="button" id="custom-button">Escolha um ficheiro</button>
+                                    <span id="custom-text">pdf</span>
                             </div>
                             <br />
                             <button type="submit" method="post" id="btRelatorio" class="btn btn-primary btn-user btn-block">Adicionar</button>
@@ -129,6 +131,48 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+const realFileBtn = document.getElementById("real-file");
+const customBtn = document.getElementById("custom-button");
+const customTxt = document.getElementById("custom-text");
+
+customBtn.addEventListener("click", function() {
+  realFileBtn.click();
+});
+
+realFileBtn.addEventListener("change", function() {
+  if (realFileBtn.value) {
+    customTxt.innerHTML = realFileBtn.value.match(
+      /[\/\\]([\w\d\s\.\-\(\)]+)$/
+    )[1];
+  } else {
+    customTxt.innerHTML = "No file chosen, yet.";
+  }
+});
+</script>
+
+<style>
+    #custom-button {
+  padding: 10px;
+  color: white;
+  background-color: blue;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#custom-button:hover {
+  background-color: #00b28f;
+}
+
+#custom-text {
+  margin-left: 10px;
+  font-family: sans-serif;
+  color: #aaa;
+}
+</style>
 
 <script type="text/javascript" src="../../../controller/relatorios.js"></script>
 
