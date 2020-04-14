@@ -1,5 +1,6 @@
 $(document).ready(function () {
     getUtilizador();
+    getDadosUtilizador();
 });
 
 //Carregar o registo de um novo utilzador
@@ -100,7 +101,7 @@ function getUtilizador() {
 //Quando selecionar o utilizador carregar os dados para o modal editar
 function getDadosUtilizador() {
     var data = {};
-    data.idUtilizador = "selecionar utilizador";
+    data.idUtilizador = 1;
 
     $.ajax({
         type: 'GET',
