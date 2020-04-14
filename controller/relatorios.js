@@ -60,7 +60,7 @@ $('#formNewRelatorio').on('submit', function(e) {
     
         console.log(data);
        
-       $('#tabela_eventos')[0].reset();
+       //$('#tabela_eventos')[0].reset();
     
         $.ajax({
             type: 'POST',
@@ -89,7 +89,7 @@ $('#editar_relatorio').on('submit', function(e) {
         event.preventDefault();
         var data = {};
         data.nomeEvento = $('#nome_relatorio').val();
-        data.pdf = $('#pdf').val();
+        data.pdf = $('#real-file').val();
         data.AreaConhecimento_idAreaConhecimento = $('#').val();
         data.Utilizador_idUtilizador = $('#').val();
         
