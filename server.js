@@ -29,6 +29,16 @@ global.helpme.use(global.session({
 }));
 global.helpme.use(cookieParser());
 
+//Teste session
+global.helpme.get('/', function(req, res){
+    if(req.session.page_views){
+       req.session.page_views++;
+       res.send("You visited this page " + req.session.page_views + " times");
+    } else {
+       req.session.page_views = 1;
+       res.send("Welcome to this page for the first time!");
+    }
+ });
 
 //definir rotas estáticas para ficheiros
 global.helpme.use('/controller', global.express.static('controller'));
@@ -53,6 +63,5 @@ global.helpme.get('/forum', function (req, res) {
     global.helpme.use('/forum', global.express.static('views/forum'));
     res.sendfile(global.root + '/views/forum/' + 'index.html');
 });
-
 
 global.helpme.listen(port);
