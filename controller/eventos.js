@@ -54,15 +54,15 @@ $('#formNewEvento').on('submit', function(e) {
         event.preventDefault();
         var data = {};
         data.nomeEvento = $('#nomeEvento').val();
-        //data.AreaConhecimento_idAreaConhecimento = $('#').val();
+        data.AreaConhecimento_idAreaConhecimento = 2;
         data.tipoEvento = $('#tipoEvento').val();
-        // data.Utilizador_idUtilizador = $('#').val();
+        data.Utilizador_idUtilizador = 2;
         data.data_inicio = $('#inicioEvento').val();
         data.data_fim = $('#fimEvento').val();
 
         console.log(data);
        
-        $('#formNewEvento')[0].reset();
+        $("#formNewEvento")[0].reset();
     
         $.ajax({
             type: 'POST',
@@ -72,7 +72,9 @@ $('#formNewEvento').on('submit', function(e) {
             success: function(result) {
                 if (result.status == 200) {
                     alert("Evento adicionado com sucesso");
+                    $('#formNewEvento')[0].reset();
                 }
+                getEventos();
             },
         });
     }
@@ -113,6 +115,6 @@ $('#editar_evento').on('submit', function(e) {
     }
 });
 
-$("#formEvento").on("click", "#eliminarEvento", function() {
+$("#tabela_eventos").on("click", "#eliminarEvento", function() {
     $(this).closest("tr").remove();
  });

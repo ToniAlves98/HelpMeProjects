@@ -12,21 +12,21 @@ global.helpme.get('/readRelatorios', function(req, res) {
 });
 
 global.helpme.post('/saveRelatorio', function(req, res) {
-    req.sanitizeBody('nomeRelatorio').escape();
+    /*req.sanitizeBody('nomeRelatorio').escape();
     req.sanitizeBody('pdf').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
-    // console.log('body: ' + JSON.stringify(req.body));
+    */// console.log('body: ' + JSON.stringify(req.body));
     global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.AreaConhecimento_idAreaConhecimento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
 global.helpme.post('/setRelatorio', function(req, res) {
-    req.sanitizeBody('nomeRelatorio').escape();
+    /*req.sanitizeBody('nomeRelatorio').escape();
     req.sanitizeBody('pdf').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
-    // console.log('body: ' + JSON.stringify(req.body));
+    */// console.log('body: ' + JSON.stringify(req.body));
     global.model_relatorios.setRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.AreaConhecimento_idAreaConhecimento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
@@ -53,14 +53,15 @@ global.helpme.get('/readEventos', function(req, res) {
 });
 
 global.helpme.post('/saveEvento', function(req, res) {
-    req.sanitizeBody('nomeEvento').escape();
+   
+/* req.sanitizeBody('nomeEvento').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
     req.sanitizeBody('tipoEvento').escape();
     req.sanitizeBody('Utilizador_idUtilizador').escape();
     req.sanitizeBody('data_inicio').escape();
     req.sanitizeBody('data_fim').escape();
-    // console.log('body: ' + JSON.stringify(req.body));
-    global.model_eventos.saveRelatorio(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim);
+  */  // console.log('body: ' + JSON.stringify(req.body));
+    global.model_eventos.saveEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

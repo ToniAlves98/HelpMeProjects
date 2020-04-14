@@ -44,7 +44,7 @@ function getRelatorios() {
 
 };
 
-$('#adicionar_relatorio').validator().on('submit', function(e) {
+$('#formNewRelatorio').on('submit', function(e) {
    
     if (e.isDefaultPrevented()) {
         alert("O Relatório possui erros") 
@@ -53,14 +53,14 @@ $('#adicionar_relatorio').validator().on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-        data.nomeEvento = $('#nome_relatorio').val();
-        data.pdf = $('#pdf').val();
-        data.AreaConhecimento_idAreaConhecimento = $('#').val();
-        data.Utilizador_idUtilizador = $('#').val();
+        data.nomeRelatorio = $('#nome_relatorio').val();
+        data.pdf = $('#pdf').val();;
+        data.AreaConhecimento_idAreaConhecimento = 1;
+        data.Utilizador_idUtilizador = 1;
     
         console.log(data);
        
-        $('#tabela_eventos')[0].reset();
+       // $('#tabela_eventos')[0].reset();
     
         $.ajax({
             type: 'POST',
@@ -70,14 +70,16 @@ $('#adicionar_relatorio').validator().on('submit', function(e) {
             success: function(result) {
                 if (result.status == 200) {
                     alert("Relatório adicionado com sucesso");
+                    $('#formNewRelatorio')[0].reset();
                 }
+                getRelatorios();
             },
         });
     }
 });
 
 
-$('#editar_relatorio').validator().on('submit', function(e) {
+$('#editar_relatorio').on('submit', function(e) {
    
     if (e.isDefaultPrevented()) {
         alert("O Relatório possui erros") 
