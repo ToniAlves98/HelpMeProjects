@@ -72,7 +72,6 @@ $('#formNewEvento').on('submit', function(e) {
             success: function(result) {
                 if (result.status == 200) {
                     alert("Evento adicionado com sucesso");
-                    $('#formNewEvento')[0].reset();
                 }
                 getEventos();
             },

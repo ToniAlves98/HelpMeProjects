@@ -60,7 +60,7 @@ $('#formNewRelatorio').on('submit', function(e) {
     
         console.log(data);
        
-       // $('#tabela_eventos')[0].reset();
+       $('#tabela_eventos')[0].reset();
     
         $.ajax({
             type: 'POST',
