@@ -68,11 +68,11 @@
                             </div>
                             <div class="form-group">
                                 <input type="file" id="real-file" hidden="hidden" />
-                                    <button type="button" id="custom-button">Escolha um ficheiro</button>
-                                    <span id="custom-text">pdf</span>
+                                <button type="button" id="custom-button">Escolha um ficheiro</button>
+                                <span id="custom-text">.pdf</span>
                             </div>
                             <br />
-                            <button type="submit" method="post" id="btRelatorio" class="btn btn-primary btn-user btn-block">Adicionar</button>
+                            <button type="submit" method="post" class="btn btn-primary btn-user btn-block btRelatorio">Adicionar</button>
                         </form>
                     </div>
                 </div>
@@ -101,10 +101,12 @@
                                 <input type="text" class="form-control form-control-user" id="" aria-describedby="" placeholder="Nome do relatório">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="" placeholder="Ficheiro PDF">
+                                <input type="file" id="real-file-editar" hidden="hidden" />
+                                <button type="button" id="custom-button-editar">Escolha um ficheiro</button>
+                                <span id="custom-text-editar">.pdf</span>
                             </div>
                             <br />
-                            <button type="submit" id="btRelatorio" class="btn btn-primary btn-user btn-block">Editar</button>
+                            <button type="submit" class="btn btn-primary btn-user btn-block btRelatorio">Editar</button>
                         </form>
                     </div>
                 </div>
@@ -133,46 +135,47 @@
 </div>
 
 
+<!--PDF adicionar relatorio-->
 <script type="text/javascript">
-const realFileBtn = document.getElementById("real-file");
-const customBtn = document.getElementById("custom-button");
-const customTxt = document.getElementById("custom-text");
+    const realFileBtn = document.getElementById("real-file");
+    const customBtn = document.getElementById("custom-button");
+    const customTxt = document.getElementById("custom-text");
 
-customBtn.addEventListener("click", function() {
-  realFileBtn.click();
-});
+    customBtn.addEventListener("click", function () {
+        realFileBtn.click();
+    });
 
-realFileBtn.addEventListener("change", function() {
-  if (realFileBtn.value) {
-    customTxt.innerHTML = realFileBtn.value.match(
-      /[\/\\]([\w\d\s\.\-\(\)]+)$/
-    )[1];
-  } else {
-    customTxt.innerHTML = "No file chosen, yet.";
-  }
-});
+    realFileBtn.addEventListener("change", function () {
+        if (realFileBtn.value) {
+            customTxt.innerHTML = realFileBtn.value.match(
+                /[\/\\]([\w\d\s\.\-\(\)]+)$/
+            )[1];
+        } else {
+            customTxt.innerHTML = "No file chosen, yet.";
+        }
+    });
 </script>
 
-<style>
-    #custom-button {
-  padding: 10px;
-  color: white;
-  background-color: blue;
-  border: 1px solid #000;
-  border-radius: 5px;
-  cursor: pointer;
-}
+<!--PDF editar relatorio-->
+<script type="text/javascript">
+    const realFileBtnEditar = document.getElementById("real-file-editar");
+    const customBtnEditar = document.getElementById("custom-button-editar");
+    const customTxtEditar = document.getElementById("custom-text-editar");
 
-#custom-button:hover {
-  background-color: #00b28f;
-}
+    customBtnEditar.addEventListener("click", function () {
+        realFileBtnEditar.click();
+    });
 
-#custom-text {
-  margin-left: 10px;
-  font-family: sans-serif;
-  color: #aaa;
-}
-</style>
+    realFileBtnEditar.addEventListener("change", function () {
+        if (realFileBtnEditar.value) {
+            customTxtEditar.innerHTML = realFileBtnEditar.value.match(
+                /[\/\\]([\w\d\s\.\-\(\)]+)$/
+            )[1];
+        } else {
+            customTxtEditar.innerHTML = "No file chosen, yet.";
+        }
+    });
+</script>
 
 <script type="text/javascript" src="../../../controller/relatorios.js"></script>
 
