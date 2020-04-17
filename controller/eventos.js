@@ -83,7 +83,6 @@ $('#formNewEvento').on('submit', function(e) {
 //Quando selecionar o utilizador carregar os dados para o modal editar
 function getDadosEvento() {
     var data = {};
-    data.idEvento = 2;
     console.log(data);
 
     $.ajax({
@@ -97,10 +96,12 @@ function getDadosEvento() {
             if (request.status == 200) {
                 $('#nomeEvento_edi').val(data[1].nomeEvento);
                 $('#tipoEvento_edi').val(data[1].tipoEvento);
-                $('#AreaConhecimento_idAreaConhecimento').val(data[1].AreaConhecimento_idAreaConhecimento);
-                $('#Utilizador_idUtilizador').val(data[1].Utilizador_idUtilizador);
+               // $('#AreaConhecimento_idAreaConhecimento').val(data[1].AreaConhecimento_idAreaConhecimento);
+                //$('#Utilizador_idUtilizador').val(data[1].Utilizador_idUtilizador);
                 $('#inicioEvento_edi').val(data[1].data_inicio);
                 $('#fimEvento_edi').val(data[1].data_fim);
+               
+
 
              
             }
@@ -126,14 +127,15 @@ $('#editar_evento').on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-
+        
+        data.idEvento = 2;
         data.nomeEvento = $('#nomeEvento_edi').val();
-        data.AreaConhecimento_idAreaConhecimento = 2
+        data.AreaConhecimento_idAreaConhecimento = 2;
         data.tipoEvento = $('#tipoEvento_edi').val();
-        data.Utilizador_idUtilizador = 2
+        data.Utilizador_idUtilizador = 2;
         data.data_inicio = $('#inicioEvento_edi').val();
         data.data_fim = $('#fimEvento_edi').val();
-        data.idEvento = 2
+        
 
         console.log(data);
        

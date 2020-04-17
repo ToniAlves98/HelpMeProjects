@@ -73,7 +73,7 @@ global.helpme.post('/setEvento', function(req, res) {
     req.sanitizeBody('data_inicio').escape();
     req.sanitizeBody('data_fim').escape();
     */// console.log('body: ' + JSON.stringify(req.body));
-    global.model_eventos.setEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim);
+    global.model_eventos.setEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.id_Evento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
