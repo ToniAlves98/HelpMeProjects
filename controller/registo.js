@@ -4,10 +4,10 @@ $(document).ready(function () {
 });
 
 ///Carregar o registo de um novo utilzador
-('#formNewRegisto').validator().on('submit', function (e) {
+('#formNewRegisto').on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
-        alert("Formul�rio com erros")
+        alert("Formulário com erros")
     }
     else {
         event.preventDefault();
@@ -25,7 +25,7 @@ $(document).ready(function () {
         data.email = $('#email').val();
         data.password = $('#password').val();
         data.descricao = $('#descricao').val();
-        data.perfil = 'Perfil p�blico';
+        data.perfil = 'Perfil público';
 
         console.log(data);
         $('#formNewRegisto')[0].reset();
@@ -33,14 +33,14 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: '/saveUtilizador',
-            data: data,
+            data: JSON.stringify(data),
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Bem Vindo � HeplMe Projects")
+                    alert("Bem Vindo à HeplMe Projects")
                     window.location.assign("/forum");
                 }
                 else {
-                    alert("O seu Registo n�o foi efetuado, por favor tente outra vez");
+                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -53,7 +53,7 @@ $(document).ready(function () {
     }
 });
 
-//Carregar dados para a p�gina gest�o de utilizadores
+//Carregar dados para a página gestão de utilizadores
 function getUtilizador() {
     var data = {};
 
@@ -71,7 +71,7 @@ function getUtilizador() {
 
                 txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
-                txt += "<tr><th>Nome</th><th>Idade</th><th>G�nero</th><th>Profiss�o</th><th>Ramo Empresarial</th><th>N� Empregados</th><th>Regi�o do Pa�s</th><th>�rea de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descri��o</th></tr></thead><tbody>";
+                txt += "<tr><th>Nome</th><th>Idade</th><th>Género</th><th>Profissão</th><th>Ramo Empresarial</th><th>Nº Empregados</th><th>Região do País</th><th>Área de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descrição</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
                     txt += "<tr><td>" + row.nome + "</td><td>" + row.idade + "</td><td>" + row.genero + "</td><td>" + row.profissao +
@@ -110,7 +110,6 @@ function getDadosUtilizador() {
         contentType: 'application/json; charset=utf-8',
 
         success: function (data, status, request) {
-
             if (request.status == 200) {
                 $('#profissao').val(data[0].profissao);
                 $('#ramoEp').val(data[0].ramo_emp);
@@ -124,6 +123,7 @@ function getDadosUtilizador() {
                 $('#email').val(data[0].email);
                 $('#password').val(data[0].password);
                 $('#descricao').val(data[0].descricao);
+                console.log(data);
             }
             else {
                 console.log("Erro");
@@ -138,16 +138,16 @@ function getDadosUtilizador() {
     });
 };
 
-//Editar utilzador
-('#formEditarUtilizador').validator().on('submit', function (e) {
 
+('#formEditarUtilizador').on('submit', function (e) {
     if (e.isDefaultPrevented()) {
-        alert("Formul�rio com erros")
+        alert("Formulário com erros")
     }
     else {
         event.preventDefault();
 
         var data = {};
+        data.idUtilizador = 1
         data.profissao = $('#profissao').val();
         data.ramo_emp = $('#ramoEp').val();
         data.num_trabalhadores = $('#nEmpregados').val();
@@ -167,14 +167,14 @@ function getDadosUtilizador() {
 
         $.ajax({
             type: 'POST',
-            url: '/saveUtilizador',
-            data: data,
+            url: '/setUtilizador',
+            data: JSON.stringify(data),
             success: function (result) {
                 if (result.status == 200) {
                     alert("Editado com sucesso")
                 }
                 else {
-                    alert("N�o foi editado com sucesso");
+                    alert("Não foi editado com sucesso");
                 }
                 getUtilizador();
             },

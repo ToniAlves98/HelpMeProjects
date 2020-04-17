@@ -1,5 +1,5 @@
 //função de gravação que recebe os par�metros
-function saveUtilizador(nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil) {
+function saveUtilizador(nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
     //receber os dados do formu�rio que s�o enviados por post e guarda em objeto JSON
     var post = {
         nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
@@ -24,12 +24,29 @@ function readUtilizador(callback) {
             callback(null, rows);
         }
         else
-            console.log('Erro na Query Query.', err);
+            console.log('Erro na Query.', err);
     });
 };
+
+function setUtilizador(idUtilizador, nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
+
+    var post = {
+        idUtilizador: idUtilizador, nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
+        ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil
+    };
+    var query = global.connect.con.query('UPDATE utilizador SET', post, function (err, rows, fields) {
+        console.log(query.sql);
+        if (!err) {
+            console.log("Number of records inserted: " + rows.affectedRows);
+        }
+        else
+            console.log('Erro na Query.', err);
+    });
+}
 
 
 module.exports = {
     readUtilizador: readUtilizador,
-    saveUtilizador: saveUtilizador
+    saveUtilizador: saveUtilizador,
+    setUtilizador: setUtilizador
 }
