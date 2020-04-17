@@ -172,12 +172,11 @@ function getDadosUtilizador() {
             success: function (result) {
                 if (result.status == 200) {
                     alert("Editado com sucesso")
-                    getUtilizador();
-                    window.location.assign("/admin");
                 }
                 else {
                     alert("Não foi editado com sucesso");
                 }
+                getUtilizador();
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log(xhr.responseText);

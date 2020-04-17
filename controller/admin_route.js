@@ -91,7 +91,7 @@ global.helpme.post('/saveUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
     global.modelUtilizador.saveUtilziador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
         req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
-    res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
+    res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
 
 //rota de leitura
