@@ -1,5 +1,6 @@
 $(document).ready(function () {
     getEventos();
+    getDadosEvento();
 });
 
 function getEventos() {
@@ -79,6 +80,42 @@ $('#formNewEvento').on('submit', function(e) {
     }
 });
 
+//Quando selecionar o utilizador carregar os dados para o modal editar
+function getDadosEvento() {
+    var data = {};
+    data.idEvento = 2;
+    console.log(data);
+
+    $.ajax({
+        type: 'GET',
+        url: '/readEventos',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        
+        success: function (data, status, request) {
+
+            if (request.status == 200) {
+                $('#nomeEvento_edi').val(data[1].nomeEvento);
+                $('#tipoEvento_edi').val(data[1].tipoEvento);
+                $('#AreaConhecimento_idAreaConhecimento').val(data[1].AreaConhecimento_idAreaConhecimento);
+                $('#Utilizador_idUtilizador').val(data[1].Utilizador_idUtilizador);
+                $('#inicioEvento_edi').val(data[1].data_inicio);
+                $('#fimEvento_edi').val(data[1].data_fim);
+
+             
+            }
+            else {
+                console.log("Erro");
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+            console.log(textStatus);
+            console.log(errorThrown);
+            alert("erro");
+        }
+    });
+};
 
 $('#editar_evento').on('submit', function(e) {
    
@@ -89,19 +126,21 @@ $('#editar_evento').on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-        data.nomeEvento = $('#nomeEvento').val();
-        data.AreaConhecimento_idAreaConhecimento = $('#').val();
-        data.tipoEvento = $('#tipoEvento').val();
-        data.Utilizador_idUtilizador = $('#').val();
-        data.data_inicio = $('#inicioEvento').val();
-        data.data_fim = $('#fimEvento').val();
+
+        data.nomeEvento = $('#nomeEvento_edi').val();
+        data.AreaConhecimento_idAreaConhecimento = 2
+        data.tipoEvento = $('#tipoEvento_edi').val();
+        data.Utilizador_idUtilizador = 2
+        data.data_inicio = $('#inicioEvento_edi').val();
+        data.data_fim = $('#fimEvento_edi').val();
+        data.idEvento = 2
 
         console.log(data);
        
-        $('#')[0].reset();
+        //$('#')[0].reset();
     
         $.ajax({
-            type: 'PUT',
+            type: 'POST',
             url: '/setEvento',
             data: JSON.stringify(data),
             contentType: 'application/json',

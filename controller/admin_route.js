@@ -61,18 +61,18 @@ global.helpme.post('/saveEvento', function(req, res) {
     req.sanitizeBody('data_inicio').escape();
     req.sanitizeBody('data_fim').escape();
   */  // console.log('body: ' + JSON.stringify(req.body));
-    global.model_eventos.saveEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim);
+    global.model_eventos.saveEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.id_Evento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
 global.helpme.post('/setEvento', function(req, res) {
-    req.sanitizeBody('nomeEvento').escape();
+   /* req.sanitizeBody('nomeEvento').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
     req.sanitizeBody('tipoEvento').escape();
     req.sanitizeBody('Utilizador_idUtilizador').escape();
     req.sanitizeBody('data_inicio').escape();
     req.sanitizeBody('data_fim').escape();
-    // console.log('body: ' + JSON.stringify(req.body));
+    */// console.log('body: ' + JSON.stringify(req.body));
     global.model_eventos.setEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
