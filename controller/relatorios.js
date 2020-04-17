@@ -1,5 +1,6 @@
 $(document).ready(function () {
     getRelatorios();
+    removeRelatorio();
 });
 
 function getRelatorios() {
@@ -112,6 +113,35 @@ $('#editar_relatorio').on('submit', function(e) {
     }
 });
 
-$("#formRelatorio").on("click", "#elimarRelatorio", function() {
+function removeRelatorio() {
+    var data = {};
+    
+    data.idRelatorio = 4;
+    console.log(data);
+
+    $.ajax({
+        type: 'DELETE',
+        url: '/deleteRelatorio',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        
+        success: function (data, status, request) {
+
+            if (request.status == 200) {
+            }
+            else {
+                console.log("Erro");
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+            console.log(textStatus);
+            console.log(errorThrown);
+            alert("erro");
+        }
+    });
+};
+
+$("#tabela_relatorios").on("click", "#elimarRelatorio", function() {
     $(this).closest("tr").remove();
  });

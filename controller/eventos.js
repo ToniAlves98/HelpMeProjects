@@ -1,6 +1,7 @@
 $(document).ready(function () {
     getEventos();
     getDadosEvento();
+    removeEvento();
 });
 
 function getEventos() {
@@ -148,6 +149,7 @@ $('#editar_evento').on('submit', function(e) {
             contentType: 'application/json',
             success: function(result) {
                 if (result.status == 200) {
+                    data.idEvento = 2
                     alert("Evento editado com sucesso");
                 }
             },
@@ -155,6 +157,35 @@ $('#editar_evento').on('submit', function(e) {
     }
 });
 
-$("#tabela_eventos").on("click", "#eliminarEvento", function() {
+
+function removeEvento() {
+    var data = {};
+    data.idEvento = 4;
+    console.log(data);
+
+    $.ajax({
+        type: 'DELETE',
+        url: '/deleteEvento',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        
+        success: function (data, status, request) {
+
+            if (request.status == 200) {
+            }
+            else {
+                console.log("Erro");
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+            console.log(textStatus);
+            console.log(errorThrown);
+            alert("erro");
+        }
+    });
+};
+
+$("#tabela_eventos").on("click", "#eliminar_evento", function() {
     $(this).closest("tr").remove();
  });

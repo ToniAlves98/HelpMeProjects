@@ -31,8 +31,8 @@ global.helpme.post('/setRelatorio', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.post('/deleteRelatorio', function(req, res) {
-    req.sanitizeBody('nomeRelatorio').escape();
+global.helpme.delete('/deleteRelatorio', function(req, res) {
+    //req.sanitizeBody('nomeRelatorio').escape();
     // console.log('body: ' + JSON.stringify(req.body));
     global.model_relatorios.deleteRelatorio(req.body.nomeRelatorio);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
@@ -77,8 +77,8 @@ global.helpme.post('/setEvento', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.post('/deleteEvento', function(req, res) {
-    req.sanitizeBody('nomeEvento').escape();
+global.helpme.delete('/deleteEvento', function(req, res) {
+    //req.sanitizeBody('nomeEvento').escape();
     // console.log('body: ' + JSON.stringify(req.body));
     global.model_eventos.deleteEvento(req.body.nomeEvento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');

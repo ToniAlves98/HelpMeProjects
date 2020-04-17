@@ -31,9 +31,9 @@ function setRelatorio(nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento,Ut
     });
 };
 
-function deleteRelatorio(nomeRelatorio, callback) {
-    var linha = { nomeRelatorio: nomeRelatorio };
-    var query = global.connect.con.query('DELETE FROM relatorio WHERE nomeRelatorio = ?', linha, function(err, rows, fields) {
+function deleteRelatorio(nomeRelatorio, idRelatorio, callback) {
+    var linha = { idRelatorio:idRelatorio };
+    var query = global.connect.con.query('DELETE FROM relatorio WHERE idRelatorio = ?', linha, function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);
