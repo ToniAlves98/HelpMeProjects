@@ -90,7 +90,7 @@ global.helpme.delete('/deleteEvento', function(req, res) {
 global.helpme.get('/utilizador', function (req, res) {
     console.log('GET /');
     //leitura do ficheiro estático - view do user 
-    var html = global.fs.readFileSync('./views/admin/pagesutilizador.html');
+    var html = global.fs.readFileSync('./views/admin/pages/utilizador.html');
     res.writeHead(200, {
         'Content-Type': 'text/html'
     });

@@ -4,7 +4,7 @@ $(document).ready(function () {
 });
 
 ///Carregar o registo de um novo utilzador
-('#formNewRegisto').validator().on('submit', function (e) {
+('#formNewRegisto').on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
         alert("Formulário com erros")
@@ -137,7 +137,8 @@ function getDadosUtilizador() {
 };
 
 
-('#formEditarUtilizador').validator().on('submit', function (e) {
+('#formEditarUtilizador').on('submit', function (e) {
+
     if (e.isDefaultPrevented()) {
         alert("Formulário com erros")
     }
