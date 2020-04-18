@@ -28,14 +28,14 @@
         color: #FF4500;
     }
 
-#btUtilizador {
+.btUtilizador {
     font-size: 13px;
     border-radius: 40px;
     border-color: #FD871F;
     background-color: #FD871F;
 }
 
-    #btUtilizador:hover {
+    .btUtilizador:hover {
         border-color: #FF4500;
         background-color: #FF4500;
         box-shadow: 0 0 0 0.2rem #FF4500;

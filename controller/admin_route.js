@@ -86,10 +86,21 @@ global.helpme.delete('/deleteEvento', function(req, res) {
 
 
 //rota Gestao utilizadores
+//rota inicial
+global.helpme.get('/utilizador', function (req, res) {
+    console.log('GET /');
+    //leitura do ficheiro estático - view do user 
+    var html = global.fs.readFileSync('./views/admin/pagesutilizador.html');
+    res.writeHead(200, {
+        'Content-Type': 'text/html'
+    });
+    res.end(html);
+});
+
 //rota de gravação
 global.helpme.post('/saveUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
-    global.modelUtilizador.saveUtilziador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
+    global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
         req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
@@ -97,7 +108,7 @@ global.helpme.post('/saveUtilizador', function (req, res) {
 //rota de editar
 global.helpme.post('/setUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
-    global.modelUtilizador.saveUtilziador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
+    global.model_utilizador.setUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
         req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, req.body.idUtilizador);
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });

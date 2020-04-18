@@ -4,7 +4,7 @@ $(document).ready(function () {
 });
 
 ///Carregar o registo de um novo utilzador
-('#formNewRegisto').on('submit', function (e) {
+('#formNewRegisto').validator().on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
         alert("Formulário com erros")
@@ -101,7 +101,6 @@ function getUtilizador() {
 //Quando selecionar o utilizador carregar os dados para o modal editar
 function getDadosUtilizador() {
     var data = {};
-    data.idUtilizador = 1;
 
     $.ajax({
         type: 'GET',
@@ -123,7 +122,6 @@ function getDadosUtilizador() {
                 $('#email').val(data[0].email);
                 $('#password').val(data[0].password);
                 $('#descricao').val(data[0].descricao);
-                console.log(data);
             }
             else {
                 console.log("Erro");
@@ -139,7 +137,7 @@ function getDadosUtilizador() {
 };
 
 
-('#formEditarUtilizador').on('submit', function (e) {
+('#formEditarUtilizador').validator().on('submit', function (e) {
     if (e.isDefaultPrevented()) {
         alert("Formulário com erros")
     }
