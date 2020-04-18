@@ -1,7 +1,7 @@
 $(document).ready(function () {
     getEventos();
     getDadosEvento();
-    removeEvento();
+
 });
 
 function getEventos() {
@@ -95,12 +95,12 @@ function getDadosEvento() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                $('#nomeEvento_edi').val(data[1].nomeEvento);
-                $('#tipoEvento_edi').val(data[1].tipoEvento);
+                $('#nomeEvento_edi').val(data[2].nomeEvento);
+                $('#tipoEvento_edi').val(data[2].tipoEvento);
                // $('#AreaConhecimento_idAreaConhecimento').val(data[1].AreaConhecimento_idAreaConhecimento);
                 //$('#Utilizador_idUtilizador').val(data[1].Utilizador_idUtilizador);
-                $('#inicioEvento_edi').val(data[1].data_inicio);
-                $('#fimEvento_edi').val(data[1].data_fim);
+                $('#inicioEvento_edi').val(data[2].data_inicio);
+                $('#fimEvento_edi').val(data[2].data_fim);
                
 
 
@@ -128,8 +128,7 @@ $('#editar_evento').on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-        
-        data.idEvento = 2;
+        data.idEvento = 3;
         data.nomeEvento = $('#nomeEvento_edi').val();
         data.AreaConhecimento_idAreaConhecimento = 2;
         data.tipoEvento = $('#tipoEvento_edi').val();
@@ -151,7 +150,9 @@ $('#editar_evento').on('submit', function(e) {
                 if (result.status == 200) {
                     alert("Evento editado com sucesso");
                 }
+                getEventos();
             },
+           
         });
     }
 });
@@ -159,7 +160,7 @@ $('#editar_evento').on('submit', function(e) {
 
 function removeEvento() {
     var data = {};
-    data.idEvento = 10;
+    data.idEvento = 12;
     console.log(data);
 
     $.ajax({
@@ -176,6 +177,7 @@ function removeEvento() {
             else {
                 console.log("Erro");
             }
+            getEventos();
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log(xhr.responseText);
@@ -186,6 +188,13 @@ function removeEvento() {
     });
 };
 
+
+/*
 $("#tabela_eventos").on("click", "#eliminar_evento", function() {
     $(this).closest("tr").remove();
+ });
+*/
+
+ $("#eliminar_evento").on("click", function() {
+    removeEvento();
  });

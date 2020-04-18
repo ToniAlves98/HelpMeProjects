@@ -27,14 +27,14 @@ global.helpme.post('/setRelatorio', function(req, res) {
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
     */// console.log('body: ' + JSON.stringify(req.body));
-    global.model_relatorios.setRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.AreaConhecimento_idAreaConhecimento);
+    global.model_relatorios.setRelatorio(req.body.idRelatorio, req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.AreaConhecimento_idAreaConhecimento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
 global.helpme.delete('/deleteRelatorio', function(req, res) {
     //req.sanitizeBody('nomeRelatorio').escape();
     // console.log('body: ' + JSON.stringify(req.body));
-    global.model_relatorios.deleteRelatorio(req.body.nomeRelatorio);
+    global.model_relatorios.deleteRelatorio(req.body.idRelatorio);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
@@ -73,7 +73,7 @@ global.helpme.post('/setEvento', function(req, res) {
     req.sanitizeBody('data_inicio').escape();
     req.sanitizeBody('data_fim').escape();
     */// console.log('body: ' + JSON.stringify(req.body));
-    global.model_eventos.setEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.idEvento);
+    global.model_eventos.setEvento(req.body.idEvento, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

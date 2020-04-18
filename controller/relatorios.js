@@ -1,6 +1,5 @@
 $(document).ready(function () {
     getRelatorios();
-    removeRelatorio();
 });
 
 function getRelatorios() {
@@ -89,6 +88,7 @@ $('#editar_relatorio').on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
+        data.idRelatorio = 4;
         data.nomeEvento = $('#nome_relatorio').val();
         data.pdf = $('#real-file').val();
         data.AreaConhecimento_idAreaConhecimento = $('#').val();
@@ -97,10 +97,10 @@ $('#editar_relatorio').on('submit', function(e) {
 
         console.log(data);
        
-        $('#')[0].reset();
+        //$('#')[0].reset();
     
         $.ajax({
-            type: 'PUT',
+            type: 'POST',
             url: '/setRelatorio',
             data: JSON.stringify(data),
             contentType: 'application/json',
@@ -115,8 +115,7 @@ $('#editar_relatorio').on('submit', function(e) {
 
 function removeRelatorio() {
     var data = {};
-    
-    data.idRelatorio = 4;
+    data.idRelatorio = 13;
     console.log(data);
 
     $.ajax({
@@ -132,6 +131,7 @@ function removeRelatorio() {
             else {
                 console.log("Erro");
             }
+            getRelatorios();
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log(xhr.responseText);
@@ -142,6 +142,6 @@ function removeRelatorio() {
     });
 };
 
-$("#tabela_relatorios").on("click", "#elimarRelatorio", function() {
-    $(this).closest("tr").remove();
+$("#eliminarRelatorio").on("click",  function() {
+      removeRelatorio();
  });
