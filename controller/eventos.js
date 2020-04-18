@@ -149,7 +149,6 @@ $('#editar_evento').on('submit', function(e) {
             contentType: 'application/json',
             success: function(result) {
                 if (result.status == 200) {
-                    data.idEvento = 2
                     alert("Evento editado com sucesso");
                 }
             },
@@ -160,7 +159,7 @@ $('#editar_evento').on('submit', function(e) {
 
 function removeEvento() {
     var data = {};
-    data.idEvento = 4;
+    data.idEvento = 10;
     console.log(data);
 
     $.ajax({
@@ -172,6 +171,7 @@ function removeEvento() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
+                
             }
             else {
                 console.log("Erro");
