@@ -1,80 +1,30 @@
 $(document).ready(function () {
-    getUtilizador();
-    
-    var user = {}
-    $('#tabela_utilizador').on('click', 'tr', function () {
-        $(this).toggleClass('selected');
-        //get row contents into an array
-        var tableData = $(this).children("td").map(function () {
-            return $(this).text();
-        }).get();
-        getDadosUtilizador();
-
-        user.idUtilizador = tableData[0]
-        user.nome = tableData[1]
-        user.idade = tableData[2]
-        user.genero = tableData[3]
-        user.profissao = tableData[4]
-        user.email = tableData[5]
-        user.password = tableData[6]
-        user.descricao = tableData[7]
-        user.ramo_emp = tableData[8]
-        user.num_trabalhadores = tableData[9]
-        user.regiao_pais = tableData[10]
-        user.area_cientifica = tableData[11]
-        user.ciclo_estudo = tableData[12]
-        console.log(user)
-    });
+    getUtilizador(); 
 });
 
-///Carregar o registo de um novo utilzador
-('#formNewRegisto').on('submit', function (e) {
+var user = {}
+$('#tabela_utilizador').on('click', 'tr', function () {
+    $(this).toggleClass('selected');
+    //get row contents into an array
+    var tableData = $(this).children("td").map(function () {
+        return $(this).text();
+    }).get();
+    getDadosUtilizador();
 
-    if (e.isDefaultPrevented()) {
-        alert("Formulário com erros")
-    }
-    else {
-        event.preventDefault();
-
-        var data = {};
-        data.nome = $('#nome').val();
-        data.idade = $('#idade').val();
-        data.genero = $('#genero').val();
-        data.email = $('#email').val();
-        data.password = $('#password').val();
-        data.descricao = $('#descricao').val();
-        data.profissao = $('#profissao').val();
-        data.ramo_emp = $('#ramoEp').val();
-        data.num_trabalhadores = $('#nEmpregados').val();
-        data.regiao_pais = $('#regiao').val();
-        data.area_cientifica = $('#area').val();
-        data.ciclo_estudo = $('#estudo').val();
-        data.perfil = 'Perfil público';
-
-        console.log(data);
-        $('#formNewRegisto')[0].reset();
-
-        $.ajax({
-            type: 'POST',
-            url: '/saveUtilizador',
-            data: JSON.stringify(data),
-            success: function (result) {
-                if (result.status == 200) {
-                    alert("Bem Vindo à HeplMe Projects")
-                    window.location.assign("/forum");
-                }
-                else {
-                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
-                }
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.log(xhr.responseText);
-                console.log(textStatus);
-                console.log(errorThrown);
-                alert("erro");
-            }
-        });
-    }
+    user.idUtilizador = tableData[0]
+    user.nome = tableData[1]
+    user.idade = tableData[2]
+    user.genero = tableData[3]
+    user.profissao = tableData[4]
+    user.email = tableData[5]
+    user.password = tableData[6]
+    user.descricao = tableData[7]
+    user.ramo_emp = tableData[8]
+    user.num_trabalhadores = tableData[9]
+    user.regiao_pais = tableData[10]
+    user.area_cientifica = tableData[11]
+    user.ciclo_estudo = tableData[12]
+    console.log(user)
 });
 
 //Carregar dados para a página gestão de utilizadores
@@ -132,7 +82,7 @@ function getDadosUtilizador() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                $('#idUtilizador').val(user.idU);
+                $('#idUtilizador').val(user.idUtilizador);
                 $('#nome').val(user.nome);
                 $('#idade').val(user.idade);
                 $('#genero').val(user.genero);

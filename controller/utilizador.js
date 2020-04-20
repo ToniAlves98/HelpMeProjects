@@ -2,6 +2,56 @@ $(document).ready(function () {
     dadosUtilizador();
 });
 
+//Carregar o registo de um novo utilzador
+('#formNewRegisto').on('submit', function (e) {
+
+    if (e.isDefaultPrevented()) {
+        alert("Formulário com erros")
+    }
+    else {
+        event.preventDefault();
+
+        var data = {};
+        data.nome = $('#nome').val();
+        data.idade = $('#idade').val();
+        data.genero = $('#genero').val();
+        data.email = $('#email').val();
+        data.password = $('#password').val();
+        data.descricao = $('#descricao').val();
+        data.profissao = $('#profissao').val();
+        data.ramo_emp = $('#ramoEp').val();
+        data.num_trabalhadores = $('#nEmpregados').val();
+        data.regiao_pais = $('#regiao').val();
+        data.area_cientifica = $('#area').val();
+        data.ciclo_estudo = $('#estudo').val();
+        data.perfil = 'Perfil público';
+
+        console.log(data);
+        $('#formNewRegisto')[0].reset();
+
+        $.ajax({
+            type: 'POST',
+            url: '/saveUtilizador',
+            data: JSON.stringify(data),
+            success: function (result) {
+                if (result.status == 200) {
+                    alert("Bem Vindo à HeplMe Projects")
+                    window.location.assign("/forum");
+                }
+                else {
+                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log(xhr.responseText);
+                console.log(textStatus);
+                console.log(errorThrown);
+                alert("erro");
+            }
+        });
+    }
+});
+
 //Carregar dados para a página perfil utilziador
 function dadosUtilizador() {
     var data = {};
