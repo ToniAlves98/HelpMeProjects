@@ -98,8 +98,6 @@ function getDadosEvento() {
                 $('#idEvento_edi').val(teste.idEvento);
                 $('#nomeEvento_edi').val(teste.nomeEvento);
                 $('#tipoEvento_edi').val(teste.tipoEvento);
-               // $('#AreaConhecimento_idAreaConhecimento').val(data[1].AreaConhecimento_idAreaConhecimento);
-                //$('#Utilizador_idUtilizador').val(data[1].Utilizador_idUtilizador);
                 $('#inicioEvento_edi').val(teste.data_inicio);
                 $('#fimEvento_edi').val(teste.data_fim);
                
@@ -132,11 +130,11 @@ $('#editar_evento').on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-        data.idEvento = $('#idEvento_edi').val();;
+        data.idEvento = teste.idEvento;
         data.nomeEvento = $('#nomeEvento_edi').val();
-        data.AreaConhecimento_idAreaConhecimento = 2;
+        data.AreaConhecimento_idAreaConhecimento =  teste.AreaConhecimento_idAreaConhecimento;
         data.tipoEvento = $('#tipoEvento_edi').val();
-        data.Utilizador_idUtilizador = 2;
+        data.Utilizador_idUtilizador = teste.Utilizador_idUtilizador;
         data.data_inicio = $('#inicioEvento_edi').val();
         data.data_fim = $('#fimEvento_edi').val();
         
@@ -205,7 +203,7 @@ $("#tabela_eventos").on("click", "#eliminar_evento", function() {
  });
 
 
- var teste = {}
+var teste = {}
 $('#tabela_eventos').on('click', 'tr', function () {
     $(this).toggleClass('selected');
      //get row contents into an array
@@ -217,7 +215,9 @@ $('#tabela_eventos').on('click', 'tr', function () {
      
      teste.idEvento = tableData[0]  
      teste.nomeEvento = tableData[1]
+     teste.AreaConhecimento_idAreaConhecimento = tableData[2]
      teste.tipoEvento = tableData[3]
+     teste.Utilizador_idUtilizador = tableData[4]
      teste.data_inicio= tableData[5]
      teste.data_fim = tableData[6]
      console.log(teste)

@@ -1,5 +1,5 @@
 function readRelatorios(callback) {
-    global.connect.con.query('SELECT nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from relatorio', function(err, rows, fields) {
+    global.connect.con.query('SELECT idRelatorio, nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from relatorio', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }
@@ -21,7 +21,7 @@ function saveRelatorio(nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, 
 }
 
 function setRelatorio(idRelatorio, nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento,Utilizador_idUtilizador, callback) {
-    global.connect.con.query('UPDATE relatorio SET nomeRelatorio="'+ nomeRelatorio +'", pdf="'+ pdf +'", AreaConhecimento_idAreaConhecimento="'+nomeEvento+'", Utilizador_idUtilizador="'+ AreaConhecimento_idAreaConhecimento,Utilizador_idUtilizador +'" WHERE idRelatorio="'+ idRelatorio +'"',  function(err, rows, fields) {
+    global.connect.con.query('UPDATE relatorio SET nomeRelatorio="'+ nomeRelatorio +'", pdf="'+ pdf +'", AreaConhecimento_idAreaConhecimento="'+AreaConhecimento_idAreaConhecimento+'", Utilizador_idUtilizador="'+ Utilizador_idUtilizador +'" WHERE idRelatorio="'+ idRelatorio +'"',  function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }
