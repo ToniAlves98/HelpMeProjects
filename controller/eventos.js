@@ -20,10 +20,10 @@ function getEventos() {
                 var txt = "";
                 txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
-                txt += "<tr><th>Nome</th><th>Area de Conhecimento</th><th>Tipo</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
+                txt += "<tr><th>Id</th><th>Nome</th><th>Area de Conhecimento</th><th>Tipo</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
-                    txt += "<tr><td>" + row.nomeEvento + "</td><td>" + row.AreaConhecimento_idAreaConhecimento + "</td><td>" + row.tipoEvento + "</td> <td>" + row.Utilizador_idUtilizador + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
+                    txt += "<tr><td>" + row.idEvento + "</td><td>" + row.nomeEvento + "</td><td>" + row.AreaConhecimento_idAreaConhecimento + "</td><td>" + row.tipoEvento + "</td> <td>" + row.Utilizador_idUtilizador + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
 
                 });
                 txt += "</tbody></table>";
@@ -95,6 +95,7 @@ function getDadosEvento() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
+                $('#idEvento_edi').val(teste.idEvento);
                 $('#nomeEvento_edi').val(teste.nomeEvento);
                 $('#tipoEvento_edi').val(teste.tipoEvento);
                // $('#AreaConhecimento_idAreaConhecimento').val(data[1].AreaConhecimento_idAreaConhecimento);
@@ -131,7 +132,7 @@ $('#editar_evento').on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-        //data.idEvento = ;
+        data.idEvento = $('#idEvento_edi').val();;
         data.nomeEvento = $('#nomeEvento_edi').val();
         data.AreaConhecimento_idAreaConhecimento = 2;
         data.tipoEvento = $('#tipoEvento_edi').val();
@@ -213,11 +214,11 @@ $("#tabela_eventos").on("click", "#eliminar_evento", function() {
 
      getDadosEvento();
      
-        
-     teste.nomeEvento = tableData[0]
-     teste.tipoEvento = tableData[2]
-     teste.data_inicio= tableData[4]
-     teste.data_fim = tableData[5]
-     //console.log(data)
+     teste.idEvento = tableData[0]  
+     teste.nomeEvento = tableData[1]
+     teste.tipoEvento = tableData[3]
+     teste.data_inicio= tableData[5]
+     teste.data_fim = tableData[6]
+     console.log(teste)
  });
 

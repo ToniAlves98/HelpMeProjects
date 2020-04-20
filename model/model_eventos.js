@@ -1,5 +1,5 @@
 function readEventos(callback) {
-    global.connect.con.query('SELECT nomeEvento, tipoEvento, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, data_inicio, data_fim from evento', function(err, rows, fields) {
+    global.connect.con.query('SELECT idEvento, nomeEvento, tipoEvento, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, data_inicio, data_fim from evento', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }
