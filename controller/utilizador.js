@@ -16,18 +16,19 @@ function dadosUtilizador() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
+                $('#nome').val(data[0].nome);
+                $('#idade').val(data[0].idade);
+                $('#genero').val(data[0].genero);
                 $('#profissao').val(data[0].profissao);
+                $('#email').val(data[0].email);
+                $('#password').val(data[0].password);
+                $('#descricao').val(data[0].descricao);
                 $('#ramoEp').val(data[0].ramo_emp);
                 $('#nEmpregados').val(data[0].num_trabalhadores);
                 $('#regiao').val(data[0].regiao_pais);
                 $('#area').val(data[0].area_cientifica);
                 $('#estudo').val(data[0].ciclo_estudo);
-                $('#nome').val(data[0].nome);
-                $('#idade').val(data[0].idade);
-                $('#genero').val(data[0].genero);
-                $('#email').val(data[0].email);
-                $('#password').val(data[0].password);
-                $('#descricao').val(data[0].descricao);
+                //$('perfil').val(data[0].perfil);
             }
             else {
                 console.log("Erro");
@@ -52,19 +53,19 @@ $('#formUtilizador').validator().on('submit', function (e) {
         event.preventDefault();
 
         var data = {};
+        data.nome = $('#nome').val();
+        data.idade = $('#idade').val();
+        data.genero = $('#genero').val();
         data.profissao = $('#profissao').val();
+        data.email = $('#email').val();
+        data.password = $('#password').val();
+        data.descricao = $('#descricao').val();
         data.ramo_emp = $('#ramoEp').val();
         data.num_trabalhadores = $('#nEmpregados').val();
         data.regiao_pais = $('#regiao').val();
         data.area_cientifica = $('#area').val();
         data.ciclo_estudo = $('#estudo').val();
-        data.nome = $('#nome').val();
-        data.idade = $('#idade').val();
-        data.genero = $('#genero').val();
-        data.email = $('#email').val();
-        data.password = $('#password').val();
-        data.descricao = $('#descricao').val();
-
+        //data.perfil = $('#perfil').val();
         console.log(data);
 
         $.ajax({

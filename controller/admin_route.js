@@ -97,23 +97,7 @@ global.helpme.get('/utilizador', function (req, res) {
     res.end(html);
 });
 
-//rota de gravação
-global.helpme.post('/saveUtilizador', function (req, res) {
-    console.log('body: ' + JSON.stringify(req.body));
-    global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
-        req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
-    res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
-});
-
-//rota de editar
-global.helpme.post('/setUtilizador', function (req, res) {
-    console.log('body: ' + JSON.stringify(req.body));
-    global.model_utilizador.setUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
-        req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, req.body.idUtilizador);
-    res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
-});
-
-//rota de leitura
+//rota de leitura utilizador
 global.helpme.get('/readUtilizador', function (req, res) {
     global.model_utilizador.readUtilizador(function (err, data) {
         if (err) {
@@ -124,6 +108,22 @@ global.helpme.get('/readUtilizador', function (req, res) {
             res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
         }
     });
+});
+
+//rota de gravação utilzador
+global.helpme.post('/saveUtilizador', function (req, res) {
+    console.log('body: ' + JSON.stringify(req.body));
+    global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
+        req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
+    res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
+});
+
+//rota de editar utilizador
+global.helpme.post('/setUtilizador', function (req, res) {
+    console.log('body: ' + JSON.stringify(req.body));
+    global.model_utilizador.setUtilizador(req.body.idUtilizador, req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
+        req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, req.body.idUtilizador);
+    res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
 
 //rota admin

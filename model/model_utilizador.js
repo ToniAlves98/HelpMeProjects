@@ -1,7 +1,7 @@
 //função de leitura que retorna o resultado no callback
 function readUtilizador(callback) {
     //criar e executar a query de leitura na BD
-    global.connect.con.query('SELECT nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil from utilizador', function (err, rows, fields) {
+    global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil from utilizador', function (err, rows, fields) {
         if (!err) {
             //gravar os resultados rows no callback
             callback(null, rows);
