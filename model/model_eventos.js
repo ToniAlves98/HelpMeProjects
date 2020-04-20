@@ -33,9 +33,9 @@ function setEvento(idEvento, nomeEvento,AreaConhecimento_idAreaConhecimento, tip
 }
 
 
-function deleteEvento( idEvento, callback) {
+function deleteEvento(nomeEvento, callback) {
     //var linha = { nomeEvento: nomeEvento };
-    var query = global.connect.con.query('DELETE FROM evento WHERE idEvento = "'+idEvento+'"',  function(err, rows, fields) {
+    var query = global.connect.con.query('DELETE FROM evento WHERE nomeEvento = "'+nomeEvento+'"',  function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);

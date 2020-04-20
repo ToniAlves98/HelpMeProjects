@@ -1,6 +1,6 @@
 $(document).ready(function () {
     getEventos();
-    getDadosEvento();
+    //getDadosEvento();
 
 });
 
@@ -77,14 +77,14 @@ $('#formNewEvento').on('submit', function(e) {
                 }
                 getEventos();
             },
+            
         });
     }
 });
 
 //Quando selecionar o utilizador carregar os dados para o modal editar
 function getDadosEvento() {
-    var data = {};
-    console.log(data);
+    var data = {}
 
     $.ajax({
         type: 'GET',
@@ -95,15 +95,15 @@ function getDadosEvento() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                $('#nomeEvento_edi').val(data[2].nomeEvento);
-                $('#tipoEvento_edi').val(data[2].tipoEvento);
+                $('#nomeEvento_edi').val(teste.nomeEvento);
+                $('#tipoEvento_edi').val(teste.tipoEvento);
                // $('#AreaConhecimento_idAreaConhecimento').val(data[1].AreaConhecimento_idAreaConhecimento);
                 //$('#Utilizador_idUtilizador').val(data[1].Utilizador_idUtilizador);
-                $('#inicioEvento_edi').val(data[2].data_inicio);
-                $('#fimEvento_edi').val(data[2].data_fim);
+                $('#inicioEvento_edi').val(teste.data_inicio);
+                $('#fimEvento_edi').val(teste.data_fim);
                
 
-
+             console.log(data)
              
             }
             else {
@@ -119,6 +119,9 @@ function getDadosEvento() {
     });
 };
 
+
+
+
 $('#editar_evento').on('submit', function(e) {
    
     if (e.isDefaultPrevented()) {
@@ -128,7 +131,7 @@ $('#editar_evento').on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-        data.idEvento = 3;
+        //data.idEvento = ;
         data.nomeEvento = $('#nomeEvento_edi').val();
         data.AreaConhecimento_idAreaConhecimento = 2;
         data.tipoEvento = $('#tipoEvento_edi').val();
@@ -160,7 +163,7 @@ $('#editar_evento').on('submit', function(e) {
 
 function removeEvento() {
     var data = {};
-    data.idEvento = 12;
+    data.nomeEvento = teste.nomeEvento;
     console.log(data);
 
     $.ajax({
@@ -195,6 +198,26 @@ $("#tabela_eventos").on("click", "#eliminar_evento", function() {
  });
 */
 
+
  $("#eliminar_evento").on("click", function() {
     removeEvento();
  });
+
+
+ var teste = {}
+ $('#tabela_eventos').on('click', 'tr', function() {
+     //get row contents into an array
+     var tableData = $(this).children("td").map(function() {
+         return $(this).text();
+     }).get();
+
+     getDadosEvento();
+     
+        
+     teste.nomeEvento = tableData[0]
+     teste.tipoEvento = tableData[2]
+     teste.data_inicio= tableData[4]
+     teste.data_fim = tableData[5]
+     //console.log(data)
+ });
+

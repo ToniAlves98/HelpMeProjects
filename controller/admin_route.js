@@ -80,7 +80,7 @@ global.helpme.post('/setEvento', function(req, res) {
 global.helpme.delete('/deleteEvento', function(req, res) {
     //req.sanitizeBody('nomeEvento').escape();
     // console.log('body: ' + JSON.stringify(req.body));
-    global.model_eventos.deleteEvento(req.body.idEvento);
+    global.model_eventos.deleteEvento(req.body.nomeEvento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
