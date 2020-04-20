@@ -17,7 +17,7 @@ function getRelatorios() {
             if (request.status == 200) {
                 var txt = "";
             
-                txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
+                txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
                 txt += "<tr><th>Título</th><th>pdf</th><th>Area de Conhecimento</th><th>Utilizador</th></tr></thead><tbody>";
 

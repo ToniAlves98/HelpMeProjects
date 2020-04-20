@@ -69,7 +69,7 @@ function getUtilizador() {
             if (request.status == 200) {
                 var txt = "";
 
-                txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
+                txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
                 txt += "<tr><th>Nome</th><th>Idade</th><th>Género</th><th>Profissão</th><th>Ramo Empresarial</th><th>Nº Empregados</th><th>Região do País</th><th>Área de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descrição</th></tr></thead><tbody>";
 

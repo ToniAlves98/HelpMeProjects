@@ -18,7 +18,7 @@ function getEventos() {
             console.log(data);
             if (request.status == 200) {
                 var txt = "";
-                txt += '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >';
+                txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
                 txt += "<tr><th>Id</th><th>Nome</th><th>Area de Conhecimento</th><th>Tipo</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
 
@@ -206,7 +206,8 @@ $("#tabela_eventos").on("click", "#eliminar_evento", function() {
 
 
  var teste = {}
- $('#tabela_eventos').on('click', 'tr', function() {
+$('#tabela_eventos').on('click', 'tr', function () {
+    $(this).toggleClass('selected');
      //get row contents into an array
      var tableData = $(this).children("td").map(function() {
          return $(this).text();

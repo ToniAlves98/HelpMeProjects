@@ -162,3 +162,7 @@
     color: gray;
     font-weight: bold;
 }
+
+.selected {
+    background-color: #e3e6f0;
+}
