@@ -110,6 +110,19 @@ global.helpme.get('/readUtilizador', function (req, res) {
     });
 });
 
+//rota de leitura utilizador
+global.helpme.get('/readEstudante', function (req, res) {
+    global.model_utilizador.readUtilizador(function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
+        }
+    });
+});
+
 //rota de gravação utilzador
 global.helpme.post('/saveUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));

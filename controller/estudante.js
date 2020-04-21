@@ -33,7 +33,7 @@ function getUtilizador() {
 
     $.ajax({
         type: "GET",
-        url: '/readUtilizador',
+        url: '/readEstudante',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
         success: function (data, status, request) {
@@ -43,12 +43,12 @@ function getUtilizador() {
 
                 txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
-                txt += "<tr><th>Id</th><th>Nome</th><th>Idade</th><th>Género</th><th>Profissão</th><th>Ramo Empresarial</th><th>Nº Empregados</th><th>Região do País</th><th>Área de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descrição</th><th>Perfil</th></tr></thead><tbody>";
+                txt += "<tr><th>Id</th><th>Nome</th><th>Idade</th><th>Género</th><th>Profissão</th><th>Área de Conhecimento</th><th>Ciclo de Estudo</th><th>Email</th><th>Password</th><th>Descrição</th><th>Perfil</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
                     txt += "<tr><td>" + row.idUtilizador + "</td><td>" + row.nome + "</td><td>" + row.idade + "</td><td>" + row.genero + "</td><td>" + row.profissao +
-                        "</td><td>" + row.ramo_emp + "</td><td>" + row.num_trabalhadores + "</td><td>" + row.regiao_pais + "</td><td>" + row.area_cientifica +
-                        "</td><td>" + row.ciclo_estudo + "</td><td>" + row.email + "</td><td>" + row.password + "</td><td>" + row.descricao + "</td><td>" + row.perfil + "</td></tr>";
+                        "</td><td>" + row.area_cientifica + "</td><td>" + row.ciclo_estudo + "</td><td>" + row.email +
+                        "</td><td>" + row.password + "</td><td>" + row.descricao + "</td><td>" + row.perfil + "</td></tr>";
 
                 });
                 txt += "</tbody></table>";
