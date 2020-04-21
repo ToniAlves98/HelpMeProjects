@@ -1,15 +1,15 @@
 $(document).ready(function () {
-    getUtilizador(); 
+    getEmpresa(); 
 });
 
 var user = {}
-$('#tabela_utilizador').on('click', 'tr', function () {
+$('#tabela_estudante').on('click', 'tr', function () {
     $(this).toggleClass('selected');
     //get row contents into an array
     var tableData = $(this).children("td").map(function () {
         return $(this).text();
     }).get();
-    getDadosUtilizador();
+    getDadosEstudante();
 
     user.idUtilizador = tableData[0]
     user.nome = tableData[1]
@@ -19,16 +19,13 @@ $('#tabela_utilizador').on('click', 'tr', function () {
     user.email = tableData[5]
     user.password = tableData[6]
     user.descricao = tableData[7]
-    user.ramo_emp = tableData[8]
-    user.num_trabalhadores = tableData[9]
-    user.regiao_pais = tableData[10]
-    user.area_cientifica = tableData[11]
-    user.ciclo_estudo = tableData[12]
+    user.area_cientifica = tableData[8]
+    user.ciclo_estudo = tableData[9]
     console.log(user)
 });
 
 //Carregar dados para a página gestão de utilizadores
-function getUtilizador() {
+function getEmpresa() {
     var data = {};
 
     $.ajax({
@@ -53,7 +50,7 @@ function getUtilizador() {
                 });
                 txt += "</tbody></table>";
 
-                $("#tabela_utilizador").html(txt);
+                $("#tabela_estudante").html(txt);
             }
             else {
                 console.log("Erro");
@@ -71,7 +68,7 @@ function getUtilizador() {
 };
 
 //Quando selecionar o utilizador carregar os dados para o modal editar
-function getDadosUtilizador() {
+function getDadosEstudante() {
     var data = {}
 
     $.ajax({
@@ -90,9 +87,6 @@ function getDadosUtilizador() {
                 $('#email').val(user.email);
                 $('#password').val(user.password);
                 $('#descricao').val(user.descricao);
-                $('#ramoEp').val(user.ramo_emp);
-                $('#nEmpregados').val(user.num_trabalhadores);
-                $('#regiao').val(user.regiao_pais);
                 $('#area').val(user.area_cientifica);
                 $('#estudo').val(user.ciclo_estudo);
                 console.log(data)
@@ -111,7 +105,7 @@ function getDadosUtilizador() {
 };
 
 
-('#formEditarUtilizador').on('submit', function (e) {
+('#formEditarEstudante').on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
         alert("Formulário com erros")
@@ -128,15 +122,12 @@ function getDadosUtilizador() {
         data.email = $('#email').val();
         data.password = $('#password').val();
         data.descricao = $('#descricao').val();
-        data.ramo_emp = $('#ramoEp').val();
-        data.num_trabalhadores = $('#nEmpregados').val();
-        data.regiao_pais = $('#regiao').val();
         data.area_cientifica = $('#area').val();
         data.ciclo_estudo = $('#estudo').val();
         //data.perfil = 'Perfil p�blico';
 
         console.log(data);
-        $('#formEditarUtilizador')[0].reset();
+        $('#formEditarEstudante')[0].reset();
 
         $.ajax({
             type: 'POST',
@@ -149,7 +140,7 @@ function getDadosUtilizador() {
                 else {
                     alert("Não foi editado com sucesso");
                 }
-                getUtilizador();
+                getEmpresa();
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log(xhr.responseText);
