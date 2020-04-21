@@ -1,0 +1,138 @@
+<!-- Main Content -->
+<div id="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <br />
+        <h1 class="h3 mb-2 text-gray-800" style="font-weight:bold;">Gestão de Gestores de Projeto</h1>
+        <br />
+
+        <!-- Content Row -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex">
+                <div class="mr-auto p-2"><h3 class="m-0 font-weight-bold" style="color:#FF4500;">Gestores de Projeto</h3></div>
+                <div class="p-2">
+                    <a href="#" class="btn btn-warning btn-icon-split" data-toggle="modal" data-target="#editar_gestor">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-edit"></i>
+                        </span>
+                        <span class="text">Editar</span>
+                    </a>
+                </div>
+                <div class="p-2" id="eliminar_gestor">
+                    <a href="#" class="btn btn-danger btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                        <span class="text">Eliminar</span>
+                    </a>
+                </div>
+            </div>
+            <div class="card-body" method="post">
+                <div class="table-responsive" id="tabela_gestor" method="post">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal editar utilizador -->
+<div class="modal fadeIn gestaoUtilizador" id="editar_gestor" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-lg-12 text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <h1>Editar Gestor de Projeto</h1>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 40px 60px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="formEditarGestor" class="user text-center" method="post">
+                            <div class="form-group">
+                                <select class="form-control form-control-user" data-live-search="true" id="profissao_gestor" onchange="checkProfissao(this);">
+                                    <option value="" disabled selected>Profissão</option>
+                                    <option value="Empresa">Empresa</option>
+                                    <option value="Gestor de Projetos">Gestor de Projetos</option>
+                                    <option value="Professor/Investigador">Professor/Investigador</option>
+                                    <option value="Estudante">Estudante</option>
+                                </select>
+                            </div>
+                            <div id="GP" style="display: none;">
+                                <div class="form-group text-center">
+                                    <label>Trabalha numa PME?</label><br />
+                                    <input type="checkbox" class="custom-checkbox" value="simPME" onclick="checkPME(this);"><label class="custom-label">Sim</label>
+                                    <input type="checkbox" class="custom-checkbox"><label class="custom-label">Não</label><br />
+                                </div>
+
+                                <div id="gpPME" style="display:none;">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="ramoEp_gestor" aria-describedby="" placeholder="Ramo Empresarial">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control form-control-user" id="nEmpregados_gestor" aria-describedby="" placeholder="Nº de empregados">
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control form-control-user" data-live-search="true" id="regiao_gestor">
+                                            <option value="" disabled selected>Região do país</option>
+                                            <option value="Alentejo">Alentejo</option>
+                                            <option value="Algarve">Algarve</option>
+                                            <option value="Beira Interior">Beira Interior</option>
+                                            <option value="Beira Litoral">Beira Litoral</option>
+                                            <option value="Entre Douro e Minho">Entre Douro e Minho</option>
+                                            <option value="Ribatejo e Oeste">Ribatejo e Oeste</option>
+                                            <option value="Região Autónoma dos Açores">Região Autónoma dos Açores</option>
+                                            <option value="Região Autónoma da Madeira">Região Autónoma da Madeira</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="nome_gestor" placeholder="Nome">
+                            </div>
+                            <div class="form-group" id="idadeDiv">
+                                <input type="number" class="form-control form-control-user" id="idade_gestor" placeholder="Idade">
+                            </div>
+                            <div class="form-group" id="generoDiv">
+                                <select class="form-control form-control-user" data-live-search="true" id="genero_gestor">
+                                    <option value="" disabled selected>Género</option>
+                                    <option value="Male">Masculino</option>
+                                    <option value="Female">Feminino</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" id="email_gestor" placeholder="E-mail">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-user" id="password_gestor" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control form-control-user" id="descricao_gestor" name="message" rows="5" cols="30" placeholder="Pequeno texto de apresentação pessoal"></textarea>
+                            </div>
+                            <br />
+                            <button type="submit" class="btn btn-primary btn-user btn-block btUtilizador">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Check GP-->
+<script type="text/javascript">
+    function checkPME(that) {
+        if (that.value == "simPME" && that.checked) {
+            document.getElementById("gpPME").style.display = "block";
+        } else {
+            document.getElementById("gpPME").style.display = "none";
+        }
+    }
+</script>
+
+<script type="text/javascript" src="../../../controller/gestor.js"></script>

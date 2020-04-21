@@ -21,7 +21,7 @@
                         <span class="text">Editar</span>
                     </a>
                 </div>
-                <div class="p-2" id="eliminar_utilizador">
+                <div class="p-2" id="eliminar_estudante">
                     <a href="#" class="btn btn-danger btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fas fa-trash"></i>
@@ -32,7 +32,6 @@
             </div>
             <div class="card-body" method="post">
                 <div class="table-responsive" id="tabela_estudante" method="post">
-
                 </div>
             </div>
         </div>
@@ -55,7 +54,20 @@
                     <div class="col-lg-12">
                         <form id="formEditarEstudante" class="user text-center" method="post">
                             <div class="form-group">
-                                <select class="form-control form-control-user" data-live-search="true" id="profissao" onchange="checkProfissao(this);">
+                                <input type="text" class="form-control form-control-user" id="nome_estudante" aria-describedby="" placeholder="Nome">
+                            </div>
+                            <div class="form-group" id="idadeDiv">
+                                <input type="number" class="form-control form-control-user" id="idade_estudante" aria-describedby="" placeholder="Idade">
+                            </div>
+                            <div class="form-group" id="generoDiv">
+                                <select class="form-control form-control-user" data-live-search="true" id="genero_estudante">
+                                    <option value="" disabled selected>Género</option>
+                                    <option value="Male">Masculino</option>
+                                    <option value="Female">Feminino</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control form-control-user" data-live-search="true" id="profissao_estudante" onchange="checkProfissao(this);">
                                     <option value="" disabled selected>Profissão</option>
                                     <option value="Empresa">Empresa</option>
                                     <option value="Gestor de Projetos">Gestor de Projetos</option>
@@ -67,37 +79,24 @@
                             <!--Professor/Investigador-->
                             <div id="PI" style="display: none;">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="area" aria-describedby="" placeholder="Área Científica">
+                                    <input type="text" class="form-control form-control-user" id="area_estudante" aria-describedby="" placeholder="Área Científica">
                                 </div>
                             </div>
                             <!--Estudante-->
                             <div id="Estudante" style="display: none;">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="estudo" aria-describedby="" placeholder="Ciclo de Estudo">
+                                    <input type="text" class="form-control form-control-user" id="estudo_estudante" aria-describedby="" placeholder="Ciclo de Estudo">
                                 </div>
                             </div>
                             <!--Fim da escolha de profissões-->
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="nome" aria-describedby="" placeholder="Nome">
-                            </div>
-                            <div class="form-group" id="idadeDiv">
-                                <input type="number" class="form-control form-control-user" id="idade" aria-describedby="" placeholder="Idade">
-                            </div>
-                            <div class="form-group" id="generoDiv">
-                                <select class="form-control form-control-user" data-live-search="true" id="genero">
-                                    <option value="" disabled selected>Género</option>
-                                    <option value="Male">Masculino</option>
-                                    <option value="Female">Feminino</option>
-                                </select>
+                                <input type="email" class="form-control form-control-user" id="email_estudante" placeholder="E-mail">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="email" aria-describedby="email" placeholder="E-mail">
+                                <input type="password" class="form-control form-control-user" id="password_estudante" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-user" id="password" aria-describedby="password" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control form-control-user" id="descricao" name="message" rows="5" cols="30" placeholder="Pequeno texto de apresentação pessoal"></textarea>
+                                <textarea class="form-control form-control-user" id="descricao_estudante" name="message" rows="5" cols="30" placeholder="Pequeno texto de apresentação pessoal"></textarea>
                             </div>
                             <br />
                             <button type="submit" class="btn btn-primary btn-user btn-block btUtilizador">Editar</button>

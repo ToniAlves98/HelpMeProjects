@@ -110,19 +110,6 @@ global.helpme.get('/readUtilizador', function (req, res) {
     });
 });
 
-//rota de leitura utilizador
-global.helpme.get('/readEstudante', function (req, res) {
-    global.model_utilizador.readUtilizador(function (err, data) {
-        if (err) {
-            console.log("ERROR : ", err);
-        }
-        else {
-            res.send(data);
-            res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
-        }
-    });
-});
-
 //rota de gravação utilzador
 global.helpme.post('/saveUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
@@ -135,7 +122,76 @@ global.helpme.post('/saveUtilizador', function (req, res) {
 global.helpme.post('/setUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
     global.model_utilizador.setUtilizador(req.body.idUtilizador, req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
-        req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, req.body.idUtilizador);
+        req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
+    res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
+});
+
+//rota eliminar utilizador
+global.helpme.delete('/deleteUtilizador', function (req, res) {
+    global.model_utilizador.deleteUtilizador(req.body.idUtilizador);
+    res.end('{"success" : "Utilizador eliminado com sucesso", "status" : 200}');
+});
+
+//rota de leitura estudante
+global.helpme.get('/readEstudante', function (req, res) {
+    global.model_utilizador.readEstudante(function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
+        }
+    });
+});
+
+//rota de editar estudante
+global.helpme.post('/setEstudante', function (req, res) {
+    console.log('body: ' + JSON.stringify(req.body));
+    global.model_utilizador.setEstudante(req.body.idUtilizador, req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
+        req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
+    res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
+});
+
+//rota de leitura empresa
+global.helpme.get('/readEmpresa', function (req, res) {
+    global.model_utilizador.readEmpresa(function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
+        }
+    });
+});
+
+//rota de editar empresa
+global.helpme.post('/setEmpresa', function (req, res) {
+    console.log('body: ' + JSON.stringify(req.body));
+    global.model_utilizador.setEmpresa(req.body.idUtilizador, req.body.nome, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
+        req.body.num_trabalhadores, req.body.regiao_pais, req.body.perfil);
+    res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
+});
+
+//rota de leitura gestor
+global.helpme.get('/readGestor', function (req, res) {
+    global.model_utilizador.readGestor(function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
+        }
+    });
+});
+
+//rota de editar gestor
+global.helpme.post('/setGestor', function (req, res) {
+    console.log('body: ' + JSON.stringify(req.body));
+    global.model_utilizador.setGestor(req.body.idUtilizador, req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
+        req.body.num_trabalhadores, req.body.regiao_pais, req.body.perfil);
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
 
