@@ -1,5 +1,5 @@
 function readRelatorios(callback) {
-    global.connect.con.query('SELECT idRelatorio, nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from relatorio', function(err, rows, fields) {
+    global.connect.con.query('SELECT relatorio.idRelatorio, relatorio.nomeRelatorio, relatorio.pdf, areaconhecimento.tipo_area, utilizador.nome from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador=utilizador.idUtilizador INNER JOIN areaconhecimento ON relatorio.AreaConhecimento_idAreaConhecimento=areaconhecimento.idAreaConhecimento;', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }

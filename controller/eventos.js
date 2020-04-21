@@ -23,7 +23,7 @@ function getEventos() {
                 txt += "<tr><th>Id</th><th>Nome</th><th>Area de Conhecimento</th><th>Tipo</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
-                    txt += "<tr><td>" + row.idEvento + "</td><td>" + row.nomeEvento + "</td><td>" + row.AreaConhecimento_idAreaConhecimento + "</td><td>" + row.tipoEvento + "</td> <td>" + row.Utilizador_idUtilizador + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
+                    txt += "<tr><td>" + row.idEvento + "</td><td>" + row.nomeEvento + "</td><td>" + row.tipo_area + "</td><td>" + row.tipoEvento + "</td> <td>" + row.nome + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
 
                 });
                 txt += "</tbody></table>";

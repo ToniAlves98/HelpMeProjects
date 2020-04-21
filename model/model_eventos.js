@@ -1,5 +1,5 @@
 function readEventos(callback) {
-    global.connect.con.query('SELECT idEvento, nomeEvento, tipoEvento, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, data_inicio, data_fim from evento', function(err, rows, fields) {
+    global.connect.con.query('SELECT evento.idEvento, evento.nomeEvento, evento.tipoEvento, areaconhecimento.tipo_area, utilizador.nome, evento.data_inicio, evento.data_fim from evento INNER JOIN utilizador ON evento.Utilizador_idUtilizador=utilizador.idUtilizador INNER JOIN areaconhecimento ON evento.AreaConhecimento_idAreaConhecimento=areaconhecimento.idAreaConhecimento;', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }

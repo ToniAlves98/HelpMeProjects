@@ -22,7 +22,7 @@ function getRelatorios() {
                 txt += "<tr><th>Id</th><th>Título</th><th>pdf</th><th>Area de Conhecimento</th><th>Utilizador</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
-                    txt += "<tr><td>" + row.idRelatorio + "</td><td>" + row.nomeRelatorio + "</td><td>" + row.pdf + "</td><td>" + row.AreaConhecimento_idAreaConhecimento + "</td><td>" + row.Utilizador_idUtilizador + "</td></tr>";
+                    txt += "<tr><td>" + row.idRelatorio + "</td><td>" + row.nomeRelatorio + "</td><td>" + row.pdf + "</td><td>" + row.tipo_area + "</td><td>" + row.nome + "</td></tr>";
 
                 });
                 txt += "</tbody></table>";
