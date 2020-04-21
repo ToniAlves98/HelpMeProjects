@@ -15,6 +15,8 @@ function getRelatorios() {
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
+            
+
                 var txt = "";
             
                 txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
@@ -54,7 +56,7 @@ $('#formNewRelatorio').on('submit', function(e) {
         event.preventDefault();
         var data = {};
         data.nomeRelatorio = $('#nome_relatorio').val();
-        data.pdf = $('#pdf').val();;
+        data.pdf = $('#real-file').val();;
         data.AreaConhecimento_idAreaConhecimento = 1;
         data.Utilizador_idUtilizador = 1;
     
@@ -198,3 +200,36 @@ $('#tabela_relatorios').on('click', 'tr', function () {
     
      console.log(teste_rel)
  });
+
+
+
+function download(){
+    const blob = new Blob();
+    downloadFile(blob, teste_rel.pdf) 
+}
+
+function downloadFile(blob, filename){
+    const url = window.webkitURL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = filename;
+    a.click();
+}
+
+ $("#downloadRelatorio").on("click",  function(event) {
+     download();
+});
+
+
+function upload(fakepath){
+    alert(fakepath)
+}
+
+$("#downloadRelatorio").on("click",  function(event) {
+    download();
+});
+ //var viewpdf = $("#dataTable")
+ //PDFObject.embed(teste_rel.pdf, viewpdf)
+
+ 
