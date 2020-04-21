@@ -1,12 +1,12 @@
 $(document).ready(function() {
-   
+   console.log('login.js');
 }); 
 
-// //validação do formulário ao submeter – executa a função validator
+// //validacao do formulario ao submeter executa a funcao validator
 $('#formNewLogin').validator().on('submit', function(e) {
     //se submeter com erros
     if (e.isDefaultPrevented()) {
-        alert("Formulário com erros") 
+        alert("Formulario com erros") 
     }
   
     else {

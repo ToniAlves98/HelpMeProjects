@@ -22,3 +22,24 @@ global.helpme.get('/readRespostas', function(req, res) {
         }
     });
 });
+
+global.helpme.post('/auth', function (req, res){
+    var email = req.body.email;
+    var password = req.body.password;
+    console.log('Login post forum_routes.js'+ req.body.email);
+    if (email && password) {
+		global.connect.con.query('SELECT * FROM accounts WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
+			if (results.length > 0) {
+				req.session.loggedin = true;
+				req.session.username = username;
+				res.redirect('/forum');
+			} else {
+				res.send('Incorrect Username and/or Password!');
+			}			
+			res.end();
+		});
+	} else {
+		res.send('Please enter Username and Password!');
+		res.end();
+	}
+});

@@ -1,4 +1,4 @@
-global.express = require('express')
+global.express = require('express');
 var port = 8080;
 
 //carregar bibliotecas globais
@@ -9,7 +9,7 @@ global.expressValidator = require('express-validator');
 global.crypto = require('crypto');
 global.session = require('express-session');
 global.cookieParser = require('cookie-parser');
-
+global.path = require('path');
 
 //iniciar a aplicacao
 global.helpme = global.express();
@@ -20,17 +20,23 @@ global.helpme.use(function (req, res, next) {
     next();
 });
 global.helpme.use(global.bodyParser.json(), global.bodyParser.urlencoded({ extended: true }));
-//global.helpme.user(global.expressValidator());
+//global.helpme.use(global.expressValidator());
+global.helpme.use(cookieParser());
 global.helpme.use(global.session({
-    secret: 'keyboard cat',
+    secret: 'grupo 23',
     resave: false,
     saveUninitialized: true,
+    //saveUninitialized: false,
     cookie: { secure: true }
 }));
-global.helpme.use(cookieParser());
+//pintas
+//global.helpme.use(bodyParser.urlencoded({extended : true}));
+global.helpme.use(bodyParser.urlencoded({extended : true}));
+global.helpme.use(bodyParser.json());
+
 
 //Teste session
-global.helpme.get('/', function(req, res){
+global.helpme.get('/teste', function(req, res){
     if(req.session.page_views){
        req.session.page_views++;
        res.send("You visited this page " + req.session.page_views + " times");
@@ -44,10 +50,12 @@ global.helpme.get('/', function(req, res){
 global.helpme.use('/controller', global.express.static('controller'));
 global.helpme.use('/forum', global.express.static('views/forum'));
 global.helpme.use('/admin', global.express.static('views/admin'));
+global.helpme.use('/', global.express.static('views/forum'));
 global.root = __dirname;
 
 //carregar ficheiros MVC
 global.connect = require('./bd.js');
+//global.routes = require('./routes.js');
 global.model_eventos = require('./model/model_eventos');
 global.model_relatorios = require('./model/model_relatorios');
 global.model_utilizador = require('./model/model_utilizador');
@@ -62,6 +70,11 @@ global.helpme.get('/forum', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/forum', global.express.static('views/forum'));
     res.sendfile(global.root + '/views/forum/' + 'index.html');
+});
+
+//rota inicio
+global.helpme.get('/', function (req, res) {
+    res.sendfile(path.join(__dirname + '/views/forum/index.html'));
 });
 
 global.helpme.listen(port);
