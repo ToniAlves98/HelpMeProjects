@@ -55,10 +55,13 @@
                     <div class="col-lg-12">
                         <form id="formEditarEmpresa" class="user text-center" method="post">
                             <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="nome_empresa" placeholder="Nome">
+                            </div>
+                            <div class="form-group">
                                 <select class="form-control form-control-user" data-live-search="true" id="profissao_empresa" onchange="checkProfissao(this);">
                                     <option value="" disabled selected>Profissão</option>
                                     <option value="Empresa">Empresa</option>
-                                    <option value="Gestor de Projetos">Gestor de Projetos</option>
+                                    <option value="Gestor de Projeto">Gestor de Projeto</option>
                                     <option value="Professor/Investigador">Professor/Investigador</option>
                                     <option value="Estudante">Estudante</option>
                                 </select>
@@ -81,9 +84,6 @@
                                     <option value="Região Autónoma dos Açores">Região Autónoma dos Açores</option>
                                     <option value="Região Autónoma da Madeira">Região Autónoma da Madeira</option>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="nome_empresa" placeholder="Nome">
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-user" id="email_empresa" placeholder="E-mail">
