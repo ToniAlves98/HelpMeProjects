@@ -110,7 +110,7 @@ global.helpme.get('/readUtilizador', function (req, res) {
     });
 });
 
-//rota de gravação utilzador
+//rota de gravação utilizador
 global.helpme.post('/saveUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
     global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,

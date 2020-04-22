@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 //Carregar o registo de um novo utilzador
-('#formNewRegisto').on('submit', function (e) {
+$('#formNewRegisto').on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
         alert("Formulário com erros")
@@ -15,10 +15,10 @@ $(document).ready(function () {
         data.nome = $('#nome').val();
         data.idade = $('#idade').val();
         data.genero = $('#genero').val();
+        data.profissao = $('#profissao').val();
         data.email = $('#email').val();
         data.password = $('#password').val();
-        data.descricao = $('#descricao').val();
-        data.profissao = $('#profissao').val();
+        data.descricao = $('#descricao').val();      
         data.ramo_emp = $('#ramoEp').val();
         data.num_trabalhadores = $('#nEmpregados').val();
         data.regiao_pais = $('#regiao').val();
@@ -33,6 +33,7 @@ $(document).ready(function () {
             type: 'POST',
             url: '/saveUtilizador',
             data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if (result.status == 200) {
                     alert("Bem Vindo à HeplMe Projects")

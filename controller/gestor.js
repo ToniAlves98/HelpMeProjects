@@ -111,7 +111,7 @@ function getDadosGestor() {
 };
 
 
-('#formEditarGestor').on('submit', function (e) {
+$('#formEditarGestor').on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
         alert("Formulário com erros")

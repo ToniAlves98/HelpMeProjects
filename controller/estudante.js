@@ -109,7 +109,7 @@ function getDadosEstudante() {
 };
 
 
-('#formEditarEstudante').on('submit', function (e) {
+$('#formEditarEstudante').on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
         alert("Formulário com erros")
@@ -137,6 +137,7 @@ function getDadosEstudante() {
             type: 'POST',
             url: '/setEstudante',
             data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if (result.status == 200) {
                     alert("Editado com sucesso")

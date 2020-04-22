@@ -13,12 +13,12 @@ function readUtilizador(callback) {
 
 //função de gravação que recebe os parâmetros
 function saveUtilizador(nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
-    //receber os dados do formu�rio que s�o enviados por post e guarda em objeto JSON
+    //receber os dados do formu�rio que são enviados por post e guarda em objeto JSON
     var post = {
         nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
         ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil
     };
-    //criar e executar a query de grava��o na BD para inserir os dados presentes no post
+    //criar e executar a query de gravação na BD para inserir os dados presentes no post
     var query = global.connect.con.query('INSERT INTO utilizador SET ?', post, function (err, rows, fields) {
         console.log(query.sql);
         if (!err) {
