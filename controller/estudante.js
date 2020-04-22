@@ -16,11 +16,11 @@ $('#tabela_estudante').on('click', 'tr', function () {
     user.idade = tableData[2]
     user.genero = tableData[3]
     user.profissao = tableData[4]
-    user.email = tableData[5]
-    user.password = tableData[6]
-    user.descricao = tableData[7]
-    user.area_cientifica = tableData[8]
-    user.ciclo_estudo = tableData[9]
+    user.email = tableData[7]
+    user.password = tableData[8]
+    user.descricao = tableData[9]
+    user.area_cientifica = tableData[5]
+    user.ciclo_estudo = tableData[6]
     console.log(user)
 });
 
@@ -126,9 +126,12 @@ $('#formEditarEstudante').on('submit', function (e) {
         data.email = $('#email_estudante').val();
         data.password = $('#password_estudante').val();
         data.descricao = $('#descricao_estudante').val();
-        data.area_cientifica = $('#area_estudante').val();
+        if ($('#area_estudante').val("Estudante")) {
+            data.area_cientifica = null
+        } else { 
+            data.area_cientifica = $('#area_estudante').val();
+        }
         data.ciclo_estudo = $('#estudo_estudante').val();
-        //data.perfil = 'Perfil p�blico';
 
         console.log(data);
         $('#formEditarEstudante')[0].reset();

@@ -114,7 +114,7 @@ global.helpme.get('/readUtilizador', function (req, res) {
 global.helpme.post('/saveUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
     global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
-        req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
+        req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo);
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
 
@@ -170,7 +170,7 @@ global.helpme.get('/readEmpresa', function (req, res) {
 global.helpme.post('/setEmpresa', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
     global.model_utilizador.setEmpresa(req.body.idUtilizador, req.body.nome, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
-        req.body.num_trabalhadores, req.body.regiao_pais, req.body.perfil);
+        req.body.num_trabalhadores, req.body.regiao_pais);
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
 
@@ -191,7 +191,7 @@ global.helpme.get('/readGestor', function (req, res) {
 global.helpme.post('/setGestor', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
     global.model_utilizador.setGestor(req.body.idUtilizador, req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao, req.body.ramo_emp,
-        req.body.num_trabalhadores, req.body.regiao_pais, req.body.perfil);
+        req.body.num_trabalhadores, req.body.regiao_pais);
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
 

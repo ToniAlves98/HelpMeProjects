@@ -14,12 +14,12 @@ $('#tabela_empresa').on('click', 'tr', function () {
     user.idUtilizador = tableData[0]
     user.nome = tableData[1]
     user.profissao = tableData[2]
-    user.email = tableData[3]
-    user.password = tableData[4]
-    user.descricao = tableData[5]
-    user.ramo_emp = tableData[6]
-    user.num_trabalhadores = tableData[7]
-    user.regiao_pais = tableData[8]
+    user.email = tableData[6]
+    user.password = tableData[7]
+    user.descricao = tableData[8]
+    user.ramo_emp = tableData[3]
+    user.num_trabalhadores = tableData[4]
+    user.regiao_pais = tableData[5]
     console.log(user)
 });
 
@@ -125,7 +125,6 @@ $('#formEditarEmpresa').on('submit', function (e) {
         data.ramo_emp = $('#ramoEp_empresa').val();
         data.num_trabalhadores = $('#nEmpregados_empresa').val();
         data.regiao_pais = $('#regiao_empresa').val();
-        //data.perfil = 'Perfil p�blico';
 
         console.log(data);
         $('#formEditarEmpresa')[0].reset();
@@ -134,6 +133,7 @@ $('#formEditarEmpresa').on('submit', function (e) {
             type: 'POST',
             url: '/setEmpresa',
             data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if (result.status == 200) {
                     alert("Editado com sucesso")

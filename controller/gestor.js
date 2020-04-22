@@ -16,12 +16,12 @@ $('#tabela_gestor').on('click', 'tr', function () {
     user.idade = tableData[2]
     user.genero = tableData[3]
     user.profissao = tableData[4]
-    user.email = tableData[5]
-    user.password = tableData[6]
-    user.descricao = tableData[7]
-    user.ramo_emp = tableData[8]
-    user.num_trabalhadores = tableData[9]
-    user.regiao_pais = tableData[10]
+    user.email = tableData[8]
+    user.password = tableData[9]
+    user.descricao = tableData[10]
+    user.ramo_emp = tableData[5]
+    user.num_trabalhadores = tableData[6]
+    user.regiao_pais = tableData[7]
     console.log(user)
 });
 

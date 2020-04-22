@@ -46,6 +46,19 @@ function setUtilizador(idUtilizador, nome, idade, genero, profissao, email, pass
     });
 }
 
+//função delete utilizador
+function deleteUtilizador(idUtilizador, callback) {
+    var query = global.connect.con.query('DELETE FROM utilizador WHERE idUtilizador = "' + idUtilizador + '"', function (err, rows, fields) {
+        console.log(query.sql);
+        if (!err) {
+            console.log("Number of records inserted: " + rows.affectedRows);
+        }
+        else
+            console.log('Erro na Query.', err);
+    });
+}
+
+
 //função de leitura que retorna o estudante no callback
 function readEstudante(callback) {
     //criar e executar a query de leitura na BD
@@ -60,13 +73,13 @@ function readEstudante(callback) {
 };
 
 //função de edição estudante
-function setEstudante(idUtilizador, nome, idade, genero, profissao, email, password, descricao, area_cientifica, ciclo_estudo, perfil, callback) {
+function setEstudante(idUtilizador, nome, idade, genero, profissao, email, password, descricao, area_cientifica, ciclo_estudo, callback) {
 
-    var post = {
+    /*var post = {
         idUtilizador: idUtilizador, nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
         area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil
-    };
-    var query = global.connect.con.query('UPDATE utilizador SET', post, function (err, rows, fields) {
+    };*/
+    var query = global.connect.con.query('UPDATE utilizador SET nome="' + nome + '", idade="' + idade + '", genero="' + genero + '", profissao="' + profissao + '", email="' + email + '", password="' + password + '", descricao="' + descricao + '", area_cientifica="' + area_cientifica + '", ciclo_estudo="' + ciclo_estudo + '"where idUtilizador="' + idUtilizador + '"', function (err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);
@@ -75,19 +88,6 @@ function setEstudante(idUtilizador, nome, idade, genero, profissao, email, passw
             console.log('Erro na Query.', err);
     });
 }
-
-//função delete estudante
-function deleteUtilizador(idUtilizador, callback) {
-    var query = global.connect.con.query('DELETE FROM utilizador WHERE idUtilizador = "' + idUtilizador + '"', function (err, rows, fields) {
-        console.log(query.sql);
-        if (!err) {
-            console.log("Number of records inserted: " + rows.affectedRows);
-        }
-        else
-            console.log('Erro na Query.', err);
-    });
-}
-
 
 //função de leitura que retorna a empresa no callback
 function readEmpresa(callback) {
@@ -103,13 +103,13 @@ function readEmpresa(callback) {
 };
 
 //função de edição utilizador
-function setEmpresa(idUtilizador, nome, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, perfil, callback) {
+function setEmpresa(idUtilizador, nome, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, callback) {
 
-    var post = {
+    /*var post = {
         idUtilizador: idUtilizador, nome: nome, profissao: profissao, email: email, password: password, descricao: descricao,
         ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, perfil: perfil
-    };
-    var query = global.connect.con.query('UPDATE utilizador SET', post, function (err, rows, fields) {
+    };*/
+    var query = global.connect.con.query('UPDATE utilizador SET nome="' + nome + '", profissao="' + profissao + '", email="' + email + '", password="' + password + '", descricao="' + descricao + '", ramo_emp="' + ramo_emp + '", num_trabalhadores="' + num_trabalhadores + '", regiao_pais="' + regiao_pais + '"where idUtilizador="' + idUtilizador + '"', function (err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);
@@ -133,13 +133,13 @@ function readGestor(callback) {
 };
 
 //função de edição empresa
-function setGestor(idUtilizador, nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, perfil, callback) {
+function setGestor(idUtilizador, nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, callback) {
 
-    var post = {
+   /* var post = {
         idUtilizador: idUtilizador, nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
         ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, perfil: perfil
-    };
-    var query = global.connect.con.query('UPDATE utilizador SET', post, function (err, rows, fields) {
+    };*/
+    var query = global.connect.con.query('UPDATE utilizador SET nome="' + nome + '", idade="' + idade + '", genero="' + genero + '", profissao="' + profissao + '", email="' + email + '", password="' + password + '", descricao="' + descricao + '", ramo_emp="' + ramo_emp + '", num_trabalhadores="' + num_trabalhadores + '"regiao_pais="' + regiao_pais + '"where idUtilizador="' + idUtilizador + '"', function (err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);
@@ -154,9 +154,9 @@ module.exports = {
     readUtilizador: readUtilizador,
     saveUtilizador: saveUtilizador,
     setUtilizador: setUtilizador,
+    deleteUtilizador: deleteUtilizador,
     readEstudante: readEstudante,
     setEstudante: setEstudante,
-    deleteUtilizador: deleteUtilizador,
     readEmpresa: readEmpresa,
     setEmpresa: setEmpresa,
     readGestor: readGestor,
