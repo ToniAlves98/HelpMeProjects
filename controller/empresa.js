@@ -5,7 +5,7 @@
 var user = {}
 $('#tabela_empresa').on('click', 'tr', function () {
     $(this).toggleClass('selected');
-    //get row contents into an array
+    //g/et row contents into an array
     var tableData = $(this).children("td").map(function () {
         return $(this).text();
     }).get();

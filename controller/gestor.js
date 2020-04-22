@@ -29,7 +29,7 @@ $('#eliminar_gestor').on('click', function () {
     removeGestor();
 });
 
-//Carregar dados para a página gestão de utilizadores
+///Carregar dados para a página gestão de utilizadores
 function getGestor() {
     var data = {};
 
