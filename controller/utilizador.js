@@ -16,22 +16,21 @@ $('#formNewRegisto').on('submit', function (e) {
         //data.idade = $('#idade').val();
         data.genero = $('#genero').val();
         data.profissao = $('#profissao').val();
-        
 
         if ($('#profissao').val("Estudante")){
             data.idade = $('#idade').val();
             data.num_trabalhadores = 0;
          }
-         if ($('#profissao').val("Professor/Investigador")){
+         else if ($('#profissao').val("Professor/Investigador")){
             data.idade = $('#idade').val();
             data.num_trabalhadores = 0;
          }
-         if ($('#profissao').val("Gestor de Projetos")){
+         else if ($('#profissao').val("Gestor de Projeto")){
             data.idade = $('#idade').val();
             data.num_trabalhadores = 0;
          }
          
-         if ($('#profissao').val("Empresa")) {
+         else if ($('#profissao').val("Empresa")) {
             data.idade = 0;
             data.num_trabalhadores = $('#nEmpregados').val();
     }

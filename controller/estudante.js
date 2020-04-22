@@ -126,12 +126,13 @@ $('#formEditarEstudante').on('submit', function (e) {
         data.email = $('#email_estudante').val();
         data.password = $('#password_estudante').val();
         data.descricao = $('#descricao_estudante').val();
-        if ($('#area_estudante').val("Estudante")) {
-            data.area_cientifica = null
+        if ( data.profissao = "Estudante") {
+            data.area_cientifica = null;
+            data.ciclo_estudo = $('#estudo_estudante').val();
         } else { 
             data.area_cientifica = $('#area_estudante').val();
+            data.ciclo_estudo = null;
         }
-        data.ciclo_estudo = $('#estudo_estudante').val();
 
         console.log(data);
         $('#formEditarEstudante')[0].reset();
