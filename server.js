@@ -10,6 +10,7 @@ global.crypto = require('crypto');
 global.session = require('express-session');
 global.cookieParser = require('cookie-parser');
 global.path = require('path');
+global.flash = require('connect-flash');
 
 //iniciar a aplicacao
 global.helpme = global.express();
@@ -19,7 +20,9 @@ global.helpme.use(function (req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
-global.helpme.use(global.bodyParser.json(), global.bodyParser.urlencoded({ extended: true }));
+//global.helpme.use(global.bodyParser.json(), global.bodyParser.urlencoded({ extended: true }));
+global.helpme.use(bodyParser.urlencoded({extended : true}));
+global.helpme.use(bodyParser.json());
 //global.helpme.use(global.expressValidator());
 global.helpme.use(cookieParser());
 global.helpme.use(global.session({
@@ -29,22 +32,12 @@ global.helpme.use(global.session({
     //saveUninitialized: false,
     cookie: { secure: true }
 }));
-//pintas
-//global.helpme.use(bodyParser.urlencoded({extended : true}));
-global.helpme.use(bodyParser.urlencoded({extended : true}));
-global.helpme.use(bodyParser.json());
-
-
-//Teste session
-global.helpme.get('/teste', function(req, res){
-    if(req.session.page_views){
-       req.session.page_views++;
-       res.send("You visited this page " + req.session.page_views + " times");
-    } else {
-       req.session.page_views = 1;
-       res.send("Welcome to this page for the first time!");
-    }
- });
+global.helpme.use(flash());
+global.helpme.use((req,res,next)=>{
+    res.locals.success_msg = req.flash("success_msg")
+    res.locals.erros_msg = req.flash("error_msg")
+    next()
+});
 
 //definir rotas estáticas para ficheiros
 global.helpme.use('/controller', global.express.static('controller'));
@@ -64,9 +57,24 @@ global.model_respostas = require('./model/model_respostas');
 global.admin_route = require('./controller/admin_route.js');
 global.forum_route = require('./controller/forum_route.js');
 
+//route protection
+const redirectLogin = (req, res, next) =>{
+    if (!req.session.userId){
+        res.redirect('/teste')
+    }else{
+        next()
+    }
+}
+
+//Teste session
+global.helpme.get('/teste', (req, res) => {
+    const {userId} = req.session; 
+    res.send('<h1>Welcome!</h1><a href="/login">login</a>')
+});
+
 //ROTAS
 //rota forum
-global.helpme.get('/forum', function (req, res) {
+global.helpme.get('/forum', redirectLogin, function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/forum', global.express.static('views/forum'));
     res.sendfile(global.root + '/views/forum/' + 'index.html');
@@ -75,6 +83,15 @@ global.helpme.get('/forum', function (req, res) {
 //rota inicio
 global.helpme.get('/', function (req, res) {
     res.sendfile(path.join(__dirname + '/views/forum/index.html'));
+});
+
+global.helpme.use((req, res, next) => {
+    res.status(404).send("Sorry can't find that!");
+});
+
+global.helpme.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('We\'re sorry, something went wrong, do you want to go back? http://localhost:8080/');
 });
 
 global.helpme.listen(port);

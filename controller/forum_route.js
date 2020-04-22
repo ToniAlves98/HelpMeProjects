@@ -23,10 +23,10 @@ global.helpme.get('/readRespostas', function(req, res) {
     });
 });
 
-global.helpme.post('/auth', function (req, res){
+global.helpme.post('/submit', function (req, res){
     var email = req.body.email;
     var password = req.body.password;
-    console.log('Login post forum_routes.js'+ req.body.email);
+    console.log('Login post forum_routes.js'+ req.body);
     if (email && password) {
 		global.connect.con.query('SELECT * FROM accounts WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
 			if (results.length > 0) {
