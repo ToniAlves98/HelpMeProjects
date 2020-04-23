@@ -22,7 +22,7 @@ global.helpme.get('/readRespostas', function(req, res) {
         }
     });
 });
-
+/*
 global.helpme.post('/submit', function (req, res){
     var email = req.body.email;
     var password = req.body.password;
@@ -42,4 +42,30 @@ global.helpme.post('/submit', function (req, res){
 		res.send('Please enter Username and Password!');
 		res.end();
 	}
+});*/
+
+//rota de gravação
+global.helpme.post('/login', function(req, res) {
+    console.log('body: ' + JSON.stringify(req.body));
+    //chamada da função save que está no user.model e envio dos parâmetros
+    global.model_utilizador.login(req.body.email, req.body.password, function(err, data, fields) {
+        console.log(data);
+        if (err) {
+            // error handling code goes here
+            console.log("ERROR : ", err);
+            res.end('{"denied" : "dados inexistentes/errados", "status" : 201}')
+        }
+        else {
+            //envio para o cliente dos dados retornados pelo model
+            global.sessData = req.session;
+            global.sessData.dadosUtilizador = data;
+            console.log(req.session);
+            
+            res.send(data);
+            
+            console.log();
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+
+        }
+    });
 });

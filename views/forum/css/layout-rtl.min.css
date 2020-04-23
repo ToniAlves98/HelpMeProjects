@@ -39,6 +39,9 @@ span {
 }
 
 .back-to-top,
+/*here*/
+.carousel-title,
+/*till here*/
 .header .nav-item-child,
 .link {
 	text-transform: uppercase
@@ -102,7 +105,7 @@ a:hover {
 .link {
 	position: relative;
 	font-size: 13px;
-	font-weight: 600
+	font-weight: 600;
 }
 
 .link:after {
@@ -167,7 +170,9 @@ h4 {
 
 ::selection {
 	color: #fff;
-	background: #17bed2;
+	/* here
+	background: #17bed2;*/
+	background: #FD871F;
 	text-shadow: none
 }
 
@@ -196,6 +201,48 @@ h4 {
 	display: block;
 	z-index: 3
 }
+
+/* here */
+
+.accordion .panel-default {
+	border: none
+}
+
+.accordion .panel-heading {
+	border-radius: 0
+}
+
+.accordion .panel-default>.panel-heading {
+	color: #515769;
+	background: #fff;
+	border: none;
+	padding: 0
+}
+
+.accordion .panel-title-child {
+	display: block;
+	padding: 30px
+}
+
+.accordion .panel-group .panel+.panel {
+	border-radius: 0;
+	margin-top: 10px
+}
+
+.accordion .panel-default>.panel-heading+.panel-collapse>.panel-body {
+	font-size: 16px;
+	border-top: none;
+	padding: 0 30px 30px;
+	margin-top: -1px
+}
+
+.accordion .collapse.in,
+.accordion [aria-expanded=true] {
+	color: #fff;
+	background: #FD871F;
+}
+
+/*till here*/
 
 .blockquote {
 	position: relative;
@@ -257,9 +304,59 @@ fieldset[disabled] .btn-theme {
 	pointer-events: none
 }
 
+/*here*/
+
+.btn-white-bg {
+	color: #fff;
+	background: #515769;
+	border-color: transparent;
+	border-width: 0
+}
+
+.btn-white-bg.focus,
+.btn-white-bg:focus,
+.btn-white-bg:hover {
+	color: #fff;
+	background: #FD871F;
+	border-color: transparent
+}
+
+.btn-white-brd {
+	color: #fff;
+	background: 0 0;
+	border-color: #fff;
+	border-width: 2px
+}
+
+.btn-white-brd.focus,
+.btn-white-brd:focus,
+.btn-white-brd:hover {
+	color: #515769;
+	background: #FD871F;
+	border-color: #FD871F;
+}
+
+.btn-default-bg {
+	color: #515769;
+	background: #f3f4f5;
+	border-color: transparent;
+	border-width: 0
+}
+
+.btn-default-bg.focus,
+.btn-default-bg:focus,
+.btn-default-bg:hover {
+	color: #fff;
+	background: #FD871F;
+	border-color: transparent
+}
+/*till here*/
+
 .btn-base-bg {
 	color: #fff;
-	background: #17bed2;
+	/* here
+	background: #17bed2;*/
+	background: #515769;
 	border-color: transparent;
 	border-width: 0
 }
@@ -268,7 +365,9 @@ fieldset[disabled] .btn-theme {
 .btn-base-bg:focus,
 .btn-base-bg:hover {
 	color: #fff;
-	background: #63cbd7;
+	/* here 
+	background: #63cbd7;*/
+	background: #FD871F;
 	border-color: transparent
 }
 
@@ -451,6 +550,11 @@ fieldset[disabled] .btn-theme {
 .header .nav-item-child {
 	font-size: 13px;
 	font-weight: 600;
+	/*here*/
+	color: #515769;
+	letter-spacing: .02em;
+	font-family: "Ubuntu", Helvetica, Arial, sans-serif;
+	/*till here*/
 	line-height: 55px;
 	padding: 20px
 }

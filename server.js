@@ -21,7 +21,7 @@ global.helpme.use(function (req, res, next) {
     next();
 });
 //global.helpme.use(global.bodyParser.json(), global.bodyParser.urlencoded({ extended: true }));
-global.helpme.use(bodyParser.urlencoded({extended : true}));
+global.helpme.use(bodyParser.urlencoded({extended : false}));
 global.helpme.use(bodyParser.json());
 //global.helpme.use(global.expressValidator());
 global.helpme.use(cookieParser());
