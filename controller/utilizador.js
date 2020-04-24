@@ -13,29 +13,25 @@ $('#formNewRegisto').on('submit', function (e) {
 
         var data = {};
         data.nome = $('#nome').val();
-        //data.idade = $('#idade').val();
         data.genero = $('#genero').val();
         data.profissao = $('#profissao').val();
-
-        if ($('#profissao').val("Estudante")){
+        if ($('#profissao').val() == "Estudante") {
             data.idade = $('#idade').val();
             data.num_trabalhadores = 0;
-         }
-         else if ($('#profissao').val("Professor/Investigador")){
+        }
+        else if ($('#profissao').val() == "Professor/Investigador") {
             data.idade = $('#idade').val();
             data.num_trabalhadores = 0;
-         }
-         else if ($('#profissao').val("Gestor de Projeto")){
+        }
+        else if ($('#profissao').val() == "Gestor de Projeto") {
             data.idade = $('#idade').val();
             data.num_trabalhadores = 0;
-         }
-         
-         else if ($('#profissao').val("Empresa")) {
+        }
+        else if ($('#profissao').val() == "Empresa") {
             data.idade = 0;
             data.num_trabalhadores = $('#nEmpregados').val();
-    }
+        } else { };
       
-        //data.num_trabalhadores = $('#nEmpregados').val();
         data.email = $('#email').val();
         data.password = $('#password').val();
         data.descricao = $('#descricao').val();      
