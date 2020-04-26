@@ -57,10 +57,10 @@
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="nome_gestor" placeholder="Nome">
                             </div>
-                            <div class="form-group" id="idadeDiv">
+                            <div class="form-group">
                                 <input type="number" class="form-control form-control-user" id="idade_gestor" placeholder="Idade">
                             </div>
-                            <div class="form-group" id="generoDiv">
+                            <div class="form-group">
                                 <select class="form-control form-control-user" data-live-search="true" id="genero_gestor">
                                     <option value="" disabled selected>Género</option>
                                     <option value="Male">Masculino</option>
@@ -73,32 +73,27 @@
                                     <option value="Gestor de Projeto">Gestor de Projeto</option>
                                 </select>
                             </div>
-                            <div class="form-group text-center">
-                                <label>Trabalha numa PME?</label><br />
-                                <input type="checkbox" class="custom-checkbox" value="simPME" onclick="checkPME(this);"><label class="custom-label">Sim</label>
-                                <input type="checkbox" class="custom-checkbox"><label class="custom-label">Não</label><br />
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="gp_nome_emp_gestor" aria-describedby="" placeholder="Nome da Empresa">
                             </div>
-
-                            <div id="gpPME" style="display:none;">
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="ramoEp_gestor" aria-describedby="" placeholder="Ramo Empresarial">
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" class="form-control form-control-user" id="nEmpregados_gestor" aria-describedby="" placeholder="Nº de empregados">
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control form-control-user" data-live-search="true" id="regiao_gestor">
-                                        <option value="" disabled selected>Região do país</option>
-                                        <option value="Alentejo">Alentejo</option>
-                                        <option value="Algarve">Algarve</option>
-                                        <option value="Beira Interior">Beira Interior</option>
-                                        <option value="Beira Litoral">Beira Litoral</option>
-                                        <option value="Entre Douro e Minho">Entre Douro e Minho</option>
-                                        <option value="Ribatejo e Oeste">Ribatejo e Oeste</option>
-                                        <option value="Região Autónoma dos Açores">Região Autónoma dos Açores</option>
-                                        <option value="Região Autónoma da Madeira">Região Autónoma da Madeira</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="ramoEp_gestor" aria-describedby="" placeholder="Ramo Empresarial">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control form-control-user" id="nEmpregados_gestor" aria-describedby="" placeholder="Nº de empregados">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control form-control-user" data-live-search="true" id="regiao_gestor">
+                                    <option value="" disabled selected>Região do país</option>
+                                    <option value="Alentejo">Alentejo</option>
+                                    <option value="Algarve">Algarve</option>
+                                    <option value="Beira Interior">Beira Interior</option>
+                                    <option value="Beira Litoral">Beira Litoral</option>
+                                    <option value="Entre Douro e Minho">Entre Douro e Minho</option>
+                                    <option value="Ribatejo e Oeste">Ribatejo e Oeste</option>
+                                    <option value="Região Autónoma dos Açores">Região Autónoma dos Açores</option>
+                                    <option value="Região Autónoma da Madeira">Região Autónoma da Madeira</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-user" id="email_gestor" placeholder="E-mail">
@@ -119,15 +114,5 @@
     </div>
 </div>
 
-<!--Check GP-->
-<script type="text/javascript">
-    function checkPME(that) {
-        if (that.value == "simPME" && that.checked) {
-            document.getElementById("gpPME").style.display = "block";
-        } else {
-            document.getElementById("gpPME").style.display = "none";
-        }
-    }
-</script>
 
 <script type="text/javascript" src="../../../controller/gestor.js"></script>

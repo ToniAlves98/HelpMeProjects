@@ -31,10 +31,11 @@ $('#formNewRegisto').on('submit', function (e) {
             data.idade = 0;
             data.num_trabalhadores = $('#nEmpregados').val();
         } else { };
-      
+
         data.email = $('#email').val();
         data.password = $('#password').val();
-        data.descricao = $('#descricao').val();      
+        data.descricao = $('#descricao').val();
+        data.gp_nome_emp = $('#gp_nome_emp').val();
         data.ramo_emp = $('#ramoEp').val();
         data.regiao_pais = $('#regiao').val();
         data.area_cientifica = $('#area').val();
@@ -51,11 +52,11 @@ $('#formNewRegisto').on('submit', function (e) {
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Bem Vindo à HeplMe Projects")
-                    window.location.assign("/forum");
+                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
                 }
                 else {
-                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
+                    alert("Bem Vindo à HeplMe Projects")
+                    window.location.assign("/forum");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -89,6 +90,7 @@ function dadosUtilizador() {
                 $('#email').val(data[0].email);
                 $('#password').val(data[0].password);
                 $('#descricao').val(data[0].descricao);
+                $('#gp_nome_emp').val(data[0].gp_nome_emp);
                 $('#ramoEp').val(data[0].ramo_emp);
                 $('#nEmpregados').val(data[0].num_trabalhadores);
                 $('#regiao').val(data[0].regiao_pais);
@@ -126,6 +128,7 @@ $('#formUtilizador').validator().on('submit', function (e) {
         data.email = $('#email').val();
         data.password = $('#password').val();
         data.descricao = $('#descricao').val();
+        data.gp_nome_emp = $('#gp_nome_emp').val();
         data.ramo_emp = $('#ramoEp').val();
         data.num_trabalhadores = $('#nEmpregados').val();
         data.regiao_pais = $('#regiao').val();
@@ -141,11 +144,11 @@ $('#formUtilizador').validator().on('submit', function (e) {
             contentType: 'application/json',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("submetido com sucesso");
-                    $("#formUtilziador")[0].reset();
+                    console.log("Erro");
                 }
                 else {
-                    console.log("Erro");
+                    alert("submetido com sucesso");
+                    $("#formUtilziador")[0].reset();
                 }
                 dadosUtilizador();
             },

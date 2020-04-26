@@ -16,12 +16,13 @@ $('#tabela_gestor').on('click', 'tr', function () {
     user.idade = tableData[2]
     user.genero = tableData[3]
     user.profissao = tableData[4]
-    user.email = tableData[8]
-    user.password = tableData[9]
-    user.descricao = tableData[10]
-    user.ramo_emp = tableData[5]
-    user.num_trabalhadores = tableData[6]
-    user.regiao_pais = tableData[7]
+    user.email = tableData[9]
+    user.password = tableData[10]
+    user.descricao = tableData[11]
+    user.gp_nome_emp = tableData[5]
+    user.ramo_emp = tableData[6]
+    user.num_trabalhadores = tableData[7]
+    user.regiao_pais = tableData[8]
     console.log(user)
 });
 
@@ -45,13 +46,13 @@ function getGestor() {
 
                 txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
-                txt += "<tr><th>Id</th><th>Nome</th><th>Idade</th><th>Género</th><th>Profissão</th><th>Ramo Empresarial</th><th>Nº trabalhadores</th><th>Região País</th><th>Email</th><th>Password</th><th>Descrição</th><th>Perfil</th></tr></thead><tbody>";
+                txt += "<tr><th>Id</th><th>Nome</th><th>Idade</th><th>Género</th><th>Profissão</th><th>Nome da Empresa</th><th>Ramo Empresarial</th><th>Nº trabalhadores</th><th>Região País</th><th>Email</th><th>Password</th><th>Descrição</th><th>Perfil</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
                     txt += "<tr><td>" + row.idUtilizador + "</td><td>" + row.nome + "</td><td>" + row.idade + "</td><td>" + row.genero + "</td><td>" + row.profissao +
-                        "</td><td>" + row.ramo_emp + "</td><td>" + row.num_trabalhadores + "</td><td>" + row.regiao_pais +
+                        "</td><td>" + row.gp_nome_emp + "</td><td>" + row.ramo_emp + "</td><td>" + row.num_trabalhadores + "</td><td>" + row.regiao_pais +
                         "</td><td>" + row.email + "</td><td>" + row.password + "</td><td>" + row.descricao + "</td><td>" + row.perfil + "</td></tr>";
-
+                    
                 });
                 txt += "</tbody></table>";
 
@@ -92,6 +93,7 @@ function getDadosGestor() {
                 $('#email_gestor').val(user.email);
                 $('#password_gestor').val(user.password);
                 $('#descricao_gestor').val(user.descricao);
+                $('#gp_nome_emp_gestor').val(user.gp_nome_emp);
                 $('#ramoEp_gestor').val(user.ramo_emp);
                 $('#nEmpregados_gestor').val(user.num_trabalhadores);
                 $('#regiao_gestor').val(user.regiao_pais);
@@ -128,24 +130,25 @@ $('#formEditarGestor').on('submit', function (e) {
         data.email = $('#email_gestor').val();
         data.password = $('#password_gestor').val();
         data.descricao = $('#descricao_gestor').val();
+        data.gp_nome_emp = $('#gp_nome_emp_gestor').val();
         data.ramo_emp = $('#ramoEp_gestor').val();
         data.num_trabalhadores = $('#nEmpregados_gestor').val();
         data.regiao_pais = $('#regiao_gestor').val();
-        //data.perfil = 'Perfil p�blico';
 
         console.log(data);
         $('#formEditarGestor')[0].reset();
 
         $.ajax({
             type: 'POST',
-            url: '/setGestorr',
+            url: '/setGestor',
             data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Editado com sucesso")
+                    alert("Não foi editado com sucesso")
                 }
                 else {
-                    alert("Não foi editado com sucesso");
+                    alert("Editado com sucesso");
                 }
                 getGestor();
             },
