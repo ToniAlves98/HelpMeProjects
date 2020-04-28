@@ -114,19 +114,19 @@ function dadosUtilizador() {
 
             if (request.status == 200) {
                 $('#nome').val(data[0].nome);
-                $('#idade').val(data[0].idade);
-                $('#genero').val(data[0].genero);
-                $('#profissao').val(data[0].profissao);
-                $('#email').val(data[0].email);
-                $('#password').val(data[0].password);
-                $('#descricao').val(data[0].descricao);
-                $('#gp_nome_emp').val(data[0].gp_nome_emp);
-                $('#ramoEp').val(data[0].ramo_emp);
-                $('#nEmpregados').val(data[0].num_trabalhadores);
-                $('#regiao').val(data[0].regiao_pais);
-                $('#area').val(data[0].area_cientifica);
-                $('#estudo').val(data[0].ciclo_estudo);
-                //$('perfil').val(data[0].perfil);
+                $('#idade').val(data[1].idade);
+                $('#genero').val(data[2].genero);
+                $('#profissao').val(data[3].profissao);
+                $('#email').val(data[4].email);
+                $('#password').val(data[5].password);
+                $('#descricao').val(data[6].descricao);
+                $('#gp_nome_emp').val(data[7].gp_nome_emp);
+                $('#ramoEp').val(data[8].ramo_emp);
+                $('#nEmpregados').val(data[9].num_trabalhadores);
+                $('#regiao').val(data[10].regiao_pais);
+                $('#area').val(data[11].area_cientifica);
+                $('#estudo').val(data[12].ciclo_estudo);
+                $('perfil').val(data[13].perfil);
             }
             else {
                 console.log("Erro");
