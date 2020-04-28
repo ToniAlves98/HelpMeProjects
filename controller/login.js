@@ -65,7 +65,7 @@ function login(data) {
     //chamada AJAX para envio dos dados para o servidor via POST convertendo o array em JSON
     $.ajax({
         type: 'POST',
-        url: '../login',
+        url: './login',
         data: JSON.stringify(data),
         contentType: 'application/json',
         success: function(results) {
