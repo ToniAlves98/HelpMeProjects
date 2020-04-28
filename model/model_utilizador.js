@@ -1,7 +1,7 @@
 //função de leitura que retorna o resultado no callback
 function readUtilizador(callback) {
     //criar e executar a query de leitura na BD
-    global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil from utilizador', function (err, rows, fields) {
+    global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil from utilizador', function (err, rows, fields) {
         if (!err) {
             //gravar os resultados rows no callback
             callback(null, rows);
@@ -12,11 +12,11 @@ function readUtilizador(callback) {
 };
 
 //função de gravação que recebe os parâmetros
-function saveUtilizador(nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
+function saveUtilizador(nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
     //receber os dados do formu�rio que são enviados por post e guarda em objeto JSON
     var post = {
         nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
-        ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil
+        gp_nome_emp: gp_nome_emp, ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil
     };
     //criar e executar a query de gravação na BD para inserir os dados presentes no post
     var query = global.connect.con.query('INSERT INTO utilizador SET ?', post, function (err, rows, fields) {
@@ -32,11 +32,11 @@ function saveUtilizador(nome, idade, genero, profissao, email, password, descric
 //função de edição utilizador
 function setUtilizador(idUtilizador, nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
 
-    var post = {
+    /*var post = {
         idUtilizador: idUtilizador, nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
         ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil
-    };
-    var query = global.connect.con.query('UPDATE utilizador SET', post, function (err, rows, fields) {
+    };*/
+    var query = global.connect.con.query('UPDATE utilizador SET nome="' + nome + '", idade="' + idade + '", genero="' + genero + '", profissao="' + profissao + '", email="' + email + '", password="' + password + '", descricao="' + descricao + '", gp_nome_emp="' + gp_nome_emp + '", ramo_emp="' + ramo_emp + '", num_trabalhadores="' + num_trabalhadores + '", regiao_pais="' + regiao_pais + '", area_cientifica="' + area_cientifica + '", ciclo_estudo="' + ciclo_estudo + '", perfil="' + perfil + '"where idUtilizador="' + idUtilizador + '"', function (err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);
@@ -122,7 +122,7 @@ function setEmpresa(idUtilizador, nome, profissao, email, password, descricao, r
 //função de leitura que retorna o gestor no callback
 function readGestor(callback) {
     //criar e executar a query de leitura na BD
-    global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, perfil from utilizador WHERE profissao = "Gestor de Projeto"', function (err, rows, fields) {
+    global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, perfil from utilizador WHERE profissao = "Gestor de Projeto"', function (err, rows, fields) {
         if (!err) {
             //gravar os resultados rows no callback
             callback(null, rows);
@@ -133,13 +133,13 @@ function readGestor(callback) {
 };
 
 //função de edição empresa
-function setGestor(idUtilizador, nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, callback) {
+function setGestor(idUtilizador, nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, callback) {
 
    /* var post = {
         idUtilizador: idUtilizador, nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
         ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, perfil: perfil
     };*/
-    var query = global.connect.con.query('UPDATE utilizador SET nome="' + nome + '", idade="' + idade + '", genero="' + genero + '", profissao="' + profissao + '", email="' + email + '", password="' + password + '", descricao="' + descricao + '", ramo_emp="' + ramo_emp + '", num_trabalhadores="' + num_trabalhadores + '"regiao_pais="' + regiao_pais + '"where idUtilizador="' + idUtilizador + '"', function (err, rows, fields) {
+    var query = global.connect.con.query('UPDATE utilizador SET nome="' + nome + '", idade="' + idade + '", genero="' + genero + '", profissao="' + profissao + '", email="' + email + '", password="' + password + '", descricao="' + descricao + '", gp_nome_emp="' + gp_nome_emp + '", ramo_emp="' + ramo_emp + '", num_trabalhadores="' + num_trabalhadores + '", regiao_pais="' + regiao_pais + '"where idUtilizador="' + idUtilizador + '"', function (err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);

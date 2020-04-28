@@ -136,10 +136,10 @@ $('#formEditarEmpresa').on('submit', function (e) {
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Editado com sucesso")
+                    alert("Não foi editado com sucesso")
                 }
                 else {
-                    alert("Não foi editado com sucesso");
+                    alert("Editado com sucesso");
                 }
                 getEmpresa();
             },

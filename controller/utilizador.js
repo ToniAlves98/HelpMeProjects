@@ -13,37 +13,64 @@ $('#formNewRegisto').on('submit', function (e) {
 
         var data = {};
         data.nome = $('#nome').val();
-        //data.idade = $('#idade').val();
-        data.genero = $('#genero').val();
         data.profissao = $('#profissao').val();
-
-        if ($('#profissao').val("Estudante")){
-            data.idade = $('#idade').val();
-            data.num_trabalhadores = 0;
-         }
-         else if ($('#profissao').val("Professor/Investigador")){
-            data.idade = $('#idade').val();
-            data.num_trabalhadores = 0;
-         }
-         else if ($('#profissao').val("Gestor de Projeto")){
-            data.idade = $('#idade').val();
-            data.num_trabalhadores = 0;
-         }
-         
-         else if ($('#profissao').val("Empresa")) {
-            data.idade = 0;
-            data.num_trabalhadores = $('#nEmpregados').val();
-    }
-      
-        //data.num_trabalhadores = $('#nEmpregados').val();
         data.email = $('#email').val();
         data.password = $('#password').val();
-        data.descricao = $('#descricao').val();      
-        data.ramo_emp = $('#ramoEp').val();
-        data.regiao_pais = $('#regiao').val();
-        data.area_cientifica = $('#area').val();
-        data.ciclo_estudo = $('#estudo').val();
-        data.perfil = 'Perfil público';
+        data.descricao = $('#descricao').val();
+        data.perfil = "Perfil público";
+        if ($('#profissao').val() == "Estudante") {
+            data.idade = $('#idade').val();
+            data.genero = $('#genero').val();
+            data.gp_nome_emp = '';
+            data.ramo_emp = '';
+            data.num_trabalhadores = 0;
+            data.regiao_pais = '';
+            data.area_cientifica = '';
+            data.ciclo_estudo = $('#estudo').val();
+        }
+        else if ($('#profissao').val() == "Professor/Investigador") {
+            data.idade = $('#idade').val();
+            data.genero = $('#genero').val();
+            data.gp_nome_emp = '';
+            data.ramo_emp = '';
+            data.num_trabalhadores = 0;
+            data.regiao_pais = '';
+            data.area_cientifica = $('#area').val();
+            data.ciclo_estudo = '';
+        }
+        else if ($('#profissao').val() == "Gestor de Projeto" && $('#nEmpregados_gp') == "") { //não funciona pqp
+            data.idade = $('#idade').val();
+            data.genero = $('#genero').val();
+            data.descricao = $('#descricao').val();
+            data.gp_nome_emp = $('#gp_nome_emp').val();;
+            data.ramo_emp = $('#ramoEp_gp').val();
+            data.num_trabalhadores = 0;
+            data.regiao_pais = $('#regiao_gp').val();
+            data.area_cientifica = '';
+            data.ciclo_estudo = '';
+        }
+        else if ($('#profissao').val() == "Gestor de Projeto") {
+            data.idade = $('#idade').val();
+            data.genero = $('#genero').val();
+            data.descricao = $('#descricao').val();
+            data.gp_nome_emp = $('#gp_nome_emp').val();;
+            data.ramo_emp = $('#ramoEp_gp').val();
+            data.num_trabalhadores = $('#nEmpregados_gp').val();
+            data.regiao_pais = $('#regiao_gp').val();
+            data.area_cientifica = '';
+            data.ciclo_estudo = '';
+        }
+        else if ($('#profissao').val() == "Empresa") {
+            data.idade = 0;
+            data.genero = '';
+            data.gp_nome_emp = '';
+            data.ramo_emp = $('#ramoEp').val();
+            data.num_trabalhadores = $('#nEmpregados').val();
+            data.regiao_pais = $('#regiao').val();
+            data.area_cientifica = '';
+            data.ciclo_estudo = '';
+           
+        } else { };
 
         console.log(data);
         $('#formNewRegisto')[0].reset();
@@ -55,11 +82,11 @@ $('#formNewRegisto').on('submit', function (e) {
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Bem Vindo à HeplMe Projects")
-                    window.location.assign("/forum");
+                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
                 }
                 else {
-                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
+                    alert("Bem Vindo à HeplMe Projects")
+                    window.location.assign("/forum");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -93,6 +120,7 @@ function dadosUtilizador() {
                 $('#email').val(data[0].email);
                 $('#password').val(data[0].password);
                 $('#descricao').val(data[0].descricao);
+                $('#gp_nome_emp').val(data[0].gp_nome_emp);
                 $('#ramoEp').val(data[0].ramo_emp);
                 $('#nEmpregados').val(data[0].num_trabalhadores);
                 $('#regiao').val(data[0].regiao_pais);
@@ -124,32 +152,83 @@ $('#formUtilizador').validator().on('submit', function (e) {
 
         var data = {};
         data.nome = $('#nome').val();
-        data.idade = $('#idade').val();
-        data.genero = $('#genero').val();
         data.profissao = $('#profissao').val();
         data.email = $('#email').val();
         data.password = $('#password').val();
         data.descricao = $('#descricao').val();
-        data.ramo_emp = $('#ramoEp').val();
-        data.num_trabalhadores = $('#nEmpregados').val();
-        data.regiao_pais = $('#regiao').val();
-        data.area_cientifica = $('#area').val();
-        data.ciclo_estudo = $('#estudo').val();
-        //data.perfil = $('#perfil').val();
+        if ($('#profissao').val() == "Estudante") {
+            data.idade = $('#idade').val();
+            data.genero = $('#genero').val();
+            data.gp_nome_emp = '';
+            data.ramo_emp = '';
+            data.num_trabalhadores = 0;
+            data.regiao_pais = '';
+            data.area_cientifica = '';
+            data.ciclo_estudo = $('#estudo').val();
+            data.perfil = $('#perfil').val(); //ver isto
+        }
+        else if ($('#profissao').val() == "Professor/Investigador") {
+            data.idade = $('#idade').val();
+            data.genero = $('#genero').val();
+            data.gp_nome_emp = '';
+            data.ramo_emp = '';
+            data.num_trabalhadores = 0;
+            data.regiao_pais = '';
+            data.area_cientifica = $('#area').val();
+            data.ciclo_estudo = '';
+            data.perfil = $('#perfil').val(); //ver isto
+        }
+        else if ($('#profissao').val() == "Gestor de Projeto" && $('#nEmpregados_gp') == "") { //não funciona pqp
+            data.idade = $('#idade').val();
+            data.genero = $('#genero').val();
+            data.descricao = $('#descricao').val();
+            data.gp_nome_emp = $('#gp_nome_emp').val();;
+            data.ramo_emp = $('#ramoEp_gp').val();
+            data.num_trabalhadores = 0;
+            data.regiao_pais = $('#regiao_gp').val();
+            data.area_cientifica = '';
+            data.ciclo_estudo = '';
+            data.perfil = $('#perfil').val(); //ver isto
+        }
+        else if ($('#profissao').val() == "Gestor de Projeto") {
+            data.idade = $('#idade').val();
+            data.genero = $('#genero').val();
+            data.descricao = $('#descricao').val();
+            data.gp_nome_emp = $('#gp_nome_emp').val();;
+            data.ramo_emp = $('#ramoEp_gp').val();
+            data.num_trabalhadores = $('#nEmpregados_gp').val();
+            data.regiao_pais = $('#regiao_gp').val();
+            data.area_cientifica = '';
+            data.ciclo_estudo = '';
+            data.perfil = $('#perfil').val(); //ver isto
+        }
+        else if ($('#profissao').val() == "Empresa") {
+            data.idade = 0;
+            data.genero = '';
+            data.gp_nome_emp = '';
+            data.ramo_emp = $('#ramoEp').val();
+            data.num_trabalhadores = $('#nEmpregados').val();
+            data.regiao_pais = $('#regiao').val();
+            data.area_cientifica = '';
+            data.ciclo_estudo = '';
+            data.perfil = $('#perfil').val(); //ver isto
+
+        } else { };
+
         console.log(data);
 
         $.ajax({
             type: 'POST',
-            url: '/saveUtilizador',
+            url: '/setUtilizador',
             data: JSON.stringify(data),
-            contentType: 'application/json',
+            contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("submetido com sucesso");
-                    $("#formUtilziador")[0].reset();
+                    console.log("Erro");
                 }
                 else {
-                    console.log("Erro");
+                    alert("submetido com sucesso");
+                    $("#formUtilziador")[0].reset();
                 }
                 dadosUtilizador();
             },
