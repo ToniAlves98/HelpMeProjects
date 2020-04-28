@@ -195,6 +195,14 @@
     <!--div style="background-image: url('.img/1920x1080/long01.png');"-->
     <div class="bg-color-sky-light">
         <div class="content-lg container">
+            <div class="p-2" >
+                <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#add_pergunta">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-question" aria-hidden="true"></i>
+                    </span>
+                    <span class="text">Adicionar Pergunta</span>
+                </a>
+            </div>
             <div class="row">
                 <div class="col-md-3 col-sm-7 col-md-offset-0">
                     <!-- Accordion -->
@@ -373,5 +381,39 @@
     </div>
 </div>
 <!--/sobre nos-->
+
+
+<div class="modal fadeIn gestaoEvento" id="add_pergunta" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-lg-12 text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <h1>Adicionar Pergunta</h1>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 40px 60px;">
+                <div class="row text-center">
+                    <div class="col-lg-12 text-center">
+                        <form id="formNewPergunta" class="user text-center" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="per_are" aria-describedby="" placeholder="Area de Conhecimento">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="tit_pergunta" placeholder="Pergunta">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control form-control-user" id="descricao" name="message" rows="5" cols="30" placeholder="Descrição do problema"></textarea>
+                            </div>
+                            <br />
+                            <button type="submit" id="btPergunta" class="btn btn-primary btn-user btn-block">Adicionar Pergunta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="../../controller/perguntas.js" type="text/javascript"></script>

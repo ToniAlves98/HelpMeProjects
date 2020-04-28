@@ -47,3 +47,43 @@ function seePergunta(id){
     console.log('session '+req.session.idPergunta);
     window.location = "./perg_resp.html";
 };
+
+$('#formNewPergunta').on('submit', function(e) {
+   
+    if (e.isDefaultPrevented()) {
+        alert("A Questão possui erros") 
+    }
+   
+    else {
+        event.preventDefault();
+        var data = {};
+        data.titulo_pergunta = $('#tit_pergunta').val();
+        data.pergunta = $('#descricao').val();
+        data.data_pergunta = null;
+        data.lingua = "PT";
+        data.num_likes = 0;
+        data.AreaConhecimento_idAreaConhecimento = 3;
+        data.Utilizador_idUtilizador = 2;
+        
+
+       
+
+        console.log(data);
+       
+        $("#formNewPergunta")[0].reset();
+    
+        $.ajax({
+            type: 'POST',
+            url: '/savePergunta',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(result) {
+                if (result.status == 200) {
+                    alert("Pergunta adicionada com sucesso");
+                }
+               getPerguntas();
+            },
+            
+        });
+    }
+});
