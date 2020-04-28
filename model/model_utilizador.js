@@ -1,3 +1,38 @@
+function login(email, password, callback) {
+    global.login = 0;
+    //receber os dados do formuário que são enviados por get e guarda em objeto JSON
+    var dados = { email: email, password: password };
+    var query = global.connect.con.query('Select * from utilizador where email ="' + email + '" and password ="' + password + '"', function(err, rows, fields) {
+
+    var string = JSON.stringify(rows);
+    var json = JSON.parse(string);
+    console.log(json);
+  
+      if (json != "") {
+        if (!err) {
+          //gravar os resultados rows no callback
+          global.login = 1;
+          if (json[0].TipoUtilizador_idTipoUtilizador != 3) {
+            var response = { "login": global.login, "Tipo": json[0].TipoUtilizador_idTipoUtilizador, "idUtilizador": json[0].idUtilizador, "idColaborador": json[0].Colaborador_idColaborador };
+            callback(null, response);
+          }
+          else {
+            var response = { "login": global.login, "Tipo": json[0].TipoUtilizador_idTipoUtilizador, "idUtilizador": json[0].idUtilizador, "idParticipante": json[0].Participante_idParticipante };
+            callback(null, response);
+          }
+        }
+        else {
+          global.login = 0;
+          console.log('Error while performing Query.', err);
+        }
+      }
+      else {
+        global.login = 0;
+        console.log('Error while performing Query.', err);
+      }
+    });
+  };
+
 //função de leitura que retorna o resultado no callback
 function readUtilizador(callback) {
     //criar e executar a query de leitura na BD
@@ -151,6 +186,7 @@ function setGestor(idUtilizador, nome, idade, genero, profissao, email, password
 
 
 module.exports = {
+    login:login,
     readUtilizador: readUtilizador,
     saveUtilizador: saveUtilizador,
     setUtilizador: setUtilizador,

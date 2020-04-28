@@ -50,11 +50,10 @@ global.helpme.post('/submit', function (req, res){
 //rota de gravação
 global.helpme.post('/login', function(req, res) {
     console.log('body: ' + JSON.stringify(req.body));
-    if(req.body == null){
-        res.redirect('/teste');
-    }
+    const email = 'duda@gmail.com';
+    const password = '123';
     //chamada da função save que está no user.model e envio dos parâmetros
-    global.model_utilizador.login(req.body.email, req.body.password, function(err, data, fields) {
+    global.model_utilizador.login(email, password, function(err, data, fields) {
         console.log(data);
         if (err) {
             // error handling code goes here
