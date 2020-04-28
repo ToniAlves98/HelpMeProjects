@@ -22,10 +22,13 @@ global.helpme.get('/readRespostas', function(req, res) {
         }
     });
 });
-/*
+
 global.helpme.post('/submit', function (req, res){
     var email = req.body.email;
     var password = req.body.password;
+    if(email == null){
+        res.redirect('/teste');
+    }
     console.log('Login post forum_routes.js'+ req.body);
     if (email && password) {
 		global.connect.con.query('SELECT * FROM accounts WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
@@ -42,11 +45,14 @@ global.helpme.post('/submit', function (req, res){
 		res.send('Please enter Username and Password!');
 		res.end();
 	}
-});*/
+});
 
 //rota de gravação
 global.helpme.post('/login', function(req, res) {
     console.log('body: ' + JSON.stringify(req.body));
+    if(req.body == null){
+        res.redirect('/teste');
+    }
     //chamada da função save que está no user.model e envio dos parâmetros
     global.model_utilizador.login(req.body.email, req.body.password, function(err, data, fields) {
         console.log(data);

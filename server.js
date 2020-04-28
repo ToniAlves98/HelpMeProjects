@@ -69,7 +69,8 @@ const redirectLogin = (req, res, next) =>{
 //Teste session
 global.helpme.get('/teste', (req, res) => {
     const {userId} = req.session; 
-    res.send('<h1>Welcome!</h1><a href="/login">login</a>')
+    console.log(userId);
+    res.send('<h1>Welcome!</h1><a href="/readPerguntas">login</a>')
 });
 
 //ROTAS
