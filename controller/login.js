@@ -1,14 +1,9 @@
-$(document).ready(function() {
-   console.log('login.js');
-}); 
-
 //validacao do formulario ao submeter executa a funcao validator
 $('#formNewLogin').on('submit', function(e) {
     //se submeter com erros
     if (e.isDefaultPrevented()) {
         alert("Formulario com erros") 
     }
-  
     else {
         event.preventDefault();
         

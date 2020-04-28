@@ -1,8 +1,7 @@
 function login(email, password, callback) {
     global.login = 0;
     //receber os dados do formuário que são enviados por get e guarda em objeto JSON
-    var dados = { email: email, password: password };
-    var query = global.connect.con.query('Select * from utilizador where email ="' + email + '" and password ="' + password + '"', function(err, rows, fields) {
+    global.connect.con.query('Select * from utilizador where email ="' + email + '" and password ="' + password + '"', function(err, rows, fields) {
 
     var string = JSON.stringify(rows);
     var json = JSON.parse(string);
