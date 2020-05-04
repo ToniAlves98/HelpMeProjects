@@ -11,7 +11,6 @@ function getPerguntas() {
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
         
-
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -65,9 +64,6 @@ $('#formNewPergunta').on('submit', function(e) {
         data.AreaConhecimento_idAreaConhecimento = 3;
         data.Utilizador_idUtilizador = 2;
         
-
-       
-
         console.log(data);
        
         $("#formNewPergunta")[0].reset();

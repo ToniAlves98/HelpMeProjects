@@ -35,3 +35,10 @@ global.helpme.post('/login', function(req, res) {
     global.model_utilizador.login(req.body.email, req.body.password)
     res.end('{"success" : "Login realizado com sucesso", "status" : 200}');
 });
+
+//rota admin
+/*global.helpme.get('/forum', function (req, res) {
+    global.helpme.use(global.express.static('views/forum'));
+    global.helpme.use('/forum', global.express.static('views/forum'));
+    res.sendfile(global.root + '/views/forum/' + 'forum.html');
+});*/

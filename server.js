@@ -75,10 +75,13 @@ global.helpme.get('/teste', (req, res) => {
 
 //ROTAS
 //rota forum
-global.helpme.get('/forum', redirectLogin, function (req, res) {
-    global.helpme.use(global.express.static('views/forum'));
-    global.helpme.use('/forum', global.express.static('views/forum'));
-    res.sendfile(global.root + '/views/forum/' + 'index.html');
+/*global.helpme.get('/forum', redirectLogin, function (req, res) {
+    res.sendfile(path.join(__dirname + '/views/forum/forum.html'));
+});*/
+
+//rota inicio
+global.helpme.get('/forum', function (req, res) {
+    res.sendfile(path.join(__dirname + '/views/forum/pages/forum.html'));
 });
 
 //rota inicio

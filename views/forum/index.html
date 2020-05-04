@@ -18,7 +18,6 @@
     <link href="./css/layout.min.css" rel="stylesheet" type="text/css" />
     <link href="./css/forum.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="favicon.ico" />
-
 </head>
 
 <body id="body" data-spy="scroll" data-target=".header" onload="pages('index')">
@@ -180,6 +179,10 @@
         };
 
         function menu() {
+            var y = document.getElementById("menu2");
+            if(y.style.display === "block"){
+                y.style.display = "none";
+            }
             var x = document.getElementById("menu");
             if (x.style.display === "none") {
                 x.style.display = "block";
@@ -189,6 +192,10 @@
         };
 
         function menu2() {
+            var y = document.getElementById("menu");
+            if(y.style.display === "block"){
+                y.style.display = "none";
+            }
             var x = document.getElementById("menu2");
             if (x.style.display === "none") {
                 x.style.display = "block";
