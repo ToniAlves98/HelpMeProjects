@@ -144,40 +144,6 @@
     <!-- dropdown -->
     <script>
 
-        function pages(page) {
-
-            load_home("about", page);
-
-            function getEventTarget(e) {
-                e = e || window.event;
-                return e.target || e.srcElement;
-            }
-
-            function load_home(var1, var2) {
-                $.ajax({
-                    type: "GET",
-                    url: "./pages/" + var2 + ".html",
-                    data: {},
-                    success: function (data) {
-                        $("#" + var1).html(data);
-                    },
-                    error: function (data, err, err2) {
-                        console.log(data);
-                        console.log(err);
-                        console.log(err2);
-                        console.log(err2);
-                    }
-                });
-                var body = document.body;
-                var html = document.documentElement;
-            }
-            $("#accordionSidebar").children("li").on('click', function () {
-                var targetID = $(this).children('a').attr('id');
-                //alert(targetID);
-                load_home("content-wrapper", targetID);
-            });
-        };
-
         function menu() {
             var y = document.getElementById("menu2");
             if(y.style.display === "block"){

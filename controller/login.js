@@ -20,6 +20,8 @@ $('#formNewLogin').on('submit', function(e) {
             contentType: 'application/json; charset=utf-8',
             success: function(result) {
                 console.log(result)
+                global.session.idUser = result.idUtilizador;
+                console.log('session login.js ' + global.session.idUser);
                 if (result.status== 200) {
                     alert("Bem Vindo");
                     window.location.assign("/admin");
