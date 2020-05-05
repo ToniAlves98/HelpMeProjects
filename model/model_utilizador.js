@@ -1,32 +1,17 @@
 function login(email, password, callback) {
     //global.login = 0;
     //receber os dados do formuário que são enviados por get e guarda em objeto JSON
-    global.connect.con.query('Select * from utilizador where email ="' + email + '" and password ="' + password + '"', function(err, rows, fields) {
+    global.connect.con.query('Select * from utilizador where email ="' + email + '" and password ="' + password + '"', function (err, rows, fields) {
 
     var string = JSON.stringify(rows);
     var json = JSON.parse(string);
     console.log(json);
 
-    if(err){
-        console.log('Error while performing Query.', err);
+    if(!err){
+        console.log("login efetuado");
     } else {
-        callback(rows);
+        console.log('Erro na Query.', err);
     }
-  
-      /*if (json != "") {
-        if (!err) {
-          //gravar os resultados rows no callback
-          global.login = 1;
-          var response = { "login": global.login, "idUtilizador": json[0].idUtilizador};
-          callback(null, json);
-        }else {
-          global.login = 0;
-          console.log('Error while performing Query.', err);
-        }
-      }else {
-        global.login = 0;
-        console.log('Error while performing Query.', err);
-      }*/
     });
   };
 

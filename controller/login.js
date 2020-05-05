@@ -18,18 +18,19 @@ $('#formNewLogin').on('submit', function(e) {
             url: '/login',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
-            success: function(result) {
-                console.log(result)
-                global.session.idUser = result.idUtilizador;
-                console.log('session login.js ' + global.session.idUser);
-                if (result.status== 200) {
+            success: function(result, data) {
+                //global.session.idUser = result.idUtilizador;
+                //console.log('session login.js ' + global.session.idUser);
+                if (result.status == 200 && data.email == "admin@gmail.com") {
                     alert("Bem Vindo");
                     window.location.assign("/admin");
                 }
-                else {
+                else if (result.status == 200) {
                     alert("Bem Vindo");
-                    console.log(data.idUtilizador);
-                    window.location.assign("/forum"); 
+                    window.location.assign("/forum");
+                }
+                else {
+                    alert("Login sem sucesso")
                 }
                  $('#formNewLogin')[0].reset();
             },
