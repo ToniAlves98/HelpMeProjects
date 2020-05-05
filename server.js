@@ -30,7 +30,7 @@ global.helpme.use(global.session({
     resave: false,
     saveUninitialized: true,
     //saveUninitialized: false,
-    cookie: { secure: true }
+    cookie: { secure: false }
 }));
 global.helpme.use(flash());
 global.helpme.use((req,res,next)=>{
@@ -59,17 +59,31 @@ global.forum_route = require('./controller/forum_route.js');
 
 //route protection
 const redirectLogin = (req, res, next) =>{
-    if (!req.session.userId){
+    if (req.session.idUser == null){
         res.redirect('/teste')
     }else{
-        next()
+        next();
     }
 }
 
 //Teste session
 global.helpme.get('/teste', (req, res) => {
+    if(req.session.idUser == null){
+        console.log('No session');
+        //global.session.idUser = 1;
+        req.session.idUser = 1;
+        res.send('<h1>First Time!</h1><a href="/teste">login</a>')
+    } else {
+        console.log('Session!' + req.session.idUser);
+        //global.session.idUser += 1;
+        req.session.idUser +=1;
+        res.send('<h1>It works?</h1><a href="/">login</a>')
+        //res.sendfile(path.join(__dirname + '/views/forum/index.html'));
+    }
+    /*req.session.idUser = 1;
+    console.log(req.session.idUser);
     const {userId} = req.session; 
-    console.log(userId);
+    console.log(userId);*/
     res.send('<h1>Welcome!</h1><a href="/readPerguntas">login</a>')
 });
 
@@ -80,12 +94,9 @@ global.helpme.get('/teste', (req, res) => {
 });*/
 
 //rota inicio
-global.helpme.get('/forum', function (req, res) {
-    res.sendfile(path.join(__dirname + '/views/forum/pages/forum.html'));
-});
-
-//rota inicio
 global.helpme.get('/', function (req, res) {
+    console.log('Session!' + req.session.idUser);
+    req.session.idUser +=1;
     res.sendfile(path.join(__dirname + '/views/forum/index.html'));
 });
 

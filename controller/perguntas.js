@@ -12,7 +12,6 @@ function getPerguntas() {
         contentType: 'application/json; charset=utf-8',
         
         success: function (data, status, request) {
-            console.log(data);
             if (request.status == 200) {
                 var txt = "";
                 data.forEach(function (row) {

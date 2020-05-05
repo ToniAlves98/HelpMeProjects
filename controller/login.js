@@ -26,6 +26,7 @@ $('#formNewLogin').on('submit', function(e) {
                 }
                 else {
                     alert("Bem Vindo");
+                    console.log(data.idUtilizador);
                     window.location.assign("/forum"); 
                 }
                  $('#formNewLogin')[0].reset();

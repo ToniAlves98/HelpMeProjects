@@ -1,7 +1,6 @@
 function readPerguntas(callback) {
     global.connect.con.query('SELECT idPergunta, titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from pergunta', function(err, rows, fields) {
         if (!err) {
-            console.log(rows);
             callback(null, rows);
         }
         else
