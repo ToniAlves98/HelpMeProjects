@@ -11,6 +11,7 @@ global.session = require('express-session');
 global.cookieParser = require('cookie-parser');
 global.path = require('path');
 global.flash = require('connect-flash');
+global.upload = require('express-fileupload')
 
 //iniciar a aplicacao
 global.helpme = global.express();
@@ -40,6 +41,7 @@ global.helpme.use((req,res,next)=>{
 });
 
 //definir rotas estáticas para ficheiros
+global.helpme.use(upload())
 global.helpme.use('/controller', global.express.static('controller'));
 global.helpme.use('/forum', global.express.static('views/forum'));
 global.helpme.use('/admin', global.express.static('views/admin'));

@@ -1,3 +1,4 @@
+
 function login(email, password, callback) {
     //global.login = 0;
     //receber os dados do formuário que são enviados por get e guarda em objeto JSON
@@ -7,13 +8,13 @@ function login(email, password, callback) {
     var json = JSON.parse(string);
     console.log(json);
 
-    if(!err){
-        console.log("login efetuado");
+    if (rows.length > 0) {
+       console.log("login sim!");
     } else {
-        console.log('Erro na Query.', err);
+        throw error;
     }
-    });
-  };
+});
+}
 
 //função de leitura que retorna o resultado no callback
 function readUtilizador(callback) {

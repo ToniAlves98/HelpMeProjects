@@ -18,6 +18,7 @@ function saveRelatorio(nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, 
         else
             console.log('Error while performing Query.', err);
     });
+    
 }
 
 function setRelatorio(idRelatorio, nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento,Utilizador_idUtilizador, callback) {
