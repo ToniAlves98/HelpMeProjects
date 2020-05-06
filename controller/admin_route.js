@@ -106,7 +106,7 @@ global.helpme.get('/readUtilizador', function (req, res) {
         }
         else {
             res.send(data);
-            res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
+            res.end('{"success" : "Atualizado com sucesso", "status" : 200}');
         }
     });
 });
