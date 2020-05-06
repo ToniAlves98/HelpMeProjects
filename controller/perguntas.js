@@ -19,7 +19,7 @@ function getPerguntas() {
                     txt+="<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
                     txt+="<h4 style='font-size: 15px'>";
                    // txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick='seePergunta("+ row.idPergunta +")'>"
-                    txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"seePergunta(\'" + row.idPergunta + "\'); pages(\'perg_resp\')\">"
+                    txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"seePergunta(\'" + 1 + "\'); pages(\'perg_resp\')\">"
                     txt+= row.titulo_pergunta + "</a></h4><p>" + row.pergunta + "</p></div></div>";
                 });
 
@@ -76,11 +76,37 @@ function pages(page) {
 
 function seePergunta(id){
     //session.pergunta = id;
-    //console.log('seePergunta ' + global.session.pergunta);
-    $("#pergunta").html('seePergunta' + id);
-    //req.session.idPergunta = id;
-    //console.log('session '+req.session.idPergunta);
-    //window.location = "./perg_resp.html";
+    console.log('seePergunta');
+    //$("#pergunta").html('seePergunta' + id);
+
+    var data = {};
+
+    $.ajax({
+        type: "GET",
+        url: '/getPergunta',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        
+        success: function (data, status, request) {
+            if (request.status == 200) {
+                var txt = "";
+                data.forEach(function (row) {
+                    txt += "<h2>"+row.titulo_pergunta+"</h2>";
+                    txt += "<p><strong>"+row.Utilizador_idUtilizador+"</strong><p>"+row.data_pergunta+"</p>";
+                    txt += "<p style=\"border-bottom: 1px solid #515769;\">"+row.pergunta+"</p>";
+                });
+
+                $("#pergunta").html(txt);
+            } else {
+                console.log("SeePergunta Erro");
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
 };
 
 $('#formNewPergunta').on('submit', function(e) {

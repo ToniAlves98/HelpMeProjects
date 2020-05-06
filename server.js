@@ -95,8 +95,15 @@ global.helpme.get('/teste', (req, res) => {
 
 //rota inicio
 global.helpme.get('/', function (req, res) {
-    console.log('Session!' + req.session.idUser);
-    req.session.idUser +=1;
+    if(req.session.idUser == null){
+        console.log('No session');
+        //global.session.idUser = 1;
+        req.session.idUser = 1;
+    } else {
+        console.log('Session!' + req.session.idUser);
+        //global.session.idUser += 1;
+        req.session.idUser +=1;
+    }
     res.sendfile(path.join(__dirname + '/views/forum/index.html'));
 });
 
