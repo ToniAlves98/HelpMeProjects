@@ -16,10 +16,11 @@ global.helpme.post('/saveRelatorio', function(req, res) {
     req.sanitizeBody('pdf').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
     req.sanitizeBody('AreaConhecimento_idAreaConhecimento').escape();
-    */// console.log('body: ' + JSON.stringify(req.body));
+    */ //console.log('body: ' + JSON.stringify(req.body));
     global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.AreaConhecimento_idAreaConhecimento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
+
 
 global.helpme.post('/setRelatorio', function(req, res) {
     /*req.sanitizeBody('nomeRelatorio').escape();
@@ -112,6 +113,7 @@ global.helpme.get('/readUtilizador', function (req, res) {
 
 //rota de gravação utilizador
 global.helpme.post('/saveUtilizador', function (req, res) {
+    
     console.log('body: ' + JSON.stringify(req.body));
     global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
         req.body.gp_nome_emp, req.body.ramo_emp, req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
@@ -152,6 +154,22 @@ global.helpme.post('/setEstudante', function (req, res) {
         req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
+
+
+global.helpme.post('/', (req,res) => {
+        if (req.files){
+            console.log(req.files)
+            var file = req.files.file
+            var filename = file.name
+            console.log(filename)
+            file.mv('./uploads/'+ filename, function(err){
+                if(err){
+                    res.send(err)
+                } 
+            })
+        }
+
+})
 
 //rota de leitura empresa
 global.helpme.get('/readEmpresa', function (req, res) {
@@ -201,3 +219,49 @@ global.helpme.get('/admin', function (req, res) {
     global.helpme.use('/admin', global.express.static('views/admin'));
     res.sendfile(global.root + '/views/admin/' + 'index.html');
 });
+
+
+/*
+
+<script type="text/javascript">
+    const realFileBtn = document.getElementById("real-file");
+    const customBtn = document.getElementById("custom-button");
+    const customTxt = document.getElementById("custom-text");
+
+    customBtn.addEventListener("click", function () {
+        realFileBtn.click();
+    });
+
+    realFileBtn.addEventListener("change", function () {
+        if (realFileBtn.value) {
+            customTxt.innerHTML = realFileBtn.value.match(
+                /[\/\\]([\w\d\s\.\-\(\)]+)$/
+            )[1];
+        } else {
+            customTxt.innerHTML = "No file chosen, yet.";
+        }
+    });
+</script>
+
+<!--PDF editar relatorio-->
+<script type="text/javascript">
+    const realFileBtnEditar = document.getElementById("real-file-editar");
+    const customBtnEditar = document.getElementById("custom-button-editar");
+    const customTxtEditar = document.getElementById("custom-text-editar");
+
+    customBtnEditar.addEventListener("click", function () {
+        realFileBtnEditar.click();
+    });
+
+    realFileBtnEditar.addEventListener("change", function () {
+        if (realFileBtnEditar.value) {
+            customTxtEditar.innerHTML = realFileBtnEditar.value.match(
+                /[\/\\]([\w\d\s\.\-\(\)]+)$/
+            )[1];
+        } else {
+            customTxtEditar.innerHTML = "No file chosen, yet.";
+        }
+    });
+</script>
+
+*/

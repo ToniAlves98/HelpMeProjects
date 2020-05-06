@@ -56,7 +56,7 @@ $('#formNewRelatorio').on('submit', function(e) {
         event.preventDefault();
         var data = {};
         data.nomeRelatorio = $('#nome_relatorio').val();
-        data.pdf = $('#real-file').val();;
+        //data.pdf = $('#file').val();
         data.AreaConhecimento_idAreaConhecimento = 1;
         data.Utilizador_idUtilizador = 1;
     
@@ -79,6 +79,7 @@ $('#formNewRelatorio').on('submit', function(e) {
         });
     }
 });
+
 
 //Quando selecionar o utilizador carregar os dados para o modal editar
 function getDadosRelatorio() {
@@ -221,14 +222,16 @@ function downloadFile(blob, filename){
      download();
 });
 
-
+/*
 function upload(fakepath){
-    alert(fakepath)
+    var splits = fakepath.split('fakepath\\');
 }
 
-$("#downloadRelatorio").on("click",  function(event) {
-    download();
+$("#real-file").on("change",  function() {
+    upload();
 });
+
+*/
  //var viewpdf = $("#dataTable")
  //PDFObject.embed(teste_rel.pdf, viewpdf)
 
