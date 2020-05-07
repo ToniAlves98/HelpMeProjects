@@ -4,14 +4,10 @@ function login(email, password, callback) {
     //receber os dados do formuário que são enviados por get e guarda em objeto JSON
     global.connect.con.query('Select * from utilizador where email ="' + email + '" and password ="' + password + '"', function (err, rows, fields) {
 
-    var string = JSON.stringify(rows);
-    var json = JSON.parse(string);
-    console.log(json);
-
     if (rows.length > 0) {
-       console.log("login sim!");
+        callback(null, rows);
     } else {
-        throw error;
+        console.log('Erro na Query.', err);
     }
 });
 }
