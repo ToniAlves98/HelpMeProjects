@@ -1,5 +1,13 @@
 function readPerguntas(callback) {
     global.connect.con.query('SELECT idPergunta, titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador FROM pergunta ORDER BY num_likes', function(err, rows, fields) {
+    console.log('getperguntas ' + global.session.idUser);
+    var string = JSON.stringify(rows);
+    var json = JSON.parse(string);
+    //var name = 'name';
+    //json[name] = value;
+    //name = 'anotherName';
+    //json[name] = anotherValue;
+
         if (!err) {
             callback(null, rows);
         }
@@ -10,6 +18,7 @@ function readPerguntas(callback) {
 
 function getPergunta(callback){
     id = 1;
+    console.log('getperguntas ' + global.session.idUser);
     global.connect.con.query('SELECT titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, nome FROM pergunta INNER JOIN utilizador ON pergunta.Utilizador_idUtilizador = utilizador.idUtilizador WHERE idPergunta =\''+ id +'\'', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);

@@ -3,8 +3,12 @@ function login(email, password, callback) {
     //global.login = 0;
     //receber os dados do formuário que são enviados por get e guarda em objeto JSON
     global.connect.con.query('Select * from utilizador where email ="' + email + '" and password ="' + password + '"', function (err, rows, fields) {
-
+    var string = JSON.stringify(rows);
+    var json = JSON.parse(string);
     if (rows.length > 0) {
+        json.forEach(function (row) {
+            global.session.idUser = row.idUtilizador;
+        });
         callback(null, rows);
     } else {
         console.log('Erro na Query.', err);

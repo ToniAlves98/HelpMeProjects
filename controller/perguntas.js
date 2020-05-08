@@ -56,7 +56,7 @@ function getPerguntasInicio() {
                     txt+="<div class='panel panel-default'>";
                     txt+="<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
                     txt+="<h4 style='font-size: 15px'>";
-                    txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert(\'Não se esqueça de se resgitar\')\">"
+                    txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert(\'seePergunta(37)\')\">"
                     txt+= row.titulo_pergunta + "</a></h4><p>" + row.pergunta + "</p></div></div>";
                 });
 
