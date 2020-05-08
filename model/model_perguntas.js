@@ -1,5 +1,5 @@
 function readPerguntas(callback) {
-    global.connect.con.query('SELECT idPergunta, titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador from pergunta', function(err, rows, fields) {
+    global.connect.con.query('SELECT idPergunta, titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador FROM pergunta ORDER BY num_likes', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }
@@ -10,7 +10,7 @@ function readPerguntas(callback) {
 
 function getPergunta(callback){
     id = 1;
-    global.connect.con.query('SELECT titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador FROM pergunta INNER JOIN utilizador ON Utilizador_idUtilizador WHERE idPergunta =\''+ id +'\'', function(err, rows, fields) {
+    global.connect.con.query('SELECT titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, nome FROM pergunta INNER JOIN utilizador ON pergunta.Utilizador_idUtilizador = utilizador.idUtilizador WHERE idPergunta =\''+ id +'\'', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }

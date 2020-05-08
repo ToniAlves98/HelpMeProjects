@@ -82,10 +82,6 @@ global.helpme.get('/teste', (req, res) => {
         res.send('<h1>It works?</h1><a href="/">login</a>')
         //res.sendfile(path.join(__dirname + '/views/forum/index.html'));
     }
-    /*req.session.idUser = 1;
-    console.log(req.session.idUser);
-    const {userId} = req.session; 
-    console.log(userId);*/
     res.send('<h1>Welcome!</h1><a href="/readPerguntas">login</a>')
 });
 
