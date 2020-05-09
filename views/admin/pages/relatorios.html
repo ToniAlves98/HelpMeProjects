@@ -11,14 +11,24 @@
 
         <!-- Content Row -->
         <div class="card shadow mb-4">
+            
+                
             <div class="card-header py-3 d-flex">
                 <div class="mr-auto p-2"><h3 class="m-0 font-weight-bold" style="color:#FF4500;">Relatórios</h3></div>
+                <div class="p-2" >
+                    <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#doc" >
+                        <span class="icon text-white-50">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </span>
+                        <span class="text">adicionar documentos</span>
+                    </a>
+                </div>
                 <div class="p-2" id="downloadRelatorio">
                     <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" >
                         <span class="icon text-white-50">
                             <i class="fa fa-download" aria-hidden="true"></i>
                         </span>
-                        <span class="text">Download</span>
+                        <span class="text">Visualizar documento</span>
                     </a>
                 </div>
                 <div class="p-2">
@@ -70,17 +80,18 @@
             <div class="modal-body" style="padding: 40px 60px;">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form id="formNewRelatorio"  enctype="multipart/form-data" action="/"  class="user text-center" method="post">
+                        <form id="formNewRelatorio"  enctype="multipart/form-data"  class="user text-center" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="nome_relatorio" aria-describedby="" placeholder="Nome do relatorio">
                             </div>
                             <div class="form-group">
                                 
-                                <input type="file" name="file" id="file">Escolha um ficheiro</button>
+                                <input type="file" name="file" id="file">Escolha um ficheiro</input>
+                                
                                 <span id="custom-text">.pdf</span>
                             </div>
                             <br />
-                            <input type="submit" value="Upload" class="btn btn-primary btn-user btn-block btRelatorio">Adicionar</button>
+                            <button type="submit" class="btn btn-primary btn-user btn-block btRelatorio">Adicionar</button>
                         </form>
                     </div>
                 </div>
@@ -108,13 +119,46 @@
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="nomeRelatorio_edi" aria-describedby="" placeholder="Nome do relatório">
                             </div>
+                            
                             <div class="form-group">
                                 <input type="file" id="real-file-editar" hidden="hidden" />
-                                <button type="button" id="custom-button-editar">Escolha um ficheiro</button>
+                                <input type="submit" id="custom-button-editar">Escolha um ficheiro</input>
                                 <span id="custom-text-editar">.pdf</span>
                             </div>
+                            
                             <br />
                             <button type="submit" class="btn btn-primary btn-user btn-block btRelatorio">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fadeIn gestaoRelatorio" id="doc" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-lg-12 text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <h1>Adicionar documento</h1>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 40px 60px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="formNewRelatorio"  enctype="multipart/form-data" action="/" class="user text-center" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="nome_relatorio" aria-describedby="" placeholder="Nome do relatorio">
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="file" id="file">Escolha um ficheiro</input>
+                                <span id="custom-text">.pdf</span>
+                            </div>
+                            <br />
+                            <button type="submit" value="upload" class="btn btn-primary btn-user btn-block btRelatorio">Adicionar</button>
                         </form>
                     </div>
                 </div>

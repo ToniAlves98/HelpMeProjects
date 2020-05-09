@@ -46,8 +46,11 @@ function getRelatorios() {
 
 };
 
-$('#formNewRelatorio').on('submit', function(e) {
-   
+ 
+
+$('#formNewRelatorio').on('submit', function(e, req, res) {
+
+
     if (e.isDefaultPrevented()) {
         alert("O Relatório possui erros") 
     }
@@ -56,11 +59,10 @@ $('#formNewRelatorio').on('submit', function(e) {
         event.preventDefault();
         var data = {};
         data.nomeRelatorio = $('#nome_relatorio').val();
-        //data.pdf = $('#file').val();
+        data.pdf = ($('#nome_relatorio').val()) + '.png';
         data.AreaConhecimento_idAreaConhecimento = 1;
         data.Utilizador_idUtilizador = 1;
     
-        console.log(data);
        
        //$('#tabela_eventos')[0].reset();
     
@@ -70,10 +72,7 @@ $('#formNewRelatorio').on('submit', function(e) {
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function(result) {
-                if (result.status == 200) {
-                    alert("Relatório adicionado com sucesso");
-                    $('#formNewRelatorio')[0].reset();
-                }
+                
                 getRelatorios();
             },
         });
@@ -203,10 +202,10 @@ $('#tabela_relatorios').on('click', 'tr', function () {
  });
 
 
-
+/*
 function download(){
     const blob = new Blob();
-    downloadFile(blob, teste_rel.pdf) 
+    downloadFile(blob, "cv.pdf") 
 }
 
 function downloadFile(blob, filename){
@@ -216,11 +215,18 @@ function downloadFile(blob, filename){
     a.href = url;
     a.download = filename;
     a.click();
+    a.remove();
+    document.addEventListener("focus", w=>{window.URL.revokeObjectURL(blob)});
 }
+*/
+$(document).ready(function(){
+    $("#downloadRelatorio").on("click",  function(e) {
+        e.preventDefault();
+        window.location.href = teste_rel.pdf;
+       // download();    
+   }); 
+})
 
- $("#downloadRelatorio").on("click",  function(event) {
-     download();
-});
 
 /*
 function upload(fakepath){

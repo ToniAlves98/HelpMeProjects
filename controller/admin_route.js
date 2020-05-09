@@ -21,6 +21,21 @@ global.helpme.post('/saveRelatorio', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
+global.helpme.post('/', (req,res) => {
+    if (req.files){
+        console.log(req.files)
+        var file = req.files.file
+        var filename = file.name
+        console.log(filename)
+        file.mv('./views/admin/'+ filename, function(err){
+            if(err){
+                res.send(err)
+            } 
+        })
+    }
+
+})
+
 
 global.helpme.post('/setRelatorio', function(req, res) {
     /*req.sanitizeBody('nomeRelatorio').escape();
@@ -155,21 +170,6 @@ global.helpme.post('/setEstudante', function (req, res) {
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
 
-
-global.helpme.post('/', (req,res) => {
-        if (req.files){
-            console.log(req.files)
-            var file = req.files.file
-            var filename = file.name
-            console.log(filename)
-            file.mv('./uploads/'+ filename, function(err){
-                if(err){
-                    res.send(err)
-                } 
-            })
-        }
-
-})
 
 //rota de leitura empresa
 global.helpme.get('/readEmpresa', function (req, res) {
