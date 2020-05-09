@@ -9,8 +9,8 @@ function readEventos(callback) {
 };
 
 
-function saveEvento(nomeEvento,AreaConhecimento_idAreaConhecimento, tipoEvento, imagem, Utilizador_idUtilizador, data_inicio, data_fim, callback) {
-    var post = { nomeEvento: nomeEvento, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, tipoEvento: tipoEvento, imagem:imagem, Utilizador_idUtilizador: Utilizador_idUtilizador, data_inicio: data_inicio, data_fim: data_fim };
+function saveEvento(nomeEvento, tipoEvento, AreaConhecimento_idAreaConhecimento,  imagem, Utilizador_idUtilizador, data_inicio, data_fim, estado, callback) {
+    var post = { nomeEvento: nomeEvento, tipoEvento: tipoEvento, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, imagem:imagem, Utilizador_idUtilizador: Utilizador_idUtilizador, data_inicio: data_inicio, data_fim: data_fim, estado: estado };
     var query = global.connect.con.query('INSERT INTO evento SET ?', post, function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
@@ -21,7 +21,7 @@ function saveEvento(nomeEvento,AreaConhecimento_idAreaConhecimento, tipoEvento, 
     });
 }
 
-function setEvento(idEvento, nomeEvento,AreaConhecimento_idAreaConhecimento, tipoEvento, imagem, Utilizador_idUtilizador, data_inicio, data_fim, callback) {
+function setEvento(idEvento, nomeEvento,AreaConhecimento_idAreaConhecimento, tipoEvento, imagem, data_inicio, data_fim, callback) {
     var query = global.connect.con.query('UPDATE evento SET nomeEvento="'+nomeEvento+'", AreaConhecimento_idAreaConhecimento="'+AreaConhecimento_idAreaConhecimento+'", tipoEvento="'+tipoEvento+'", imagem="'+imagem+'", data_inicio="'+data_inicio+'", data_fim="'+ data_fim +'" where idEvento="'+ idEvento +'"', function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
@@ -33,9 +33,9 @@ function setEvento(idEvento, nomeEvento,AreaConhecimento_idAreaConhecimento, tip
 }
 
 
-function deleteEvento(nomeEvento, callback) {
+function deleteEvento(idEvento, callback) {
     //var linha = { nomeEvento: nomeEvento };
-    var query = global.connect.con.query('DELETE FROM evento WHERE nomeEvento = "'+nomeEvento+'"',  function(err, rows, fields) {
+    var query = global.connect.con.query('DELETE FROM evento WHERE idEvento = "'+idEvento+'"',  function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);

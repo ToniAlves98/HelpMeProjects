@@ -82,6 +82,7 @@ $('#formNewEvento').on('submit', function(e) {
         data.Utilizador_idUtilizador = 2;
         data.data_inicio = $('#inicioEvento').val();
         data.data_fim = $('#fimEvento').val();
+        data.estado = 'ativo';
 
         console.log(data);
        
@@ -202,7 +203,7 @@ $('#formEditarEvento').on('submit', function(e) {
 
 function removeEvento() {
     var data = {};
-    data.nomeEvento = teste.nomeEvento;
+    data.idEvento = teste.idEvento;
     console.log(data);
 
     $.ajax({
