@@ -175,24 +175,24 @@ body.modal-open {
     background-position: center center;
 }
 
-#perfil {
+#perfilSection {
     border-radius: 15px;
 }
 
-#perfil h1{
-    color: #FD871F;
-}
+    #perfilSection h1 {
+        color: #FD871F;
+    }
 
-#perfil .form-control {
-    border-color: #FD871F;
-    height: 35px;
-    font-size: 13px;
-}
+    #perfilSection .form-control {
+        border-color: #FD871F;
+        height: 35px;
+        font-size: 12px;
+    }
 
-#perfil .form-control:focus{
-    border-color: #FF4500;
-    box-shadow: 0 0 0 0.1rem #FF4500;
-}
+        #perfilSection .form-control:focus {
+            border-color: #FF4500;
+            box-shadow: 0 0 0 0.1rem #FF4500;
+        }
 
 #btperfil {
     font-size: 14px;
@@ -207,18 +207,18 @@ body.modal-open {
   box-shadow: 0 0 0 0.2rem #FF4500;
 }
 
-#perfil textarea {
+#perfilSection textarea {
     border-radius: 30px;
 }
 
-#perfil label {
-    font-size: 14px;
+#perfilSection label {
+    font-size: 15px;
     font-weight: bold;
     color: #fff;
     margin-left: 3px;
 }
 
-#perfil .custom-checkbox {
+#perfilSection .custom-checkbox {
     position: relative;
     width: 15px;
     height: 15px;
