@@ -13,6 +13,22 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex">
                 <div class="mr-auto p-2"><h3 class="m-0 font-weight-bold" style="color:#FF4500;">Eventos</h3></div>
+                <div class="p-2" >
+                    <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#docEvento" >
+                        <span class="icon text-white-50">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </span>
+                        <span class="text">Adicionar imagem</span>
+                    </a>
+                </div>
+                <div class="p-2" id="verEvento">
+                    <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" >
+                        <span class="icon text-white-50">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </span>
+                        <span class="text">Visualizar imagem</span>
+                    </a>
+                </div>
                 <div class="p-2">
                     <a href="#" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#adicionar_evento">
                         <span class="icon text-white-50">
@@ -70,6 +86,21 @@
                                 <input type="text" class="form-control form-control-user" id="tipoEvento" placeholder="Tipo de evento">
                             </div>
                             <div class="form-group">
+                                <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento">
+                                    <option value="" disabled selected>Área de Conhecimento</option>
+                                    <option value="Gestão do Âmbito">Gestão do Âmbito</option>
+                                    <option value="Gestão de Aquisições">Gestão de Aquisições</option>
+                                    <option value="Gestão da Comunicação">Gestão da Comunicação</option>
+                                    <option value="Gestão do Cronograma">Gestão do Cronograma</option>
+                                    <option value="Gestão do Custo">Gestão do Custo</option>
+                                    <option value="Gestão da Integração">Gestão da Integração</option>
+                                    <option value="Gestão da Qualidade">Gestão da Qualidade</option>
+                                    <option value="Gestão dos Recursos">Gestão dos Recursos</option>
+                                    <option value="Gestão de Riscos">Gestão de Riscos</option>
+                                    <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <input type="date" class="form-control form-control-user" id="inicioEvento" placeholder="Data de início">
                             </div>
                             <div class="form-group">
@@ -108,6 +139,21 @@
                                 <input type="text" class="form-control form-control-user" id="tipoEvento_edi" placeholder="Tipo de evento">
                             </div>
                             <div class="form-group">
+                                <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento_edi">
+                                    <option value="" disabled selected>Área de Conhecimento</option>
+                                    <option value="Gestão do Âmbito">Gestão do Âmbito</option>
+                                    <option value="Gestão de Aquisições">Gestão de Aquisições</option>
+                                    <option value="Gestão da Comunicação">Gestão da Comunicação</option>
+                                    <option value="Gestão do Cronograma">Gestão do Cronograma</option>
+                                    <option value="Gestão do Custo">Gestão do Custo</option>
+                                    <option value="Gestão da Integração">Gestão da Integração</option>
+                                    <option value="Gestão da Qualidade">Gestão da Qualidade</option>
+                                    <option value="Gestão dos Recursos">Gestão dos Recursos</option>
+                                    <option value="Gestão de Riscos">Gestão de Riscos</option>
+                                    <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <input type="date" class="form-control form-control-user" id="inicioEvento_edi" placeholder="Data de início">
                             </div>
                             <div class="form-group">
@@ -115,6 +161,35 @@
                             </div>
                             <br />
                             <button type="submit" id="btEvento" class="btn btn-primary btn-user btn-block">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Adicionar documento-->
+<div class="modal fadeIn gestaoRelatorio" id="docEvento" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-lg-12 text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <h1>Adicionar documento</h1>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 40px 60px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="formNewRelatorio"  enctype="multipart/form-data" action="/" class="user text-center" method="post">
+                            <div class="form-group">
+                                <input type="file" name="file" id="file" />
+                                <span>(apenas ficheiros em formato png)</span>
+                            </div>
+                            <br />
+                            <button type="submit" value="upload" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
                         </form>
                     </div>
                 </div>

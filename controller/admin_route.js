@@ -58,12 +58,12 @@ global.helpme.get('/readEventos', function(req, res) {
 });
 
 global.helpme.post('/saveEvento', function(req, res) {
-    global.model_eventos.saveEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.idEvento);
+    global.model_eventos.saveEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.idEvento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
 global.helpme.post('/setEvento', function(req, res) {
-    global.model_eventos.setEvento(req.body.idEvento, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim);
+    global.model_eventos.setEvento(req.body.idEvento, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
