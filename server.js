@@ -45,6 +45,7 @@ global.helpme.use(upload())
 global.helpme.use('/controller', global.express.static('controller'));
 global.helpme.use('/forum', global.express.static('views/forum'));
 global.helpme.use('/admin', global.express.static('views/admin'));
+global.helpme.use('/uploads', global.express.static('uploads'));
 global.helpme.use('/', global.express.static('views/forum'));
 global.root = __dirname;
 

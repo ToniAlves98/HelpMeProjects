@@ -48,8 +48,7 @@ function getRelatorios() {
 
  
 
-$('#formNewRelatorio').on('submit', function(e, req, res) {
-
+$('#formNewRelatorio').on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
         alert("O Relatório possui erros") 
@@ -59,20 +58,42 @@ $('#formNewRelatorio').on('submit', function(e, req, res) {
         event.preventDefault();
         var data = {};
         data.nomeRelatorio = $('#nome_relatorio').val();
-        data.pdf = ($('#nome_relatorio').val()) + '.pdf';
-        data.AreaConhecimento_idAreaConhecimento = 1;
         data.Utilizador_idUtilizador = 1;
-    
-       
-       //$('#tabela_eventos')[0].reset();
-    
+        data.pdf = ($('#nome_relatorio').val()) + '.pdf';
+        if ($('#area_conhecimento').val() == "Gestão do Âmbito") {
+            data.AreaConhecimento_idAreaConhecimento = 1;
+        } else if ($('#area_conhecimento').val() == "Gestão de Aquisições") {
+            data.AreaConhecimento_idAreaConhecimento = 2;
+        } else if ($('#area_conhecimento').val() == "Gestão da Comunicação") {
+            data.AreaConhecimento_idAreaConhecimento = 3;
+        } else if ($('#area_conhecimento').val() == "Gestão do Cronograma") {
+            data.AreaConhecimento_idAreaConhecimento = 4;
+        } else if ($('#area_conhecimento').val() == "Gestão do Custo") {
+            data.AreaConhecimento_idAreaConhecimento = 5;
+        } else if ($('#area_conhecimento').val() == "Gestão da Integração") {
+            data.AreaConhecimento_idAreaConhecimento = 6;
+        } else if ($('#area_conhecimento').val() == "Gestão da Qualidade") {
+            data.AreaConhecimento_idAreaConhecimento = 7;
+        } else if ($('#area_conhecimento').val() == "Gestão dos Recursos") {
+            data.AreaConhecimento_idAreaConhecimento = 8;
+        } else if ($('#area_conhecimento').val() == "Gestão de Riscos") {
+            data.AreaConhecimento_idAreaConhecimento = 9;
+        } else if ($('#area_conhecimento').val() == "Gestão dos Stakeholders") {
+            data.AreaConhecimento_idAreaConhecimento = 10;
+        };
+
+        console.log(data);
+
         $.ajax({
             type: 'POST',
             url: '/saveRelatorio',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            success: function(result) {
-                
+            success: function (result) {
+                if (result.status == 200) {
+                    alert("Relatório adicionado com sucesso");
+                }
+                $('#formNewRelatorio')[0].reset();
                 getRelatorios();
             },
         });
@@ -95,6 +116,7 @@ function getDadosRelatorio() {
             if (request.status == 200) {
                 $('#idRelatorio_edi').val(teste_rel.idRelatorio);
                 $('#nomeRelatorio_edi').val(teste_rel.nomeRelatorio);
+                $('#area_conhecimento_edi').val(teste_rel.AreaConhecimento_idAreaConhecimento);
                 $('#real-file-editar').val(teste_rel.pdf);
             
              console.log(data)
@@ -113,7 +135,7 @@ function getDadosRelatorio() {
     });
 };
 
-$('#editar_relatorio').on('submit', function(e) {
+$('#formEditarRelatorio').on('submit', function(e) {
    
     if (e.isDefaultPrevented()) {
         alert("O Relatório possui erros") 
@@ -122,18 +144,34 @@ $('#editar_relatorio').on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-        data.idRelatorio =  $('#idRelatorio_edi').val();
+        data.idRelatorio = teste_rel.idRelatorio;
+        //data.pdf = $('#real-file-editar').val();
         data.nomeRelatorio = $('#nomeRelatorio_edi').val();
-        data.pdf = $('#real-file-editar').val();
-        data.AreaConhecimento_idAreaConhecimento = teste_rel.AreaConhecimento_idAreaConhecimento;
-        data.Utilizador_idUtilizador = teste_rel.Utilizador_idUtilizador;
-        
-        
+        data.pdf = ($('#nomeRelatorio_edi').val()) + '.pdf';
+        if ($('#area_conhecimento_edi').val() == "Gestão do Âmbito") {
+            data.AreaConhecimento_idAreaConhecimento = 1;
+        } else if ($('#area_conhecimento_edi').val() == "Gestão de Aquisições") {
+            data.AreaConhecimento_idAreaConhecimento = 2;
+        } else if ($('#area_conhecimento_edi').val() == "Gestão da Comunicação") {
+            data.AreaConhecimento_idAreaConhecimento = 3;
+        } else if ($('#area_conhecimento_edi').val() == "Gestão do Cronograma") {
+            data.AreaConhecimento_idAreaConhecimento = 4;
+        } else if ($('#area_conhecimento_edi').val() == "Gestão do Custo") {
+            data.AreaConhecimento_idAreaConhecimento = 5;
+        } else if ($('#area_conhecimento_edi').val() == "Gestão da Integração") {
+            data.AreaConhecimento_idAreaConhecimento = 6;
+        } else if ($('#area_conhecimento_edi').val() == "Gestão da Qualidade") {
+            data.AreaConhecimento_idAreaConhecimento = 7;
+        } else if ($('#area_conhecimento_edi').val() == "Gestão dos Recursos") {
+            data.AreaConhecimento_idAreaConhecimento = 8;
+        } else if ($('#area_conhecimento_edi').val() == "Gestão de Riscos") {
+            data.AreaConhecimento_idAreaConhecimento = 9;
+        } else if ($('#area_conhecimento_edi').val() == "Gestão dos Stakeholders") {
+            data.AreaConhecimento_idAreaConhecimento = 10;
+        };
 
         console.log(data);
        
-        //$('#')[0].reset();
-    
         $.ajax({
             type: 'POST',
             url: '/setRelatorio',
@@ -143,6 +181,8 @@ $('#editar_relatorio').on('submit', function(e) {
                 if (result.status == 200) {
                     alert("Relatório editado com sucesso");
                 }
+                $('#formEditarRelatorio')[0].reset();
+                getRelatorios();
             },
         });
     }
@@ -219,13 +259,14 @@ function downloadFile(blob, filename){
     document.addEventListener("focus", w=>{window.URL.revokeObjectURL(blob)});
 }
 */
-$(document).ready(function(){
-    $("#downloadRelatorio").on("click",  function(e) {
+$(document).ready(function () {
+    $("#downloadRelatorio").on("click", function (e) {
         e.preventDefault();
-        window.location.href = teste_rel.pdf;
-       // download();    
-   }); 
-})
+        //window.location.href = teste_rel.pdf;
+        window.open("/uploads/" + teste_rel.pdf)
+        // download();   
+    });
+});
 
 
 /*

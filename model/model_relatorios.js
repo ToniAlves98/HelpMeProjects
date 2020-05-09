@@ -24,12 +24,12 @@ function saveRelatorio(nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, 
 }
 
 function setRelatorio(idRelatorio, nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento,Utilizador_idUtilizador, callback) {
-    global.connect.con.query('UPDATE relatorio SET nomeRelatorio="'+ nomeRelatorio +'", pdf="'+ pdf +'", AreaConhecimento_idAreaConhecimento="'+AreaConhecimento_idAreaConhecimento+'", Utilizador_idUtilizador="'+ Utilizador_idUtilizador +'" WHERE idRelatorio="'+ idRelatorio +'"',  function(err, rows, fields) {
+    global.connect.con.query('UPDATE relatorio SET nomeRelatorio="'+ nomeRelatorio +'", pdf="'+ pdf +'", AreaConhecimento_idAreaConhecimento="'+AreaConhecimento_idAreaConhecimento+'" WHERE idRelatorio="'+ idRelatorio +'"',  function(err, rows, fields) {
         if (!err) {
-            callback(null, rows);
+            console.log("Number of records inserted: " + rows.affectedRows);
         }
         else
-            console.log('Error while performing Query.', err);
+            console.log('Erro na Query.', err);
     });
 };
 

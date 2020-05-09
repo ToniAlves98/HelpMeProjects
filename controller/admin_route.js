@@ -12,7 +12,7 @@ global.helpme.get('/readRelatorios', function(req, res) {
 });
 
 global.helpme.post('/saveRelatorio', function(req, res) {
-    global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.AreaConhecimento_idAreaConhecimento);
+    global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.Utilizador_idUtilizador);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
@@ -22,7 +22,7 @@ global.helpme.post('/', (req,res) => {
         var file = req.files.file
         var filename = file.name
         console.log(filename)
-        file.mv('./views/admin/'+ filename, function(err){
+        file.mv('./uploads/'+ filename, function(err){
             if (err) {
                 res.send(err)
             } else {
@@ -33,9 +33,8 @@ global.helpme.post('/', (req,res) => {
 
 })
 
-
 global.helpme.post('/setRelatorio', function(req, res) {
-    global.model_relatorios.setRelatorio(req.body.idRelatorio, req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.AreaConhecimento_idAreaConhecimento);
+    global.model_relatorios.setRelatorio(req.body.idRelatorio, req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.Utilizador_idUtilizador);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
