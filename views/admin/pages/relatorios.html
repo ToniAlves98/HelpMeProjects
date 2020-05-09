@@ -80,18 +80,27 @@
             <div class="modal-body" style="padding: 40px 60px;">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form id="formNewRelatorio"  enctype="multipart/form-data"  class="user text-center" method="post">
+                        <form id="formNewRelatorio" enctype="multipart/form-data" class="user text-center" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="nome_relatorio" aria-describedby="" placeholder="Nome do relatorio">
                             </div>
                             <div class="form-group">
-                                
-                                <input type="file" name="file" id="file">Escolha um ficheiro</input>
-                                
-                                <span id="custom-text">.pdf</span>
+                                <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento">
+                                    <option value="" disabled selected>Área de Conhecimento</option>
+                                    <option value="Gestão de Âmbito">Gestão de Âmbito</option>
+                                    <option value="Gestão de Aquisições">Gestão de Aquisições</option>
+                                    <option value="Gestão da Comunicação">Gestão da Comunicação</option>
+                                    <option value="Gestão do Cronograma">Gestão do Cronograma</option>
+                                    <option value="Gestão do Custo">Gestão do Custo</option>
+                                    <option value="Gestão da Integração">Gestão da Integração</option>
+                                    <option value="Gestão da Qualidade">Gestão da Qualidade</option>
+                                    <option value="Gestão dos Recursos">Gestão dos Recursos</option>
+                                    <option value="Gestão de Riscos">Gestão de Riscos</option>
+                                    <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
+                                </select>
                             </div>
                             <br />
-                            <button type="submit" class="btn btn-primary btn-user btn-block btRelatorio">Adicionar</button>
+                            <button type="submit" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
                         </form>
                     </div>
                 </div>
@@ -118,16 +127,24 @@
                         <form id="formEditarRelatorio" class="user text-center" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="nomeRelatorio_edi" aria-describedby="" placeholder="Nome do relatório">
-                            </div>
-                            
+                            </div>    
                             <div class="form-group">
-                                <input type="file" id="real-file-editar" hidden="hidden" />
-                                <input type="submit" id="custom-button-editar">Escolha um ficheiro</input>
-                                <span id="custom-text-editar">.pdf</span>
+                                <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento">
+                                    <option value="" disabled selected>Área de Conhecimento</option>
+                                    <option value="Gestão de Âmbito">Gestão de Âmbito</option>
+                                    <option value="Gestão de Aquisições">Gestão de Aquisições</option>
+                                    <option value="Gestão da Comunicação">Gestão da Comunicação</option>
+                                    <option value="Gestão do Cronograma">Gestão do Cronograma</option>
+                                    <option value="Gestão do Custo">Gestão do Custo</option>
+                                    <option value="Gestão da Integração">Gestão da Integração</option>
+                                    <option value="Gestão da Qualidade">Gestão da Qualidade</option>
+                                    <option value="Gestão dos Recursos">Gestão dos Recursos</option>
+                                    <option value="Gestão de Riscos">Gestão de Riscos</option>
+                                    <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
+                                </select>
                             </div>
-                            
                             <br />
-                            <button type="submit" class="btn btn-primary btn-user btn-block btRelatorio">Editar</button>
+                            <button type="submit" class="btn btn-primary btn-user btn-block" id="btRelatorio">Editar</button>
                         </form>
                     </div>
                 </div>
@@ -136,6 +153,7 @@
     </div>
 </div>
 
+<!--Adicionar documento-->
 <div class="modal fadeIn gestaoRelatorio" id="doc" role="dialog" aria-modal="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -151,14 +169,11 @@
                     <div class="col-lg-12">
                         <form id="formNewRelatorio"  enctype="multipart/form-data" action="/" class="user text-center" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="nome_relatorio" aria-describedby="" placeholder="Nome do relatorio">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="file" id="file">Escolha um ficheiro</input>
-                                <span id="custom-text">.pdf</span>
+                                <input type="file" name="file" id="file" />
+                                <span>(apenas ficheiros em formato pdf)</span>
                             </div>
                             <br />
-                            <button type="submit" value="upload" class="btn btn-primary btn-user btn-block btRelatorio">Adicionar</button>
+                            <button type="submit" value="upload" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
                         </form>
                     </div>
                 </div>

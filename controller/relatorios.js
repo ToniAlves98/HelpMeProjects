@@ -59,7 +59,7 @@ $('#formNewRelatorio').on('submit', function(e, req, res) {
         event.preventDefault();
         var data = {};
         data.nomeRelatorio = $('#nome_relatorio').val();
-        data.pdf = ($('#nome_relatorio').val()) + '.png';
+        data.pdf = ($('#nome_relatorio').val()) + '.pdf';
         data.AreaConhecimento_idAreaConhecimento = 1;
         data.Utilizador_idUtilizador = 1;
     
