@@ -11,8 +11,6 @@ $('#formNewLogin').on('submit', function(e) {
         var data = {};
         data.email = $('#email').val();
         data.password = $('#password').val();
-     
-        console.log(data);
         
         $.ajax({
             type: 'POST',
@@ -20,11 +18,6 @@ $('#formNewLogin').on('submit', function(e) {
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
             success: function(result, data) {
-                //global.session.idUser = result.idUtilizador;
-                //console.log('session login.js ' + global.session.idUser);
-            console.log(result.status)
-            console.log(status)
-            console.log(result)
 
                 if (result = { "success": "Login realizado com sucesso", "status": 200 } && $('#email').val() == "admin@gmail.com") {
 

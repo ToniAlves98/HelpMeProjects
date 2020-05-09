@@ -11,8 +11,8 @@ global.helpme.get('/readPerguntas', function (req, res) {
     });
 });
 
-global.helpme.get('/getPergunta', function (req, res) {
-    global.model_perguntas.getPergunta(function (err, data) {
+global.helpme.post('/getPergunta', function (req, res) {
+    global.model_perguntas.getPergunta(req.body.idPergunta, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -42,10 +42,9 @@ global.helpme.get('/readRespostas', function (req, res) {
 
 //rota de gravação
 global.helpme.post('/login', function (req, res) {
-    console.log('body: ' + JSON.stringify(req.body));
     //chamada da função save que está no user.model e envio dos parâmetros
     global.model_utilizador.login(req.body.email, req.body.password, function (err, data) {
-        console.log(data);
+
         if (err) {
             console.log("ERROR : ", err);
         }
