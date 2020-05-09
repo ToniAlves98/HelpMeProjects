@@ -67,9 +67,15 @@ global.helpme.post('/login', function (req, res) {
     });
 });
 
-//rota admin
+//rota forum
 global.helpme.get('/forum', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/forum', global.express.static('views/forum'));
     res.sendfile(global.root + '/views/forum/' + 'forum.html');
+});
+
+global.helpme.get('/perfil', function (req, res) {
+    global.helpme.use(global.express.static('views/forum'));
+    global.helpme.use('/perfil', global.express.static('views/forum'));
+    res.sendfile(global.root + '/views/forum/pages/' + 'perfil.html');
 });

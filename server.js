@@ -86,12 +86,6 @@ global.helpme.get('/teste', (req, res) => {
     res.send('<h1>Welcome!</h1><a href="/readPerguntas">login</a>')
 });
 
-//ROTAS
-//rota forum
-/*global.helpme.get('/forum', redirectLogin, function (req, res) {
-    res.sendfile(path.join(__dirname + '/views/forum/forum.html'));
-});*/
-
 //rota inicio
 global.helpme.get('/', function (req, res) {
     if(req.session.idUser == null){
