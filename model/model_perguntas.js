@@ -19,8 +19,22 @@ function readPerguntas(callback) {
 function getPergunta(idPergunta, callback){
     var id = idPergunta[0];
     global.session.idPergunta = id;
-    global.connect.con.query('SELECT titulo_pergunta, pergunta, data_pergunta, lingua, pergunta.num_likes, resposta.num_likes, AreaConhecimento_idAreaConhecimento, pergunta.Utilizador_idUtilizador, resposta.Utilizador_idUtilizador, nome FROM pergunta INNER JOIN utilizador ON pergunta.Utilizador_idUtilizador = utilizador.idUtilizador INNER JOIN resposta ON pergunta.idPergunta = resposta.Pergunta_idPergunta WHERE idPergunta =\''+ id +'\'', function(err, rows, fields) {
+    global.connect.con.query('SELECT titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, nome FROM pergunta INNER JOIN utilizador ON pergunta.Utilizador_idUtilizador = utilizador.idUtilizador WHERE idPergunta =\''+ id +'\'', function(err, rows, fields) {
         if (!err) {
+            console.log(rows);
+            callback(null, rows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+};
+
+function getResposta(idPergunta, callback){
+    var id = idPergunta[0];
+    global.session.idPergunta = id;
+    global.connect.con.query('SELECT idResposta, resposta, data_resposta, num_likes, Utilizador_idUtilizador, nome FROM resposta INNER JOIN utilizador ON resposta.Utilizador_idUtilizador = utilizador.idUtilizador WHERE Pergunta_idPergunta =\''+ id +'\'', function(err, rows, fields) {
+        if (!err) {
+            console.log(rows);
             callback(null, rows);
         }
         else
@@ -43,5 +57,6 @@ function savePergunta( titulo_pergunta, pergunta, data_pergunta, lingua, num_lik
 module.exports = {
     readPerguntas: readPerguntas,
     getPergunta: getPergunta,
+    getResposta: getResposta,
     savePergunta: savePergunta
     }

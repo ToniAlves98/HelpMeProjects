@@ -94,9 +94,28 @@ function seePergunta(id){
 
             var txt = "";
             result.forEach(function (row) {
+                console.log(row);
                 txt += "<h2>"+row.titulo_pergunta+"</h2><p style=\"margin-top:2px\">";
                 txt += "<strong>"+row.nome+"</strong>";
                 txt += "<p style=\"border-bottom: 1px solid #515769;\">"+row.pergunta+"</p>";
+
+                //
+                $.ajax({
+                    type: "POST",
+                    url: '/getPergunta',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json; charset=utf-8',
+            
+                    success: function(result, data) {
+                        result.forEach(function (row) {
+                            txt += "<div style=\"border-bottom: 1px solid #515769;\"><p><strong>"+ row.nome +"</strong><br><p>"+row.resposta+"</p></div>";
+                        });
+                    },
+                    error: function(data) { 
+                        console.log(data) 
+                    }
+                });
+                //
             });
 
             //document.getElementById('#pergunta').appendChild(txt);
