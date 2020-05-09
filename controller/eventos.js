@@ -20,7 +20,7 @@ function getEventos() {
                 var txt = "";
                 txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
-                txt += "<tr><th>Id</th><th>Nome</th><th>Area de Conhecimento</th><th>Tipo</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
+                txt += "<tr><th>Id</th><th>Nome</th><th>Área de Conhecimento</th><th>Tipo</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
                     txt += "<tr><td>" + row.idEvento + "</td><td>" + row.nomeEvento + "</td><td>" + row.tipo_area + "</td><td>" + row.tipoEvento + "</td><td>" + row.imagem + "</td> <td>" + row.nome + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
@@ -118,6 +118,7 @@ function getDadosEvento() {
             if (request.status == 200) {
                 $('#idEvento_edi').val(teste.idEvento);
                 $('#nomeEvento_edi').val(teste.nomeEvento);
+                $('#area_conhecimento_edi').val(teste.AreaConhecimento_idAreaConhecimento);
                 $('#tipoEvento_edi').val(teste.tipoEvento);
                 $('#inicioEvento_edi').val(teste.data_inicio);
                 $('#fimEvento_edi').val(teste.data_fim);
@@ -142,7 +143,7 @@ function getDadosEvento() {
 
 
 
-$('#editar_evento').on('submit', function(e) {
+$('#formEditarEvento').on('submit', function(e) {
    
     if (e.isDefaultPrevented()) {
         alert("O Evento possui erros") 
@@ -180,10 +181,8 @@ $('#editar_evento').on('submit', function(e) {
         data.data_inicio = $('#inicioEvento_edi').val();
         data.data_fim = $('#fimEvento_edi').val();
         
-
         console.log(data);
        
-        //$('#')[0].reset();
     
         $.ajax({
             type: 'POST',
@@ -200,7 +199,6 @@ $('#editar_evento').on('submit', function(e) {
         });
     }
 });
-
 
 function removeEvento() {
     var data = {};

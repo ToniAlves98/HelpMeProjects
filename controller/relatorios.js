@@ -21,7 +21,7 @@ function getRelatorios() {
             
                 txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
                 txt += "<thead>";
-                txt += "<tr><th>Id</th><th>Título</th><th>pdf</th><th>Area de Conhecimento</th><th>Utilizador</th></tr></thead><tbody>";
+                txt += "<tr><th>Id</th><th>Título</th><th>pdf</th><th>Área de Conhecimento</th><th>Utilizador</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
                     txt += "<tr><td>" + row.idRelatorio + "</td><td>" + row.nomeRelatorio + "</td><td>" + row.pdf + "</td><td>" + row.tipo_area + "</td><td>" + row.nome + "</td></tr>";
