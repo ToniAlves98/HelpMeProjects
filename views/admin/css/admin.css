@@ -105,6 +105,12 @@
     font-weight: bold;
 }
 
+.gestaoRelatorio form.user .form-control-user {
+    font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+}
+
 .gestaoRelatorio .form-control {
     border-color: #FD871F;
 }
@@ -123,14 +129,14 @@
         color: #FF4500;
     }
 
-.btRelatorio {
+#btRelatorio {
     font-size: 15px;
     border-radius: 40px;
     border-color: #FD871F;
     background-color: #FD871F;
 }
 
-    .btRelatorio:hover {
+    #btRelatorio:hover {
         border-color: #FF4500;
         background-color: #FF4500;
         box-shadow: 0 0 0 0.2rem #FF4500;
