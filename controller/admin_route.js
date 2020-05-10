@@ -79,8 +79,18 @@ global.helpme.post('/setEvento', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
+global.helpme.post('/aceitar', function(req, res) {
+    global.model_pedidos.aceitar(req.body.idEvento, req.body.estado);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+});
+
 global.helpme.delete('/deleteEvento', function(req, res) {
     global.model_eventos.deleteEvento(req.body.idEvento);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+});
+
+global.helpme.delete('/rejeitar', function(req, res) {
+    global.model_pedidos.rejeitar(req.body.idEvento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

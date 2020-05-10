@@ -8,7 +8,30 @@ function readEventosPendentes(callback) {
     });
 };
 
+function aceitar(idEvento, estado, callback) {
+    var query = global.connect.con.query('UPDATE evento SET estado="'+ estado +'" where idEvento="'+ idEvento +'"', function(err, rows, fields) {
+        console.log(query.sql);
+        if (!err) {
+            console.log("Number of records inserted: " + rows.affectedRows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+}
+
+function rejeitar(idEvento, callback) {
+    var query = global.connect.con.query('DELETE FROM evento WHERE idEvento = "'+idEvento+'"',  function(err, rows, fields) {
+        console.log(query.sql);
+        if (!err) {
+            console.log("Number of records inserted: " + rows.affectedRows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+}
 
 module.exports = {
     readEventosPendentes: readEventosPendentes,
+    aceitar: aceitar,
+    rejeitar: rejeitar
 }
