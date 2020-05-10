@@ -4,7 +4,98 @@
     <!-- Forum -->
     <div id="about" class="bg-color-sky-light" style="margin-top: 100px;">
 
-        <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
+        <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Relatórios</h1>
         
+        <div class="p-2">
+            <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#adicionar_relatorio">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                </span>
+                <span class="text">Adicionar relatório</span>
+            </a>
+        </div>
+        <div class="p-2">
+            <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#doc">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                </span>
+                <span class="text">Associar documento</span>
+            </a>
+        </div>
         <!--// end row -->
     </div>
+
+   <!-- Modal adicionar relatorio -->
+<div class="modal fadeIn gestaoRelatorio" id="adicionar_relatorio" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-lg-12 text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <h1>Adicionar Relatório</h1>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 40px 60px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="formNewRelatorio" class="user text-center" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="nome_relatorio" aria-describedby="" placeholder="Nome do relatorio">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento">
+                                    <option value="" disabled selected>Área de Conhecimento</option>
+                                    <option value="Gestão do Âmbito">Gestão do Âmbito</option>
+                                    <option value="Gestão de Aquisições">Gestão de Aquisições</option>
+                                    <option value="Gestão da Comunicação">Gestão da Comunicação</option>
+                                    <option value="Gestão do Cronograma">Gestão do Cronograma</option>
+                                    <option value="Gestão do Custo">Gestão do Custo</option>
+                                    <option value="Gestão da Integração">Gestão da Integração</option>
+                                    <option value="Gestão da Qualidade">Gestão da Qualidade</option>
+                                    <option value="Gestão dos Recursos">Gestão dos Recursos</option>
+                                    <option value="Gestão de Riscos">Gestão de Riscos</option>
+                                    <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
+                                </select>
+                            </div>
+                            <br />
+                            <button type="submit" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Associar documento-->
+<div class="modal fadeIn gestaoRelatorio" id="doc" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-lg-12 text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <h1>Adicionar documento</h1>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 40px 60px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="formNewRelatorio"  enctype="multipart/form-data" action="/g" class="user text-center" method="post">
+                            <div class="form-group">
+                                <input type="file" name="file" id="file" />
+                                <span>(apenas ficheiros em formato pdf)</span>
+                            </div>
+                            <br />
+                            <button type="submit" value="upload" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../../controller/relatorios.js"></script>
