@@ -1,6 +1,5 @@
 function countPerguntas(callback) {
-    global.connect.con.query('SELECT max(idPergunta) as count from pergunta;', function(err, rows, fields) {
-        console.log(count)
+    global.connect.con.query('SELECT COUNT(*) as count from pergunta;', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }

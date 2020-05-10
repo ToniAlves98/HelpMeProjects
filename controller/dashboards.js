@@ -16,8 +16,7 @@ function getPerguntas() {
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
-                $("#total_perguntas").html(data[0]);
-                console.log(data[0].count)
+                $("#total_perguntas").html(data[0].count);
             }
            
         },

@@ -237,7 +237,8 @@ global.helpme.get('/admin', function (req, res) {
 });
 
 global.helpme.get('/countPerguntas', function(req, res) {
-    global.model_dashboards.countPerguntas(function(err, data) {
+    global.model_dashboards.countPerguntas(function (err, data) {
+        console.log(data)
         if (err) {
             console.log("ERROR : ", err);
         }
