@@ -14,10 +14,16 @@ function saveResposta(resposta, callback){
     var idP = global.session.idPergunta;
     var post = {resposta: resposta, num_likes: 0, Utilizador_idUtilizador: idU, Pergunta_idPergunta: idP}
     var query = global.connect.con.query('INSERT INTO resposta SET ?', post, function(err, rows, fields) {
-     console.log(query.sql);
+    console.log(query.sql);
+    var data = {idPergunta:idP};
+    var string = JSON.stringify(data);
+    var json = JSON.parse(string);
+    var ler = JSON.stringify(rows);
      if (!err) {
          console.log("Number of records inserted: " + rows.affectedRows);
-         callback(null, rows);
+         console.log(string + ': : ' + json.idPergunta);
+         console.log(ler + ': : ' + json.idPergunta);
+         callback(null, json);
      }
      else
          console.log('Error while performing Query.', err);
