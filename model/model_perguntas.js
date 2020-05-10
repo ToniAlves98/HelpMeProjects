@@ -21,7 +21,6 @@ function getPergunta(idPergunta, callback){
     global.session.idPergunta = id;
     global.connect.con.query('SELECT titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, nome FROM pergunta INNER JOIN utilizador ON pergunta.Utilizador_idUtilizador = utilizador.idUtilizador WHERE idPergunta =\''+ id +'\'', function(err, rows, fields) {
         if (!err) {
-            console.log(rows);
             callback(null, rows);
         }
         else
