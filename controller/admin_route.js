@@ -236,6 +236,18 @@ global.helpme.get('/admin', function (req, res) {
     res.sendfile(global.root + '/views/admin/' + 'index.html');
 });
 
+global.helpme.get('/countPerguntas', function(req, res) {
+    global.model_dashboards.countPerguntas(function(err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
 
 /*
 
