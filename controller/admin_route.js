@@ -57,6 +57,18 @@ global.helpme.get('/readEventos', function(req, res) {
     });
 });
 
+global.helpme.get('/readEventosPendentes', function(req, res) {
+    global.model_pedidos.readEventosPendentes(function(err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
 global.helpme.post('/saveEvento', function(req, res) {
     global.model_eventos.saveEvento(req.body.nomeEvento, req.body.tipoEvento, req.body.AreaConhecimento_idAreaConhecimento,  req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
