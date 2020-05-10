@@ -30,8 +30,21 @@ function rejeitar(idEvento, callback) {
     });
 }
 
+function savePedido(nomeEvento, tipoEvento, AreaConhecimento_idAreaConhecimento,  imagem, Utilizador_idUtilizador, data_inicio, data_fim, estado, callback) {
+    var post = { nomeEvento: nomeEvento, tipoEvento: tipoEvento, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, imagem:imagem, Utilizador_idUtilizador: Utilizador_idUtilizador, data_inicio: data_inicio, data_fim: data_fim, estado: estado };
+    var query = global.connect.con.query('INSERT INTO evento SET ?', post, function(err, rows, fields) {
+        console.log(query.sql);
+        if (!err) {
+            console.log("Number of records inserted: " + rows.affectedRows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+}
+
 module.exports = {
     readEventosPendentes: readEventosPendentes,
     aceitar: aceitar,
-    rejeitar: rejeitar
+    rejeitar: rejeitar,
+    savePedido: savePedido
 }

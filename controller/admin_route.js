@@ -33,6 +33,23 @@ global.helpme.post('/', (req,res) => {
 
 })
 
+global.helpme.post('/g', (req,res) => {
+    if (req.files){
+        console.log(req.files)
+        var file = req.files.file
+        var filename = file.name
+        console.log(filename)
+        file.mv('./uploads/'+ filename, function(err){
+            if (err) {
+                res.send(err)
+            } else {
+                res.redirect('/forum/');
+            }
+        })
+    }
+
+})
+
 global.helpme.post('/setRelatorio', function(req, res) {
     global.model_relatorios.setRelatorio(req.body.idRelatorio, req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.Utilizador_idUtilizador);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
@@ -71,6 +88,11 @@ global.helpme.get('/readEventosPendentes', function(req, res) {
 
 global.helpme.post('/saveEvento', function(req, res) {
     global.model_eventos.saveEvento(req.body.nomeEvento, req.body.tipoEvento, req.body.AreaConhecimento_idAreaConhecimento,  req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.estado);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+});
+
+global.helpme.post('/savePedido', function(req, res) {
+    global.model_pedidos.savePedido(req.body.nomeEvento, req.body.tipoEvento, req.body.AreaConhecimento_idAreaConhecimento,  req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

@@ -108,7 +108,7 @@ $("#aceitarEvento").on("click", function() {
             else {
                 console.log("Erro");
             }
-            getEventos();
+            getEventosPendentes();
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log(xhr.responseText);
@@ -148,4 +148,63 @@ $('#tabela_pedidos').on('click', 'tr', function () {
         e.preventDefault();
         window.open("/uploads/" + teste_ped.imagem)
     });
+});
+
+
+
+$('#formNewPedido').on('submit', function(e) {
+   
+    if (e.isDefaultPrevented()) {
+        alert("O Pedido possui erros") 
+    }
+   
+    else {
+        event.preventDefault();
+        var data = {};
+        data.nomeEvento = $('#nomeEvento').val();
+        if ($('#area_conhecimento').val() == "Gestão do Âmbito") {
+            data.AreaConhecimento_idAreaConhecimento = 1;
+        } else if ($('#area_conhecimento').val() == "Gestão de Aquisições") {
+            data.AreaConhecimento_idAreaConhecimento = 2;
+        } else if ($('#area_conhecimento').val() == "Gestão da Comunicação") {
+            data.AreaConhecimento_idAreaConhecimento = 3;
+        } else if ($('#area_conhecimento').val() == "Gestão do Cronograma") {
+            data.AreaConhecimento_idAreaConhecimento = 4;
+        } else if ($('#area_conhecimento').val() == "Gestão do Custo") {
+            data.AreaConhecimento_idAreaConhecimento = 5;
+        } else if ($('#area_conhecimento').val() == "Gestão da Integração") {
+            data.AreaConhecimento_idAreaConhecimento = 6;
+        } else if ($('#area_conhecimento').val() == "Gestão da Qualidade") {
+            data.AreaConhecimento_idAreaConhecimento = 7;
+        } else if ($('#area_conhecimento').val() == "Gestão dos Recursos") {
+            data.AreaConhecimento_idAreaConhecimento = 8;
+        } else if ($('#area_conhecimento').val() == "Gestão de Riscos") {
+            data.AreaConhecimento_idAreaConhecimento = 9;
+        } else if ($('#area_conhecimento').val() == "Gestão dos Stakeholders") {
+            data.AreaConhecimento_idAreaConhecimento = 10;
+        };
+        data.tipoEvento = $('#tipoEvento').val();
+        data.imagem = ($('#nomeEvento').val()) + '.png';
+        data.Utilizador_idUtilizador = 2;
+        data.data_inicio = $('#inicioEvento').val();
+        data.data_fim = $('#fimEvento').val();
+        data.estado = 'pendente';
+
+        console.log(data);
+       
+        $("#formNewPedido")[0].reset();
+    
+        $.ajax({
+            type: 'POST',
+            url: '/savePedido',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(result) {
+                if (result.status == 200) {
+                    alert("Pedido adicionado com sucesso");
+                }
+            },
+            
+        });
+    }
 });
