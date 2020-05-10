@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 });
-
+/*
 function getPergunta_resposta(id) {
     console.log('getPerguntas_resposta');
 
@@ -46,4 +46,29 @@ function getPergunta_resposta(id) {
 
     });
 
-};
+};*/
+
+$('#novaResposta').on('submit', function(e) {
+    //se submeter com erros
+    if (e.isDefaultPrevented()) {
+        alert("Formulario com erros")
+    } else {
+        event.preventDefault();
+
+        var data = {};
+        data.resposta = $('#text').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/saveResposta',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            success: function(result, data) {
+                seePergunta(result.Pergunta_idPergunta);
+            },
+            error: function(data) {
+                console.log(data)
+            }
+        });
+    }
+});

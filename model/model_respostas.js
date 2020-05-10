@@ -9,6 +9,22 @@ function readRespostas(callback) {
     });
 };
 
+function saveResposta(resposta, callback){
+    var idU = global.session.idUser;
+    var idP = global.session.idPergunta;
+    var post = {resposta: resposta, num_likes: 0, Utilizador_idUtilizador: idU, Pergunta_idPergunta: idP}
+    var query = global.connect.con.query('INSERT INTO resposta SET ?', post, function(err, rows, fields) {
+     console.log(query.sql);
+     if (!err) {
+         console.log("Number of records inserted: " + rows.affectedRows);
+         callback(null, rows);
+     }
+     else
+         console.log('Error while performing Query.', err);
+ });
+}
+
 module.exports = {
     readRespostas: readRespostas,
+    saveResposta: saveResposta,
     }

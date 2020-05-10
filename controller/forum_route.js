@@ -24,7 +24,7 @@ global.helpme.post('/getPergunta', function (req, res) {
 });
 
 global.helpme.post('/getResposta', function (req, res) {
-    global.model_perguntas.getPergunta(req.body.idPergunta, function (err, data) {
+    global.model_perguntas.getResposta(req.body.idPergunta, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -37,6 +37,11 @@ global.helpme.post('/getResposta', function (req, res) {
 
 global.helpme.post('/savePergunta', function (req, res) {
     global.model_perguntas.savePergunta(req.body.titulo_pergunta, req.body.pergunta, req.body.data_pergunta, req.body.lingua, req.body.num_likes, req.body.AreaConhecimento_idAreaConhecimento, req.body.Utilizador_idUtilizador);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+});
+
+global.helpme.post('/saveResposta', function (req, res) {
+    global.model_respostas.saveResposta(req.body.resposta);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

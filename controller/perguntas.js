@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     getPerguntasInicio()
 });
 
@@ -10,31 +10,30 @@ function getPerguntasInicio() {
         url: '/readPerguntas',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
-        success: function (data, status, request) {
+
+        success: function(data, status, request) {
             if (request.status == 200) {
                 var txt = "";
-                data.forEach(function (row) {
-                    txt+="<div class='panel panel-default'>";
-                    txt+="<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
-                    txt+="<h4 style='font-size: 15px'>";
-                    if(row.idUser != null){
-                        txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"pages('perg_resp'); seePergunta("+row.idPergunta+")\">"  
-                    }else{
-                        txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert('Precisas fazer login para ter acesso às perguntas completas')\">"
+                data.forEach(function(row) {
+                    txt += "<div class='panel panel-default'>";
+                    txt += "<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
+                    txt += "<h4 style='font-size: 15px'>";
+                    if (row.idUser != null) {
+                        txt += "<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"pages('perg_resp'); seePergunta(" + row.idPergunta + ")\">"
+                    } else {
+                        txt += "<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert('Precisas fazer login para ter acesso às perguntas completas')\">"
                     }
                     //txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"seePergunta("+row.idPergunta+")\">"
                     //txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert('Precisas fazer login para ter acesso às perguntas completas')\">"
-                    txt+= row.titulo_pergunta + "</a></h4><p>" + row.pergunta + "</p></div></div>";
+                    txt += row.titulo_pergunta + "</a></h4><p>" + row.pergunta + "</p></div></div>";
                 });
 
                 $("#perguntas_forum").html(txt);
-            }
-            else {
+            } else {
                 console.log("Erro");
             }
         },
-        error: function (xhr, textStatus, errorThrown) {
+        error: function(xhr, textStatus, errorThrown) {
             console.log(xhr.responseText);
             console.log(textStatus);
             console.log(errorThrown);
@@ -59,10 +58,10 @@ function pages(page) {
             type: "GET",
             url: "./pages/" + var2 + ".html",
             data: {},
-            success: function (data) {
+            success: function(data) {
                 $("#" + var1).html(data);
             },
-            error: function (data, err, err2) {
+            error: function(data, err, err2) {
                 console.log(data);
                 console.log(err);
                 console.log(err2);
@@ -72,17 +71,19 @@ function pages(page) {
         var body = document.body;
         var html = document.documentElement;
     }
-    $("#accordionSidebar").children("li").on('click', function () {
+    $("#accordionSidebar").children("li").on('click', function() {
         var targetID = $(this).children('a').attr('id');
         //alert(targetID);
         load_home("content-wrapper", targetID);
     });
 };
 
-function seePergunta(id){
+function seePergunta(id) {
 
     var data = {};
     data.idPergunta = $(id);
+    var data2 = {};
+    data2.idPergunta = $(id);
 
     $.ajax({
         type: "POST",
@@ -93,47 +94,45 @@ function seePergunta(id){
         success: function(result, data) {
 
             var txt = "";
-            result.forEach(function (row) {
-                console.log(row);
-                txt += "<h2>"+row.titulo_pergunta+"</h2><p style=\"margin-top:2px\">";
-                txt += "<strong>"+row.nome+"</strong>";
-                txt += "<p style=\"border-bottom: 1px solid #515769;\">"+row.pergunta+"</p>";
+            result.forEach(function(row) {
+                txt += "<h2>" + row.titulo_pergunta + "</h2><p style=\"margin-top:2px\">";
+                txt += "<strong>" + row.nome + "</strong>";
+                txt += "<p style=\"border-bottom: 1px solid #515769;\">" + row.pergunta + "</p>";
 
-                //
                 $.ajax({
                     type: "POST",
-                    url: '/getPergunta',
-                    data: JSON.stringify(data),
+                    url: '/getResposta',
+                    data: JSON.stringify(data2),
                     contentType: 'application/json; charset=utf-8',
-            
+
                     success: function(result, data) {
-                        result.forEach(function (row) {
-                            txt += "<div style=\"border-bottom: 1px solid #515769;\"><p><strong>"+ row.nome +"</strong><br><p>"+row.resposta+"</p></div>";
+
+                        var resp = "";
+                        result.forEach(function(row) {
+                            resp += "<div style=\"border-bottom: 1px solid #515769;\"><p><strong>" + row.nome + "</strong><br><p>" + row.resposta + "</p></div>";
                         });
+                        $("#resposta").html(resp);
                     },
-                    error: function(data) { 
-                        console.log(data) 
+                    error: function(data) {
+                        console.log(data)
                     }
                 });
-                //
             });
-
             //document.getElementById('#pergunta').appendChild(txt);
             $("#pergunta").html(txt);
+
         },
-        error: function(data) { 
-            console.log(data) 
+        error: function(data) {
+            console.log(data)
         }
     });
 };
 
 $('#formNewPergunta').on('submit', function(e) {
-   
+
     if (e.isDefaultPrevented()) {
-        alert("A Questão possui erros") 
-    }
-   
-    else {
+        alert("A Questão possui erros")
+    } else {
         event.preventDefault();
         var data = {};
         data.titulo_pergunta = $('#tit_pergunta').val();
@@ -143,11 +142,11 @@ $('#formNewPergunta').on('submit', function(e) {
         data.num_likes = 0;
         data.AreaConhecimento_idAreaConhecimento = 3;
         data.Utilizador_idUtilizador = 2;
-        
+
         console.log(data);
-       
+
         $("#formNewPergunta")[0].reset();
-    
+
         $.ajax({
             type: 'POST',
             url: '/savePergunta',
@@ -157,9 +156,9 @@ $('#formNewPergunta').on('submit', function(e) {
                 if (result.status == 200) {
                     alert("Pergunta adicionada com sucesso");
                 }
-               getPerguntas();
+                getPerguntas();
             },
-            
+
         });
     }
 });

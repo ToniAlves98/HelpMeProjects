@@ -20,8 +20,10 @@ function getPergunta(idPergunta, callback){
     var id = idPergunta[0];
     global.session.idPergunta = id;
     global.connect.con.query('SELECT titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, nome FROM pergunta INNER JOIN utilizador ON pergunta.Utilizador_idUtilizador = utilizador.idUtilizador WHERE idPergunta =\''+ id +'\'', function(err, rows, fields) {
+        var string = JSON.stringify(rows);
+        var json = JSON.parse(string);
         if (!err) {
-            callback(null, rows);
+            callback(null, json);
         }
         else
             console.log('Error while performing Query.', err);
@@ -31,10 +33,11 @@ function getPergunta(idPergunta, callback){
 function getResposta(idPergunta, callback){
     var id = idPergunta[0];
     global.session.idPergunta = id;
-    global.connect.con.query('SELECT idResposta, resposta, data_resposta, num_likes, Utilizador_idUtilizador, nome FROM resposta INNER JOIN utilizador ON resposta.Utilizador_idUtilizador = utilizador.idUtilizador WHERE Pergunta_idPergunta =\''+ id +'\'', function(err, rows, fields) {
+    global.connect.con.query('SELECT idResposta, resposta, data_resposta, num_likes, Utilizador_idUtilizador, nome FROM resposta INNER JOIN utilizador ON resposta.Utilizador_idUtilizador = utilizador.idUtilizador WHERE resposta.Pergunta_idPergunta =\''+ id +'\'', function(err, rows, fields) {
+        var string = JSON.stringify(rows);
+        var json = JSON.parse(string);
         if (!err) {
-            console.log(rows);
-            callback(null, rows);
+            callback(null, json);
         }
         else
             console.log('Error while performing Query.', err);
