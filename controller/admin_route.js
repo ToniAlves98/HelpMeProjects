@@ -301,6 +301,19 @@ global.helpme.get('/countRelatorios', function(req, res) {
     });
 });
 
+global.helpme.get('/countSugestoes', function(req, res) {
+    global.model_dashboards.countSugestoes(function (err, data) {
+        console.log(data)
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
 global.helpme.get('/readSugestoes', function (req, res) {
     global.model_sugestoes.readSugestoes(function (err, data) {
         if (err) {
@@ -316,6 +329,11 @@ global.helpme.get('/readSugestoes', function (req, res) {
 global.helpme.delete('/deleteSugestao', function (req, res) {
     global.model_sugestoes.deleteSugestao(req.body.sugestao);
     res.end('{"success" : "Sugestão eliminado com sucesso", "status" : 200}');
+});
+
+global.helpme.post('/saveSugestao', function(req, res) {
+    global.model_sugestoes.saveSugestao(req.body.sugestao);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
 /*

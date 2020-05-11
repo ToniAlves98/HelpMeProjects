@@ -4,6 +4,7 @@ $(document).ready(function () {
     getNumEventos();
     getNumPedidos();
     getNumRelatorios();
+    getNumSugestoes();
 });
 
 
@@ -92,6 +93,24 @@ function getNumRelatorios() {
             console.log(data);
             if (request.status == 200) {
                 $("#total_relatorios").html(data[0].count);
+            }
+        },
+    });
+};
+
+function getNumSugestoes() {
+    var data = {};
+
+    $.ajax({
+        type: "GET",
+        url: '/countSugestoes',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        
+        success: function (data, status, request) {
+            console.log(data);
+            if (request.status == 200) {
+                $("#total_sugestoes").html(data[0].count);
             }
         },
     });

@@ -91,3 +91,31 @@ $('#tabela_sugestoes').on('click', 'tr', function () {
      
      console.log(teste_sug)
  });
+
+
+
+
+   function sugestao() {
+        var data = {};
+        data.sugestao = $('#sugestao').val();
+       
+        console.log(data);
+
+        $.ajax({
+            type: 'POST',
+            url: '/saveSugestao',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (result) {
+                if (result.status == 200) {
+                    alert("Sugestão adicionado com sucesso");
+                }
+                $('#formSugestao')[0].reset();
+            },
+        });
+    }
+
+
+$("#AddSugestao").on("click", function() {
+    sugestao();          
+ });

@@ -20,8 +20,21 @@ function deleteSugestao(sugestao, callback) {
 }
 
 
+function saveSugestao(sugestao, callback) {
+    var post = { sugestao:sugestao };
+    var query = global.connect.con.query('INSERT INTO sugestao SET ?', post, function(err, rows, fields) {
+        console.log(query.sql);
+        if (!err) {
+            console.log("Number of records inserted: " + rows.affectedRows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+}
+
 module.exports = {
     readSugestoes:readSugestoes,
-    deleteSugestao:deleteSugestao
+    deleteSugestao:deleteSugestao,
+    saveSugestao:saveSugestao
 
 }

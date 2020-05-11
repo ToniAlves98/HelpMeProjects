@@ -48,11 +48,22 @@ function countRelatorios(callback) {
     });
 };
 
+function countSugestoes(callback) {
+    global.connect.con.query('SELECT COUNT(*) as count from sugestao;', function(err, rows, fields) {
+        if (!err) {
+            callback(null, rows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+};
+
 
 module.exports = {
     countPerguntas: countPerguntas,
     countUtilizadores: countUtilizadores,
     countEventos: countEventos,
     countPedidos: countPedidos,
-    countRelatorios: countRelatorios
+    countRelatorios: countRelatorios,
+    countSugestoes: countSugestoes
 }
