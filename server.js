@@ -58,7 +58,8 @@ global.model_utilizador = require('./model/model_utilizador');
 global.model_perguntas = require('./model/model_perguntas');
 global.model_respostas = require('./model/model_respostas');
 global.model_pedidos = require('./model/model_pedidos');
-global.model_dashboards = require('./model/model_dashboards')
+global.model_dashboards = require('./model/model_dashboards');
+global.model_sugestoes = require('./model/model_sugestoes');
 global.admin_route = require('./controller/admin_route.js');
 global.forum_route = require('./controller/forum_route.js');
 

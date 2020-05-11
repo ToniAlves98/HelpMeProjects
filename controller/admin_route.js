@@ -301,6 +301,23 @@ global.helpme.get('/countRelatorios', function(req, res) {
     });
 });
 
+global.helpme.get('/readSugestoes', function (req, res) {
+    global.model_sugestoes.readSugestoes(function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
+        }
+    });
+});
+
+global.helpme.delete('/deleteSugestao', function (req, res) {
+    global.model_sugestoes.deleteSugestao(req.body.sugestao);
+    res.end('{"success" : "Sugestão eliminado com sucesso", "status" : 200}');
+});
+
 /*
 
 <script type="text/javascript">
