@@ -249,6 +249,57 @@ global.helpme.get('/countPerguntas', function(req, res) {
     });
 });
 
+global.helpme.get('/countUtilizadores', function(req, res) {
+    global.model_dashboards.countUtilizadores(function (err, data) {
+        console.log(data)
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
+global.helpme.get('/countEventos', function(req, res) {
+    global.model_dashboards.countEventos(function (err, data) {
+        console.log(data)
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
+global.helpme.get('/countPedidos', function(req, res) {
+    global.model_dashboards.countPedidos(function (err, data) {
+        console.log(data)
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
+global.helpme.get('/countRelatorios', function(req, res) {
+    global.model_dashboards.countRelatorios(function (err, data) {
+        console.log(data)
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
 
 /*
 
