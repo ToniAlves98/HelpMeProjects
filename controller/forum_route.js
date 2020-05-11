@@ -79,6 +79,12 @@ global.helpme.get('/forum', function (req, res) {
     res.sendfile(global.root + '/views/forum/' + 'forum.html');
 });
 
+global.helpme.get('/index_en', function (req, res) {
+    global.helpme.use(global.express.static('views/forum'));
+    global.helpme.use('/index_en', global.express.static('views/forum'));
+    res.sendfile(global.root + '/views/forum/' + 'index_en.html');
+});
+
 global.helpme.get('/perfil', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/perfil', global.express.static('views/forum'));
