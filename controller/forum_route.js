@@ -45,6 +45,11 @@ global.helpme.post('/saveResposta', function (req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
+global.helpme.post('/saveLikes', function (req, res) {
+    global.model_perguntas.saveLikes(req.body.num_likes);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+});
+
 global.helpme.get('/readRespostas', function (req, res) {
     global.model_respostas.readRespostas(function (err, data) {
         if (err) {

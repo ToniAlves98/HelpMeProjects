@@ -1,5 +1,5 @@
 function readPerguntas(callback) {
-    global.connect.con.query('SELECT idPergunta, titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador FROM pergunta ORDER BY num_likes', function(err, rows, fields) {
+    global.connect.con.query('SELECT idPergunta, titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador FROM pergunta ORDER BY num_likes DESC', function(err, rows, fields) {
     var string = JSON.stringify(rows);
     var json = JSON.parse(string);
 
@@ -56,9 +56,22 @@ function savePergunta( titulo_pergunta, pergunta, data_pergunta, lingua, num_lik
 });
 }
 
+function saveLikes(num_likes, callback){
+    var id = global.session.idPergunta;
+    var query = global.connect.con.query('UPDATE pergunta SET num_likes = ' + num_likes + ' WHERE idPergunta = ' + id, function(err, rows, fields) {
+     console.log(query.sql);
+     if (!err) {
+         console.log("Number of records updated: " + rows.affectedRows);
+     }
+     else
+         console.log('Error while performing Query.', err);
+ });
+ }
+
 module.exports = {
     readPerguntas: readPerguntas,
     getPergunta: getPergunta,
     getResposta: getResposta,
-    savePergunta: savePergunta
+    savePergunta: savePergunta,
+    saveLikes: saveLikes
     }

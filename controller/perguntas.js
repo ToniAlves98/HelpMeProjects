@@ -23,8 +23,6 @@ function getPerguntasInicio() {
                     } else {
                         txt += "<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert('Precisas fazer login para ter acesso às perguntas completas')\">"
                     }
-                    //txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"seePergunta("+row.idPergunta+")\">"
-                    //txt+="<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert('Precisas fazer login para ter acesso às perguntas completas')\">"
                     txt += row.titulo_pergunta + "</a></h4><p>" + row.pergunta + "</p></div></div>";
                 });
 
@@ -97,7 +95,7 @@ function seePergunta(id) {
             result.forEach(function(row) {
                 txt += "<h2>" + row.titulo_pergunta + "</h2><p style=\"margin-top:2px\">";
                 txt += "<strong>" + row.nome + "</strong>";
-                txt += "<p style=\"border-bottom: 1px solid #515769;\">" + row.pergunta + "</p>";
+                txt += "<p style=\"border-bottom: 1px solid #515769;\">" + row.pergunta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"like(this,"+row.num_likes+")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">"+row.num_likes+"</a></p>";
 
                 $.ajax({
                     type: "POST",
@@ -118,7 +116,6 @@ function seePergunta(id) {
                     }
                 });
             });
-            //document.getElementById('#pergunta').appendChild(txt);
             $("#pergunta").html(txt);
 
         },
@@ -162,3 +159,27 @@ $('#formNewPergunta').on('submit', function(e) {
         });
     }
 });
+
+function like(x, y) {
+
+    if(x.classList.equals("fa-thumbs-down")){
+        console.log('ya');
+    }else{
+        console.log('Nah');
+    }
+    x.classList.toggle("fa-thumbs-down");
+
+    var data = {};
+    data.num_likes = y + 1;
+
+    $.ajax({
+        type: 'POST',
+        url: '/saveLikes',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function(result) {
+            console.log('It works: ' + y);
+            $("#num_likes").html(y);
+        },
+    });
+  }
