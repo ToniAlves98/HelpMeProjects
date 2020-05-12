@@ -224,6 +224,46 @@ body.modal-open {
     height: 15px;
 }
 
+/*Perguntas*/
+.modal-pergunta h1 {
+    color: #FD871F;
+}
+
+.modal-pergunta .form-control {
+    border-color: #FD871F;
+}
+
+    .modal-pergunta .form-control:focus {
+        border-color: #FF4500;
+        box-shadow: 0 0 0 0.1rem #FF4500;
+    }
+
+.modal-pergunta .close {
+    color: #FD871F;
+}
+
+    .modal-pergunta .close:hover,
+    .close:focus {
+        color: #FF4500;
+    }
+
+.modal-pergunta .btnPergunta {
+    font-size: 18px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    .modal-pergunta .btnPergunta:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+.modal-pergunta textarea {
+    border-radius: 30px;
+}
+
 /*
 #registo .custom-control {
   position: relative;
