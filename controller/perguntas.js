@@ -95,7 +95,7 @@ function seePergunta(id) {
             result.forEach(function(row) {
                 txt += "<h2>" + row.titulo_pergunta + "</h2><p style=\"margin-top:2px\">";
                 txt += "<strong>" + row.nome + "</strong>";
-                txt += "<p style=\"border-bottom: 1px solid #515769;\">" + row.pergunta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"like(this,"+row.num_likes+")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">"+row.num_likes+"</a></p>";
+                txt += "<p style=\"border-bottom: 1px solid #515769;\">" + row.pergunta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"like(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p>";
 
                 $.ajax({
                     type: "POST",
@@ -107,7 +107,7 @@ function seePergunta(id) {
 
                         var resp = "";
                         result.forEach(function(row) {
-                            resp += "<div style=\"border-bottom: 1px solid #515769;\"><p><strong>" + row.nome + "</strong><br><p>" + row.resposta + "</p></div>";
+                            resp += "<div style=\"border-bottom: 1px solid #515769;\"><p><strong>" + row.nome + "</strong><br><p>" + row.resposta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"likeResp(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p></div>";
                         });
                         $("#resposta").html(resp);
                     },
@@ -161,16 +161,15 @@ $('#formNewPergunta').on('submit', function(e) {
 });
 
 function like(x, y) {
-
-    if(x.classList.equals("fa-thumbs-down")){
-        console.log('ya');
-    }else{
-        console.log('Nah');
-    }
-    x.classList.toggle("fa-thumbs-down");
-
     var data = {};
-    data.num_likes = y + 1;
+
+    if (x.classList == "fa fa-thumbs-up") {
+        data.num_likes = y + 1;
+        x.classList.toggle("fa-thumbs-down");
+    } else {
+        data.num_likes = y - 1;
+        x.classList.toggle("fa fa-thumbs-up");
+    }
 
     $.ajax({
         type: 'POST',
@@ -182,4 +181,27 @@ function like(x, y) {
             $("#num_likes").html(y);
         },
     });
-  }
+}
+
+function likeResp(x, y) {
+    var data = {};
+
+    if (x.classList == "fa fa-thumbs-up") {
+        data.num_likes = y + 1;
+        x.classList.toggle("fa-thumbs-down");
+    } else {
+        data.num_likes = y - 1;
+        x.classList.toggle("fa fa-thumbs-up");
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '/saveLikesResp',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function(result) {
+            console.log('It works: ' + y);
+            $("#num_likes").html(y);
+        },
+    });
+}
