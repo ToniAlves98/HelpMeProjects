@@ -1,3 +1,10 @@
+//rota admin
+global.helpme.get('/admin', function (req, res) {
+    global.helpme.use(global.express.static('views/admin'));
+    global.helpme.use('/admin', global.express.static('views/admin'));
+    res.sendfile(global.root + '/views/admin/' + 'index.html');
+});
+
 //rotas relatorios
 global.helpme.get('/readRelatorios', function(req, res) {
     global.model_relatorios.readRelatorios(function(err, data) {
@@ -229,13 +236,30 @@ global.helpme.post('/setGestor', function (req, res) {
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });
 
-//rota admin
-global.helpme.get('/admin', function (req, res) {
-    global.helpme.use(global.express.static('views/admin'));
-    global.helpme.use('/admin', global.express.static('views/admin'));
-    res.sendfile(global.root + '/views/admin/' + 'index.html');
+//rotas sugestões
+global.helpme.get('/readSugestoes', function (req, res) {
+    global.model_sugestoes.readSugestoes(function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
+        }
+    });
 });
 
+global.helpme.delete('/deleteSugestao', function (req, res) {
+    global.model_sugestoes.deleteSugestao(req.body.sugestao);
+    res.end('{"success" : "Sugestão eliminado com sucesso", "status" : 200}');
+});
+
+global.helpme.post('/saveSugestao', function (req, res) {
+    global.model_sugestoes.saveSugestao(req.body.sugestao);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+});
+
+//rotas dashboards
 global.helpme.get('/countPerguntas', function(req, res) {
     global.model_dashboards.countPerguntas(function (err, data) {
         console.log(data)
@@ -314,26 +338,36 @@ global.helpme.get('/countSugestoes', function(req, res) {
     });
 });
 
-global.helpme.get('/readSugestoes', function (req, res) {
-    global.model_sugestoes.readSugestoes(function (err, data) {
+//rota leitura grafico utilizador
+global.helpme.get('/graficoUtilizador', function (req, res) {
+    //chamada da função read que está no Speaker.model
+    global.model_dashboards.graficoUtilizador(function (err, data) {
         if (err) {
+            // error handling code goes here
             console.log("ERROR : ", err);
         }
         else {
+            //envio para o cliente dos dados retornados pelo model
             res.send(data);
-            res.end('{"success" : "Atuailziado com sucesso", "status" : 200}');
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
         }
-    });
+    })
 });
 
-global.helpme.delete('/deleteSugestao', function (req, res) {
-    global.model_sugestoes.deleteSugestao(req.body.sugestao);
-    res.end('{"success" : "Sugestão eliminado com sucesso", "status" : 200}');
-});
-
-global.helpme.post('/saveSugestao', function(req, res) {
-    global.model_sugestoes.saveSugestao(req.body.sugestao);
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
+//rota leitura grafico utilizador
+global.helpme.get('/graficoPerguntaArea', function (req, res) {
+    //chamada da função read que está no Speaker.model
+    global.model_dashboards.graficoPerguntaArea(function (err, data) {
+        if (err) {
+            // error handling code goes here
+            console.log("ERROR : ", err);
+        }
+        else {
+            //envio para o cliente dos dados retornados pelo model
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    })
 });
 
 /*
