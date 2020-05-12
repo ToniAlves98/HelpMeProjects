@@ -125,11 +125,11 @@ function graficoUtilizador() {
     $.ajax({
         type: 'GET',
         url: '/graficoUtilizador',
-        //os dados recebidos do model estão na variável data
+        //os dados recebidos do model estï¿½o na variï¿½vel data
         success: function (data) {
             //debugging para ver se foi pedido com sucesso
             console.log('');
-            //criação de uma tabela para demonstração dos resultados recebidos
+            //criaï¿½ï¿½o de uma tabela para demonstraï¿½ï¿½o dos resultados recebidos
             var estudante = data[0].numero;
             var professor = data[1].numero;
             var empresa = data[2].numero;
@@ -138,9 +138,9 @@ function graficoUtilizador() {
                 pieChart = new Chart(ctx, {
                     type: 'doughnut', // bar, horizontalBar, pie.....
                     data: {
-                        labels: ['Número de Estudantes', 'Número de Professores/Investigadores', 'Número de Empresa', 'Número de Gestores de projeto'],
+                        labels: ['Nï¿½mero de Estudantes', 'Nï¿½mero de Professores/Investigadores', 'Nï¿½mero de Empresa', 'Nï¿½mero de Gestores de projeto'],
                         datasets: [{
-                            label: 'Número',
+                            label: 'Nï¿½mero',
                             data: [
                                 estudante,
                                 professor,
@@ -178,9 +178,9 @@ function graficoPerguntaArea() {
     $.ajax({
         type: 'GET',
         url: '/graficoPerguntaArea',
-        //os dados recebidos do model estão na variável data
+        //os dados recebidos do model estï¿½o na variï¿½vel data
         success: function (data) {
-            //criação de uma tabela para demonstração dos resultados recebidos
+            //criaï¿½ï¿½o de uma tabela para demonstraï¿½ï¿½o dos resultados recebidos
             var gAmbito = data[0].numero;
             var gAquisicoes = data[1].numero;
             var gComunicacao = data[2].numero;
@@ -195,9 +195,9 @@ function graficoPerguntaArea() {
                 myChart = new Chart(ctx, {
                     type: 'bar', // bar, horizontalBar, pie.....
                     data: {
-                        labels: ['Gestão do Âmbito', 'Gestão de Aquisições', 'Gestão da Comunicação', 'Gestão do Cronograma', 'Gestão do Custo', 'Gestão da Integração', 'Gestão da Qualidade', 'Gestão dos Recursos', 'Gestão de Riscos', 'Gestão dos Stakeholders'],
+                        labels: ['Gestï¿½o do ï¿½mbito', 'Gestï¿½o de Aquisiï¿½ï¿½es', 'Gestï¿½o da Comunicaï¿½ï¿½o', 'Gestï¿½o do Cronograma', 'Gestï¿½o do Custo', 'Gestï¿½o da Integraï¿½ï¿½o', 'Gestï¿½o da Qualidade', 'Gestï¿½o dos Recursos', 'Gestï¿½o de Riscos', 'Gestï¿½o dos Stakeholders'],
                         datasets: [{
-                            label: 'Número de Perguntas',
+                            label: 'Nï¿½mero de Perguntas',
                             data: [
                                 gAmbito,
                                 gAquisicoes,
@@ -246,3 +246,5 @@ function graficoPerguntaArea() {
     });
 
 }
+
+//se
