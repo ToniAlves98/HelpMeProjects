@@ -138,9 +138,9 @@ function graficoUtilizador() {
                 pieChart = new Chart(ctx, {
                     type: 'doughnut', // bar, horizontalBar, pie.....
                     data: {
-                        labels: ['N�mero de Estudantes', 'N�mero de Professores/Investigadores', 'N�mero de Empresa', 'N�mero de Gestores de projeto'],
+                        labels: ['Nº de Estudantes', 'Nº de Professores/Investigadores', 'Nº de Empresa', 'Nº de Gestores de projeto'],
                         datasets: [{
-                            label: 'N�mero',
+                            label: 'Número',
                             data: [
                                 estudante,
                                 professor,
@@ -148,22 +148,24 @@ function graficoUtilizador() {
                                 gp],
 
                             backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'RGB(24, 247, 140, 0.2)'
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(28, 200, 138, 0.5)',
+                                'rgba(54, 185, 204, 0.5)',
+                                'rgba(79, 79, 79, 0.5)'
                             ],
                             borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'RGB(24, 247, 140, 1)'
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(28, 200, 138, 1)',
+                                'rgba(54, 185, 204, 1)',
+                                'rgba(79, 79, 79, 1)'
 
                             ],
                             borderWidth: 1
                         }]
                     },
-                    options: {}
+                    options: {
+                        cutoutPercentage: 70,
+                    },
                 }
                 )
 
@@ -195,9 +197,9 @@ function graficoPerguntaArea() {
                 myChart = new Chart(ctx, {
                     type: 'bar', // bar, horizontalBar, pie.....
                     data: {
-                        labels: ['Gest�o do �mbito', 'Gest�o de Aquisi��es', 'Gest�o da Comunica��o', 'Gest�o do Cronograma', 'Gest�o do Custo', 'Gest�o da Integra��o', 'Gest�o da Qualidade', 'Gest�o dos Recursos', 'Gest�o de Riscos', 'Gest�o dos Stakeholders'],
+                        labels: ['Gestão do Âmbito', 'Gestão de Aquisições', 'Gestão da Comunicação', 'Gestão do Cronograma', 'Gestão do Custo', 'Gestão da Integração', 'Gestão da Qualidade', 'Gestão dos Recursos', 'Gestão de Riscos', 'Gestão dos Stakeholders'],
                         datasets: [{
-                            label: 'N�mero de Perguntas',
+                            label: 'Nº de Perguntas',
                             data: [
                                 gAmbito,
                                 gAquisicoes,
@@ -211,28 +213,28 @@ function graficoPerguntaArea() {
                                 gStakeholders],
 
                             backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(54, 162, 235, 0.2)'
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(78, 115, 223, 0.5)',
                             ],
                             borderColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(54, 162, 235, 0.2)'
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(78, 115, 223, 1)',
 
                             ],
                             borderWidth: 1
