@@ -7,6 +7,7 @@ $(document).ready(function () {
     getNumSugestoes();
     graficoUtilizador();
     graficoPerguntaArea();
+    graficoRelatorioUser();
 });
 
 
@@ -138,7 +139,62 @@ function graficoUtilizador() {
                 pieChart = new Chart(ctx, {
                     type: 'doughnut', // bar, horizontalBar, pie.....
                     data: {
-                        labels: ['Nº de Estudantes', 'Nº de Professores/Investigadores', 'Nº de Empresa', 'Nº de Gestores de projeto'],
+                        labels: ['Nº de Estudantes', 'Nº de Professores/Investigadores', 'Nº de Empresas', 'Nº de Gestores de projeto'],
+                        datasets: [{
+                            label: 'Número',
+                            data: [
+                                estudante,
+                                professor,
+                                empresa,
+                                gp],
+
+                            backgroundColor: [
+                                'rgba(78, 115, 223, 0.5)',
+                                'rgba(28, 200, 138, 0.5)',
+                                'rgba(54, 185, 204, 0.5)',
+                                'rgba(79, 79, 79, 0.5)'
+                            ],
+                            borderColor: [
+                                'rgba(78, 115, 223, 1)',
+                                'rgba(28, 200, 138, 1)',
+                                'rgba(54, 185, 204, 1)',
+                                'rgba(79, 79, 79, 1)'
+
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        cutoutPercentage: 70,
+                    },
+                }
+                )
+
+        }
+
+    });
+}
+
+function graficoRelatorioUser() {
+
+    //chamada ajax
+    $.ajax({
+        type: 'GET',
+        url: '/graficoRelatorioUser',
+        //os dados recebidos do model estão na variável data
+        success: function (data) {
+            //debugging para ver se foi pedido com sucesso
+            console.log('');
+            //criação de uma tabela para demonstração dos resultados recebidos
+            var estudante = data[0].numero;
+            var professor = data[1].numero;
+            var empresa = data[2].numero;
+            var gp = data[3].numero;
+            var ctx = document.getElementById("pieChart2"),
+                pieChart = new Chart(ctx, {
+                    type: 'doughnut', // bar, horizontalBar, pie.....
+                    data: {
+                        labels: ['Nº de Relatórios Estudantes', 'Nº de Relatórios Professores/Investigadores', 'Nº de Relatórios Empresas', 'Nº de Relatórios Gestores de projeto'],
                         datasets: [{
                             label: 'Número',
                             data: [
@@ -180,9 +236,9 @@ function graficoPerguntaArea() {
     $.ajax({
         type: 'GET',
         url: '/graficoPerguntaArea',
-        //os dados recebidos do model est�o na vari�vel data
+        //os dados recebidos do model estão na variável data
         success: function (data) {
-            //cria��o de uma tabela para demonstra��o dos resultados recebidos
+            //criação de uma tabela para demonstração dos resultados recebidos
             var gAmbito = data[0].numero;
             var gAquisicoes = data[1].numero;
             var gComunicacao = data[2].numero;

@@ -354,10 +354,26 @@ global.helpme.get('/graficoUtilizador', function (req, res) {
     })
 });
 
-//rota leitura grafico utilizador
+//rota leitura grafico pergunta por area
 global.helpme.get('/graficoPerguntaArea', function (req, res) {
     //chamada da função read que está no Speaker.model
     global.model_dashboards.graficoPerguntaArea(function (err, data) {
+        if (err) {
+            // error handling code goes here
+            console.log("ERROR : ", err);
+        }
+        else {
+            //envio para o cliente dos dados retornados pelo model
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    })
+});
+
+//rota leitura grafico relatorio por tipo de utilizador
+global.helpme.get('/graficoRelatorioUser', function (req, res) {
+    //chamada da função read que está no Speaker.model
+    global.model_dashboards.graficoRelatorioUser(function (err, data) {
         if (err) {
             // error handling code goes here
             console.log("ERROR : ", err);
