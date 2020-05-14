@@ -34,7 +34,6 @@ function setRelatorio(idRelatorio, nomeRelatorio, pdf, AreaConhecimento_idAreaCo
 };
 
 function deleteRelatorio(idRelatorio, callback) {
-   // var linha = { idRelatorio:idRelatorio };
     var query = global.connect.con.query('DELETE FROM relatorio WHERE idRelatorio = "'+ idRelatorio +'"',  function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
