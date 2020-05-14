@@ -1,104 +1,98 @@
-﻿    <!--========== PAGE LAYOUT ==========-->
-    <!-- Forum -->
+﻿<!--========== PAGE LAYOUT ==========-->
+<!-- Forum -->
 <br />
 <br />
 <br />
 <br />
 <br />
-    <div id="bodyperfil">
-
-        <div id="blogCarousel"></div>
-
-        <div class="container content">
-            <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-12 col-md-9" id="perfilSection">
-                    <div class="col-lg-12">
-                        <div class="col-lg-6">
-                            <h1>Perfil</h1>
-                            <br />
-                        </div>
-                    </div>
-                    <br />
-                    <div class="col-lg-12">
-                        <form id="formUtilizador" class="user text-center>">
-                            <div id="aluno_section"></div>
-                            <div id="pi_section"></div>
-                            <div id="gp_section"></div>
-                            <div id="empresa_section"></div>
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label class="custom-label">Perfil:</label>
-                                    <select class="form-control form-control-user" data-live-search="true" id="perfil">
-                                        <option value="Perfil público">Perfil público</option>
-                                        <option value="Perfil privado">Perfil privado</option>
-                                    </select>
-                                </div>
-                                <br />
-                                <div class="form-group">
-                                    <button type="submit" href="" id="btperfil" class="btn btn-primary btn-user btn-block">Editar Perfil</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+<div id="bodyperfil">
+   <div id="blogCarousel"></div>
+   <div class="container content">
+      <div class="row justify-content-center">
+         <div class="col-xl-10 col-lg-12 col-md-9" id="perfilSection">
+            <div class="col-lg-12">
+               <div class="col-lg-6">
+                  <h1>Perfil</h1>
+                  <br />
+               </div>
             </div>
-        </div>
-        <br />
-        <br />
-        <br />
-    </div>
-
-    <!--Check escolhas profissões-->
-    <script type="text/javascript">
-
-        function checkProfissao(that) {
-            if (that.value == "Empresa") {
-                document.getElementById("Empresa").style.display = "block";
-                document.getElementById("idadeDiv").style.display = "none";
-                document.getElementById("generoDiv").style.display = "none";
-                document.getElementById("GP").style.display = "none";
-                document.getElementById("PI").style.display = "none";
-                document.getElementById("Estudante").style.display = "none";
-            } else if (that.value == "Gestor de Projetos") {
-                document.getElementById("Empresa").style.display = "none";
-                document.getElementById("idadeDiv").style.display = "block";
-                document.getElementById("generoDiv").style.display = "block";
-                document.getElementById("GP").style.display = "block";
-                document.getElementById("PI").style.display = "none";
-                document.getElementById("Estudante").style.display = "none";
-            } else if (that.value == "Professor/Investigador") {
-                document.getElementById("Empresa").style.display = "none";
-                document.getElementById("idadeDiv").style.display = "block";
-                document.getElementById("generoDiv").style.display = "block";
-                document.getElementById("GP").style.display = "none";
-                document.getElementById("PI").style.display = "block";
-                document.getElementById("Estudante").style.display = "none";
-            } else if (that.value == "Estudante") {
-                document.getElementById("Empresa").style.display = "none";
-                document.getElementById("idadeDiv").style.display = "block";
-                document.getElementById("generoDiv").style.display = "block";
-                document.getElementById("GP").style.display = "none";
-                document.getElementById("PI").style.display = "none";
-                document.getElementById("Estudante").style.display = "block";
-            }
-            else {
-                document.getElementById("Empresa").style.display = "none";
-                document.getElementById("GP").style.display = "none";
-                document.getElementById("PI").style.display = "none";
-                document.getElementById("Estudante").style.display = "none";
-            }
-        };
-
-        //Check GP
-        function checkPME(that) {
-            if (that.value == "simPME" && that.checked) {
-                document.getElementById("gpPME").style.display = "block";
-            } else {
-                document.getElementById("gpPME").style.display = "none";
-            }
-        };
-    </script>
-
-    <script type="text/javascript" src="../../controller/utilizador.js"></script>
-
+            <br />
+            <div class="col-lg-12">
+               <form id="formUtilizador" class="user text-center>">
+                  <div id="aluno_section"></div>
+                  <div id="pi_section"></div>
+                  <div id="gp_section"></div>
+                  <div id="empresa_section"></div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-2">
+                     <div class="form-group">
+                        <label class="custom-label">Perfil:</label>
+                        <select class="form-control form-control-user" data-live-search="true" id="perfil">
+                           <option value="Perfil público">Perfil público</option>
+                           <option value="Perfil privado">Perfil privado</option>
+                        </select>
+                     </div>
+                     <br />
+                     <div class="form-group">
+                        <button type="submit" href="" id="btperfil" class="btn btn-primary btn-user btn-block">Editar Perfil</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br />
+   <br />
+   <br />
+</div>
+<!--Check escolhas profissões-->
+<script type="text/javascript">
+   function checkProfissao(that) {
+       if (that.value == "Empresa") {
+           document.getElementById("Empresa").style.display = "block";
+           document.getElementById("idadeDiv").style.display = "none";
+           document.getElementById("generoDiv").style.display = "none";
+           document.getElementById("GP").style.display = "none";
+           document.getElementById("PI").style.display = "none";
+           document.getElementById("Estudante").style.display = "none";
+       } else if (that.value == "Gestor de Projetos") {
+           document.getElementById("Empresa").style.display = "none";
+           document.getElementById("idadeDiv").style.display = "block";
+           document.getElementById("generoDiv").style.display = "block";
+           document.getElementById("GP").style.display = "block";
+           document.getElementById("PI").style.display = "none";
+           document.getElementById("Estudante").style.display = "none";
+       } else if (that.value == "Professor/Investigador") {
+           document.getElementById("Empresa").style.display = "none";
+           document.getElementById("idadeDiv").style.display = "block";
+           document.getElementById("generoDiv").style.display = "block";
+           document.getElementById("GP").style.display = "none";
+           document.getElementById("PI").style.display = "block";
+           document.getElementById("Estudante").style.display = "none";
+       } else if (that.value == "Estudante") {
+           document.getElementById("Empresa").style.display = "none";
+           document.getElementById("idadeDiv").style.display = "block";
+           document.getElementById("generoDiv").style.display = "block";
+           document.getElementById("GP").style.display = "none";
+           document.getElementById("PI").style.display = "none";
+           document.getElementById("Estudante").style.display = "block";
+       }
+       else {
+           document.getElementById("Empresa").style.display = "none";
+           document.getElementById("GP").style.display = "none";
+           document.getElementById("PI").style.display = "none";
+           document.getElementById("Estudante").style.display = "none";
+       }
+   };
+   
+   //Check GP
+   function checkPME(that) {
+       if (that.value == "simPME" && that.checked) {
+           document.getElementById("gpPME").style.display = "block";
+       } else {
+           document.getElementById("gpPME").style.display = "none";
+       }
+   };
+</script>
+<script type="text/javascript" src="../../controller/utilizador.js"></script>

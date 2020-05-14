@@ -94,7 +94,7 @@ function seePergunta(id) {
             var txt = "";
             result.forEach(function(row) {
                 txt += "<h2>" + row.titulo_pergunta + "</h2>";
-                txt += "<p style=\"margin-top:2px\" onclick=\"pages('perfil')\"><strong>" + row.nome + "</strong></p>";
+                txt += "<p style=\"margin-top:2px\" data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil("+row.Utilizador_idUtilizador+")\"><strong>" + row.nome + "</strong></p>";
                 txt += "<p style=\"border-bottom: 1px solid #515769;\">" + row.pergunta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"like(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p>";
 
                 $.ajax({
@@ -107,7 +107,7 @@ function seePergunta(id) {
 
                         var resp = "";
                         result.forEach(function(row) {
-                            resp += "<div style=\"border-bottom: 1px solid #515769;\"><p onclick=\"alerta('Vá lá');pages('perfil')\"><strong>" + row.nome + "</strong><br><p>" + row.resposta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"likeResp(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p></div>";
+                            resp += "<div style=\"border-bottom: 1px solid #515769;\"><p data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil("+row.Utilizador_idUtilizador+")\"><strong>" + row.nome + "</strong><br><p>" + row.resposta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"likeResp(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p></div>";
                         });
                         $("#resposta").html(resp);
                     },
@@ -205,3 +205,61 @@ function likeResp(x, y) {
         },
     });
 }
+
+function getPerfil(id) {
+    var data = {};
+    data.idUtilizador = id;
+
+    $.ajax({
+        type: 'POST',
+        url: '/getUtilizador',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function(result, data) {
+
+            result.forEach(function(row){
+                if(row.perfil == "privado"){
+                    console.log('Privado');
+                    alert('Este perfil é privado!');
+
+                }else{
+                    console.log('Publico');
+                    $("#nomeUtilizador").html(row.nome);
+                    $("#profissao").html(row.profissao);
+
+                    if(row.profissao == "Estudante"){
+                        $("#email").html("Email: " + row.email);
+                        $("#idade").html("Idade: " + row.idade);
+                        $("#genero").html("Género: " + row.genero);
+                        $("#ciclo").html("Ciclo de Estudos: " + row.ciclo_estudo);
+                        $("#descricao").html("Descrição: " + row.descricao);
+
+                    } else if (row.profissao == "Professor/Investigador") {
+                        $("#email").html("Email: " + row.email);
+                        $("#idade").html("Idade: " + row.idade);
+                        $("#genero").html("Género: " + row.genero);
+                        $("#descricao").html("Descrição: " + row.descricao);
+                        $("#ciclo").html("Área Científica: " + row.area_cientifica);
+
+                    } else if (row.profissao == "Gestor de Projetos") {
+                        $("#email").html("Email: " + row.email);
+                        $("#idade").html("Idade: " + row.idade);
+                        $("#ciclo").html("Ramo Empresarial: " + row.ramo_emp);
+                        $("#genero").html("Género: " + row.genero);
+                        $("#descricao").html("Descrição: " + row.descricao);
+
+                    } else if (row.profissao == "Empresa") {
+                        $("#email").html("Email: " + row.email);
+                        $("#idade").html("Ramo Empresarial: " + row.ramo_emp);
+                        $("#descricao").html("Descrição: " + row.descricao);
+                        $("#genero").html("Nº de Empregados: " + row.num_trabalhadores);
+                        $("#ciclo").html("Região do País: " + row.regiao_pais);
+
+                    } else {
+                        console.log('No Email?');
+                    }
+                }
+            });
+        },
+    });
+};

@@ -41,13 +41,32 @@ global.helpme.post('/savePergunta', function (req, res) {
 });
 
 global.helpme.post('/saveResposta', function (req, res) {
-    global.model_respostas.saveResposta(req.body.resposta);
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
+    global.model_respostas.saveResposta(req.body.resposta, function (err, data){
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
 });
 
 global.helpme.post('/saveLikes', function (req, res) {
     global.model_perguntas.saveLikes(req.body.num_likes);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
+});
+
+global.helpme.post('/getUtilizador', function (req, res) {
+    global.model_utilizador.getUtilizador(req.body.idUtilizador, function (err, data){
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
 });
 
 global.helpme.get('/readRespostas', function (req, res) {

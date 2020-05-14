@@ -30,6 +30,22 @@ function readUtilizador(callback) {
     });
 };
 
+function getUtilizador(id, callback) {
+    //criar e executar a query de leitura na BD
+    var query = global.connect.con.query('SELECT * from utilizador WHERE idUtilizador ="' + id + '"', function (err, rows, fields) {
+        console.log(query.sql);
+        console.log(rows);
+        var string = JSON.stringify(rows);
+        var json = JSON.parse(string);
+        if (!err) {
+            //gravar os resultados rows no callback
+            callback(null, json);
+        }
+        else
+            console.log('Erro na Query.', err);
+    });
+};
+
 //função de gravação que recebe os parâmetros
 function saveUtilizador(nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
     //receber os dados do formu�rio que são enviados por post e guarda em objeto JSON
@@ -170,7 +186,7 @@ function setGestor(idUtilizador, nome, idade, genero, profissao, email, password
 
 
 module.exports = {
-    login:login,
+    login: login,
     readUtilizador: readUtilizador,
     saveUtilizador: saveUtilizador,
     setUtilizador: setUtilizador,
@@ -180,5 +196,6 @@ module.exports = {
     readEmpresa: readEmpresa,
     setEmpresa: setEmpresa,
     readGestor: readGestor,
-    setGestor: setGestor
+    setGestor: setGestor,
+    getUtilizador: getUtilizador
 }
