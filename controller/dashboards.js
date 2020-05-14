@@ -304,5 +304,3 @@ function graficoPerguntaArea() {
     });
 
 }
-
-//se

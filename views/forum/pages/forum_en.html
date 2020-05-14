@@ -200,91 +200,110 @@
                     <!-- Accordion -->
                     <div class="accordion">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <h2 style="font-size: 24px;">Áreas de Conhecimento</h2>
-                            <div class="panel panel-default" style="height: 60px">
+                            <h2 style="font-size: 24px;">Areas of expertise</h2>
+                            <div class="panel panel-default" style="height: 60px;">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 style="font-size: 15px">
-                                                <a class="panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#pIntegracao" aria-expanded="true" aria-controls="collapseOne">
-                                                    Gestão da Integração
-                                                </a>
-                                            </h4>
+                                        <div>
+                                            <a class="panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#pIntegracao" aria-expanded="true">
+                                                <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
+                                                Integration Management
+                                                <p id="gIntegracao" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                            </a>
+                                    </h4>
                                 </div>
                             </div>
                             <div class="panel panel-default" style="height: 60px">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                     <h4 style="font-size: 15px">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#pCronograma" aria-expanded="false" aria-controls="collapseTwo">
-                                                    Gestão do Cronograma
-                                                </a>
-                                            </h4>
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#pCronograma" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
+                                            Schedule Management
+                                            <p id="gCronograma" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                        </a>
+                                    </h4>
                                 </div>
                             </div>
                             <div class="panel panel-default" style="height: 60px">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#pCusto" aria-expanded="false" aria-controls="collapseThree">
-                                                    Gestão de Custo
-                                                </a>
-                                            </h4>
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#pCusto" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
+                                            Cost Management
+                                            <p id="gCusto" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                        </a>
+                                    </h4>
                                 </div>
                             </div>
                             <div class="panel panel-default" style="height: 60px">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapseThree">
-                                                    Gestão de Qualidade
-                                                </a>
-                                            </h4>
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
+                                            Quality management
+                                            <p id="gQualidade" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                        </a>
+                                    </h4>
                                 </div>
                                 <a id="collapse4"></a>
                             </div>
                             <div class="panel panel-default" style="height: 60px">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapseThree">
-                                                    Gestão de Recursos
-                                                </a>
-                                            </h4>
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
+                                            Resource management
+                                            <p id="gRecursos" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                        </a>
+                                    </h4>
                                 </div>
                                 <a id="collapse5"></a>
                             </div>
                             <div class="panel panel-default" style="height: 60px">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapseThree">
-                                                    Gestão de Comunicação
-                                                </a>
-                                            </h4>
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
+                                            Communication Management
+                                            <p id="gComunicacao" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                        </a>
+                                    </h4>
                                 </div>
                                 <a id="collapse6"></a>
                             </div>
                             <div class="panel panel-default" style="height: 60px">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapseThree">
-                                                    Gestão de Riscos
-                                                </a>
-                                            </h4>
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
+                                            Risk management
+                                            <p id="gRiscos" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                        </a>
+                                    </h4>
                                 </div>
                                 <a id="collapse7"></a>
                             </div>
                             <div class="panel panel-default" style="height: 60px">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapseThree">
-                                                    Gestão de Aquisições
-                                                </a>
-                                            </h4>
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
+                                            Acquisition Management
+                                            <p id="gAquisicoes" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                        </a>
+                                    </h4>
                                 </div>
                                 <a id="collapse8"></a>
                             </div>
                             <div class="panel panel-default" style="height: 60px">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapseThree">
-                                                    Gestão de Stakeholders
-                                                </a>
-                                            </h4>
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
+                                            Stakeholder Management
+                                            <p id="gStakeholders" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                        </a>
+                                    </h4>
                                 </div>
                                 <a id="collapse9"></a>
                             </div>

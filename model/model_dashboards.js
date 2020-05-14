@@ -80,17 +80,6 @@ function graficoPerguntaArea(callback) {
     });
 
 };
-/*
-function graficoRelatorioUser(callback) {
-    global.connect.con.query('SELECT count(*) as numero from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador = utilizador.idUtilizador where profissao = "Estudante" UNION ALL SELECT count(*) from utilizador where profissao = "Professor/Investigador" UNION ALL SELECT count(*) from utilizador where profissao = "Empresa" UNION ALL SELECT count(*) from utilizador where profissao = "Gestor de Projeto" UNION ALL SELECT count(*) from utilizador', function (err, rows, fields) {
-        if (!err) {
-            callback(null, rows);
-        }
-        else
-            console.log('ERRO', err);
-    });
-
-};*/
 
 function graficoRelatorioUser(callback) {
     global.connect.con.query('SELECT count(*) as numero from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador = utilizador.idUtilizador where profissao = "Estudante" UNION ALL SELECT count(*) from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador = utilizador.idUtilizador where profissao = "Professor/Investigador" UNION ALL SELECT count(*) from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador = utilizador.idUtilizador where profissao = "Empresa" UNION ALL SELECT count(*) from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador = utilizador.idUtilizador where profissao = "Gestor de Projeto"  UNION ALL SELECT count(*) from utilizador', function (err, rows, fields) {

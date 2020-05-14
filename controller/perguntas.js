@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    getPerguntasInicio()
+    getPerguntasInicio();
+    countArea();
 });
 
 function getPerguntasInicio() {
@@ -262,4 +263,41 @@ function getPerfil(id) {
             });
         },
     });
+};
+
+function countArea() {
+
+    //chamada ajax
+    $.ajax({
+        type: 'GET',
+        url: '/graficoPerguntaArea',
+        //os dados recebidos do model estão na variável data
+        success: function (data) {
+            console.log(data)
+            //criação de uma tabela para demonstração dos resultados recebidos
+            //$('#gIntegracao').val(data[5].numero);
+            var gAmbito = data[0].numero;
+            var gAquisicoes = data[1].numero;
+            var gComunicacao = data[2].numero;
+            var gCronograma = data[3].numero;
+            var gCusto = data[4].numero;
+            var gIntegracao = data[5].numero;
+            var gQualidade = data[6].numero;
+            var gRecursos = data[7].numero;
+            var gRiscos = data[8].numero;
+            var gStakeholders = data[9].numero;
+
+            $('#gAmbito').html("(" + gAmbito + ")");
+            $('#gAquisicoes').html("(" + gAquisicoes + ")");
+            $('#gComunicacao').html("(" + gComunicacao + ")");
+            $('#gCronograma').html("(" + gCronograma + ")");
+            $('#gCusto').html("(" + gCusto + ")");
+            $('#gIntegracao').html("(" + gIntegracao + ")");
+            $('#gQualidade').html("(" + gQualidade + ")");
+            $('#gRecursos').html("(" + gRecursos + ")");
+            $('#gRiscos').html("(" + gRiscos + ")");
+            $('#gStakeholders').html("(" + gStakeholders + ")");
+        }
+    });
+
 };
