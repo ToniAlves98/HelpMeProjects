@@ -711,7 +711,7 @@ fieldset[disabled] .btn-theme {
 .header .nav-item-child {
 	font-size: 14px;
 	font-weight: 700;
-	color: #515769;
+	color: #515769; /* Mudado */
 	letter-spacing: .02em;
 	font-family: "Ubuntu", Helvetica, Arial, sans-serif;
 	line-height: 55px;
@@ -733,7 +733,7 @@ fieldset[disabled] .btn-theme {
 .header .nav-item-child:hover,
 .page-on-scroll .header .nav-item-child:hover {
 	color: #ff0000;
-	transition-duration: .4s
+	transition-duration: .3s
 }
 
 .header .nav li.active .nav-item-child {
@@ -832,7 +832,7 @@ fieldset[disabled] .btn-theme {
 		display: inline-block
 	}
 	.page-on-scroll .header .nav-item-child {
-		color: #fff;
+		color: #fff; /* Mudado */
 		transition-duration: .3s;
 		transition-property: all;
 		transition-timing-function: cubic-bezier(.7, 1, .7, 1)
