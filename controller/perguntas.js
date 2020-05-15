@@ -29,7 +29,7 @@ function getPerguntasInicio() {
         success: function(data, status, request) {
             if (request.status == 200) {
                 var txt = "";
-                
+
                 data.slice(y, x).forEach(function(row) {
                     txt += "<div class='panel panel-default'>";
                     txt += "<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
@@ -110,7 +110,7 @@ function seePergunta(id) {
             var txt = "";
             result.forEach(function(row) {
                 txt += "<h2>" + row.titulo_pergunta + "</h2>";
-                txt += "<p style=\"margin-top:2px\" data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil("+row.Utilizador_idUtilizador+")\"><strong>" + row.nome + "</strong></p>";
+                txt += "<p style=\"margin-top:2px\" data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\"><strong>" + row.nome + "</strong></p>";
                 txt += "<p style=\"border-bottom: 1px solid #515769;\">" + row.pergunta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"like(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p>";
 
                 $.ajax({
@@ -123,7 +123,7 @@ function seePergunta(id) {
 
                         var resp = "";
                         result.forEach(function(row) {
-                            resp += "<div style=\"border-bottom: 1px solid #515769;\"><p data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil("+row.Utilizador_idUtilizador+")\"><strong>" + row.nome + "</strong><br><p>" + row.resposta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"likeResp(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p></div>";
+                            resp += "<div style=\"border-bottom: 1px solid #515769;\"><p data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\"><strong>" + row.nome + "</strong><br><p>" + row.resposta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"likeResp(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p></div>";
                         });
                         $("#resposta").html(resp);
                     },
@@ -233,17 +233,17 @@ function getPerfil(id) {
         contentType: 'application/json',
         success: function(result, data) {
 
-            result.forEach(function(row){
-                if(row.perfil == "privado"){
+            result.forEach(function(row) {
+                if (row.perfil == "privado") {
                     console.log('Privado');
                     alert('Este perfil é privado!');
 
-                }else{
+                } else {
                     console.log('Publico');
                     $("#nomeUtilizador").html(row.nome);
                     $("#profissao").html(row.profissao);
 
-                    if(row.profissao == "Estudante"){
+                    if (row.profissao == "Estudante") {
                         $("#email").html("Email: " + row.email);
                         $("#idade").html("Idade: " + row.idade);
                         $("#genero").html("Género: " + row.genero);
@@ -280,6 +280,37 @@ function getPerfil(id) {
     });
 };
 
+function getAreaConhecimento(id) {
+    var data = {};
+    data.AreaConhecimento_idAreaConhecimento = id;
+    var txt = "";
+
+    $.ajax({
+        type: 'POST',
+        url: '/readPerguntasPorArea',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function(result, data) {
+            console.log("result " + result);
+            console.log("data " + data);
+
+            result.slice(y, x).forEach(function(row) {
+                txt += "<div class='panel panel-default'>";
+                txt += "<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
+                txt += "<h4 style='font-size: 15px'>";
+                if (row.idUser != null) {
+                    txt += "<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"pages('perg_resp'); seePergunta(" + row.idPergunta + ")\">"
+                } else {
+                    txt += "<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert('Precisas fazer login para ter acesso às perguntas completas')\">"
+                }
+                txt += row.titulo_pergunta + "</a></h4><p>" + row.pergunta + "</p></div></div>";
+            });
+
+            $("#perguntas_forum").html(txt);
+        },
+    });
+};
+
 function countArea() {
 
     //chamada ajax
@@ -287,7 +318,7 @@ function countArea() {
         type: 'GET',
         url: '/graficoPerguntaArea',
         //os dados recebidos do model estão na variável data
-        success: function (data) {
+        success: function(data) {
             console.log(data)
             //criação de uma tabela para demonstração dos resultados recebidos
             //$('#gIntegracao').val(data[5].numero);

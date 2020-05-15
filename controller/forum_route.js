@@ -11,6 +11,18 @@ global.helpme.get('/readPerguntas', function (req, res) {
     });
 });
 
+global.helpme.post('/readPerguntasPorArea', function (req, res) {
+    global.model_perguntas.readPerguntasPorArea(req.body.AreaConhecimento_idAreaConhecimento, function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
 global.helpme.post('/getPergunta', function (req, res) {
     global.model_perguntas.getPergunta(req.body.idPergunta, function (err, data) {
         if (err) {

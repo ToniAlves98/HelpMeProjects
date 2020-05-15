@@ -16,6 +16,19 @@ function readPerguntas(callback) {
     });
 };
 
+function readPerguntasPorArea(id, callback){
+    console.log('idArea: '+id);
+    global.connect.con.query('SELECT * FROM pergunta WHERE AreaConhecimento_idAreaConhecimento =\''+ id +'\' order by num_likes DESC', function(err, rows, fields) {
+        var string = JSON.stringify(rows);
+        var json = JSON.parse(string);
+        if (!err) {
+            callback(null, json);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+};
+
 function getPergunta(idPergunta, callback){
     var id = idPergunta[0];
     global.session.idPergunta = id;
@@ -67,18 +80,6 @@ function saveLikes(num_likes, callback){
          console.log('Error while performing Query.', err);
  });
  }
-
- 
- function readPerguntasPorArea(AreaConhecimento_idAreaConhecimento, callback) {
-    global.connect.con.query('SELECT titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, nome FROM pergunta INNER JOIN utilizador ON pergunta.Utilizador_idUtilizador = utilizador.idUtilizador where AreaConhecimento_idConhecimento = "'+ AreaConhecimento_idAreaConhecimento +'"', function(err, rows, fields) {
-        if (!err) {
-            callback(null, rows);
-        }
-        else
-            console.log('Error while performing Query.', err);
-    });
-};
-
 
 module.exports = {
     readPerguntas: readPerguntas,
