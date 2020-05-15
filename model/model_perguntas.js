@@ -68,10 +68,23 @@ function saveLikes(num_likes, callback){
  });
  }
 
+ 
+ function readPerguntasPorArea(AreaConhecimento_idAreaConhecimento, callback) {
+    global.connect.con.query('SELECT titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, nome FROM pergunta INNER JOIN utilizador ON pergunta.Utilizador_idUtilizador = utilizador.idUtilizador where AreaConhecimento_idConhecimento = "'+ AreaConhecimento_idAreaConhecimento +'"', function(err, rows, fields) {
+        if (!err) {
+            callback(null, rows);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+};
+
+
 module.exports = {
     readPerguntas: readPerguntas,
     getPergunta: getPergunta,
     getResposta: getResposta,
     savePergunta: savePergunta,
-    saveLikes: saveLikes
+    saveLikes: saveLikes,
+    readPerguntasPorArea: readPerguntasPorArea
     }
