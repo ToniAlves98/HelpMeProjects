@@ -6,27 +6,32 @@ $(document).ready(function () {
 
 function getEventos() {
     var data = {};
+    var txt = "";
 
     $.ajax({
         type: "GET",
         url: '/readEventos',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
 
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
-                var txt = "";
-                txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
-                txt += "<thead>";
-                txt += "<tr><th>Id</th><th>Nome</th><th>Área de Conhecimento</th><th>Tipo</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
+                console.log('eventos');
+                //txt += "<table class=\"table table-hover table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" >";
+                //txt += "<thead>";
+                //txt += "<tr><th>Id</th><th>Nome</th><th>Área de Conhecimento</th><th>Tipo</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
 
                 data.forEach(function (row) {
+                    console.log('eventos2');
+                /*    txt += "<table class=\"table table-hover table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" >";
+                    txt += "<thead>";
+                    txt += "<tr><th>Id</th><th>Nome</th><th>Área de Conhecimento</th><th>Tipo</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
                     txt += "<tr><td>" + row.idEvento + "</td><td>" + row.nomeEvento + "</td><td>" + row.tipo_area + "</td><td>" + row.tipoEvento + "</td><td>" + row.imagem + "</td> <td>" + row.nome + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
-
+                    txt += "</tbody></table>";*/
+                    txt += <p>Assim</p>
                 });
-                txt += "</tbody></table>";
+                
 
                 $("#tabela_eventos").html(txt);
             }

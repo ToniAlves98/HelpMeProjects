@@ -1,419 +1,275 @@
 ﻿<link href="../css/layout.bar.css" rel="stylesheet" type="text/css" />
+<!--========== PAGE LAYOUT =====<link href="../css/layout.bar.css" rel="stylesheet" type="text/css" />
+   <!--========== PAGE LAYOUT ==========-->
+<!-- Forum -->
+<!--div style="background-image: url('./img/1920x1080/long01.png');"-->
+<!--div style="background-color: #a6a7aa; margin-top: 90px;"-->
+<div id="about" class ="bg-color-sky-light" style="margin-top: 100px;">
+<div class="row">
+   <div class="p-2"  align="center">
+      <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#adicionar_pedido">
+      <span class="icon text-white-50">
+      <i class="fas fa-plus-circle"></i>
+      </span>
+      <span class="text">Adicionar evento</span>
+      </a>
+   </div>
+   <div class="p-2"  align="center">
+      <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#associar_imagem">
+      <span class="icon text-white-50">
+      <i class="fas fa-upload"></i>
+      </span>
+      <span class="text">Associar imagem</span>
+      </a>
+   </div>
+   <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
+   <div class="tipo-evento" align="right">
+      <select id="eventos"></select>
+      <select id="area"></select>
+   </div>
+   <div id="tabela_eventos"></div>
+   <div id="noticias"></div>
+</div>
 
-    <!--========== PAGE LAYOUT ==========-->
-    <!-- Forum -->
-    <!--div style="background-image: url('./img/1920x1080/long01.png');"-->
-    <!--div style="background-color: #a6a7aa; margin-top: 90px;"-->
-    <div id="about" class ="bg-color-sky-light" style="margin-top: 100px;">
-        <div class="row">
-            <div class="p-2"  align="center">
-                <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#adicionar_pedido">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-plus-circle"></i>
-                    </span>
-                    <span class="text">Adicionar evento</span>
-                </a>
+<!--========== END PAGE LAYOUT ==========-->
+<!--========== MODAL ==========-->
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Nome do Evento</h4>
+         </div>
+         <div class="row">
+            <figure class="crop-modal" align="center"> <img alt="" src="./img/carousel/101.png"> </figure>
+            <div class="modal-body">
+               <p>
+                  Descrição: A imagem podia ficar à esquerda e a descrição em vez de ficar em baixo podia ficar do lado direito.
+                  A experimentar.
+               </p>
             </div>
-            <div class="p-2"  align="center">
-                <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#associar_imagem">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-upload"></i>
-                    </span>
-                    <span class="text">Associar imagem</span>
-                </a>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+<!--========== END FOOTER ==========-->
+<div class="modal fadeIn gestaoEvento" id="adicionar_pedido" role="dialog" aria-modal="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <div class="col-lg-12 text-center">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <br />
+               <h1>Realizar pedido de evento</h1>
             </div>
-            <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
-            <div class="tipo-evento" align="right">
-                <select id="eventos"></select>
-                <select id="area"></select>
-            </div>
-        </div>
-
-        <div class="container cta-80" align="center">
-            <div class="row" style="margin-bottom:80px">
-                <div class="col-md-3" style="margin-right:6em">
-                    <div class="item-box-blog-image">
-                        <!--Date-->
-                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Data</span> </div>
-                        <!--Image-->
-                        <div class="crop">
-                            <img class="img-responsive" src="./img/carousel/101.png" alt="">
-                        </div>
-                    </div>
-                    <div class="item-box-blog-body">
-                        <!--Heading-->
-                        <div class="item-box-blog-heading">
-                            <a href="#" tabindex="0">
-                                <h5>ENEI</h5>
-                            </a>
-                        </div>
-                        <div class="mt"> <a data-toggle="modal" data-target="#myModal" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                        <!--Read More Button-->
-                    </div>
-                </div>
-                <div class="col-md-3" style="margin-right:6em">
-                    <div class="item-box-blog-image">
-                        <!--Date-->
-                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                        <!--Image-->
-                        <div class="crop">
-                            <figure> <img alt="" src="./img/carousel/102.jpg"> </figure>
-                        </div>
-                    </div>
-                    <div class="item-box-blog-body">
-                        <!--Heading-->
-                        <div class="item-box-blog-heading">
-                            <a href="#" tabindex="0">
-                                <h5>Start Point</h5>
-                            </a>
-                        </div>
-                        <div class="mt"> <a data-toggle="modal" data-target="#myModal" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                        <!--Read More Button-->
-                    </div>
-                </div>
-                <div class="col-md-3" style="margin-right:6em">
-                    <div class="item-box-blog-image">
-                        <!--Date-->
-                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                        <!--Image-->
-                        <div class="crop">
-                            <figure> <img alt="" src="./img/carousel/103.jpg"> </figure>
-                        </div>
-                    </div>
-                    <div class="item-box-blog-body">
-                        <!--Heading-->
-                        <div class="item-box-blog-heading">
-                            <a href="#" tabindex="0">
-                                <h5>Feira de Voluntariado</h5>
-                            </a>
-                        </div>
-                        <!--Text-->
-                        <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                        <!--Read More Button-->
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-bottom:70px">
-                <div class="col-md-3" style="margin-right:5em">
-                    <div class="item-box-blog-image">
-                        <!--Date-->
-                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                        <!--Image-->
-                        <div class="crop">
-                            <figure> <img alt="" src="./img/carousel/104.jpg"> </figure>
-                        </div>
-                    </div>
-                    <div class="item-box-blog-body">
-                        <!--Heading-->
-                        <div class="item-box-blog-heading">
-                            <a href="#" tabindex="0">
-                                <h5>TSI2Market</h5>
-                            </a>
-                        </div>
-                        <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                        <!--Read More Button-->
-                    </div>
-                </div>
-                <div class="col-md-3" style="margin-right:6em">
-                    <div class="item-box-blog-image">
-                        <!--Date-->
-                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                        <!--Image-->
-                        <div class="crop">
-                            <figure> <img alt="" src="./img/carousel/101.png"> </figure>
-                        </div>
-                    </div>
-                    <div class="item-box-blog-body">
-                        <!--Heading-->
-                        <div class="item-box-blog-heading">
-                            <a href="#" tabindex="0">
-                                <h5>Start Point</h5>
-                            </a>
-                        </div>
-                        <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                        <!--Read More Button-->
-                    </div>
-                </div>
-                <div class="col-md-3" style="margin-right:6em">
-                    <div class="item-box-blog-image">
-                        <!--Date-->
-                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                        <!--Image-->
-                        <div class="crop">
-                            <figure> <img alt="" src="./img/carousel/102.jpg"> </figure>
-                        </div>
-                    </div>
-                    <div class="item-box-blog-body">
-                        <!--Heading-->
-                        <div class="item-box-blog-heading">
-                            <a href="#" tabindex="0">
-                                <h5>Feira de Voluntariado</h5>
-                            </a>
-                        </div>
-                        <!--Text-->
-                        <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                        <!--Read More Button-->
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-bottom:70px">
-                <div class="col-md-3" style="margin-right:5em">
-                    <div class="item-box-blog-image">
-                        <!--Date-->
-                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                        <!--Image-->
-                        <div class="crop">
-                            <figure> <img alt="" src="./img/carousel/103.jpg"> </figure>
-                        </div>
-                    </div>
-                    <div class="item-box-blog-body">
-                        <!--Heading-->
-                        <div class="item-box-blog-heading">
-                            <a href="#" tabindex="0">
-                                <h5>TSI2Market</h5>
-                            </a>
-                        </div>
-                        <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                        <!--Read More Button-->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Notícias-->
-        <!--div style="background-color:#a6a7aa; margin-right: 80px; margin-left: 60px;"-->
-        <div style="margin-top:30px; background-color: white; margin-left: 60px; margin-right: 80px; margin-bottom: 30px;">
+         </div>
+         <div class="modal-body" style="padding: 40px 60px;">
             <div class="row">
-                <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px;">Noticias</h1>
-                <div class="tipo-evento" style="margin-top:85px;" align="right">
-                    <select id="area2"></select>
-                </div>
+               <div class="col-lg-12 text-center">
+                  <form id="formNewPedido" class="user text-center" method="post">
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="nomeEvento" aria-describedby="" placeholder="Nome do evento">
+                     </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="tipoEvento" placeholder="Tipo de evento">
+                     </div>
+                     <div class="form-group">
+                        <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento">
+                           <option value="" disabled selected>Área de Conhecimento</option>
+                           <option value="Gestão do Âmbito">Gestão do Âmbito</option>
+                           <option value="Gestão de Aquisições">Gestão de Aquisições</option>
+                           <option value="Gestão da Comunicação">Gestão da Comunicação</option>
+                           <option value="Gestão do Cronograma">Gestão do Cronograma</option>
+                           <option value="Gestão do Custo">Gestão do Custo</option>
+                           <option value="Gestão da Integração">Gestão da Integração</option>
+                           <option value="Gestão da Qualidade">Gestão da Qualidade</option>
+                           <option value="Gestão dos Recursos">Gestão dos Recursos</option>
+                           <option value="Gestão de Riscos">Gestão de Riscos</option>
+                           <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
+                        </select>
+                     </div>
+                     <div class="form-group">
+                        <input type="date" class="form-control form-control-user" id="inicioEvento" placeholder="Data de início">
+                     </div>
+                     <div class="form-group">
+                        <input type="date" class="form-control form-control-user" id="fimEvento" placeholder="Data de fim">
+                     </div>
+                     <br />
+                     <button type="submit" method="post" id="btEvento" class="btn btn-primary btn-user btn-block">Submeter</button>
+                  </form>
+               </div>
             </div>
-
-            <div class="container cta-80" align="center">
-                <div class="row" style="margin-bottom:80px">
-                    <div class="col-md-3" style="margin-right:6em">
-                        <div class="item-box-blog-image">
-                            <!--Date-->
-                            <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Data</span> </div>
-                            <!--Image-->
-                            <div class="crop">
-                                <img class="img-responsive" src="./img/carousel/101.png" alt="">
-                            </div>
-                        </div>
-                        <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                    <h5>ENEI</h5>
-                                </a>
-                            </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                        </div>
-                    </div>
-                    <div class="col-md-3" style="margin-right:6em">
-                        <div class="item-box-blog-image">
-                            <!--Date-->
-                            <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                            <!--Image-->
-                            <div class="crop">
-                                <figure> <img alt="" src="./img/carousel/102.jpg"> </figure>
-                            </div>
-                        </div>
-                        <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                    <h5>Start Point</h5>
-                                </a>
-                            </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                        </div>
-                    </div>
-                    <div class="col-md-3" style="margin-right:6em">
-                        <div class="item-box-blog-image">
-                            <!--Date-->
-                            <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                            <!--Image-->
-                            <div class="crop">
-                                <figure> <img alt="" src="./img/carousel/103.jpg"> </figure>
-                            </div>
-                        </div>
-                        <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                    <h5>Feira de Voluntariado</h5>
-                                </a>
-                            </div>
-                            <!--Text-->
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom:70px">
-                    <div class="col-md-3" style="margin-right:5em">
-                        <div class="item-box-blog-image">
-                            <!--Date-->
-                            <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                            <!--Image-->
-                            <div class="crop">
-                                <figure> <img alt="" src="./img/carousel/104.jpg"> </figure>
-                            </div>
-                        </div>
-                        <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                    <h5>TSI2Market</h5>
-                                </a>
-                            </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                        </div>
-                    </div>
-                    <div class="col-md-3" style="margin-right:6em">
-                        <div class="item-box-blog-image">
-                            <!--Date-->
-                            <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                            <!--Image-->
-                            <div class="crop">
-                                <figure> <img alt="" src="./img/carousel/101.png"> </figure>
-                            </div>
-                        </div>
-                        <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                    <h5>Start Point</h5>
-                                </a>
-                            </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="modal fadeIn gestaoRelatorio" id="associar_imagem" role="dialog" aria-modal="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <div class="col-lg-12 text-center">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <br />
+               <h1>Associar imagem ao pedido</h1>
             </div>
-        </div>
-    </div>
-<!--/div>
-</div-->
-    <!--========== END PAGE LAYOUT ==========-->
-    <!--========== MODAL ==========-->
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Nome do Evento</h4>
-                </div>
-                <div class="row">
-                    <figure class="crop-modal" align="center"> <img alt="" src="./img/carousel/101.png"> </figure>
-                    <div class="modal-body">
-                        <p>
-                            Descrição: A imagem podia ficar à esquerda e a descrição em vez de ficar em baixo podia ficar do lado direito.
-                            A experimentar.
-                        </p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+         </div>
+         <div class="modal-body" style="padding: 40px 60px;">
+            <div class="row">
+               <div class="col-lg-12">
+                  <form id="formNewRelatorio" enctype="multipart/form-data" action="/g" class="user text-center" method="post">
+                     <div class="form-group">
+                        <input type="file" name="file" id="file" />
+                        <span>(apenas ficheiros em formato png)</span>
+                     </div>
+                     <br />
+                     <button type="submit" value="upload" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
+                  </form>
+               </div>
             </div>
-
-        </div>
-    </div>
-
-
-
-    <!--========== END FOOTER ==========-->
-
-
-    <div class="modal fadeIn gestaoEvento" id="adicionar_pedido" role="dialog" aria-modal="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="col-lg-12 text-center">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <br />
-                        <h1>Realizar pedido de evento</h1>
-                    </div>
-                </div>
-                <div class="modal-body" style="padding: 40px 60px;">
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <form id="formNewPedido" class="user text-center" method="post">
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="nomeEvento" aria-describedby="" placeholder="Nome do evento">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="tipoEvento" placeholder="Tipo de evento">
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento">
-                                        <option value="" disabled selected>Área de Conhecimento</option>
-                                        <option value="Gestão do Âmbito">Gestão do Âmbito</option>
-                                        <option value="Gestão de Aquisições">Gestão de Aquisições</option>
-                                        <option value="Gestão da Comunicação">Gestão da Comunicação</option>
-                                        <option value="Gestão do Cronograma">Gestão do Cronograma</option>
-                                        <option value="Gestão do Custo">Gestão do Custo</option>
-                                        <option value="Gestão da Integração">Gestão da Integração</option>
-                                        <option value="Gestão da Qualidade">Gestão da Qualidade</option>
-                                        <option value="Gestão dos Recursos">Gestão dos Recursos</option>
-                                        <option value="Gestão de Riscos">Gestão de Riscos</option>
-                                        <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="date" class="form-control form-control-user" id="inicioEvento" placeholder="Data de início">
-                                </div>
-                                <div class="form-group">
-                                    <input type="date" class="form-control form-control-user" id="fimEvento" placeholder="Data de fim">
-                                </div>
-                                <br />
-                                <button type="submit" method="post" id="btEvento" class="btn btn-primary btn-user btn-block">Submeter</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- Forum -->
+<!--div style="background-image: url('./img/1920x1080/long01.png');"-->
+<!--div style="background-color: #a6a7aa; margin-top: 90px;"-->
+<div id="about" class ="bg-color-sky-light" style="margin-top: 100px;">
+<div class="row">
+   <div class="p-2"  align="center">
+      <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#adicionar_pedido">
+      <span class="icon text-white-50">
+      <i class="fas fa-plus-circle"></i>
+      </span>
+      <span class="text">Adicionar evento</span>
+      </a>
+   </div>
+   <div class="p-2"  align="center">
+      <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#associar_imagem">
+      <span class="icon text-white-50">
+      <i class="fas fa-upload"></i>
+      </span>
+      <span class="text">Associar imagem</span>
+      </a>
+   </div>
+   <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
+   <div class="tipo-evento" align="right">
+      <select id="eventos"></select>
+      <select id="area"></select>
+   </div>
+</div>
+<div id="eventos"></div>
+<div id="noticias"></div>
+<!--========== END PAGE LAYOUT ==========-->
+<!--========== MODAL ==========-->
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Nome do Evento</h4>
+         </div>
+         <div class="row">
+            <figure class="crop-modal" align="center">
+               <img alt="" src="./img/carousel/101.png">
+            </figure>
+            <div class="modal-body">
+               <p>
+                  Descrição: A imagem podia ficar à esquerda e a descrição em vez de ficar em baixo podia ficar do lado direito.
+                  A experimentar.
+               </p>
             </div>
-        </div>
-    </div>
-
-
-    <div class="modal fadeIn gestaoRelatorio" id="associar_imagem" role="dialog" aria-modal="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="col-lg-12 text-center">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <br />
-                        <h1>Associar imagem ao pedido</h1>
-                    </div>
-                </div>
-                <div class="modal-body" style="padding: 40px 60px;">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form id="formNewRelatorio" enctype="multipart/form-data" action="/g" class="user text-center" method="post">
-                                <div class="form-group">
-                                    <input type="file" name="file" id="file" />
-                                    <span>(apenas ficheiros em formato png)</span>
-                                </div>
-                                <br />
-                                <button type="submit" value="upload" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+<!--========== END FOOTER ==========-->
+<div class="modal fadeIn gestaoEvento" id="adicionar_pedido" role="dialog" aria-modal="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <div class="col-lg-12 text-center">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <br />
+               <h1>Realizar pedido de evento</h1>
             </div>
-        </div>
-    </div>
-
+         </div>
+         <div class="modal-body" style="padding: 40px 60px;">
+            <div class="row">
+               <div class="col-lg-12 text-center">
+                  <form id="formNewPedido" class="user text-center" method="post">
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="nomeEvento" aria-describedby="" placeholder="Nome do evento">
+                     </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="tipoEvento" placeholder="Tipo de evento">
+                     </div>
+                     <div class="form-group">
+                        <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento">
+                           <option value="" disabled selected>Área de Conhecimento</option>
+                           <option value="Gestão do Âmbito">Gestão do Âmbito</option>
+                           <option value="Gestão de Aquisições">Gestão de Aquisições</option>
+                           <option value="Gestão da Comunicação">Gestão da Comunicação</option>
+                           <option value="Gestão do Cronograma">Gestão do Cronograma</option>
+                           <option value="Gestão do Custo">Gestão do Custo</option>
+                           <option value="Gestão da Integração">Gestão da Integração</option>
+                           <option value="Gestão da Qualidade">Gestão da Qualidade</option>
+                           <option value="Gestão dos Recursos">Gestão dos Recursos</option>
+                           <option value="Gestão de Riscos">Gestão de Riscos</option>
+                           <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
+                        </select>
+                     </div>
+                     <div class="form-group">
+                        <input type="date" class="form-control form-control-user" id="inicioEvento" placeholder="Data de início">
+                     </div>
+                     <div class="form-group">
+                        <input type="date" class="form-control form-control-user" id="fimEvento" placeholder="Data de fim">
+                     </div>
+                     <br />
+                     <button type="submit" method="post" id="btEvento" class="btn btn-primary btn-user btn-block">Submeter</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="modal fadeIn gestaoRelatorio" id="associar_imagem" role="dialog" aria-modal="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <div class="col-lg-12 text-center">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <br />
+               <h1>Associar imagem ao pedido</h1>
+            </div>
+         </div>
+         <div class="modal-body" style="padding: 40px 60px;">
+            <div class="row">
+               <div class="col-lg-12">
+                  <form id="formNewRelatorio" enctype="multipart/form-data" action="/g" class="user text-center" method="post">
+                     <div class="form-group">
+                        <input type="file" name="file" id="file" />
+                        <span>(apenas ficheiros em formato png)</span>
+                     </div>
+                     <br />
+                     <button type="submit" value="upload" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
     <!-- dropdown -->
     <script>
         function menu() {

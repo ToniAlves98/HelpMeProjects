@@ -3,6 +3,20 @@ $(document).ready(function() {
     countArea();
 });
 
+var x = 5;
+var y = 0;
+
+function next() {
+    x += 5;
+    y += 5;
+}
+
+function previous() {
+    x -= 5;
+    y -= 5;
+}
+
+
 function getPerguntasInicio() {
     var data = {};
 
@@ -15,7 +29,8 @@ function getPerguntasInicio() {
         success: function(data, status, request) {
             if (request.status == 200) {
                 var txt = "";
-                data.forEach(function(row) {
+                
+                data.slice(y, x).forEach(function(row) {
                     txt += "<div class='panel panel-default'>";
                     txt += "<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
                     txt += "<h4 style='font-size: 15px'>";
