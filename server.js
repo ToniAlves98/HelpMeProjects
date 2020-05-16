@@ -43,7 +43,6 @@ global.helpme.use((req,res,next)=>{
 //definir rotas estáticas para ficheiros
 global.helpme.use(upload())
 global.helpme.use('/controller', global.express.static('controller'));
-global.helpme.use('/forum', global.express.static('views/forum'));
 global.helpme.use('/admin', global.express.static('views/admin'));
 global.helpme.use('/uploads', global.express.static('uploads'));
 global.helpme.use('/', global.express.static('views/forum'));
@@ -91,7 +90,7 @@ global.helpme.get('/teste', (req, res) => {
 
 //rota inicio
 global.helpme.get('/', function (req, res) {
-    if(req.session.idUser == null){
+    /*if(req.session.idUser == null){
         console.log('No session');
         //global.session.idUser = 1;
         req.session.idUser = 1;
@@ -99,8 +98,12 @@ global.helpme.get('/', function (req, res) {
         console.log('Session!' + req.session.idUser);
         //global.session.idUser += 1;
         req.session.idUser +=1;
-    }
+    }*/
     res.sendfile(path.join(__dirname + '/views/forum/index.html'));
+});
+
+global.helpme.get('/forum', function (req, res) {
+    res.sendfile(path.join(__dirname + '/views/forum/forum.html'));
 });
 
 global.helpme.use((req, res, next) => {

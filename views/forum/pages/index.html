@@ -474,15 +474,11 @@
 
     function hideAr(x) {
         if (x.classList == "collapsed panel-title-child fa fa-caret-down") {
-            console.log(x.classList);
             x.classList.remove("collapsed", "panel-title-child", "fa", "fa-caret-down");
             x.classList.add("collapsed", "panel-title-child", "fa", "fa-caret-up");
-            console.log(x.classList);
         } else {
-            console.log(x.classList);
             x.classList.remove("collapsed", "panel-title-child", "fa", "fa-caret-up");
             x.classList.add("collapsed", "panel-title-child", "fa", "fa-caret-down");
-            console.log(x.classList);
         }
     };
 </script>

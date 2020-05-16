@@ -29,7 +29,7 @@ $('#formNewLogin').on('submit', function(e) {
                     } && $('#email').val() != "admin@gmail.com") {
 
                     alert("Bem Vindo");
-                    window.location.href = "/index_en";
+                    window.location.href = "/inicial";
                 } else if (result = {
                         "denied": "dados inexistentes/errados",
                         "status": 201

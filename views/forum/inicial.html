@@ -16,11 +16,8 @@
       <link href="./css/layout.min.css" rel="stylesheet" type="text/css" />
       <link href="./css/forum.css" rel="stylesheet" type="text/css" />
       <link rel="shortcut icon" href="favicon.ico" />
-
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
    </head>
-   <body id="body" data-spy="scroll" data-target=".header" onload="pages('forum')">
+   <body id="body" data-spy="scroll" data-target=".header" onload="pages('index')">
       <header class="header navbar-fixed-top">
          <nav class="navbar" role="navigation">
             <div class="container">
@@ -40,7 +37,7 @@
                   <div class="language-switcher">
                      <ul class="nav-lang">
                         <li><a class="active" href="#">PT</a></li>
-                        <li><a href="#">EN</a></li>
+                        <li><a onclick="window.location.href = '/index_en'">EN</a></li>
                      </ul>
                   </div>
                   <div class="menu-container">
@@ -51,21 +48,21 @@
                         <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" onclick="pages('relatorios')">Relatórios</a></li>
                         <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" onclick="pages('nocoes')">Noções base</a></li>
                         <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" onclick="pages('informacoes')">Informação</a></li>
-                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" onclick="pages('perfil')">Perfil</a></li>
+                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#" data-toggle="modal" data-target="#login">Login</a></li>
                      </ul>
                   </div>
                </div>
             </div>
          </nav>
       </header>
-      <!--Modal Login>
+      <!--Modal Login-->
       <div class="modal fadeIn" id="login" role="dialog" aria-modal="true">
          <div class="modal-dialog">
             <div class="modal-content">
                <div class="modal-header">
                   <div class="col-lg-12 text-center">
                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                     <br/>
+                     <br />
                      <h1>Login</h1>
                   </div>
                </div>
@@ -79,7 +76,7 @@
                            <div class="form-group">
                               <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
                            </div>
-                           <br/>
+                           <br />
                            <button type="submit" id="btlogin" class="btn btn-primary btn-user btn-block">Login</button>
                         </form>
                      </div>
@@ -99,7 +96,7 @@
                </div>
             </div>
          </div>
-      </div-->
+      </div>
       <!-- ADD PAGE -->
       <div id="about">About e tal</div>
       <!--========== END PAGE LAYOUT ==========-->
@@ -112,7 +109,7 @@
                   <img class="footer-logo" src="./img/helpmeprojects_dark.png" alt="flameonepage Logo">
                </div>
                <div class="col-xs-6 text-right">
-                  <p>Mestrado em Gestão de Projeto de Engenharia Mudar Isto aqui</p>
+                  <p>Mestrado em Gestão de Projeto de Engenharia</p>
                   <p class="margin-b-0"><a class="fweight-700" href="#">Universidade do Minho</a></p>
                </div>
             </div>
@@ -123,40 +120,6 @@
       <!--========== END FOOTER ==========-->
       <!-- dropdown -->
       <script>
-         function pages(page) {
-         
-             load_home("about", page);
-         
-             function getEventTarget(e) {
-                 e = e || window.event;
-                 return e.target || e.srcElement;
-             }
-         
-             function load_home(var1, var2) {
-                 $.ajax({
-                     type: "GET",
-                     url: "./pages/" + var2 + ".html",
-                     data: {},
-                     success: function (data) {
-                         $("#" + var1).html(data);
-                     },
-                     error: function (data, err, err2) {
-                         console.log(data);
-                         console.log(err);
-                         console.log(err2);
-                         console.log(err2);
-                     }
-                 });
-                 var body = document.body;
-                 var html = document.documentElement;
-             }
-             $("#accordionSidebar").children("li").on('click', function () {
-                 var targetID = $(this).children('a').attr('id');
-                 //alert(targetID);
-                 load_home("content-wrapper", targetID);
-             });
-         };
-         
          function menu() {
              var y = document.getElementById("menu2");
              if(y.style.display === "block"){
