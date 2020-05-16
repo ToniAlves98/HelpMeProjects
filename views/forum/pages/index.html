@@ -369,7 +369,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
-                                        <a class="panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <a class="panel-title-child fa fa-caret-down" onclick="hideAr(this)" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             História do site
                                         </a>
                                     </h4>
@@ -383,7 +383,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                     <h4 class="panel-title">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <a class="collapsed panel-title-child fa fa-caret-down" onclick="hideAr(this)" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                             Valores
                                         </a>
                                     </h4>
@@ -397,7 +397,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 class="panel-title">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <a class="collapsed panel-title-child fa fa-caret-down" onclick="hideAr(this)" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                             Objetivos
                                         </a>
                                     </h4>
@@ -411,7 +411,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingFour">
                                     <h4 class="panel-title">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <a class="collapsed panel-title-child fa fa-caret-down" onclick="hideAr(this)" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                             Metas
                                         </a>
                                     </h4>
@@ -470,6 +470,20 @@
         //$("#info").html(txt);
         var div = document.getElementById('info');
         div.innerHTML = txt;
+    };
+
+    function hideAr(x) {
+        if (x.classList == "collapsed panel-title-child fa fa-caret-down") {
+            console.log(x.classList);
+            x.classList.remove("collapsed", "panel-title-child", "fa", "fa-caret-down");
+            x.classList.add("collapsed", "panel-title-child", "fa", "fa-caret-up");
+            console.log(x.classList);
+        } else {
+            console.log(x.classList);
+            x.classList.remove("collapsed", "panel-title-child", "fa", "fa-caret-up");
+            x.classList.add("collapsed", "panel-title-child", "fa", "fa-caret-down");
+            console.log(x.classList);
+        }
     };
 </script>
 

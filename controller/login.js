@@ -29,8 +29,7 @@ $('#formNewLogin').on('submit', function(e) {
                     }) {
 
                     alert("Bem Vindo");
-
-                    window.location.assign("/forum");
+                    window.location.href = "/forum";
                 } else if (result = {
                         "denied": "dados inexistentes/errados",
                         "status": 201

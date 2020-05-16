@@ -1,12 +1,12 @@
 $(document).ready(function () {
     getEventos();
-    //getDadosEvento();
-
+    console.log('Ah?');
 });
 
 function getEventos() {
     var data = {};
     var txt = "";
+    console.log('getEventos');
 
     $.ajax({
         type: "GET",

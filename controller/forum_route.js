@@ -109,10 +109,16 @@ global.helpme.post('/login', function (req, res) {
 });
 
 //rota forum
-global.helpme.get('/forum', function (req, res) {
+/*global.helpme.get('/forum', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/forum', global.express.static('views/forum'));
     res.sendfile(global.root + '/views/forum/' + 'forum.html');
+});*/
+
+global.helpme.get('/forum', function (req, res) {
+    global.helpme.use(global.express.static('views/admin'));
+    global.helpme.use('/admin', global.express.static('views/admin'));
+    res.sendfile(global.root + '/views/admin/' + 'index.html');
 });
 
 global.helpme.get('/index_en', function (req, res) {
