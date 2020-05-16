@@ -26,10 +26,10 @@ $('#formNewLogin').on('submit', function(e) {
                 } else if (result = {
                         "success": "Login realizado com sucesso",
                         "status": 200
-                    }) {
+                    } && $('#email').val() != "admin@gmail.com") {
 
                     alert("Bem Vindo");
-                    window.location.href = "/forum";
+                    window.location.href = "/index_en";
                 } else if (result = {
                         "denied": "dados inexistentes/errados",
                         "status": 201
