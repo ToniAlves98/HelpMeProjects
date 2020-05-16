@@ -1,17 +1,28 @@
 ﻿<link href="../css/layout.bar.css" rel="stylesheet" type="text/css" />
-<!--========== PAGE LAYOUT =====<link href="../css/layout.bar.css" rel="stylesheet" type="text/css" />
-   <!--========== PAGE LAYOUT ==========-->
-<!-- Forum -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--========== PAGE LAYOUT =====-->
+
 <!--div style="background-image: url('./img/1920x1080/long01.png');"-->
 <!--div style="background-color: #a6a7aa; margin-top: 90px;"-->
 <div id="about" class ="bg-color-sky-light" style="margin-top: 100px;">
 <div class="row">
-   <div class="p-2"  align="center">
+    <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
+    <div class="tipo-evento" style="margin-top: 70px; margin-right: 40px;" align="right">
+        <select id="eventos"></select>
+        <select id="area"></select>
+    </div>
+    <div id="tabela_eventos"></div>
+
+    <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#adicionar_pedido">Adicionar evento</a>
+    <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#associar_imagem">Associar imagem</a>
+    
+   <!--div class="p-2"  align="center">
       <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#adicionar_pedido">
       <span class="icon text-white-50">
       <i class="fas fa-plus-circle"></i>
       </span>
-      <span class="text">Adicionar evento</span>
+      <span class="text">Adicionar evento #FD871F</span>
       </a>
    </div>
    <div class="p-2"  align="center">
@@ -21,19 +32,17 @@
       </span>
       <span class="text">Associar imagem</span>
       </a>
-   </div>
-   <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
-   <div class="tipo-evento" align="right">
-      <select id="eventos"></select>
-      <select id="area"></select>
-   </div>
-   <div id="tabela_eventos"></div>
+   </div-->
+
+   
+   
+   
    <div id="noticias"></div>
 </div>
-
 <!--========== END PAGE LAYOUT ==========-->
+
 <!--========== MODAL ==========-->
-<!-- Modal -->
+<!-- Modal Evento-->
 <div class="modal fade" id="myModal" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
@@ -57,7 +66,9 @@
       </div>
    </div>
 </div>
-<!--========== END FOOTER ==========-->
+<!-- /Modal Evento-->
+
+<!-- Modal add Evento-->
 <div class="modal fadeIn gestaoEvento" id="adicionar_pedido" role="dialog" aria-modal="true">
    <div class="modal-dialog">
       <div class="modal-content">
@@ -108,6 +119,9 @@
       </div>
    </div>
 </div>
+<!-- /Modal add Evento-->
+
+<!-- Modal img-->
 <div class="modal fadeIn gestaoRelatorio" id="associar_imagem" role="dialog" aria-modal="true">
    <div class="modal-dialog">
       <div class="modal-content">
@@ -135,141 +149,8 @@
       </div>
    </div>
 </div>
-<!-- Forum -->
-<!--div style="background-image: url('./img/1920x1080/long01.png');"-->
-<!--div style="background-color: #a6a7aa; margin-top: 90px;"-->
-<div id="about" class ="bg-color-sky-light" style="margin-top: 100px;">
-<div class="row">
-   <div class="p-2"  align="center">
-      <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#adicionar_pedido">
-      <span class="icon text-white-50">
-      <i class="fas fa-plus-circle"></i>
-      </span>
-      <span class="text">Adicionar evento</span>
-      </a>
-   </div>
-   <div class="p-2"  align="center">
-      <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#associar_imagem">
-      <span class="icon text-white-50">
-      <i class="fas fa-upload"></i>
-      </span>
-      <span class="text">Associar imagem</span>
-      </a>
-   </div>
-   <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
-   <div class="tipo-evento" align="right">
-      <select id="eventos"></select>
-      <select id="area"></select>
-   </div>
-</div>
-<div id="eventos"></div>
-<div id="noticias"></div>
-<!--========== END PAGE LAYOUT ==========-->
-<!--========== MODAL ==========-->
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-   <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Nome do Evento</h4>
-         </div>
-         <div class="row">
-            <figure class="crop-modal" align="center">
-               <img alt="" src="./img/carousel/101.png">
-            </figure>
-            <div class="modal-body">
-               <p>
-                  Descrição: A imagem podia ficar à esquerda e a descrição em vez de ficar em baixo podia ficar do lado direito.
-                  A experimentar.
-               </p>
-            </div>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-         </div>
-      </div>
-   </div>
-</div>
-<!--========== END FOOTER ==========-->
-<div class="modal fadeIn gestaoEvento" id="adicionar_pedido" role="dialog" aria-modal="true">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <div class="col-lg-12 text-center">
-               <button type="button" class="close" data-dismiss="modal">&times;</button>
-               <br />
-               <h1>Realizar pedido de evento</h1>
-            </div>
-         </div>
-         <div class="modal-body" style="padding: 40px 60px;">
-            <div class="row">
-               <div class="col-lg-12 text-center">
-                  <form id="formNewPedido" class="user text-center" method="post">
-                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="nomeEvento" aria-describedby="" placeholder="Nome do evento">
-                     </div>
-                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="tipoEvento" placeholder="Tipo de evento">
-                     </div>
-                     <div class="form-group">
-                        <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento">
-                           <option value="" disabled selected>Área de Conhecimento</option>
-                           <option value="Gestão do Âmbito">Gestão do Âmbito</option>
-                           <option value="Gestão de Aquisições">Gestão de Aquisições</option>
-                           <option value="Gestão da Comunicação">Gestão da Comunicação</option>
-                           <option value="Gestão do Cronograma">Gestão do Cronograma</option>
-                           <option value="Gestão do Custo">Gestão do Custo</option>
-                           <option value="Gestão da Integração">Gestão da Integração</option>
-                           <option value="Gestão da Qualidade">Gestão da Qualidade</option>
-                           <option value="Gestão dos Recursos">Gestão dos Recursos</option>
-                           <option value="Gestão de Riscos">Gestão de Riscos</option>
-                           <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
-                        </select>
-                     </div>
-                     <div class="form-group">
-                        <input type="date" class="form-control form-control-user" id="inicioEvento" placeholder="Data de início">
-                     </div>
-                     <div class="form-group">
-                        <input type="date" class="form-control form-control-user" id="fimEvento" placeholder="Data de fim">
-                     </div>
-                     <br />
-                     <button type="submit" method="post" id="btEvento" class="btn btn-primary btn-user btn-block">Submeter</button>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-<div class="modal fadeIn gestaoRelatorio" id="associar_imagem" role="dialog" aria-modal="true">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <div class="col-lg-12 text-center">
-               <button type="button" class="close" data-dismiss="modal">&times;</button>
-               <br />
-               <h1>Associar imagem ao pedido</h1>
-            </div>
-         </div>
-         <div class="modal-body" style="padding: 40px 60px;">
-            <div class="row">
-               <div class="col-lg-12">
-                  <form id="formNewRelatorio" enctype="multipart/form-data" action="/g" class="user text-center" method="post">
-                     <div class="form-group">
-                        <input type="file" name="file" id="file" />
-                        <span>(apenas ficheiros em formato png)</span>
-                     </div>
-                     <br />
-                     <button type="submit" value="upload" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
+<!-- /Modal img-->
+
     <!-- dropdown -->
     <script>
         function menu() {
@@ -318,3 +199,4 @@
     </script>
 
 <script type="text/javascript" src="../../../controller/pedidos.js"></script>
+<script type="text/javascript" src="../../../controller/eventos.js"></script>

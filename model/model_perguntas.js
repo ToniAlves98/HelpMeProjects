@@ -17,7 +17,6 @@ function readPerguntas(callback) {
 };
 
 function readPerguntasPorArea(id, callback){
-    console.log('idArea: '+id);
     global.connect.con.query('SELECT * FROM pergunta WHERE AreaConhecimento_idAreaConhecimento =\''+ id +'\' order by num_likes DESC', function(err, rows, fields) {
         var string = JSON.stringify(rows);
         var json = JSON.parse(string);
