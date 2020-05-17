@@ -1,4 +1,5 @@
 ﻿<link href="../css/layout.bar.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../css/eventos.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--========== PAGE LAYOUT =====-->
 <!--div style="background-image: url('./img/1920x1080/long01.png');"-->
@@ -16,7 +17,7 @@
          <div id="alleventos"></div>
       </div>
    </div>
-   <div class="col-md-3 col-sm-7 col-md-offset-0">
+   <div class="row">
       <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#adicionar_pedido">Adicionar evento</a>
       <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#associar_imagem">Associar imagem</a>
    </div>
@@ -49,9 +50,9 @@
             <h4 class="modal-title" id="nomeEvento">Nome do Evento</h4>
          </div>
          <div class="row">
-            <figure class="crop-modal" align="center" id="modalImg"> <img alt="" src="./img/carousel/101.png"> </figure>
+            <figure class="crop-modal" style="margin-top: 20px;" align="center" id="modalImg"> <img alt="" src="./img/carousel/101.png"> </figure>
             <div class="modal-body">
-               <p id="descricaoEvento">
+               <p style="margin-left: 20px; margin-right: 20px; margin-top: 20px;" align="center" id="descricaoEvento">
                   Descrição: A imagem podia ficar à esquerda e a descrição em vez de ficar em baixo podia ficar do lado direito.
                   A experimentar.
                </p>
@@ -175,7 +176,7 @@
    document.getElementById("eventos").innerHTML = options;
    /*fim tipo eventos*/
    
-   /*area eventos*/
+   /*area eventos
    var options = "";
    options += "<option>" + "Todos as Areas" + "</option>";
    options += "<option>" + "Gestão da Integração" + "</option>";
@@ -189,6 +190,12 @@
    options += "<option>" + "Gestão de Stakeholders" + "</option>";
    document.getElementById("area").innerHTML = options;
    /*fim area eventos*/
+
+   <select id="areas" placeholder="Todos as Areas">
+      <option value="1">Gestão da Integração</option>
+      <option value="2" selected="selected">test2</option>
+      <option value="3">test3</option>
+   </select>
 </script>
 <script type="text/javascript" src="../../../controller/pedidos.js"></script>
 <script type="text/javascript" src="../../../controller/eventos_forum.js"></script>
