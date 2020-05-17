@@ -135,17 +135,17 @@ global.helpme.post('/login', function (req, res) {
 global.helpme.get('/inicial', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/inicial', global.express.static('views/forum'));
-    res.sendfile(global.root + '/views/forum/' + 'inicial.html');
+    res.sendFile(global.root + '/views/forum/' + 'inicial.html');
 });
 
 global.helpme.get('/index_en', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/index_en', global.express.static('views/forum'));
-    res.sendfile(global.root + '/views/forum/' + 'index_en.html');
+    res.sendFile(global.root + '/views/forum/' + 'index_en.html');
 });
 
 global.helpme.get('/perfil', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/perfil', global.express.static('views/forum'));
-    res.sendfile(global.root + '/views/forum/pages/' + 'perfil.html');
+    res.sendFile(global.root + '/views/forum/pages/' + 'perfil.html');
 });

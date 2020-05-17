@@ -11,7 +11,9 @@ global.session = require('express-session');
 global.cookieParser = require('cookie-parser');
 global.path = require('path');
 global.flash = require('connect-flash');
-global.upload = require('express-fileupload')
+global.upload = require('express-fileupload');
+global.async = require('async');
+global.nodemailer = require('nodemailer');
 
 //iniciar a aplicacao
 global.helpme = global.express();
@@ -100,7 +102,7 @@ global.helpme.get('/', function (req, res) {
         //global.session.idUser += 1;
         req.session.idUser +=1;
     }*/
-    res.sendfile(path.join(__dirname + '/views/forum/index.html'));
+    res.sendFile(path.join(__dirname + '/views/forum/index.html'));
 });
 
 global.helpme.use((req, res, next) => {
