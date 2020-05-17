@@ -102,10 +102,6 @@ global.helpme.get('/', function (req, res) {
     res.sendfile(path.join(__dirname + '/views/forum/index.html'));
 });
 
-global.helpme.get('/forum', function (req, res) {
-    res.sendfile(path.join(__dirname + '/views/forum/forum.html'));
-});
-
 global.helpme.use((req, res, next) => {
     res.status(404).send("Sorry can't find that!");
 });

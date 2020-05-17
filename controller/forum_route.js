@@ -11,6 +11,18 @@ global.helpme.get('/readPerguntas', function (req, res) {
     });
 });
 
+global.helpme.get('/readEventosForum', function (req, res) {
+    global.model_eventos_forum.readEventosForum(function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
 global.helpme.post('/readPerguntasPorArea', function (req, res) {
     global.model_perguntas.readPerguntasPorArea(req.body.AreaConhecimento_idAreaConhecimento, function (err, data) {
         if (err) {
@@ -107,13 +119,6 @@ global.helpme.post('/login', function (req, res) {
         }
     });
 });
-
-//rota forum
-/*global.helpme.get('/forum', function (req, res) {
-    global.helpme.use(global.express.static('views/forum'));
-    global.helpme.use('/forum', global.express.static('views/forum'));
-    res.sendfile(global.root + '/views/forum/' + 'forum.html');
-});*/
 
 global.helpme.get('/inicial', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
