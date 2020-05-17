@@ -1,41 +1,43 @@
 ﻿<link href="../css/layout.bar.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <!--========== PAGE LAYOUT =====-->
-
 <!--div style="background-image: url('./img/1920x1080/long01.png');"-->
 <!--div style="background-color: #a6a7aa; margin-top: 90px;"-->
 <div id="about" class ="bg-color-sky-light" style="margin-top: 100px;" onload="tabelaEventos()">
-<div class="row">
-    <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
-    <div class="tipo-evento" style="margin-top: 70px; margin-right: 40px;" align="right">
-        <select id="eventos"></select>
-        <select id="area"></select>
-    </div>
-    <div id="tabela_eventos"></div>
-    <div class="col-md-3 col-sm-7 col-md-offset-0">
-    <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#adicionar_pedido">Adicionar evento</a>
-    <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#associar_imagem">Associar imagem</a>
-    </div>
-   <!--div class="p-2"  align="center">
-      <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#adicionar_pedido">
-      <span class="icon text-white-50">
-      <i class="fas fa-plus-circle"></i>
-      </span>
-      <span class="text">Adicionar evento #FD871F</span>
-      </a>
+   <div class="row">
+      <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
+      <div class="tipo-evento" style="margin-top: 80px; margin-right: 40px;" align="right">
+         <select id="eventos"></select>
+         <select id="area"></select>
+      </div>
+   </div>
+   <div class="container cta-80" align="center">
+      <div class="row" style="margin-bottom:80px">
+         <div id="alleventos"></div>
+      </div>
+   </div>
+   <div class="col-md-3 col-sm-7 col-md-offset-0">
+      <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#adicionar_pedido">Adicionar evento</a>
+      <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#associar_imagem">Associar imagem</a>
+   </div>
+</div>
+<!--div class="p-2"  align="center">
+   <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#adicionar_pedido">
+   <span class="icon text-white-50">
+   <i class="fas fa-plus-circle"></i>
+   </span>
+   <span class="text">Adicionar evento #FD871F</span>
+   </a>
    </div>
    <div class="p-2"  align="center">
-      <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#associar_imagem">
-      <span class="icon text-white-50">
-      <i class="fas fa-upload"></i>
-      </span>
-      <span class="text">Associar imagem</span>
-      </a>
+   <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#associar_imagem">
+   <span class="icon text-white-50">
+   <i class="fas fa-upload"></i>
+   </span>
+   <span class="text">Associar imagem</span>
+   </a>
    </div-->
-</div>
 <!--========== END PAGE LAYOUT ==========-->
-
 <!--========== MODAL ==========-->
 <!-- Modal Evento-->
 <div class="modal fade" id="myModal" role="dialog">
@@ -44,12 +46,12 @@
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Nome do Evento</h4>
+            <h4 class="modal-title" id="nomeEvento">Nome do Evento</h4>
          </div>
          <div class="row">
-            <figure class="crop-modal" align="center"> <img alt="" src="./img/carousel/101.png"> </figure>
+            <figure class="crop-modal" align="center" id="modalImg"> <img alt="" src="./img/carousel/101.png"> </figure>
             <div class="modal-body">
-               <p>
+               <p id="descricaoEvento">
                   Descrição: A imagem podia ficar à esquerda e a descrição em vez de ficar em baixo podia ficar do lado direito.
                   A experimentar.
                </p>
@@ -62,7 +64,6 @@
    </div>
 </div>
 <!-- /Modal Evento-->
-
 <!-- Modal add Evento-->
 <div class="modal fadeIn gestaoEvento" id="adicionar_pedido" role="dialog" aria-modal="true">
    <div class="modal-dialog">
@@ -115,7 +116,6 @@
    </div>
 </div>
 <!-- /Modal add Evento-->
-
 <!-- Modal img-->
 <div class="modal fadeIn gestaoRelatorio" id="associar_imagem" role="dialog" aria-modal="true">
    <div class="modal-dialog">
@@ -145,53 +145,50 @@
    </div>
 </div>
 <!-- /Modal img-->
-
-    <!-- dropdown -->
-    <script>
-        function menu() {
-            var x = document.getElementById("menu");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        };
-
-        function menu2() {
-            var x = document.getElementById("menu2");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        };
-
-        /*tipo eventos*/
-        var options = "";
-        options += "<option>" + "Todos os Eventos" + "</option>";
-        options += "<option>" + "Workshop" + "</option>";
-        options += "<option>" + "Palestra" + "</option>";
-        options += "<option>" + "Feira de Emprego" + "</option>";
-        options += "<option>" + "Voluntariado" + "</option>";
-        document.getElementById("eventos").innerHTML = options;
-        /*fim tipo eventos*/
-
-        /*area eventos*/
-        var options = "";
-        options += "<option>" + "Todos as Areas" + "</option>";
-        options += "<option>" + "Gestão da Integração" + "</option>";
-        options += "<option>" + "Gestão do Cronograma" + "</option>";
-        options += "<option>" + "Gestão de Custo" + "</option>";
-        options += "<option>" + "Gestão de Qualidade" + "</option>";
-        options += "<option>" + "Gestão de Recursos" + "</option>";
-        options += "<option>" + "Gestão de Comunicação" + "</option>";
-        options += "<option>" + "Gestão de Riscos" + "</option>";
-        options += "<option>" + "Gestão de Aquisições" + "</option>";
-        options += "<option>" + "Gestão de Stakeholders" + "</option>";
-        document.getElementById("area").innerHTML = options;
-        document.getElementById("area2").innerHTML = options;
-        /*fim area eventos*/
-    </script>
-
+<!-- dropdown -->
+<script>
+   function menu() {
+       var x = document.getElementById("menu");
+       if (x.style.display === "none") {
+           x.style.display = "block";
+       } else {
+           x.style.display = "none";
+       }
+   };
+   
+   function menu2() {
+       var x = document.getElementById("menu2");
+       if (x.style.display === "none") {
+           x.style.display = "block";
+       } else {
+           x.style.display = "none";
+       }
+   };
+   
+   /*tipo eventos*/
+   var options = "";
+   options += "<option>" + "Todos os Eventos" + "</option>";
+   options += "<option>" + "Workshop" + "</option>";
+   options += "<option>" + "Palestra" + "</option>";
+   options += "<option>" + "Feira de Emprego" + "</option>";
+   options += "<option>" + "Voluntariado" + "</option>";
+   document.getElementById("eventos").innerHTML = options;
+   /*fim tipo eventos*/
+   
+   /*area eventos*/
+   var options = "";
+   options += "<option>" + "Todos as Areas" + "</option>";
+   options += "<option>" + "Gestão da Integração" + "</option>";
+   options += "<option>" + "Gestão do Cronograma" + "</option>";
+   options += "<option>" + "Gestão de Custo" + "</option>";
+   options += "<option>" + "Gestão de Qualidade" + "</option>";
+   options += "<option>" + "Gestão de Recursos" + "</option>";
+   options += "<option>" + "Gestão de Comunicação" + "</option>";
+   options += "<option>" + "Gestão de Riscos" + "</option>";
+   options += "<option>" + "Gestão de Aquisições" + "</option>";
+   options += "<option>" + "Gestão de Stakeholders" + "</option>";
+   document.getElementById("area").innerHTML = options;
+   /*fim area eventos*/
+</script>
 <script type="text/javascript" src="../../../controller/pedidos.js"></script>
 <script type="text/javascript" src="../../../controller/eventos_forum.js"></script>
