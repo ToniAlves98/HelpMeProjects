@@ -11,6 +11,30 @@ global.helpme.get('/readPerguntas', function (req, res) {
     });
 });
 
+global.helpme.get('/readRelatoriosForum', function (req, res) {
+    global.model_relatorios_forum.readRelatoriosForum(function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
+global.helpme.post('/seeAreaRel', function (req, res) {
+    global.model_relatorios_forum.seeAreaRel(req.body.idArea, function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
 global.helpme.get('/readEventosForum', function (req, res) {
     global.model_eventos_forum.readEventosForum(function (err, data) {
         if (err) {
@@ -25,6 +49,18 @@ global.helpme.get('/readEventosForum', function (req, res) {
 
 global.helpme.post('/getEventoInfo', function (req, res) {
     global.model_eventos_forum.getEventoInfo(req.body.idEvento, function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
+global.helpme.post('/getEventoArea', function (req, res) {
+    global.model_eventos_forum.getEventoArea(req.body.idArea, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }

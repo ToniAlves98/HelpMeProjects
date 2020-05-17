@@ -60,6 +60,7 @@ global.model_perguntas = require('./model/model_perguntas');
 global.model_respostas = require('./model/model_respostas');
 global.model_pedidos = require('./model/model_pedidos');
 global.model_eventos_forum = require('./model/model_eventos_forum');
+global.model_relatorios_forum = require('./model/model_relatorios_forum');
 global.model_dashboards = require('./model/model_dashboards');
 global.model_sugestoes = require('./model/model_sugestoes');
 global.admin_route = require('./controller/admin_route.js');

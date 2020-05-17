@@ -7,9 +7,8 @@
 <div id="about" class ="bg-color-sky-light" style="margin-top: 100px;" onload="tabelaEventos()">
    <div class="row">
       <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
-      <div class="tipo-evento" style="margin-top: 80px; margin-right: 40px;" align="right">
-         <select id="eventos"></select>
-         <select id="area"></select>
+      <div class="tipo-evento" style="margin-top: 80px; margin-right: 260px;" align="right">
+         <select id="area" onchange="seeArea()"></select>
       </div>
    </div>
    <div class="container cta-80" align="center">
@@ -17,29 +16,13 @@
          <div id="alleventos"></div>
       </div>
    </div>
-   <div class="row">
-      <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#adicionar_pedido">Adicionar evento</a>
-      <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#associar_imagem">Associar imagem</a>
+   <div style="margin-left: 170px; margin-bottom: 30px;">
+      <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#adicionar_pedido">Fazer Pedido de Novo Evento</a>
+   </div>
+   <div style="margin-left: 170px; margin-bottom: 60px;">
+      <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#associar_imagem">Associar imagem ao Pedido</a>
    </div>
 </div>
-<!--div class="p-2"  align="center">
-   <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#adicionar_pedido">
-   <span class="icon text-white-50">
-   <i class="fas fa-plus-circle"></i>
-   </span>
-   <span class="text">Adicionar evento #FD871F</span>
-   </a>
-   </div>
-   <div class="p-2"  align="center">
-   <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#associar_imagem">
-   <span class="icon text-white-50">
-   <i class="fas fa-upload"></i>
-   </span>
-   <span class="text">Associar imagem</span>
-   </a>
-   </div-->
-<!--========== END PAGE LAYOUT ==========-->
-<!--========== MODAL ==========-->
 <!-- Modal Evento-->
 <div class="modal fade" id="myModal" role="dialog">
    <div class="modal-dialog">
@@ -47,7 +30,7 @@
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title" id="nomeEvento">Nome do Evento</h4>
+            <h1 class="modal-title" id="nomeEvento" style="color: #FD871F;" align="center">Nome do Evento</h1>
          </div>
          <div class="row">
             <figure class="crop-modal" style="margin-top: 20px;" align="center" id="modalImg"> <img alt="" src="./img/carousel/101.png"> </figure>
@@ -148,54 +131,23 @@
 <!-- /Modal img-->
 <!-- dropdown -->
 <script>
-   function menu() {
-       var x = document.getElementById("menu");
-       if (x.style.display === "none") {
-           x.style.display = "block";
-       } else {
-           x.style.display = "none";
-       }
-   };
-   
-   function menu2() {
-       var x = document.getElementById("menu2");
-       if (x.style.display === "none") {
-           x.style.display = "block";
-       } else {
-           x.style.display = "none";
-       }
-   };
-   
-   /*tipo eventos*/
+
+   /*area eventos*/
    var options = "";
-   options += "<option>" + "Todos os Eventos" + "</option>";
-   options += "<option>" + "Workshop" + "</option>";
-   options += "<option>" + "Palestra" + "</option>";
-   options += "<option>" + "Feira de Emprego" + "</option>";
-   options += "<option>" + "Voluntariado" + "</option>";
-   document.getElementById("eventos").innerHTML = options;
-   /*fim tipo eventos*/
-   
-   /*area eventos
-   var options = "";
-   options += "<option>" + "Todos as Areas" + "</option>";
-   options += "<option>" + "Gestão da Integração" + "</option>";
-   options += "<option>" + "Gestão do Cronograma" + "</option>";
-   options += "<option>" + "Gestão de Custo" + "</option>";
-   options += "<option>" + "Gestão de Qualidade" + "</option>";
-   options += "<option>" + "Gestão de Recursos" + "</option>";
-   options += "<option>" + "Gestão de Comunicação" + "</option>";
-   options += "<option>" + "Gestão de Riscos" + "</option>";
-   options += "<option>" + "Gestão de Aquisições" + "</option>";
-   options += "<option>" + "Gestão de Stakeholders" + "</option>";
+   options += "<option value=\"0\">" + "Todos as Areas" + "</option>";
+   options += "<option value=\"1\">" + "Gestão de Âmbito" + "</option>";
+   options += "<option value=\"2\">" + "Gestão de Aquisições" + "</option>";
+   options += "<option value=\"3\">" + "Gestão de Comunicação" + "</option>";
+   options += "<option value=\"4\">" + "Gestão do Cronograma" + "</option>";
+   options += "<option value=\"5\">" + "Gestão de Custo" + "</option>";
+   options += "<option value=\"6\">" + "Gestão da Integração" + "</option>";
+   options += "<option value=\"7\">" + "Gestão de Qualidade" + "</option>";
+   options += "<option value=\"8\">" + "Gestão de Recursos" + "</option>";
+   options += "<option value=\"9\">" + "Gestão de Riscos" + "</option>";
+   options += "<option value=\"10\">" + "Gestão de Stakeholders" + "</option>";
    document.getElementById("area").innerHTML = options;
    /*fim area eventos*/
 
-   <select id="areas" placeholder="Todos as Areas">
-      <option value="1">Gestão da Integração</option>
-      <option value="2" selected="selected">test2</option>
-      <option value="3">test3</option>
-   </select>
 </script>
 <script type="text/javascript" src="../../../controller/pedidos.js"></script>
 <script type="text/javascript" src="../../../controller/eventos_forum.js"></script>

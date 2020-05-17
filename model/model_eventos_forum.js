@@ -24,7 +24,23 @@ function getEventoInfo(idEvento, callback) {
     });
 };
 
+
+function getEventoArea(idArea, callback) {
+    var id = idArea[0];
+    global.connect.con.query('SELECT * from evento where AreaConhecimento_idAreaConhecimento="'+id+'"', function(err, rows, fields) {
+        var string = JSON.stringify(rows);
+        var json = JSON.parse(string);
+        console.log(json);
+        if (!err) {
+            callback(null, json);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+};
+
 module.exports = {
     readEventosForum: readEventosForum,
-    getEventoInfo:getEventoInfo,
+    getEventoInfo: getEventoInfo,
+    getEventoArea: getEventoArea
     }
