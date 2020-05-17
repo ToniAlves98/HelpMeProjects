@@ -5,9 +5,15 @@ global.helpme.get('/admin', function (req, res) {
     res.sendFile(global.root + '/views/admin/' + 'index.html');
 });
 
+global.helpme.get('/resetPassword2', function (req, res) {
+    global.helpme.use(global.express.static('views/forum'));
+    global.helpme.use('/resetPassword2', global.express.static('views/forum'));
+    res.sendFile(global.root + '/views/forum/pages/' + 'resetPassword2.html');
+});
+
 //rotas relatorios
-global.helpme.get('/readRelatorios', function(req, res) {
-    global.model_relatorios.readRelatorios(function(err, data) {
+global.helpme.get('/readRelatorios', function (req, res) {
+    global.model_relatorios.readRelatorios(function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -18,18 +24,18 @@ global.helpme.get('/readRelatorios', function(req, res) {
     });
 });
 
-global.helpme.post('/saveRelatorio', function(req, res) {
+global.helpme.post('/saveRelatorio', function (req, res) {
     global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.Utilizador_idUtilizador);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.post('/', (req,res) => {
-    if (req.files){
+global.helpme.post('/', (req, res) => {
+    if (req.files) {
         console.log(req.files)
         var file = req.files.file
         var filename = file.name
         console.log(filename)
-        file.mv('./uploads/'+ filename, function(err){
+        file.mv('./uploads/' + filename, function (err) {
             if (err) {
                 res.send(err)
             } else {
@@ -40,13 +46,13 @@ global.helpme.post('/', (req,res) => {
 
 })
 
-global.helpme.post('/g', (req,res) => {
-    if (req.files){
+global.helpme.post('/g', (req, res) => {
+    if (req.files) {
         console.log(req.files)
         var file = req.files.file
         var filename = file.name
         console.log(filename)
-        file.mv('./uploads/'+ filename, function(err){
+        file.mv('./uploads/' + filename, function (err) {
             if (err) {
                 res.send(err)
             } else {
@@ -57,20 +63,20 @@ global.helpme.post('/g', (req,res) => {
 
 })
 
-global.helpme.post('/setRelatorio', function(req, res) {
+global.helpme.post('/setRelatorio', function (req, res) {
     global.model_relatorios.setRelatorio(req.body.idRelatorio, req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.Utilizador_idUtilizador);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.delete('/deleteRelatorio', function(req, res) {
+global.helpme.delete('/deleteRelatorio', function (req, res) {
     global.model_relatorios.deleteRelatorio(req.body.idRelatorio);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
 
 //rotas eventos
-global.helpme.get('/readEventos', function(req, res) {
-    global.model_eventos.readEventos(function(err, data) {
+global.helpme.get('/readEventos', function (req, res) {
+    global.model_eventos.readEventos(function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -81,8 +87,8 @@ global.helpme.get('/readEventos', function(req, res) {
     });
 });
 
-global.helpme.get('/readEventosPendentes', function(req, res) {
-    global.model_pedidos.readEventosPendentes(function(err, data) {
+global.helpme.get('/readEventosPendentes', function (req, res) {
+    global.model_pedidos.readEventosPendentes(function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -93,32 +99,32 @@ global.helpme.get('/readEventosPendentes', function(req, res) {
     });
 });
 
-global.helpme.post('/saveEvento', function(req, res) {
-    global.model_eventos.saveEvento(req.body.nomeEvento, req.body.tipoEvento, req.body.AreaConhecimento_idAreaConhecimento,  req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.estado);
+global.helpme.post('/saveEvento', function (req, res) {
+    global.model_eventos.saveEvento(req.body.nomeEvento, req.body.tipoEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.post('/savePedido', function(req, res) {
-    global.model_pedidos.savePedido(req.body.nomeEvento, req.body.tipoEvento, req.body.AreaConhecimento_idAreaConhecimento,  req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.estado);
+global.helpme.post('/savePedido', function (req, res) {
+    global.model_pedidos.savePedido(req.body.nomeEvento, req.body.tipoEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.post('/setEvento', function(req, res) {
+global.helpme.post('/setEvento', function (req, res) {
     global.model_eventos.setEvento(req.body.idEvento, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.post('/aceitar', function(req, res) {
+global.helpme.post('/aceitar', function (req, res) {
     global.model_pedidos.aceitar(req.body.idEvento, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.delete('/deleteEvento', function(req, res) {
+global.helpme.delete('/deleteEvento', function (req, res) {
     global.model_eventos.deleteEvento(req.body.idEvento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.delete('/rejeitar', function(req, res) {
+global.helpme.delete('/rejeitar', function (req, res) {
     global.model_pedidos.rejeitar(req.body.idEvento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
@@ -151,7 +157,7 @@ global.helpme.get('/readUtilizador', function (req, res) {
 
 //rota de gravação utilizador
 global.helpme.post('/saveUtilizador', function (req, res) {
-    
+
     console.log('body: ' + JSON.stringify(req.body));
     global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
         req.body.gp_nome_emp, req.body.ramo_emp, req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
@@ -260,7 +266,7 @@ global.helpme.post('/saveSugestao', function (req, res) {
 });
 
 //rotas dashboards
-global.helpme.get('/countPerguntas', function(req, res) {
+global.helpme.get('/countPerguntas', function (req, res) {
     global.model_dashboards.countPerguntas(function (err, data) {
         console.log(data)
         if (err) {
@@ -273,7 +279,7 @@ global.helpme.get('/countPerguntas', function(req, res) {
     });
 });
 
-global.helpme.get('/countUtilizadores', function(req, res) {
+global.helpme.get('/countUtilizadores', function (req, res) {
     global.model_dashboards.countUtilizadores(function (err, data) {
         console.log(data)
         if (err) {
@@ -286,7 +292,7 @@ global.helpme.get('/countUtilizadores', function(req, res) {
     });
 });
 
-global.helpme.get('/countEventos', function(req, res) {
+global.helpme.get('/countEventos', function (req, res) {
     global.model_dashboards.countEventos(function (err, data) {
         console.log(data)
         if (err) {
@@ -299,7 +305,7 @@ global.helpme.get('/countEventos', function(req, res) {
     });
 });
 
-global.helpme.get('/countPedidos', function(req, res) {
+global.helpme.get('/countPedidos', function (req, res) {
     global.model_dashboards.countPedidos(function (err, data) {
         console.log(data)
         if (err) {
@@ -312,7 +318,7 @@ global.helpme.get('/countPedidos', function(req, res) {
     });
 });
 
-global.helpme.get('/countRelatorios', function(req, res) {
+global.helpme.get('/countRelatorios', function (req, res) {
     global.model_dashboards.countRelatorios(function (err, data) {
         console.log(data)
         if (err) {
@@ -325,7 +331,7 @@ global.helpme.get('/countRelatorios', function(req, res) {
     });
 });
 
-global.helpme.get('/countSugestoes', function(req, res) {
+global.helpme.get('/countSugestoes', function (req, res) {
     global.model_dashboards.countSugestoes(function (err, data) {
         console.log(data)
         if (err) {
@@ -431,3 +437,106 @@ global.helpme.get('/graficoRelatorioUser', function (req, res) {
 
 */
 
+//rota para o mail
+global.helpme.post('/forgot', function (req, res, next) {
+    async.waterfall([
+        function (done) {
+            crypto.randomBytes(20, function (err, buf) {
+                var token = buf.toString('hex');
+                done(err, token);
+            });
+        },
+        function (token, done) {
+            global.connect.con.query('SELECT email from utilizador where email="' + req.body.email + '"', function (err, user) {
+                if (!user) {
+                    req.flash('error', 'Não existe nenhum utilizador com esse e-mail.');
+                    return res.redirect('/pages/resetPassword.html');
+                }
+
+                user.resetPasswordToken = token;
+                user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+                global.connect.con.query('UPDATE utilizador SET resetPasswordToken="' + user.resetPasswordToken + '", resetPasswordExpires="' + user.resetPasswordExpires + '"where email="' + req.body.email + '"', function (err) {
+                    done(err, token, user);
+                });
+            });
+        },
+        function (token, user, done) {
+            var smtpTransport = nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                    user: 'helppmeprojects',
+                    pass: 'PTSI2020'
+                }
+            });
+            var mailOptions = {
+                to: req.body.email,
+                from: 'helppmeprojects@gmail.com',
+                subject: 'Redefinição de password',
+                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                    'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                    'http://' + req.headers.host + '/resetPassword2/' + token + '\n\n' +
+                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+            };
+            console.log(mailOptions)
+            smtpTransport.sendMail(mailOptions, function (err) {
+                console.log('mail sent');
+                req.flash('success', 'An e-mail has been sent to ' + req.body.email + ' with further instructions.');
+                done(err, 'done');
+            });
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    ], function (err) {
+        if (err) return next(err);
+        return res.redirect('/pages/resetPassword.html');
+    });
+});
+
+
+global.helpme.get('/resetPassword2/:token', function (req, res) {
+    global.connect.con.query('SELECT resetPasswordToken, resetPasswordExpires from utilizador where resetPasswordToken = ?', [req.params.token], function (err, user) {
+        if (!user) {
+            req.flash('error', 'Password reset token is invalid or has expired.');
+            return res.redirect('/pages/resetPassword.html');
+        }
+        res.sendFile(global.root + '/views/forum/pages/' + 'resetPassword2.html');
+    });
+});
+
+global.helpme.post('/resetPassword2/:token', function (req, res) {
+    async.waterfall([
+        function (done) {
+            global.connect.con.query('SELECT resetPasswordToken, resetPasswordExpires from utilizador where resetPasswordToken = ?', [req.params.token], function (err, user) {
+                if (!user) {
+                    req.flash('error', 'Password reset token is invalid or has expired.');
+                    return res.redirect('/pages/resetPassword.html');
+                }
+                global.connect.con.query('UPDATE utilizador SET password="' + req.body.password + '"where resetPasswordToken="' + [req.params.token] + '""', function (err) {
+                })
+            });
+        },
+        function (user, done) {
+            var smtpTransport = nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                    user: 'helppmeprojects',
+                    pass: 'PTSI2020'
+                }
+            });
+            var mailOptions = {
+                to: user.email,
+                from: 'helppmeprojects.com',
+                subject: 'Your password has been changed',
+                text: 'Hello,\n\n' +
+                    'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+            };
+            smtpTransport.sendMail(mailOptions, function (err) {
+                req.flash('success', 'Success! Your password has been changed.');
+                done(err);
+            });
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    ], function (err) {
+            res.redirect('/pages/resetPassword.html');
+    });
+});

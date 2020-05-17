@@ -318,3 +318,77 @@ $('#formUtilizador').on('submit', function (e) {
         });
     }
 });
+
+//Carregar mail forgot password
+$('#formResetPassword').on('submit', function (e) {
+
+    if (e.isDefaultPrevented()) {
+        alert("formulário com erros")
+    }
+    else {
+        event.preventDefault();
+
+        var data = {};
+        data.email = $('#resetEmail').val();
+        console.log(data);
+
+        $.ajax({
+            type: 'POST',
+            url: '/forgot',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                if (result.status == 200) {
+                    console.log("Erro");
+                }
+                else {
+                    alert("E-mail enviado com sucesso");
+                    $("#formResetPassword")[0].reset();
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log(xhr.responseText);
+                console.log(textStatus);
+                console.log(errorThrown);
+                alert("erro");
+            }
+        });
+    }
+});
+
+//Enviar nova password
+$('#formNewPassword').on('submit', function (e) {
+
+    if (e.isDefaultPrevented()) {
+        alert("formulário com erros")
+    }
+    else {
+        event.preventDefault();
+
+        var data = {};
+        data.password = $('#novaPassword').val();
+        console.log(data);
+
+        $.ajax({
+            type: 'POST',
+            url: '/resetPassword2/:token',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                if (result.status == 200) {
+                    console.log("Erro");
+                }
+                else {
+                    alert("Password redefinida com sucesso.");
+                    $("#formResetPassword")[0].reset();
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log(xhr.responseText);
+                console.log(textStatus);
+                console.log(errorThrown);
+                alert("erro");
+            }
+        });
+    }
+});
