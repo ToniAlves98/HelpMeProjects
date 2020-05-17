@@ -1,12 +1,10 @@
 $(document).ready(function () {
     getEventos();
-    console.log('Ah?');
 });
 
 function getEventos() {
     var data = {};
-    var txt = "";
-    console.log('getEventos');
+    
 
     $.ajax({
         type: "GET",
@@ -17,19 +15,17 @@ function getEventos() {
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
-                console.log('eventos');
-                //txt += "<table class=\"table table-hover table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" >";
-                //txt += "<thead>";
-                //txt += "<tr><th>Id</th><th>Nome</th><th>Área de Conhecimento</th><th>Tipo</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
 
+                var txt = "";
+            
+               
+                    
+                txt += "<table class=\"table table-hover table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" >";
+                txt += "<thead>";
+                txt += "<tr><th>Id</th><th>Nome</th><th>Área de Conhecimento</th><th>Tipo</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
                 data.forEach(function (row) {
-                    console.log('eventos2');
-                /*    txt += "<table class=\"table table-hover table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" >";
-                    txt += "<thead>";
-                    txt += "<tr><th>Id</th><th>Nome</th><th>Área de Conhecimento</th><th>Tipo</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
-                    txt += "<tr><td>" + row.idEvento + "</td><td>" + row.nomeEvento + "</td><td>" + row.tipo_area + "</td><td>" + row.tipoEvento + "</td><td>" + row.imagem + "</td> <td>" + row.nome + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
-                    txt += "</tbody></table>";*/
-                    txt += <p>Assim</p>
+                txt += "<tr><td>" + row.idEvento + "</td><td>" + row.nomeEvento + "</td><td>" + row.tipo_area + "</td><td>" + row.tipoEvento + "</td><td>" + row.imagem + "</td> <td>" + row.nome + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
+               
                 });
                 
 
