@@ -101,6 +101,7 @@ body.modal-open {
     background-attachment: scroll;
     background-size: cover;
     background-position: center center;
+    height: 100%;
 }
 
 #seta {
@@ -262,6 +263,110 @@ body.modal-open {
 
 .modal-pergunta textarea {
     border-radius: 30px;
+}
+
+/*Reset Password*/
+#bodyreset {
+    /*background-color: #505050;*/
+    background: url('../img/1920x1080/01.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+.reset {
+    background-color: #fff;
+    border-radius: 15px;
+    margin-top: 100px;
+    margin-left: 310px;
+}
+
+    .reset h1, h2, h3, h4 {
+        color: #FD871F;
+    }
+
+    .reset .form-control {
+        border-color: #FD871F;
+        font-size: 14px;
+        height: 40px;
+    }
+
+        .reset .form-control:focus {
+            border-color: #FF4500;
+            box-shadow: 0 0 0 0.1rem #FF4500;
+        }
+
+#btreset {
+    font-size: 15px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btreset:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+.reset .custom-checkbox {
+    position: relative;
+    width: 15px;
+    height: 15px;
+}
+/*Reset password 2*/
+#bodyreset2 {
+    /*background-color: #505050;*/
+    background: url('../img/1920x1080/01.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+.reset2 {
+    background-color: #fff;
+    border-radius: 17px;
+    margin-top: 120px;
+    margin-left: 310px;
+}
+
+    .reset2 h1, h2, h3, h4 {
+        color: #FD871F;
+    }
+
+    .reset2 .form-control {
+        border-color: #FD871F;
+        font-size: 14px;
+        height: 40px;
+    }
+
+        .reset2 .form-control:focus {
+            border-color: #FF4500;
+            box-shadow: 0 0 0 0.1rem #FF4500;
+        }
+
+#btreset2 {
+    font-size: 18px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btreset2:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+
+.reset2 .custom-checkbox {
+    position: relative;
+    width: 15px;
+    height: 15px;
 }
 
 /*
