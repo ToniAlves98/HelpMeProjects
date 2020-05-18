@@ -473,10 +473,10 @@ global.helpme.post('/forgot', function (req, res, next) {
                 to: req.body.email,
                 from: 'helppmeprojects@gmail.com',
                 subject: 'Redefinição de password',
-                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-                    'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                text: 'Recebeu este e-mail, porque o senhor(a) (ou outra pessoa) solicitou a redefinição da password da sua conta.\n\n' +
+                    'Clique no link a seguir ou cole-o no navegador para concluir o processo:\n\n' +
                     'http://' + req.headers.host + '/resetPassword2/#' + token + '\n\n' +
-                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                    'Se o(a) senhor(a) não pediu a redefinição da password, ignore este e-mail e sua password permanecerá inalterada.\n'
             };
             console.log(mailOptions)
             smtpTransport.sendMail(mailOptions, function (err) {
@@ -523,28 +523,31 @@ global.helpme.post('/resetPassword2/:token', function (req, res) {
         },
 
         function (user, done) {
-            var smtpTransport = nodemailer.createTransport({
-                service: 'Gmail',
-                auth: {
-                    user: 'helppmeprojects',
-                    pass: 'PTSI2020'
-                }
+            global.connect.con.query('SELECT email from utilizador where resetPasswordToken = ?', req.body.token, function (err, rows, fields) {
+                console.log(rows);
+                var smtpTransport = nodemailer.createTransport({
+                    service: 'Gmail',
+                    auth: {
+                        user: 'helppmeprojects',
+                        pass: 'PTSI2020'
+                    }
+                });
+                var mailOptions = {
+                    to: rows[0].email,
+                    from: 'helppmeprojects.com',
+                    subject: 'A sua password foi redefinida.',
+                    text: 'Olá,\n\n' +
+                        'Isto é uma confirmação de que a password da sua conta ' + rows[0].email + ' foi redefinida.\n'
+                };
+                console.log(mailOptions)
+                smtpTransport.sendMail(mailOptions, function (err) {
+                    req.flash('success', 'Success! Your password has been changed.');
+                    done(err);
+                });
+                res.end('{"success" : "Updated Successfully", "status" : 200}');
             });
-            var mailOptions = {
-                to: userEmail(email),
-                from: 'helppmeprojects.com',
-                subject: 'Your password has been changed',
-                text: 'Hello,\n\n' +
-                    'This is a confirmation that the password for your account ' + userEmail(email) + ' has just been changed.\n'
-            };
-            console.log(mailOptions)
-            smtpTransport.sendMail(mailOptions, function (err) {
-                req.flash('success', 'Success! Your password has been changed.');
-                done(err);
-            });
-            res.end('{"success" : "Updated Successfully", "status" : 200}');
         }
     ], function (err) {
-            res.redirect('/pages/resetPassword.html');
+        res.redirect('/pages/resetPassword.html');
     });
 });
