@@ -475,7 +475,7 @@ global.helpme.post('/forgot', function (req, res, next) {
                 subject: 'Redefinição de password',
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                    'http://' + req.headers.host + '/resetPassword2/' + token + '\n\n' +
+                    'http://' + req.headers.host + '/resetPassword2/#' + token + '\n\n' +
                     'If you did not request this, please ignore this email and your password will remain unchanged.\n'
             };
             console.log(mailOptions)
@@ -506,15 +506,22 @@ global.helpme.get('/resetPassword2/:token', function (req, res) {
 global.helpme.post('/resetPassword2/:token', function (req, res) {
     async.waterfall([
         function (done) {
-            global.connect.con.query('SELECT resetPasswordToken, resetPasswordExpires from utilizador where resetPasswordToken = ?', [req.params.token], function (err, user) {
+            global.connect.con.query('SELECT email, resetPasswordToken, resetPasswordExpires from utilizador where resetPasswordToken = ?', req.body.token, function (err, user) {
                 if (!user) {
                     req.flash('error', 'Password reset token is invalid or has expired.');
                     return res.redirect('/pages/resetPassword.html');
                 }
-                global.connect.con.query('UPDATE utilizador SET password="' + req.body.password + '"where resetPasswordToken="' + [req.params.token] + '""', function (err) {
+                global.connect.con.query('UPDATE utilizador SET password="' + req.body.password + '"where resetPasswordToken="' + req.body.token + '"', function (err, rows) {
+                    if (!err) {
+                        console.log("Numero de linhas inseridas: " + rows.affectedRows);
+                    }
+                    else
+                        console.log('Erro na Query.', err);
+                    done(err, user);
                 })
             });
         },
+
         function (user, done) {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
@@ -524,12 +531,13 @@ global.helpme.post('/resetPassword2/:token', function (req, res) {
                 }
             });
             var mailOptions = {
-                to: user.email,
+                to: userEmail(email),
                 from: 'helppmeprojects.com',
                 subject: 'Your password has been changed',
                 text: 'Hello,\n\n' +
-                    'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+                    'This is a confirmation that the password for your account ' + userEmail(email) + ' has just been changed.\n'
             };
+            console.log(mailOptions)
             smtpTransport.sendMail(mailOptions, function (err) {
                 req.flash('success', 'Success! Your password has been changed.');
                 done(err);

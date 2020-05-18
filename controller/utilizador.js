@@ -365,8 +365,13 @@ $('#formNewPassword').on('submit', function (e) {
     else {
         event.preventDefault();
 
+        var get_vars = document.URL;
+        var hash_token = document.location.hash;
+        var token = hash_token.substr(1);
+
         var data = {};
         data.password = $('#novaPassword').val();
+        data.token = token;
         console.log(data);
 
         $.ajax({
@@ -381,6 +386,7 @@ $('#formNewPassword').on('submit', function (e) {
                 else {
                     alert("Password redefinida com sucesso.");
                     $("#formResetPassword")[0].reset();
+                    window.location.assign("/");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
