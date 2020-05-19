@@ -392,6 +392,22 @@ global.helpme.get('/graficoRelatorioUser', function (req, res) {
     })
 });
 
+//rota leitura utilizador mais ativo
+global.helpme.get('/userAtivo', function (req, res) {
+    //chamada da função read
+    global.model_dashboards.userAtivo(function (err, data) {
+        if (err) {
+            // error handling code goes here
+            console.log("ERROR : ", err);
+        }
+        else {
+            //envio para o cliente dos dados retornados pelo model
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    })
+});
+
 /*
 
 <script type="text/javascript">

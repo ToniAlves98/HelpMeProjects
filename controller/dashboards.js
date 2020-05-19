@@ -8,6 +8,7 @@ $(document).ready(function () {
     graficoUtilizador();
     graficoPerguntaArea();
     graficoRelatorioUser();
+    getUtilizadorAtivo();
 });
 
 
@@ -304,3 +305,40 @@ function graficoPerguntaArea() {
     });
 
 }
+
+/*
+//utilizador ativo
+function getUtilizadorAtivo() {
+    var data = {};
+
+    $.ajax({
+        type: "GET",
+        url: '/userAtivo',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        success: function (npergunta, nresposta, data, status, request) {
+            console.log(data);
+            if (request.status == 200) {
+
+                data.npergunta[0]
+                data.nresposta[0]
+
+
+
+                var txt = "";
+
+                txt += '<table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0" >';
+                txt += "<thead>";
+                txt += "<tr><th>Lugar</th><th>Nome</th><</tr></thead><tbody>";
+
+                data.forEach(function (row) {
+                    txt += "<tr><td>" + row.idUtilizador + "</td><td>" + row.nome + "</td></tr>";
+
+                });
+                txt += "</tbody></table>";
+
+                $("#tabela_userAtivo").html(txt);
+            }
+        },
+    });
+};*/

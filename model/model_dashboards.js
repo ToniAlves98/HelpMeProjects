@@ -58,7 +58,7 @@ function countSugestoes(callback) {
     });
 };
 
-//fun��o leitura para o gr�fico de tipo de utilizador
+//função leitura para o gráfico de tipo de utilizador
 function graficoUtilizador(callback) {
     global.connect.con.query('SELECT count(*) as numero from utilizador where profissao = "Estudante" UNION ALL SELECT count(*) from utilizador where profissao = "Professor/Investigador" UNION ALL SELECT count(*) from utilizador where profissao = "Empresa" UNION ALL SELECT count(*) from utilizador where profissao = "Gestor de Projeto" UNION ALL SELECT count(*) from utilizador', function (err, rows, fields) {
         if (!err) {
@@ -70,6 +70,7 @@ function graficoUtilizador(callback) {
 
 };
 
+//função leitura para o gráfico de pergunta por área
 function graficoPerguntaArea(callback) {
     global.connect.con.query('SELECT count(*) as numero from pergunta where AreaConhecimento_idAreaConhecimento = 1 UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 2 UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 3 UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 4 UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 5 UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 6 UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 7 UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 8 UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 9 UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 10 UNION ALL SELECT count(*) from pergunta', function (err, rows, fields) {
         if (!err) {
@@ -81,6 +82,7 @@ function graficoPerguntaArea(callback) {
 
 };
 
+//função leitura para o gráfico de relatório por tipo de utilizador
 function graficoRelatorioUser(callback) {
     global.connect.con.query('SELECT count(*) as numero from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador = utilizador.idUtilizador where profissao = "Estudante" UNION ALL SELECT count(*) from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador = utilizador.idUtilizador where profissao = "Professor/Investigador" UNION ALL SELECT count(*) from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador = utilizador.idUtilizador where profissao = "Empresa" UNION ALL SELECT count(*) from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador = utilizador.idUtilizador where profissao = "Gestor de Projeto"  UNION ALL SELECT count(*) from utilizador', function (err, rows, fields) {
         if (!err) {
@@ -90,6 +92,18 @@ function graficoRelatorioUser(callback) {
             console.log('ERRO', err);
     });
 
+};
+
+//função leitura para nº perguntas por utilizador
+function userAtivo(callback) {
+    var query = global.connect.con.query('SELECT Distinct Utilizador_idUtilizador FROM pergunta', function (err, rows, fields) {
+        if (!err) {
+            callback(null, rows);
+            console.log(rows)
+        }
+        else
+            console.log('ERRO', err);
+    });
 };
 
 
@@ -102,5 +116,6 @@ module.exports = {
     countSugestoes: countSugestoes,
     graficoUtilizador: graficoUtilizador,
     graficoPerguntaArea: graficoPerguntaArea,
-    graficoRelatorioUser: graficoRelatorioUser
+    graficoRelatorioUser: graficoRelatorioUser,
+    userAtivo: userAtivo
 }
