@@ -306,7 +306,6 @@ function graficoPerguntaArea() {
 
 }
 
-/*
 //utilizador ativo
 function getUtilizadorAtivo() {
     var data = {};
@@ -316,10 +315,10 @@ function getUtilizadorAtivo() {
         url: '/userAtivo',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        success: function (npergunta, nresposta, data, status, request) {
+        success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
-
+                /*
                 data.npergunta[0]
                 data.nresposta[0]
 
@@ -337,8 +336,8 @@ function getUtilizadorAtivo() {
                 });
                 txt += "</tbody></table>";
 
-                $("#tabela_userAtivo").html(txt);
+                $("#tabela_userAtivo").html(txt);*/
             }
         },
     });
-};*/
+};
