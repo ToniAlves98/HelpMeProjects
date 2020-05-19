@@ -153,9 +153,7 @@ global.helpme.get('/readRespostas', function (req, res) {
     });
 });
 
-//rota de gravação
 global.helpme.post('/login', function (req, res) {
-    //chamada da função save que está no user.model e envio dos parâmetros
     global.model_utilizador.login(req.body.email, req.body.password, function (err, data) {
 
         if (err) {
@@ -164,6 +162,17 @@ global.helpme.post('/login', function (req, res) {
         else {
             res.send(data);
             res.end('{"success" : "Login realizado com sucesso", "status" : 200}');
+        }
+    });
+});
+
+global.helpme.get('/logout', function (req, res) {
+    global.model_utilizador.logout(function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
         }
     });
 });

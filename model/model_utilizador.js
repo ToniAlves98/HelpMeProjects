@@ -16,6 +16,13 @@ function login(email, password, callback) {
 });
 }
 
+function logout(callback) {
+    global.session.idUser = 0;
+    var string = JSON.stringify('{"success" : "Updated Successfully", "status" : 200}');
+    var json = JSON.parse(string);
+    callback(null, json);
+}
+
 //função de leitura que retorna o resultado no callback
 function readUtilizador(callback) {
     var id = global.session.idUser;
@@ -197,5 +204,6 @@ module.exports = {
     setEmpresa: setEmpresa,
     readGestor: readGestor,
     setGestor: setGestor,
-    getUtilizador: getUtilizador
+    getUtilizador: getUtilizador,
+    logout: logout
 }

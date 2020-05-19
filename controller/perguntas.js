@@ -34,7 +34,7 @@ function getPerguntasInicio() {
                     txt += "<div class='panel panel-default'>";
                     txt += "<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
                     txt += "<h4 style='font-size: 15px'>";
-                    if (row.idUser != null) {
+                    if (row.idUser != null && row.idUser != 0) {
                         txt += "<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"pages('perg_resp'); seePergunta(" + row.idPergunta + ")\">"
                     } else {
                         txt += "<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert('Precisas fazer login para ter acesso às perguntas completas')\">"

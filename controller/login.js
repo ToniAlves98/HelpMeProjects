@@ -45,3 +45,26 @@ $('#formNewLogin').on('submit', function(e) {
         });
     }
 });
+
+function logout() {
+    var data = {};
+
+    $.ajax({
+        type: "GET",
+        url: '/logout',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+
+        success: function(data) {
+            window.location.assign("/");
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+            console.log(textStatus);
+            console.log(errorThrown);
+
+        }
+
+    });
+
+};
