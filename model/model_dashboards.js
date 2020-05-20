@@ -96,16 +96,49 @@ function graficoRelatorioUser(callback) {
 
 //função leitura para nº perguntas por utilizador
 function userAtivo(callback) {
-    var query = global.connect.con.query('SELECT Distinct Utilizador_idUtilizador FROM pergunta', function (err, rows, fields) {
+    global.connect.con.query('SELECT nome, COUNT(*) AS num FROM pergunta, resposta INNER JOIN utilizador ON Utilizador_idUtilizador = idUtilizador GROUP BY Utilizador_idUtilizador ORDER BY COUNT(*) DESC;', function (err, rows, fields) {
+        global.connect.con.query('SELECT nome, COUNT(*) AS num FROM resposta INNER JOIN utilizador ON Utilizador_idUtilizador = idUtilizador GROUP BY Utilizador_idUtilizador ORDER BY COUNT(*) DESC;', function (err, rows2, fields) {
+        //console.log('Rows: ' + rows);
+        //console.log('Rows2: ' + rows2);
+/*        var object = mergeJSON.merge(rows, rows2);
+
+        const result = {};
+        let key;
+
+for (key in rows) {
+  if(rows.hasOwnProperty(key)){
+    //result[key] = rows[key];
+    console.log(rows[key].nome);
+    if(result[key] != null && result[key].nome == rows[key].nome){
+        //result[key].num += rows[key].num;
+        console.log('bom caminho');
+    }else{
+        console.log('not bad');
+        result[key] = rows[key];
+    }
+  }
+}
+
+for (key in rows2) {
+  if(rows2.hasOwnProperty(key)){
+    result[key] = rows2[key];
+  }
+}*/
+
         if (!err) {
+            //var object2 = JSON.stringify(object);
+            //var result2 = JSON.stringify(result);
+            console.log('Rows: ' + rows);
+            console.log('Rows2: ' + rows2);
+            //console.log('obj2: ' + object2);
+            //console.log('result2: ' + result2);
             callback(null, rows);
-            console.log(rows)
         }
         else
             console.log('ERRO', err);
+        });
     });
 };
-
 
 module.exports = {
     countPerguntas: countPerguntas,

@@ -19,6 +19,8 @@ function previous() {
 
 function getPerguntasInicio() {
     var data = {};
+    var lin = document.getElementById('body').value;;
+    console.log('id: ' + lin);
 
     $.ajax({
         type: "GET",

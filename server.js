@@ -13,7 +13,7 @@ global.path = require('path');
 global.flash = require('connect-flash');
 global.upload = require('express-fileupload');
 global.async = require('async');
-global.nodemailer = require('nodemailer');
+global.mergeJSON = require("merge-json") ;
 
 //iniciar a aplicacao
 global.helpme = global.express();
