@@ -169,7 +169,7 @@ body.modal-open {
 
 /*Perfil*/
 #bodyperfil {
-    background-image: url('./img/1920x1080/01.jpg');
+    background-image: url('../img/1920x1080/01.jpg');
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
