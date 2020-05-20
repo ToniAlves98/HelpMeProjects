@@ -18,12 +18,13 @@ function previous() {
 
 
 function getPerguntasInicio() {
+    var lin = document.getElementById("lin").textContent;
     var data = {};
-    var lin = document.getElementById('body').value;;
+    data.lingua = lin;
     console.log('id: ' + lin);
 
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: '/readPerguntas',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
@@ -61,7 +62,6 @@ function getPerguntasInicio() {
 };
 
 function pages(page) {
-
     load_home("about", page);
 
     function getEventTarget(e) {
@@ -283,8 +283,10 @@ function getPerfil(id) {
 };
 
 function getAreaConhecimento(id) {
+    var lin = document.getElementById("lin").textContent;
     var data = {};
     data.AreaConhecimento_idAreaConhecimento = id;
+    data.lingua = lin;
     var txt = "";
 
     $.ajax({

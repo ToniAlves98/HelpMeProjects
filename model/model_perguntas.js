@@ -1,5 +1,5 @@
-function readPerguntas(callback) {
-    global.connect.con.query('SELECT idPergunta, titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador FROM pergunta ORDER BY num_likes DESC', function(err, rows, fields) {
+function readPerguntas(lingua, callback) {
+    global.connect.con.query('SELECT idPergunta, titulo_pergunta, pergunta, data_pergunta, lingua, num_likes, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador FROM pergunta WHERE lingua = \''+lingua+'\' ORDER BY num_likes DESC', function(err, rows, fields) {
     var string = JSON.stringify(rows);
     var json = JSON.parse(string);
 
@@ -16,8 +16,8 @@ function readPerguntas(callback) {
     });
 };
 
-function readPerguntasPorArea(id, callback){
-    global.connect.con.query('SELECT * FROM pergunta WHERE AreaConhecimento_idAreaConhecimento =\''+ id +'\' order by num_likes DESC', function(err, rows, fields) {
+function readPerguntasPorArea(lingua, id, callback){
+    global.connect.con.query('SELECT * FROM pergunta WHERE AreaConhecimento_idAreaConhecimento =\''+ id +'\' AND lingua = \''+lingua+'\' order by num_likes DESC', function(err, rows, fields) {
         var string = JSON.stringify(rows);
         var json = JSON.parse(string);
         if (!err) {

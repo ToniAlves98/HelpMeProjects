@@ -1,6 +1,5 @@
-//rotas get
-global.helpme.get('/readPerguntas', function (req, res) {
-    global.model_perguntas.readPerguntas(function (err, data) {
+global.helpme.post('/readPerguntas', function (req, res) {
+    global.model_perguntas.readPerguntas(req.body.lingua,function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -72,7 +71,7 @@ global.helpme.post('/getEventoArea', function (req, res) {
 });
 
 global.helpme.post('/readPerguntasPorArea', function (req, res) {
-    global.model_perguntas.readPerguntasPorArea(req.body.AreaConhecimento_idAreaConhecimento, function (err, data) {
+    global.model_perguntas.readPerguntasPorArea(req.body.lingua, req.body.AreaConhecimento_idAreaConhecimento, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
