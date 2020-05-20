@@ -81,12 +81,12 @@ $('#formNewRegisto').on('submit', function (e) {
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
-                if (result.status == 200) {
-                    alert("O seu Registo não foi efetuado, por favor tente outra vez");
-                }
-                else {
+                if (result = { "success": "Login realizado com sucesso", "status": 200 }) {
                     alert("Bem Vindo à HeplMe Projects")
-                    window.location.assign("/forum");
+                    window.location.assign("/");
+                } 
+                else if (result = { "denied": "Already exists", "status": 201 }) {
+                    alert("Já existe um utilizador registado com esse e-mail");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {

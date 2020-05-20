@@ -63,7 +63,7 @@ function saveUtilizador(nome, idade, genero, profissao, email, password, descric
     //criar e executar a query de gravação na BD para inserir os dados presentes no post
    global.connect.con.query('SELECT * FROM utilizador where email ="'+ email +'"', function (err,rows,fields){  
        if(rows.length > 0){
-           throw err;
+           console.log('Erro na Query', err);
        }
     else {
         var query = global.connect.con.query('INSERT INTO utilizador SET ?', post, function (err, rows, fields) {
