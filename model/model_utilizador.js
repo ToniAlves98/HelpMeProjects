@@ -61,14 +61,22 @@ function saveUtilizador(nome, idade, genero, profissao, email, password, descric
         gp_nome_emp: gp_nome_emp, ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil
     };
     //criar e executar a query de gravação na BD para inserir os dados presentes no post
-    var query = global.connect.con.query('INSERT INTO utilizador SET ?', post, function (err, rows, fields) {
-        console.log(query.sql);
-        if (!err) {
-            console.log("Numero de linhas inseridas: " + rows.affectedRows);
-        }
-        else
-            console.log('Erro na Query.', err);
-    });
+   global.connect.con.query('SELECT * FROM utilizador where email ="'+ email +'"', function (err,rows,fields){  
+       if(rows.length > 0){
+           throw err;
+       }
+    else {
+        var query = global.connect.con.query('INSERT INTO utilizador SET ?', post, function (err, rows, fields) {
+            console.log(query.sql);
+            if (!err) {
+                console.log("Numero de linhas inseridas: " + rows.affectedRows);
+            }
+            else
+                console.log('Erro na Query.', err);
+        });
+    }
+
+});
 }
 
 //função de edição utilizador
