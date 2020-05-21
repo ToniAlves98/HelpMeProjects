@@ -107,7 +107,7 @@ global.helpme.post('/getResposta', function (req, res) {
 });
 
 global.helpme.post('/savePergunta', function (req, res) {
-    global.model_perguntas.savePergunta(req.body.titulo_pergunta, req.body.pergunta, req.body.data_pergunta, req.body.lingua, req.body.num_likes, req.body.AreaConhecimento_idAreaConhecimento, req.body.Utilizador_idUtilizador);
+    global.model_perguntas.savePergunta(req.body.titulo_pergunta, req.body.pergunta, req.body.data_pergunta, req.body.lingua, req.body.num_likes, req.body.AreaConhecimento_idAreaConhecimento);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

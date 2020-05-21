@@ -1506,3 +1506,6 @@ fieldset[disabled] .btn-theme {
 	content: "\f105";
 	padding-left: 10px;
 }
+
+/*=============TABLE==========*/
+#dataTable tr: nth-child(even){background-color: #f2f2f2;}
