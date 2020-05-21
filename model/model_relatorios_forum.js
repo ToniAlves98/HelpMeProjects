@@ -1,5 +1,5 @@
 function readRelatoriosForum(callback) {
-    global.connect.con.query('SELECT idRelatorio, nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, nome from relatorio inner join utilizador on Utilizador_idUtilizador = idUtilizador', function(err, rows, fields) {
+    global.connect.con.query('SELECT idRelatorio, nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, nome from relatorio inner join utilizador on Utilizador_idUtilizador = idUtilizador where relatorio.estado = "ativo"', function(err, rows, fields) {
         var string = JSON.stringify(rows);
         var json = JSON.parse(string);
         if (!err) {

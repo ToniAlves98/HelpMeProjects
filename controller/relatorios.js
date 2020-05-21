@@ -81,6 +81,7 @@ $('#formNewRelatorio').on('submit', function (e) {
         } else if ($('#area_conhecimento').val() == "Gestão dos Stakeholders") {
             data.AreaConhecimento_idAreaConhecimento = 10;
         };
+        data.estado = "ativo"
 
         console.log(data);
 
@@ -191,10 +192,11 @@ $('#formEditarRelatorio').on('submit', function(e) {
 function removeRelatorio() {
     var data = {};
     data.idRelatorio = teste_rel.idRelatorio;
+    data.estado = "eliminado"
     console.log(data);
 
     $.ajax({
-        type: 'DELETE',
+        type: 'POST',
         url: '/deleteRelatorio',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',

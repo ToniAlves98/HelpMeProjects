@@ -9,7 +9,7 @@ function countPerguntas(callback) {
 };
 
 function countUtilizadores(callback) {
-    global.connect.con.query('SELECT COUNT(*) as count from utilizador;', function(err, rows, fields) {
+    global.connect.con.query('SELECT COUNT(*) as count from utilizador where estado="ativo";', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }
@@ -39,7 +39,7 @@ function countPedidos(callback) {
 };
 
 function countRelatorios(callback) {
-    global.connect.con.query('SELECT COUNT(*) as count from relatorio;', function(err, rows, fields) {
+    global.connect.con.query('SELECT COUNT(*) as count from relatorio where estado = "ativo";', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }
@@ -49,7 +49,7 @@ function countRelatorios(callback) {
 };
 
 function countSugestoes(callback) {
-    global.connect.con.query('SELECT COUNT(*) as count from sugestao;', function(err, rows, fields) {
+    global.connect.con.query('SELECT COUNT(*) as count from sugestao where estado= "ativo";', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }

@@ -1,5 +1,5 @@
 function readRelatorios(callback) {
-    global.connect.con.query('SELECT relatorio.idRelatorio, relatorio.nomeRelatorio, relatorio.pdf, areaconhecimento.tipo_area, utilizador.nome from relatorio INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador=utilizador.idUtilizador INNER JOIN areaconhecimento ON relatorio.AreaConhecimento_idAreaConhecimento=areaconhecimento.idAreaConhecimento;', function(err, rows, fields) {
+    global.connect.con.query('SELECT relatorio.idRelatorio, relatorio.nomeRelatorio, relatorio.pdf, areaconhecimento.tipo_area, utilizador.nome from relatorio  INNER JOIN utilizador ON relatorio.Utilizador_idUtilizador=utilizador.idUtilizador INNER JOIN areaconhecimento ON relatorio.AreaConhecimento_idAreaConhecimento=areaconhecimento.idAreaConhecimento where relatorio.estado = "ativo" ;', function(err, rows, fields) {
         if (!err) {
             callback(null, rows);
         }
@@ -8,8 +8,8 @@ function readRelatorios(callback) {
     });
 };
 
-function saveRelatorio(nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, callback) {
-    var linha = { nomeRelatorio: nomeRelatorio, pdf: pdf, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador: Utilizador_idUtilizador };
+function saveRelatorio(nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador, estado, callback) {
+    var linha = { nomeRelatorio: nomeRelatorio, pdf: pdf, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, Utilizador_idUtilizador: Utilizador_idUtilizador, estado: estado };
     var query = global.connect.con.query('INSERT INTO relatorio SET ?', linha, function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
@@ -33,8 +33,8 @@ function setRelatorio(idRelatorio, nomeRelatorio, pdf, AreaConhecimento_idAreaCo
     });
 };
 
-function deleteRelatorio(idRelatorio, callback) {
-    var query = global.connect.con.query('DELETE FROM relatorio WHERE idRelatorio = "'+ idRelatorio +'"',  function(err, rows, fields) {
+function deleteRelatorio(idRelatorio, estado, callback) {
+    var query = global.connect.con.query('UPDATE relatorio SET estado="'+ estado +'"  WHERE idRelatorio = "'+ idRelatorio +'"',  function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);

@@ -70,8 +70,11 @@ $('#formNewRegisto').on('submit', function (e) {
             data.area_cientifica = '';
             data.ciclo_estudo = '';
 
-        } else { };
 
+        }
+        
+        else { };
+        data.estado = "ativo"
         console.log(data);
         $('#formNewRegisto')[0].reset();
 

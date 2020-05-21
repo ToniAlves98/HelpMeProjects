@@ -47,10 +47,11 @@ function getSugestoes() {
 function eliminarSugestao() {
     var data = {};
     data.sugestao = teste_sug.sugestao;
+    data.estado = "eliminado";
     console.log(data);
 
     $.ajax({
-        type: 'DELETE',
+        type: 'POST',
         url: '/deleteSugestao',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
@@ -98,6 +99,8 @@ $('#tabela_sugestoes').on('click', 'tr', function () {
    function sugestao() {
         var data = {};
         data.sugestao = $('#sugestao').val();
+        data.estado = "ativo"
+        
        
         console.log(data);
 

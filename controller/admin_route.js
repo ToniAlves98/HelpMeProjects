@@ -25,7 +25,7 @@ global.helpme.get('/readRelatorios', function (req, res) {
 });
 
 global.helpme.post('/saveRelatorio', function (req, res) {
-    global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.Utilizador_idUtilizador);
+    global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.Utilizador_idUtilizador, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
@@ -68,8 +68,8 @@ global.helpme.post('/setRelatorio', function (req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.delete('/deleteRelatorio', function (req, res) {
-    global.model_relatorios.deleteRelatorio(req.body.idRelatorio);
+global.helpme.post('/deleteRelatorio', function (req, res) {
+    global.model_relatorios.deleteRelatorio(req.body.idRelatorio, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
@@ -119,13 +119,13 @@ global.helpme.post('/aceitar', function (req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.delete('/deleteEvento', function (req, res) {
-    global.model_eventos.deleteEvento(req.body.idEvento);
+global.helpme.post('/deleteEvento', function (req, res) {
+    global.model_eventos.deleteEvento(req.body.idEvento, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
-global.helpme.delete('/rejeitar', function (req, res) {
-    global.model_pedidos.rejeitar(req.body.idEvento);
+global.helpme.post('/rejeitar', function (req, res) {
+    global.model_pedidos.rejeitar(req.body.idEvento, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
@@ -160,7 +160,7 @@ global.helpme.post('/saveUtilizador', function (req, res) {
 
     console.log('body: ' + JSON.stringify(req.body));
     global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
-        req.body.gp_nome_emp, req.body.ramo_emp, req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, function (err, data) {
+        req.body.gp_nome_emp, req.body.ramo_emp, req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, req.body.estado, function (err, data) {
             if (err) {
                 console.log("ERROR : ", err);
                 res.end('{"denied" : "Já existe um utilizador registado com esse e-mail", "status" : 201}');
@@ -181,8 +181,8 @@ global.helpme.post('/setUtilizador', function (req, res) {
 });
 
 //rota eliminar utilizador
-global.helpme.delete('/deleteUtilizador', function (req, res) {
-    global.model_utilizador.deleteUtilizador(req.body.idUtilizador);
+global.helpme.post('/deleteUtilizador', function (req, res) {
+    global.model_utilizador.deleteUtilizador(req.body.idUtilizador, req.body.estado);
     res.end('{"success" : "Utilizador eliminado com sucesso", "status" : 200}');
 });
 
@@ -263,13 +263,13 @@ global.helpme.get('/readSugestoes', function (req, res) {
     });
 });
 
-global.helpme.delete('/deleteSugestao', function (req, res) {
-    global.model_sugestoes.deleteSugestao(req.body.sugestao);
+global.helpme.post('/deleteSugestao', function (req, res) {
+    global.model_sugestoes.deleteSugestao(req.body.sugestao, req.body.estado);
     res.end('{"success" : "Sugestão eliminado com sucesso", "status" : 200}');
 });
 
 global.helpme.post('/saveSugestao', function (req, res) {
-    global.model_sugestoes.saveSugestao(req.body.sugestao);
+    global.model_sugestoes.saveSugestao(req.body.sugestao, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

@@ -54,11 +54,11 @@ function getUtilizador(id, callback) {
 };
 
 //função de gravação que recebe os parâmetros
-function saveUtilizador(nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
+function saveUtilizador(nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, estado, callback) {
     //receber os dados do formu�rio que são enviados por post e guarda em objeto JSON
     var post = {
         nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
-        gp_nome_emp: gp_nome_emp, ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil
+        gp_nome_emp: gp_nome_emp, ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil, estado:estado
     };
     //criar e executar a query de gravação na BD para inserir os dados presentes no post
    global.connect.con.query('SELECT * FROM utilizador where email ="'+ email +'"', function (err,rows,fields){  
@@ -97,8 +97,8 @@ function setUtilizador(idUtilizador, nome, idade, genero, profissao, email, pass
 }
 
 //função delete utilizador
-function deleteUtilizador(idUtilizador, callback) {
-    var query = global.connect.con.query('DELETE FROM utilizador WHERE idUtilizador = "' + idUtilizador + '"', function (err, rows, fields) {
+function deleteUtilizador(idUtilizador, estado, callback) {
+    var query = global.connect.con.query('UPDATE utilizador SET estado="'+ estado +'" WHERE idUtilizador = "' + idUtilizador + '"', function (err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);
@@ -112,7 +112,7 @@ function deleteUtilizador(idUtilizador, callback) {
 //função de leitura que retorna o estudante no callback
 function readEstudante(callback) {
     //criar e executar a query de leitura na BD
-    global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, area_cientifica, ciclo_estudo, perfil from utilizador WHERE profissao = "Estudante" OR profissao = "Professor/Investigador"', function (err, rows, fields) {
+    global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, area_cientifica, ciclo_estudo, perfil from utilizador WHERE (profissao = "Estudante" OR profissao = "Professor/Investigador") AND estado="ativo"', function (err, rows, fields) {
         if (!err) {
             //gravar os resultados rows no callback
             callback(null, rows);
@@ -142,7 +142,7 @@ function setEstudante(idUtilizador, nome, idade, genero, profissao, email, passw
 //função de leitura que retorna a empresa no callback
 function readEmpresa(callback) {
     //criar e executar a query de leitura na BD
-    global.connect.con.query('SELECT idUtilizador, nome, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, perfil from utilizador WHERE profissao = "Empresa"', function (err, rows, fields) {
+    global.connect.con.query('SELECT idUtilizador, nome, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, perfil from utilizador WHERE profissao = "Empresa" AND estado = "ativo"', function (err, rows, fields) {
         if (!err) {
             //gravar os resultados rows no callback
             callback(null, rows);
@@ -172,7 +172,7 @@ function setEmpresa(idUtilizador, nome, profissao, email, password, descricao, r
 //função de leitura que retorna o gestor no callback
 function readGestor(callback) {
     //criar e executar a query de leitura na BD
-    global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, perfil from utilizador WHERE profissao = "Gestor de Projeto"', function (err, rows, fields) {
+    global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, perfil from utilizador WHERE profissao = "Gestor de Projeto" AND estado = "ativo"', function (err, rows, fields) {
         if (!err) {
             //gravar os resultados rows no callback
             callback(null, rows);

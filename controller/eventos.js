@@ -205,10 +205,11 @@ $('#formEditarEvento').on('submit', function(e) {
 function removeEvento() {
     var data = {};
     data.idEvento = teste.idEvento;
+    data.estado = "eliminado"
     console.log(data);
 
     $.ajax({
-        type: 'DELETE',
+        type: 'POST',
         url: '/deleteEvento',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',

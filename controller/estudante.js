@@ -163,10 +163,11 @@ $('#formEditarEstudante').on('submit', function (e) {
 function removeEstudante() {
     var data = {};
     data.idUtilizador = user.idUtilizador;
+    data.estado = "eliminado";
     console.log(data);
 
     $.ajax({
-        type: 'DELETE',
+        type: 'POST',
         url: '/deleteUtilizador',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',

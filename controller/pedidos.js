@@ -92,10 +92,11 @@ $("#aceitarEvento").on("click", function() {
  function rejeitarEvento() {
     var data = {};
     data.idEvento = teste_ped.idEvento;
+    data.estado = "recusado"
     console.log(data);
 
     $.ajax({
-        type: 'DELETE',
+        type: 'POST',
         url: '/rejeitar',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
