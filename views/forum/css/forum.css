@@ -374,6 +374,14 @@ body.modal-open {
     color: #282828;
 }
 
+/*Infomacoes*/
+.informacoesBoas p {
+    color: #282828;
+}
+
+.li-hover li:hover, a:hover {
+    color: #ff0000;
+}
 
 /*
 #registo .custom-control {
