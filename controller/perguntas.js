@@ -168,10 +168,10 @@ $('#formNewPergunta').on('submit', function(e) {
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function(result) {
-                if (result.status == 200) {
+                if (result = { "success": "Updated Successfully", "status": 200 }) {
                     alert("Pergunta adicionada com sucesso");
                 }
-                getPerguntas();
+                getPerguntasInicio();
             },
 
         });
