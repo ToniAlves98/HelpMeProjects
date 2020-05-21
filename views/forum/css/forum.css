@@ -369,7 +369,10 @@ body.modal-open {
     height: 15px;
 }
 
-/*Nocoes e Informacoes*/
+/*Nocoes*/
+.nocoesBase p {
+    color: #282828;
+}
 
 
 /*
