@@ -162,7 +162,7 @@ $('#formNewPedido').on('submit', function(e) {
     else {
         event.preventDefault();
         var data = {};
-        data.nomeEvento = $('#nomeEvento').val();
+        data.nomeEvento = $('#testeEvento').val();
         if ($('#area_conhecimento').val() == "Gestão do Âmbito") {
             data.AreaConhecimento_idAreaConhecimento = 1;
         } else if ($('#area_conhecimento').val() == "Gestão de Aquisições") {
@@ -185,7 +185,7 @@ $('#formNewPedido').on('submit', function(e) {
             data.AreaConhecimento_idAreaConhecimento = 10;
         };
         data.tipoEvento = $('#tipoEvento').val();
-        data.imagem = ($('#nomeEvento').val()) + '.png';
+        data.imagem = ($('#testeEvento').val()) + '.png';
         data.Utilizador_idUtilizador = 2;
         data.data_inicio = $('#inicioEvento').val();
         data.data_fim = $('#fimEvento').val();

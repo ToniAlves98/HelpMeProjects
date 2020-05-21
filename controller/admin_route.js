@@ -56,7 +56,7 @@ global.helpme.post('/g', (req, res) => {
             if (err) {
                 res.send(err)
             } else {
-                res.redirect('/forum/');
+                res.redirect('/inicial');
             }
         })
     }
