@@ -22,9 +22,9 @@ function getEventos() {
                     
                 txt += "<table class=\"table table-hover table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\" >";
                 txt += "<thead>";
-                txt += "<tr><th>Id</th><th>Nome</th><th>Área de Conhecimento</th><th>Tipo</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
+                txt += "<tr><th>Id</th><th>Nome</th><th>Área de Conhecimento</th><th>Tipo</th><th>Descrição</th><th>Imagem</th><th>Utilizador</th><th>Data de Ínicio</th><th>Data de Fim</th></tr></thead><tbody>";
                 data.forEach(function (row) {
-                txt += "<tr><td>" + row.idEvento + "</td><td>" + row.nomeEvento + "</td><td>" + row.tipo_area + "</td><td>" + row.tipoEvento + "</td><td>" + row.imagem + "</td> <td>" + row.nome + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
+                txt += "<tr><td>" + row.idEvento + "</td><td>" + row.nomeEvento + "</td><td>" + row.tipo_area + "</td><td>" + row.tipoEvento + "</td><td>" + row.descricao   + "</td><td>" + row.imagem + "</td> <td>" + row.nome + "</td><td>" + row.data_inicio + "</td><td>" + row.data_fim + "</td></tr>";
                
                 });
                 
@@ -79,6 +79,7 @@ $('#formNewEvento').on('submit', function(e) {
             data.AreaConhecimento_idAreaConhecimento = 10;
         };
         data.tipoEvento = $('#tipoEvento').val();
+        data.descricao = $('#descricao').val();
         data.imagem = ($('#nomeEvento').val()) + '.png';
         data.Utilizador_idUtilizador = 2;
         data.data_inicio = $('#inicioEvento').val();
@@ -122,6 +123,7 @@ function getDadosEvento() {
                 $('#nomeEvento_edi').val(teste.nomeEvento);
                 $('#area_conhecimento_edi').val(teste.AreaConhecimento_idAreaConhecimento);
                 $('#tipoEvento_edi').val(teste.tipoEvento);
+                $('#descricao_edi').val(teste.descricao);
                 $('#inicioEvento_edi').val(teste.data_inicio);
                 $('#fimEvento_edi').val(teste.data_fim);
                
@@ -177,9 +179,10 @@ $('#formEditarEvento').on('submit', function(e) {
         } else if ($('#area_conhecimento_edi').val() == "Gestão dos Stakeholders") {
             data.AreaConhecimento_idAreaConhecimento = 10;
         };
+
         data.tipoEvento = $('#tipoEvento_edi').val();
+        data.descricao = $('#descricao_edi').val();
         data.imagem = ($('#nomeEvento_edi').val()) + '.png';
-        data.Utilizador_idUtilizador = teste.Utilizador_idUtilizador;
         data.data_inicio = $('#inicioEvento_edi').val();
         data.data_fim = $('#fimEvento_edi').val();
         
@@ -260,10 +263,11 @@ $('#tabela_eventos').on('click', 'tr', function () {
      teste.nomeEvento = tableData[1]
      teste.AreaConhecimento_idAreaConhecimento = tableData[2]
      teste.tipoEvento = tableData[3]
-     teste.imagem = tableData [4]
-     teste.Utilizador_idUtilizador = tableData[5]
-     teste.data_inicio= tableData[6]
-     teste.data_fim = tableData[7]
+     teste.descricao = tableData[4]
+     teste.imagem = tableData [5]
+     teste.Utilizador_idUtilizador = tableData[6]
+     teste.data_inicio= tableData[7]
+     teste.data_fim = tableData[8]
      console.log(teste)
  });
 
