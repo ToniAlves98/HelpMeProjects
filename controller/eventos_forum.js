@@ -48,7 +48,7 @@ function seeEvento(id) {
             result.forEach(function(row) {
                 txt += "<img alt=\"\" style=\"max-height:360px; max-width:360px;\" src=\"../../../uploads/" + row.imagem + "\">";
                 $("#modalImg").html(txt);
-                $("#nomeEvento").html(row.nomeEvent o);
+                $("#nomeEvento").html(row.nomeEvento);
                 $("#descricaoEvento").html(row.tipoEvento);
             });
         },
