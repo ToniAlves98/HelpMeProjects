@@ -288,13 +288,13 @@ $('#formUtilizador').on('submit', function (e) {
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
-                if (result.status == 200) {
-                    console.log("Erro");
+                if (result = { "success": "Utilizador editado com sucesso", "status": 200 }) {
+                    alert("submetido com sucesso");
                 }
                 else {
-                    alert("submetido com sucesso");
-                    $("#formUtilziador")[0].reset();
+                    alert("Não foi editado com sucesso")
                 }
+                $("#formUtilziador")[0].reset();
                 dadosUtilizador();
             },
             error: function (xhr, textStatus, errorThrown) {

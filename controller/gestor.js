@@ -136,7 +136,6 @@ $('#formEditarGestor').on('submit', function (e) {
         data.regiao_pais = $('#regiao_gestor').val();
 
         console.log(data);
-        $('#formEditarGestor')[0].reset();
 
         $.ajax({
             type: 'POST',
@@ -144,12 +143,13 @@ $('#formEditarGestor').on('submit', function (e) {
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
-                if (result.status == 200) {
-                    alert("Não foi editado com sucesso")
-                }
-                else {
+                if (result = { "success": "Utilizador editado com sucesso", "status": 200 }) {
                     alert("Editado com sucesso");
                 }
+                else {
+                    alert("Não foi editado com sucesso")
+                }
+                $('#formEditarGestor')[0].reset();
                 getGestor();
             },
             error: function (xhr, textStatus, errorThrown) {

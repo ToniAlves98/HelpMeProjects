@@ -127,7 +127,6 @@ $('#formEditarEmpresa').on('submit', function (e) {
         data.regiao_pais = $('#regiao_empresa').val();
 
         console.log(data);
-        $('#formEditarEmpresa')[0].reset();
 
         $.ajax({
             type: 'POST',
@@ -135,12 +134,13 @@ $('#formEditarEmpresa').on('submit', function (e) {
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
-                if (result.status == 200) {
-                    alert("Não foi editado com sucesso")
-                }
-                else {
+                if (result = { "success": "Utilizador editado com sucesso", "status": 200 }) {
                     alert("Editado com sucesso");
                 }
+                else {
+                    alert("Não foi editado com sucesso")
+                }
+                $('#formEditarEmpresa')[0].reset();
                 getEmpresa();
             },
             error: function (xhr, textStatus, errorThrown) {

@@ -134,7 +134,6 @@ $('#formEditarEstudante').on('submit', function (e) {
             data.ciclo_estudo = null;
         } else { };
         console.log(data);
-        $('#formEditarEstudante')[0].reset();
 
         $.ajax({
             type: 'POST',
@@ -142,12 +141,13 @@ $('#formEditarEstudante').on('submit', function (e) {
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
-                if (result.status == 200) {
-                    alert("Não foi editado com sucesso")
-                }
-                else {
+                if (result = { "success": "Utilizador editado com sucesso", "status": 200 }) {
                     alert("Editado com sucesso");
                 }
+                else {
+                    alert("Não foi editado com sucesso")
+                }
+                $('#formEditarEstudante')[0].reset();
                 getEstudante();
             },
             error: function (xhr, textStatus, errorThrown) {
