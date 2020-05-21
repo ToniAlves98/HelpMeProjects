@@ -328,11 +328,15 @@
          <div class="row">
             <div class="col-md-5 col-sm-5 md-margin-b-60">
                <div class="margin-t-50 margin-b-30">
-                  <h2>Why Us?</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <h2>Help us and send an improvement suggestion!</h2>
+                  <form id="formSugestao" method="post">
+                     <div class="form-group">
+                         <textarea class="form-control form-control-user" style="border-color: chocolate;" id="sugestao" name="message" rows="5" cols="30" placeholder=""></textarea>
+                     </div>
                </div>
-               <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase">More...</a>
+               <button type="submit" id="AddSugestao" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" method="post">Send Sugestion</button>
             </div>
+         </form>
             <div class="col-md-5 col-sm-7 col-md-offset-2">
                <!-- Accordion -->
                <div class="accordion">
@@ -341,13 +345,13 @@
                         <div class="panel-heading" role="tab" id="headingOne">
                            <h4 class="panel-title">
                               <a class="panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              Expert Research
+                              History of the site
                               </a>
                            </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                            <div class="panel-body">
-                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                              HELP PME PROJECTS is a platform developed within the scope of a  dissertation of the Master’s in Engineering Project Management at the University of Minho. The development team is a group of students who are part of the Integrated Master in Information System Management at the University of Minho.
                            </div>
                         </div>
                      </div>
@@ -355,13 +359,16 @@
                         <div class="panel-heading" role="tab" id="headingTwo">
                            <h4 class="panel-title">
                               <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                              Hi-Tech Engineering
+                              Values
                               </a>
                            </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                            <div class="panel-body">
-                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                              Excellence – we look to share knowledge in a simpler and more innovative way.
+                              Trust – the most experienced project managers are the engine of the platform.
+                              Ambition – we look to improve the success of Portuguese SMEs.
+
                            </div>
                         </div>
                      </div>
@@ -369,13 +376,16 @@
                         <div class="panel-heading" role="tab" id="headingThree">
                            <h4 class="panel-title">
                               <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                              Outstanding Results
+                              Mission and Vision
                               </a>
                            </h4>
                         </div>
                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                            <div class="panel-body">
-                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                              HELP PME PROJECTS mission's is to support Portuguese SMEs and to generate a positive impact on society, contributing to the adoption and improvement of Project Management practices by Portuguese SMEs.
+                              The HELP PME PROJECTS vision is to become a reference platform in Portugal in the area of Project Management.
+                              The HELP PME PROJECTS purpose is to contribute to the improvement of project management practices, by supporting SME project managers, students, and other potential users.
+                              
                            </div>
                         </div>
                      </div>
@@ -462,4 +472,5 @@
        div.innerHTML = txt;
    };
 </script>
-<script src="../../controller/perguntas.js" type="text/javascript"></script>
+<script src="../../../controller/perguntas.js" type="text/javascript"></script>
+<script src="../../../controller/sugestoes.js" type="text/javascript"></script>
