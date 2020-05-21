@@ -155,12 +155,10 @@ $('#formNewPergunta').on('submit', function(e) {
         data.data_pergunta = null;
         data.lingua = "PT";
         data.num_likes = 0;
-        data.AreaConhecimento_idAreaConhecimento = 3;
-        data.Utilizador_idUtilizador = 2;
+        data.AreaConhecimento_idAreaConhecimento = $('#per_are').val();
+        data.Utilizador_idUtilizador = 1;
 
         console.log(data);
-
-        $("#formNewPergunta")[0].reset();
 
         $.ajax({
             type: 'POST',
@@ -170,8 +168,10 @@ $('#formNewPergunta').on('submit', function(e) {
             success: function(result) {
                 if (result = { "success": "Updated Successfully", "status": 200 }) {
                     alert("Pergunta adicionada com sucesso");
+                    $("#formNewPergunta")[0].reset();
                 }
                 getPerguntasInicio();
+                countArea();
             },
 
         });
