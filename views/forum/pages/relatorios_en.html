@@ -1,0 +1,117 @@
+<link href="../css/layout.bar.css" rel="stylesheet" type="text/css" />
+<link href="./css/forum.css" rel="stylesheet" type="text/css" />
+<!--========== PAGE LAYOUT ==========-->
+<div id="about" class="bg-color-sky-light" style="margin-top: 100px;">
+   <div class="row">
+      <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Reports</h1>
+      <div class="tipo-evento" style="margin-top: 80px; margin-right: 260px;" align="right">
+         <select id="area" onchange="seeAreaRel()"></select>
+      </div>
+   </div>
+   <div class="container cta-80">
+      <div class="row" style="margin-bottom:80px">
+         <div id="allrelatorios"></div>
+         <!--div style="border-bottom: 1px solid #515769;">
+             <h3>Nome Ficheiro</h3>
+                <p>Nome Utilizador    Data</p>
+             <p>Ficheiro</p>
+         </div-->
+      </div>
+   </div>
+   <div style="margin-left: 170px; margin-bottom: 30px;">
+      <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#adicionar_relatorio">Adicionar Relatório</a>
+   </div>
+   <div style="margin-left: 170px; margin-bottom: 60px;">
+      <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#doc">Associar Documento</a>
+   </div>
+</div>
+<!-- Modal adicionar relatorio -->
+<div class="modal fadeIn gestaoRelatorio" id="adicionar_relatorio" role="dialog" aria-modal="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <div class="col-lg-12 text-center">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <br />
+               <h1 style="color: #FD871F;">Adicionar Relatório</h1>
+            </div>
+         </div>
+         <div class="modal-body" style="padding: 40px 60px;">
+            <div class="row">
+               <div class="col-lg-12">
+                  <form id="formNewRelatorio" class="user text-center" method="post">
+                     <div class="form-group">
+                        <input type="text" class="form-control form-control-user" id="nome_relatorio" aria-describedby="" placeholder="Nome do relatorio">
+                     </div>
+                     <div class="form-group">
+                        <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento">
+                           <option value="" disabled selected>Área de Conhecimento</option>
+                           <option value="Gestão do Âmbito">Gestão do Âmbito</option>
+                           <option value="Gestão de Aquisições">Gestão de Aquisições</option>
+                           <option value="Gestão da Comunicação">Gestão da Comunicação</option>
+                           <option value="Gestão do Cronograma">Gestão do Cronograma</option>
+                           <option value="Gestão do Custo">Gestão do Custo</option>
+                           <option value="Gestão da Integração">Gestão da Integração</option>
+                           <option value="Gestão da Qualidade">Gestão da Qualidade</option>
+                           <option value="Gestão dos Recursos">Gestão dos Recursos</option>
+                           <option value="Gestão de Riscos">Gestão de Riscos</option>
+                           <option value="Gestão dos Stakeholders">Gestão dos Stakeholders</option>
+                        </select>
+                     </div>
+                     <br />
+                     <button type="submit" style="background-color: #FD871F; border: none;" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!--Associar documento-->
+<div class="modal fadeIn gestaoRelatorio" id="doc" role="dialog" aria-modal="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <div class="col-lg-12 text-center">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <br />
+               <h1 style="color: #FD871F;">Adicionar documento</h1>
+            </div>
+         </div>
+         <div class="modal-body" style="padding: 40px 60px;">
+            <div class="row">
+               <div class="col-lg-12">
+                  <form id="formNewRelatorio"  enctype="multipart/form-data" action="/g" class="user text-center" method="post">
+                     <div class="form-group">
+                        <input type="file" name="file" id="file" />
+                        <span>(apenas ficheiros em formato pdf)</span>
+                     </div>
+                     <br />
+                     <button type="submit" style="background-color: #FD871F; border: none;" value="upload" class="btn btn-primary btn-user btn-block" id="btRelatorio">Adicionar</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   /*area eventos*/
+   var options = "";
+   options += "<option value=\"0\">" + "Todos as Areas" + "</option>";
+   options += "<option value=\"1\">" + "Gestão de Âmbito" + "</option>";
+   options += "<option value=\"2\">" + "Gestão de Aquisições" + "</option>";
+   options += "<option value=\"3\">" + "Gestão de Comunicação" + "</option>";
+   options += "<option value=\"4\">" + "Gestão do Cronograma" + "</option>";
+   options += "<option value=\"5\">" + "Gestão de Custo" + "</option>";
+   options += "<option value=\"6\">" + "Gestão da Integração" + "</option>";
+   options += "<option value=\"7\">" + "Gestão de Qualidade" + "</option>";
+   options += "<option value=\"8\">" + "Gestão de Recursos" + "</option>";
+   options += "<option value=\"9\">" + "Gestão de Riscos" + "</option>";
+   options += "<option value=\"10\">" + "Gestão de Stakeholders" + "</option>";
+   document.getElementById("area").innerHTML = options;
+   /*fim area eventos*/
+   
+</script>
+<script type="text/javascript" src="../../../controller/relatorios_forum.js"></script>
+<script type="text/javascript" src="../../../controller/relatorios.js"></script>
