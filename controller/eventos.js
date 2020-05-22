@@ -11,7 +11,7 @@ function getEventos() {
         url: '/readEventos',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -94,8 +94,9 @@ $('#formNewEvento').on('submit', function(e) {
             url: '/saveEvento',
             data: JSON.stringify(data),
             contentType: 'application/json',
+            dataType: 'json',
             success: function(result) {
-                if (result = { "success": "Updated Successfully", "status": 200 }) {
+                if (result.status == 200) {
                     alert("Evento adicionado com sucesso");
                 } 
                 else{
@@ -118,7 +119,7 @@ function getDadosEvento() {
         url: '/readEventos',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
 
             if (request.status == 200) {
@@ -197,8 +198,9 @@ $('#formEditarEvento').on('submit', function(e) {
             url: '/setEvento',
             data: JSON.stringify(data),
             contentType: 'application/json',
+            dataType: 'json',
             success: function(result) {
-                if (result = { "success": "Updated Successfully", "status": 200 }) {
+                if (result.status == 200) {
                     alert("Evento editado com sucesso");
                 }
                 else {
@@ -223,11 +225,11 @@ function removeEvento() {
         url: '/deleteEvento',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                
+                alert("Elimnado com sucesso");
             }
             else {
                 console.log("Erro");

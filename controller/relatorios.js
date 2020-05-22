@@ -10,8 +10,7 @@ function getRelatorios() {
         url: '/readRelatorios',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
-
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -90,8 +89,9 @@ $('#formNewRelatorio').on('submit', function (e) {
             url: '/saveRelatorio',
             data: JSON.stringify(data),
             contentType: 'application/json',
+            dataType: 'json',
             success: function (result) {
-                if (result = { "success": "Updated Successfully", "status": 200 }) {
+                if (result.status == 200 ) {
                     alert("Relatório adicionado com sucesso");
                 }
                 else {
@@ -114,7 +114,7 @@ function getDadosRelatorio() {
         url: '/readRelatorios',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
 
             if (request.status == 200) {
@@ -181,8 +181,9 @@ $('#formEditarRelatorio').on('submit', function(e) {
             url: '/setRelatorio',
             data: JSON.stringify(data),
             contentType: 'application/json',
+            dataType: 'json',
             success: function(result) {
-                if (result = { "success": "Updated Successfully", "status": 200 }) {
+                if (result.status == 200 ) {
                     alert("Relatório editado com sucesso");
                 }
                 else {
@@ -206,10 +207,11 @@ function removeRelatorio() {
         url: '/deleteRelatorio',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
 
             if (request.status == 200) {
+                alert("Eliminado com sucesso");
             }
             else {
                 console.log("Erro");

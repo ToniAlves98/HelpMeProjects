@@ -20,7 +20,7 @@ function getPerguntas() {
         url: '/countPerguntas',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -38,7 +38,7 @@ function getNumUtilizadores() {
         url: '/countUtilizadores',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -56,7 +56,7 @@ function getNumEventos() {
         url: '/countEventos',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -74,7 +74,7 @@ function getNumPedidos() {
         url: '/countPedidos',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -92,7 +92,7 @@ function getNumRelatorios() {
         url: '/countRelatorios',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -110,7 +110,7 @@ function getNumSugestoes() {
         url: '/countSugestoes',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -315,6 +315,7 @@ function getUtilizadorAtivo() {
         url: '/userAtivo',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
