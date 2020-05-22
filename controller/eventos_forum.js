@@ -49,7 +49,7 @@ function seeEvento(id) {
                 txt += "<img alt=\"\" style=\"max-height:360px; max-width:360px;\" src=\"../../../uploads/" + row.imagem + "\">";
                 $("#modalImg").html(txt);
                 $("#nomeEvento").html(row.nomeEvento);
-                $("#descricaoEvento").html(row.tipoEvento);
+                $("#descricaoEvento").html(row.descricao);
             });
         },
         error: function(data) {

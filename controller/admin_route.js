@@ -105,7 +105,7 @@ global.helpme.post('/saveEvento', function (req, res) {
 });
 
 global.helpme.post('/savePedido', function (req, res) {
-    global.model_pedidos.savePedido(req.body.nomeEvento, req.body.tipoEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.estado);
+    global.model_pedidos.savePedido(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.Utilizador_idUtilizador, req.body.data_inicio, req.body.data_fim, req.body.estado);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 

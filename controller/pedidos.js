@@ -52,6 +52,7 @@ function aceitarEvento() {
     data.nomeEvento = teste_ped.nomeEvento;
     data.AreaConhecimento_idAreaConhecimento = teste_ped.AreaConhecimento_idAreaConhecimento;
     data.tipoEvento = teste_ped.tipoEvento;
+    data.descricao = teste_ped.descricao;
     data.imagem = teste_ped.imagem;
     data.Utilizador_idUtilizador = teste_ped.Utilizador_idUtilizador;
     data.data_inicio = teste_ped.data_inicio;
@@ -136,10 +137,11 @@ $('#tabela_pedidos').on('click', 'tr', function () {
      teste_ped.nomeEvento = tableData[1]
      teste_ped.AreaConhecimento_idAreaConhecimento = tableData[2]
      teste_ped.tipoEvento = tableData[3]
-     teste_ped.imagem = tableData [4]
-     teste_ped.Utilizador_idUtilizador = tableData[5]
-     teste_ped.data_inicio= tableData[6]
-     teste_ped.data_fim = tableData[7]
+     teste_ped.descricao = tableData[4]
+     teste_ped.imagem = tableData [5]
+     teste_ped.Utilizador_idUtilizador = tableData[6]
+     teste_ped.data_inicio= tableData[7]
+     teste_ped.data_fim = tableData[8]
      console.log(teste_ped)
  });
 
@@ -185,6 +187,7 @@ $('#formNewPedido').on('submit', function(e) {
             data.AreaConhecimento_idAreaConhecimento = 10;
         };
         data.tipoEvento = $('#tipoEvento').val();
+        data.descricao = $('#descricao').val();
         data.imagem = ($('#testeEvento').val()) + '.png';
         data.Utilizador_idUtilizador = 2;
         data.data_inicio = $('#inicioEvento').val();
