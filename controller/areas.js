@@ -10,8 +10,7 @@ function getAreas() {
         url: '/readAreas',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
-
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {

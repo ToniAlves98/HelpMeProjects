@@ -153,14 +153,23 @@ global.helpme.get('/readRespostas', function (req, res) {
 });
 
 global.helpme.post('/login', function (req, res) {
-    global.model_utilizador.login(req.body.email, req.body.password, function (err, data) {
-
-        if (err) {
-            console.log("ERROR : ", err);
+    console.log('body: ' + JSON.stringify(req.body));
+    global.connect.con.query('SELECT email, password FROM utilizador where email ="' + req.body.email + '"and password="' + req.body.password + '"', function (err, rows, fields) {
+        console.log(rows)
+        if (rows.length == 0) {
+            res.end('{"success" : "Login realizado sem sucesso", "status" : 201}');
         }
         else {
-            res.send(data);
-            res.end('{"success" : "Login realizado com sucesso", "status" : 200}');
+            global.model_utilizador.login(req.body.email, req.body.password, function (err, data) {
+                console.log(data)
+                if (err) {
+                    console.log("ERRO", err);
+                }
+                else {
+                    res.end('{"success" : "Login realizado com sucesso", "status" : 200}');
+                }
+            });
+
         }
     });
 });
