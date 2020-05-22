@@ -81,7 +81,6 @@ $('#formNewEvento').on('submit', function(e) {
         data.tipoEvento = $('#tipoEvento').val();
         data.descricao = $('#descricao').val();
         data.imagem = ($('#nomeEvento').val()) + '.png';
-        data.Utilizador_idUtilizador = 2;
         data.data_inicio = $('#inicioEvento').val();
         data.data_fim = $('#fimEvento').val();
         data.estado = 'ativo';

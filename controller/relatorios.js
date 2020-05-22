@@ -57,7 +57,6 @@ $('#formNewRelatorio').on('submit', function (e) {
         event.preventDefault();
         var data = {};
         data.nomeRelatorio = $('#nome_relatorio').val();
-        data.Utilizador_idUtilizador = 1;
         data.pdf = ($('#nome_relatorio').val()) + '.pdf';
         if ($('#area_conhecimento').val() == "Gestão do Âmbito") {
             data.AreaConhecimento_idAreaConhecimento = 1;

@@ -9,8 +9,8 @@ function readEventos(callback) {
 };
 
 
-function saveEvento(nomeEvento, tipoEvento, descricao, AreaConhecimento_idAreaConhecimento,  imagem, Utilizador_idUtilizador, data_inicio, data_fim, estado, callback) {
-    var post = { nomeEvento: nomeEvento, tipoEvento: tipoEvento, descricao:descricao, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, imagem:imagem, Utilizador_idUtilizador: Utilizador_idUtilizador, data_inicio: data_inicio, data_fim: data_fim, estado: estado };
+function saveEvento(nomeEvento, AreaConhecimento_idAreaConhecimento, tipoEvento, descricao,  imagem,  data_inicio, data_fim, estado, callback) {
+    var post = { nomeEvento: nomeEvento, tipoEvento: tipoEvento, descricao:descricao, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, imagem:imagem, data_inicio: data_inicio, data_fim: data_fim, estado: estado, Utilizador_idUtilizador: global.session.idUser, };
     var query = global.connect.con.query('INSERT INTO evento SET ?', post, function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {
