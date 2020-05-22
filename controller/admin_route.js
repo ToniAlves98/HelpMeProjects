@@ -1,4 +1,4 @@
-//rota admin
+//rota admi
 global.helpme.get('/admin', function (req, res) {
     global.helpme.use(global.express.static('views/admin'));
     global.helpme.use('/admin', global.express.static('views/admin'));

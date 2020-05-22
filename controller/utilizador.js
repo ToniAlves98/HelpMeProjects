@@ -89,7 +89,7 @@ $('#formNewRegisto').on('submit', function (e) {
                     window.location.assign("/");
                 } 
                 else if (result = { "denied": "Already exists", "status": 201 }) {
-                    alert("Já existe um utilizador registado com esse e-mail");
+                    alert("Já existe  utilizador registado com esse e-mail");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
