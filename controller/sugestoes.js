@@ -11,8 +11,7 @@ function getSugestoes() {
         url: '/readSugestoes',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
-
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -54,12 +53,13 @@ function eliminarSugestao() {
         type: 'POST',
         url: '/deleteSugestao',
         data: JSON.stringify(data),
+        dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                
+                alert("Sugestão eliminada com sucesso");
             }
             else {
                 console.log("Erro");
@@ -109,9 +109,10 @@ $('#tabela_sugestoes').on('click', 'tr', function () {
             url: '/saveSugestao',
             data: JSON.stringify(data),
             contentType: 'application/json',
+            dataType: 'json',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Sugestão adicionado com sucesso");
+                    alert("Sugestão adicionada com sucesso");
                 }
                 $('#formSugestao')[0].reset();
             },

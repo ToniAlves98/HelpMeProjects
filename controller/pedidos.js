@@ -12,8 +12,7 @@ function getEventosPendentes() {
         url: '/readEventosPendentes',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
-
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -65,11 +64,11 @@ function aceitarEvento() {
         url: '/aceitar',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                
+                alert("Pedido aceite com sucesso");
             }
             else {
                 console.log("Erro");
@@ -101,11 +100,11 @@ $("#aceitarEvento").on("click", function() {
         url: '/rejeitar',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                
+                alert("Pedido eliminado com sucesso");
             }
             else {
                 console.log("Erro");
@@ -203,6 +202,7 @@ $('#formNewPedido').on('submit', function(e) {
             url: '/savePedido',
             data: JSON.stringify(data),
             contentType: 'application/json',
+            dataType: 'json',
             success: function(result) {
                 if (result.status == 200) {
                     alert("Pedido adicionado com sucesso");

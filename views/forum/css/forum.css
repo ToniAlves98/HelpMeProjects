@@ -11,36 +11,36 @@
     padding-left: 15px;
 }
 
-.form-control::-moz-placeholder {
-  color: #a6a7aa;
-}
+    .form-control::-moz-placeholder {
+        color: #a6a7aa;
+    }
 
-.form-control:-ms-input-placeholder {
-  color: #a6a7aa;
-}
+    .form-control:-ms-input-placeholder {
+        color: #a6a7aa;
+    }
 
-.form-control::-webkit-input-placeholder {
-  color: #a6a7aa;
-}
+    .form-control::-webkit-input-placeholder {
+        color: #a6a7aa;
+    }
 
-.form-control:focus {
-  color: #515769;
-  background-color: #fff;
-  border-color: #bac8f3;
-  box-shadow: 0 0 0 0.2rem rgba(78,115,223,.25);
-}
+    .form-control:focus {
+        color: #515769;
+        background-color: #fff;
+        border-color: #bac8f3;
+        box-shadow: 0 0 0 0.2rem rgba(78,115,223,.25);
+    }
 
-.form-control:focus::-moz-placeholder {
-  color: #515769;
-}
+        .form-control:focus::-moz-placeholder {
+            color: #515769;
+        }
 
-.form-control:focus:-ms-input-placeholder {
-  color: #515769;
-}
+        .form-control:focus:-ms-input-placeholder {
+            color: #515769;
+        }
 
-.form-control:focus::-webkit-input-placeholder {
-  color: #515769;
-}
+        .form-control:focus::-webkit-input-placeholder {
+            color: #515769;
+        }
 
 /*Login e Modal*/
 #login h1 {
@@ -51,19 +51,19 @@
     border-color: #FD871F;
 }
 
-#login .form-control:focus{
-    border-color: #FF4500;
-    box-shadow: 0 0 0 0.1rem #FF4500;
-}
+    #login .form-control:focus {
+        border-color: #FF4500;
+        box-shadow: 0 0 0 0.1rem #FF4500;
+    }
 
 #login .close {
-    color:#FD871F;
+    color: #FD871F;
 }
 
-#login .close:hover,
-.close:focus {
-    color: #FF4500;
-}
+    #login .close:hover,
+    .close:focus {
+        color: #FF4500;
+    }
 
 #btlogin {
     font-size: 18px;
@@ -72,25 +72,25 @@
     background-color: #FD871F;
 }
 
-#btlogin:hover {
-  border-color: #FF4500;
-  background-color: #FF4500;
-  box-shadow: 0 0 0 0.2rem #FF4500;
-}
+    #btlogin:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
 
 #Req {
-  color: #FD871F;
-  font-size: 15px;
+    color: #FD871F;
+    font-size: 15px;
 }
 
-#Req:hover {
-  color: #FF4500;
-  text-decoration: underline;
-}
+    #Req:hover {
+        color: #FF4500;
+        text-decoration: underline;
+    }
 
 body.modal-open {
-  height: 100vh;
-  overflow-y: hidden;
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 /*Registo*/
@@ -108,34 +108,34 @@ body.modal-open {
     font-size: 25px;
     position: absolute;
     top: 20%;
-    display:block;
+    display: block;
 }
 
-#seta i {
-    color: #FD871F;
-}
+    #seta i {
+        color: #FD871F;
+    }
 
-#seta i:hover {
-    color: #FF4500;
-}
+        #seta i:hover {
+            color: #FF4500;
+        }
 
 #registo {
     background-color: #fff;
     border-radius: 15px;
 }
 
-#registo h1{
-    color: #FD871F;
-}
+    #registo h1 {
+        color: #FD871F;
+    }
 
-#registo .form-control {
-    border-color: #FD871F;
-}
+    #registo .form-control {
+        border-color: #FD871F;
+    }
 
-#registo .form-control:focus{
-    border-color: #FF4500;
-    box-shadow: 0 0 0 0.1rem #FF4500;
-}
+        #registo .form-control:focus {
+            border-color: #FF4500;
+            box-shadow: 0 0 0 0.1rem #FF4500;
+        }
 
 #btregisto {
     font-size: 19px;
@@ -144,11 +144,11 @@ body.modal-open {
     background-color: #FD871F;
 }
 
-#btregisto:hover {
-  border-color: #FF4500;
-  background-color: #FF4500;
-  box-shadow: 0 0 0 0.2rem #FF4500;
-}
+    #btregisto:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
 
 #registo textarea {
     border-radius: 30px;
@@ -166,6 +166,68 @@ body.modal-open {
     width: 15px;
     height: 15px;
 }
+
+/*Pedido Evento*/
+.pedidoEvento {
+    border-radius: 15px;
+}
+
+    .pedidoEvento h1 {
+        color: #FD871F;
+    }
+
+    .pedidoEvento .form-control {
+        border-color: #FD871F;
+    }
+
+        .pedidoEvento .form-control:focus {
+            border-color: #FF4500;
+            box-shadow: 0 0 0 0.1rem #FF4500;
+        }
+
+#btEvento {
+    font-size: 19px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btEvento:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+#btImg {
+    font-size: 17px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btImg:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+.pedidoEvento textarea {
+    border-radius: 30px;
+}
+
+.pedidoEvento label {
+    font-size: 17px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 3px;
+}
+
+.pedidoEvento .custom-checkbox {
+    position: relative;
+    width: 15px;
+    height: 15px;
+}
+
 
 /*Perfil*/
 #bodyperfil {
@@ -202,11 +264,11 @@ body.modal-open {
     background-color: #FD871F;
 }
 
-#btperfil:hover {
-  border-color: #FF4500;
-  background-color: #FF4500;
-  box-shadow: 0 0 0 0.2rem #FF4500;
-}
+    #btperfil:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
 
 #perfilSection textarea {
     border-radius: 30px;
