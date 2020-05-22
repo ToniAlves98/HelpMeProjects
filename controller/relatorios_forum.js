@@ -10,7 +10,7 @@ function allRelatorios() {
         url: '/readRelatoriosForum',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-
+        dataType: 'json',
         success: function(data, status, request) {
             var txt = "";
 
@@ -45,7 +45,7 @@ function seeAreaRel() {
             url: '/seeAreaRel',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
-
+            dataType: 'json',
             success: function(result, data) {
                 var txt = "";
 

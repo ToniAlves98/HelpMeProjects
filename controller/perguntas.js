@@ -28,7 +28,7 @@ function getPerguntasInicio() {
         url: '/readPerguntas',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-
+        dataType: 'json',
         success: function(data, status, request) {
             if (request.status == 200) {
                 var txt = "";
@@ -106,7 +106,7 @@ function seePergunta(id) {
         url: '/getPergunta',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-
+        dataType: 'json',
         success: function(result, data) {
 
             var txt = "";
@@ -158,7 +158,27 @@ $('#formNewPergunta').on('submit', function(e) {
         data.data_pergunta = date;
         data.lingua = "PT";
         data.num_likes = 0;
-        data.AreaConhecimento_idAreaConhecimento = $('#per_are').val();
+        if ($('#per_are').val() == "Gestão do Âmbito") {
+            data.AreaConhecimento_idAreaConhecimento = 1;
+        } else if ($('#per_are').val() == "Gestão de Aquisições") {
+            data.AreaConhecimento_idAreaConhecimento = 2;
+        } else if ($('#per_are').val() == "Gestão da Comunicação") {
+            data.AreaConhecimento_idAreaConhecimento = 3;
+        } else if ($('#per_are').val() == "Gestão do Cronograma") {
+            data.AreaConhecimento_idAreaConhecimento = 4;
+        } else if ($('#per_are').val() == "Gestão do Custo") {
+            data.AreaConhecimento_idAreaConhecimento = 5;
+        } else if ($('#per_are').val() == "Gestão da Integração") {
+            data.AreaConhecimento_idAreaConhecimento = 6;
+        } else if ($('#per_are').val() == "Gestão da Qualidade") {
+            data.AreaConhecimento_idAreaConhecimento = 7;
+        } else if ($('#per_are').val() == "Gestão dos Recursos") {
+            data.AreaConhecimento_idAreaConhecimento = 8;
+        } else if ($('#per_are').val() == "Gestão de Riscos") {
+            data.AreaConhecimento_idAreaConhecimento = 9;
+        } else if ($('#per_are').val() == "Gestão dos Stakeholders") {
+            data.AreaConhecimento_idAreaConhecimento = 10;
+        };
         
         console.log(data);
 
@@ -167,11 +187,15 @@ $('#formNewPergunta').on('submit', function(e) {
             url: '/savePergunta',
             data: JSON.stringify(data),
             contentType: 'application/json',
+            dataType: 'json',
             success: function(result) {
-                if (result = { "success": "Updated Successfully", "status": 200 }) {
+                if (result.status == 200) {
                     alert("Pergunta adicionada com sucesso");
-                    $("#formNewPergunta")[0].reset();
                 }
+                else {
+                    alert("Pergunta não foi adicionada com sucesso");
+                }
+                $("#formNewPergunta")[0].reset();
                 getPerguntasInicio();
                 countArea();
             },
@@ -196,6 +220,7 @@ function like(x, y) {
         url: '/saveLikes',
         data: JSON.stringify(data),
         contentType: 'application/json',
+        dataType: 'json',
         success: function(result) {
             console.log('It works: ' + y);
             $("#num_likes").html(y);
@@ -219,6 +244,7 @@ function likeResp(x, y) {
         url: '/saveLikesResp',
         data: JSON.stringify(data),
         contentType: 'application/json',
+        dataType: 'json',
         success: function(result) {
             console.log('It works: ' + y);
             $("#num_likes").html(y);
@@ -235,6 +261,7 @@ function getPerfil(id) {
         url: '/getUtilizador',
         data: JSON.stringify(data),
         contentType: 'application/json',
+        dataType: 'json',
         success: function(result, data) {
 
             result.forEach(function(row) {
@@ -296,6 +323,7 @@ function getAreaConhecimento(id) {
         url: '/readPerguntasPorArea',
         data: JSON.stringify(data),
         contentType: 'application/json',
+        dataType: 'json',
         success: function(result, data) {
             console.log("result " + result);
             console.log("data " + data);
@@ -373,6 +401,7 @@ $('#novaResposta').on('submit', function(e) {
             url: '/saveResposta',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
             success: function(result, status, data) {
                 console.log('result '+ result);
                 console.log('data ' + data);

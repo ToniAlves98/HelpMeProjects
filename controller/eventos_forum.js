@@ -11,7 +11,7 @@ function tabelaEventos() {
         url: '/readEventosForum',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-
+        dataType: 'json',
         success: function(data, status, request) {
             var txt = "";
 
@@ -43,7 +43,7 @@ function seeEvento(id) {
         url: '/getEventoInfo',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-
+        dataType: 'json',
         success: function(result, data) {
             txt = "";
             result.forEach(function(row) {
@@ -72,7 +72,7 @@ function seeArea() {
             url: '/getEventoArea',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
-
+            dataType: 'json',
             success: function(result, data) {
                 txt = "";
                 result.forEach(function(row) {
@@ -103,7 +103,7 @@ function getCarousel() {
         url: '/readEventosForum',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-
+        dataType: 'json',
         success: function(data, status, request) {
             var txt = "";
 
