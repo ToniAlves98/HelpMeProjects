@@ -18,7 +18,7 @@ function saveResposta(resposta, callback){
     var data = {idPergunta:idP};
     var string = JSON.stringify(data);
     var json = JSON.parse(string);
-    var ler = JSON.stringify(rows);
+    //var ler = JSON.stringify(rows);
      if (!err) {
         //console.log("Number of records inserted: " + rows.affectedRows);
         //console.log(string + ': : ' + json.idPergunta);
@@ -27,7 +27,7 @@ function saveResposta(resposta, callback){
      }
      else
          console.log('Error while performing Query.', err);
- });
+    });
 }
 
 module.exports = {

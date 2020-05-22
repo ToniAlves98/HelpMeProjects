@@ -1,4 +1,6 @@
 $('#formNewLogin').on('submit', function(e) {
+    var lin = document.getElementById("lin").textContent;
+    console.log(lin);
     //se submeter com erros
     if (e.isDefaultPrevented()) {
         alert("Formulario com erros")
@@ -27,9 +29,13 @@ $('#formNewLogin').on('submit', function(e) {
                         "success": "Login realizado com sucesso",
                         "status": 200
                     } && $('#email').val() != "admin@gmail.com") {
-
-                    alert("Bem Vindo");
-                    window.location.href = "/inicial";
+                        if(lin == 'PT'){
+                            alert("Bem Vindo");
+                            window.location.href = "/inicial";
+                        } else {
+                            alert('Welcome');
+                            Window.location.href = "/inicial_en";
+                        }
                 } else if (result = {
                         "denied": "dados inexistentes/errados",
                         "status": 201

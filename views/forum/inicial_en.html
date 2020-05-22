@@ -17,7 +17,7 @@
       <link href="./css/forum.css" rel="stylesheet" type="text/css" />
       <link rel="shortcut icon" href="favicon.ico" />
    </head>
-   <body id="body" data-spy="scroll" data-target=".header" onload="pages('index')">
+   <body id="body" data-spy="scroll" data-target=".header" onload="pages('index_en')">
       <header class="header navbar-fixed-top">
          <nav class="navbar" role="navigation">
             <div class="container">
@@ -36,22 +36,22 @@
                <div class="collapse navbar-collapse nav-collapse">
                   <div class="language-switcher">
                      <ul class="nav-lang">
-                        <li><a id="lin" class="active" href="#">PT</a></li>
-                        <li><a onclick="window.location.href = '/inicial_en'">EN</a></li>
+                        <li><a onclick="window.location.href = '/inicial'" href="#">PT</a></li>
+                        <li><a id="lin" class="active">EN</a></li>
                      </ul>
                   </div>
                   <div class="menu-container">
                      <ul class="nav navbar-nav navbar-nav-right">
-                        <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('index')">Página Inicial</a></li>
-                        <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('allPerguntas')">Fórum</a></li>
-                        <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('eventos')">Eventos</a></li>
-                        <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('relatorios')">Relatórios</a></li>
-                        <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('nocoes')">Noções base</a></li>
-                        <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('informacoes')">Informação</a></li>
+                        <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('index_en')">Home Page</a></li>
+                           <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('allPerguntas_en')">Forum</a></li>
+                           <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('eventos_en')">Events</a></li>
+                           <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('relatorios_en')">Reports</a></li>
+                           <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('nocoes_en')">Basics</a></li>
+                           <li class="js_nav-item nav-item"><a href="#" class="nav-item-child nav-item-hover" onclick="pages('informacoes_en')">Information</a></li>
                         <li class="js_nav-item nav-item">
-                           <a href="#" class="nav-item-child nav-item-hover" onclick="menu()">Perfil</a>
+                           <a href="#" class="nav-item-child nav-item-hover" onclick="menu()">Profile</a>
                            <div id="menu" style="display:none">
-                               <p class="panel-drop" onclick="pages('perfil')" style="color: #FD871F"><strong>Editar</strong></p>
+                               <p class="panel-drop" onclick="pages('perfil')" style="color: #FD871F"><strong>Edit</strong></p>
                                <p class="panel-drop" onclick="logout()" style="color:#FD871F"><strong>Logout</strong></p>
                            </div>
                        </li>

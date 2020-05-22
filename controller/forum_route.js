@@ -182,6 +182,12 @@ global.helpme.get('/inicial', function (req, res) {
     res.sendFile(global.root + '/views/forum/' + 'inicial.html');
 });
 
+global.helpme.get('/inicial_en', function (req, res) {
+    global.helpme.use(global.express.static('views/forum'));
+    global.helpme.use('/inicial_en', global.express.static('views/forum'));
+    res.sendFile(global.root + '/views/forum/' + 'inicial_en.html');
+});
+
 global.helpme.get('/index_en', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/index_en', global.express.static('views/forum'));
