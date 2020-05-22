@@ -91,8 +91,11 @@ $('#formNewRelatorio').on('submit', function (e) {
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function (result) {
-                if (result.status == 200) {
+                if (result = { "success": "Updated Successfully", "status": 200 }) {
                     alert("Relatório adicionado com sucesso");
+                }
+                else {
+                    alert("Não foi adicionado adicionado com sucesso");
                 }
                 $('#formNewRelatorio')[0].reset();
                 getRelatorios();
@@ -179,8 +182,11 @@ $('#formEditarRelatorio').on('submit', function(e) {
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function(result) {
-                if (result.status == 200) {
+                if (result = { "success": "Updated Successfully", "status": 200 }) {
                     alert("Relatório editado com sucesso");
+                }
+                else {
+                    alert("Naõ foi editado com sucesso");
                 }
                 $('#formEditarRelatorio')[0].reset();
                 getRelatorios();

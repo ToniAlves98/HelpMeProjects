@@ -88,7 +88,6 @@ $('#formNewEvento').on('submit', function(e) {
 
         console.log(data);
        
-        $("#formNewEvento")[0].reset();
     
         $.ajax({
             type: 'POST',
@@ -96,9 +95,13 @@ $('#formNewEvento').on('submit', function(e) {
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function(result) {
-                if (result.status == 200) {
+                if (result = { "success": "Updated Successfully", "status": 200 }) {
                     alert("Evento adicionado com sucesso");
+                } 
+                else{
+                    alert("Não foi adicionado adicionado com sucesso");
                 }
+                $("#formNewEvento")[0].reset();
                 getEventos();
             },
             
@@ -195,9 +198,13 @@ $('#formEditarEvento').on('submit', function(e) {
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function(result) {
-                if (result.status == 200) {
+                if (result = { "success": "Updated Successfully", "status": 200 }) {
                     alert("Evento editado com sucesso");
                 }
+                else {
+                    alert("Não foi editado com sucesso editado com sucesso");
+                }
+                $("#formEditarEvento")[0].reset();
                 getEventos();
             },
            
