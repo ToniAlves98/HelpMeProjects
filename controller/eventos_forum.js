@@ -1,5 +1,6 @@
 $(document).ready(function() {
     tabelaEventos();
+    getCarousel();
 });
 
 function tabelaEventos() {
@@ -90,4 +91,56 @@ function seeArea() {
             }
         });
     }
+};
+
+function getCarousel() {
+    var data = {};
+    var n = 0;
+    id=1;
+
+    $.ajax({
+        type: "GET",
+        url: '/readEventosForum',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+
+        success: function(data, status, request) {
+            var txt = "";
+
+            data.forEach(function(row) {
+                if(n == 3){
+                    txt+="<div id=\"slide"+id+"\" class=\"item active\">";
+                    txt+="<div class=\"row\">";
+                    console.log('eventos: ' + id);
+                    console.log('eventos2: ' + n);
+                }
+                txt+="<div class=\"col-md-4\">";
+                txt+="<div class=\"item-box-blog\">";
+                txt+="<div class=\"item-box-blog-image\">";
+                txt+="<div class=\"item-box-blog-date bg-blue-ui white\"><span class=\"mon\">"+row.data_inicio+"</span> </div>";
+                txt+="<div class=\"crop\">";
+                txt+="<img class=\"img-responsive\" src=\"../../../uploads/"+row.imagem+"\" alt=\"\">";
+                txt+="</div></div>";
+                txt+="<div class=\"item-box-blog-body\">";
+                txt+="<div class=\"item-box-blog-heading\">";
+                txt+="<a href=\"#\" tabindex=\"0\">";
+                txt+="<h5>"+row.nomeEvento+"</h5>";
+                txt+="</a></div>";
+                txt+="<div class=\"mt\"> <a href=\"#\" tabindex=\"0\" class=\"btn bg-blue-ui white read\" read\" onclick=\"seeEvento(" + row.idEvento + ")\">read more</a> </div>";
+                txt+="</div></div></div>";
+                if(n == 3){
+                    txt+="</div></div>";
+                    n=0;
+                    id+=1;
+                }
+            });
+
+            $("#eventCarrosel").html(txt);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
 };
