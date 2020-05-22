@@ -37,6 +37,7 @@ function getEstudante() {
         url: '/readEstudante',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
         success: function (data, status, request) {
             console.log(data);
             if (request.status == 200) {
@@ -80,6 +81,7 @@ function getDadosEstudante() {
         url: '/readEstudante',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
         success: function (data, status, request) {
 
             if (request.status == 200) {
@@ -140,8 +142,9 @@ $('#formEditarEstudante').on('submit', function (e) {
             url: '/setEstudante',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
             success: function (result) {
-                if (result = { "success": "Utilizador editado com sucesso", "status": 200 }) {
+                if (result.status == 200 ) {
                     alert("Editado com sucesso");
                 }
                 else {
@@ -171,10 +174,11 @@ function removeEstudante() {
         url: '/deleteUtilizador',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (data, status, result) {
 
-        success: function (data, status, request) {
-
-            if (request.status == 200) { 
+            if (result.status == 200) { 
+                alert("Eliminado com sucesso");
             }
             else {
                 console.log("Erro");

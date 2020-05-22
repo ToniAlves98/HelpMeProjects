@@ -3,17 +3,17 @@ function login(email, password, callback) {
     //global.login = 0;
     //receber os dados do formuário que são enviados por get e guarda em objeto JSON
     global.connect.con.query('Select * from utilizador where email ="' + email + '" and password ="' + password + '"', function (err, rows, fields) {
-    var string = JSON.stringify(rows);
-    var json = JSON.parse(string);
-    if (rows.length > 0) {
-        json.forEach(function (row) {
-            global.session.idUser = row.idUtilizador;
-        });
-        callback(null, rows);
-    } else {
-        console.log('Erro na Query.', err);
-    }
-});
+        var string = JSON.stringify(rows);
+        var json = JSON.parse(string);
+        if (rows.length > 0) {
+            json.forEach(function (row) {
+                global.session.idUser = row.idUtilizador;
+            });
+            callback(null, rows);
+        } else {
+            console.log('Erro na Query.', err);
+        }
+    });
 }
 
 function logout(callback) {
@@ -58,25 +58,17 @@ function saveUtilizador(nome, idade, genero, profissao, email, password, descric
     //receber os dados do formu�rio que são enviados por post e guarda em objeto JSON
     var post = {
         nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
-        gp_nome_emp: gp_nome_emp, ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil, estado:estado
+        gp_nome_emp: gp_nome_emp, ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil, estado: estado
     };
     //criar e executar a query de gravação na BD para inserir os dados presentes no post
-   global.connect.con.query('SELECT * FROM utilizador where email ="'+ email +'"', function (err,rows,fields){  
-       if(rows.length > 0){
-           console.log('Erro na Query', err);
-       }
-    else {
-        var query = global.connect.con.query('INSERT INTO utilizador SET ?', post, function (err, rows, fields) {
-            console.log(query.sql);
-            if (!err) {
-                console.log("Numero de linhas inseridas: " + rows.affectedRows);
-            }
-            else
-                console.log('Erro na Query.', err);
-        });
-    }
-
-});
+    var query = global.connect.con.query('INSERT INTO utilizador SET ?', post, function (err, rows, fields) {
+        console.log(query.sql);
+        if (!err) {
+            console.log("Numero de linhas inseridas: " + rows.affectedRows);
+        }
+        else
+            console.log('Erro na Query.', err);
+    });
 }
 
 //função de edição utilizador
@@ -98,7 +90,7 @@ function setUtilizador(idUtilizador, nome, idade, genero, profissao, email, pass
 
 //função delete utilizador
 function deleteUtilizador(idUtilizador, estado, callback) {
-    var query = global.connect.con.query('UPDATE utilizador SET estado="'+ estado +'" WHERE idUtilizador = "' + idUtilizador + '"', function (err, rows, fields) {
+    var query = global.connect.con.query('UPDATE utilizador SET estado="' + estado + '" WHERE idUtilizador = "' + idUtilizador + '"', function (err, rows, fields) {
         console.log(query.sql);
         if (!err) {
             console.log("Number of records inserted: " + rows.affectedRows);
@@ -185,10 +177,10 @@ function readGestor(callback) {
 //função de edição empresa
 function setGestor(idUtilizador, nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, callback) {
 
-   /* var post = {
-        idUtilizador: idUtilizador, nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
-        ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, perfil: perfil
-    };*/
+    /* var post = {
+         idUtilizador: idUtilizador, nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
+         ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, perfil: perfil
+     };*/
     var query = global.connect.con.query('UPDATE utilizador SET nome="' + nome + '", idade="' + idade + '", genero="' + genero + '", profissao="' + profissao + '", email="' + email + '", password="' + password + '", descricao="' + descricao + '", gp_nome_emp="' + gp_nome_emp + '", ramo_emp="' + ramo_emp + '", num_trabalhadores="' + num_trabalhadores + '", regiao_pais="' + regiao_pais + '"where idUtilizador="' + idUtilizador + '"', function (err, rows, fields) {
         console.log(query.sql);
         if (!err) {

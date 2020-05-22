@@ -76,19 +76,22 @@ $('#formNewRegisto').on('submit', function (e) {
         else { };
         data.estado = "ativo"
         console.log(data);
-        $('#formNewRegisto')[0].reset();
 
         $.ajax({
             type: 'POST',
             url: '/saveUtilizador',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
             success: function (result) {
-                if (result = { "success": "Login realizado com sucesso", "status": 200 }) {
+                console.log(result.status)
+                console.log(status)
+                if (result.status == 200 ) {
+                    $('#formNewRegisto')[0].reset();
                     alert("Bem Vindo à HeplMe Projects")
                     window.location.assign("/");
-                } 
-                else if (result = { "denied": "Already exists", "status": 201 }) {
+                }
+                else if (result.status == 201) {
                     alert("Já existe  utilizador registado com esse e-mail");
                 }
             },
@@ -111,6 +114,7 @@ function dadosUtilizador() {
         url: '/readUtilizador',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
         success: function (data, status, request) {
 
             if (request.status == 200) {
@@ -287,9 +291,10 @@ $('#formUtilizador').on('submit', function (e) {
             url: '/setUtilizador',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
             success: function (result) {
-                if (result = { "success": "Utilizador editado com sucesso", "status": 200 }) {
-                    alert("submetido com sucesso");
+                if (result.status == 200 ) {
+                    alert("Editador com sucesso");
                 }
                 else {
                     alert("Não foi editado com sucesso")
@@ -325,13 +330,14 @@ $('#formResetPassword').on('submit', function (e) {
             url: '/forgot',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
             success: function (result) {
                 if (result.status == 200) {
-                    console.log("Erro");
-                }
-                else {
                     alert("E-mail enviado com sucesso");
                     $("#formResetPassword")[0].reset();
+                }
+                else {
+                    console.log("Erro");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -366,14 +372,15 @@ $('#formNewPassword').on('submit', function (e) {
             url: '/resetPassword2/:token',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
             success: function (result) {
                 if (result.status == 200) {
-                    console.log("Erro");
-                }
-                else {
                     alert("Password redefinida com sucesso.");
                     $("#formNewPassword")[0].reset();
                     window.location.assign("/");
+                }
+                else {
+                    console.log("Erro");
                 }
             },
             error: function (xhr, textStatus, errorThrown) {

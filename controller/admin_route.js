@@ -110,7 +110,7 @@ global.helpme.post('/savePedido', function (req, res) {
 });
 
 global.helpme.post('/setEvento', function (req, res) {
-    global.model_eventos.setEvento(req.body.idEvento, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao,  req.body.imagem, req.body.data_inicio, req.body.data_fim);
+    global.model_eventos.setEvento(req.body.idEvento, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim);
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
 
@@ -145,6 +145,7 @@ global.helpme.get('/utilizador', function (req, res) {
 //rota de leitura utilizador
 global.helpme.get('/readUtilizador', function (req, res) {
     global.model_utilizador.readUtilizador(function (err, data) {
+        console.log(data);
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -157,19 +158,18 @@ global.helpme.get('/readUtilizador', function (req, res) {
 
 //rota de gravação utilizador
 global.helpme.post('/saveUtilizador', function (req, res) {
-
     console.log('body: ' + JSON.stringify(req.body));
-    global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
-        req.body.gp_nome_emp, req.body.ramo_emp, req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, req.body.estado, function (err, data) {
-            if (err) {
-                console.log("ERROR : ", err);
-                res.end('{"denied" : "Já existe um utilizador registado com esse e-mail", "status" : 201}');
-            } else {
-                res.send(data);
-                res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
-            }
-
-        });;
+    global.connect.con.query('SELECT email FROM utilizador where email ="' + req.body.email + '"', function (err, rows, fields) {
+        console.log(rows)
+        if (rows.length == 0) {
+            global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
+                req.body.gp_nome_emp, req.body.ramo_emp, req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, req.body.estado);
+            res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
+        }
+        else {
+            res.end('{"success" : "Email já existe", "status" : 201}');
+        }
+    });
 });
 
 //rota de editar utilizador
