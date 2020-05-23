@@ -22,30 +22,36 @@ $('#formNewLogin').on('submit', function (e) {
                 console.log(result);
                 console.log(result.status);
                 if (result.status == 200 && $('#email').val() == "admin@gmail.com") {
-                    alert("Bem Vindo à HelpMe Projects - Admin");
+                    $('#formNewLogin')[0].reset();
                     window.location.assign("/admin");
                 }
                 else if (result.status == 200 && $('#email').val() != "admin@gmail.com") {
+                    $('#formNewLogin')[0].reset();
                     if (lin == 'PT') {
-                        alert("Bem Vindo à HelpMe Projects");
                         window.location.href = "/inicial";
                     } else {
-                        alert('Welcome to HelpMe Projects');
                         window.location.href = "/inicial_en";
                     }
                 }
                 else if (result.status == 201) {
                     if (lin == 'PT') {
-                        alert("E-mail ou password errada");
+                        $('#login').modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('body').css('padding-right', '0px');
+                        $('.modal-backdrop').remove();
+                        $('#avisoLoginMal').modal('show');
                     }
                     else {
-                        alert("Wrong e-mail or password");
+                        $('#login').modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('body').css('padding-right', '0px');
+                        $('.modal-backdrop').remove();
+                        $('#avisoLoginMalIng').modal('show');
                     }
                 }
                 else {
                     alert("Login realizado sem sucesso.")
                 }
-                $('#formNewLogin')[0].reset();
             },
             error: function (data) {
                 console.log(data)

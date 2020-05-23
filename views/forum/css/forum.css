@@ -528,7 +528,7 @@ body.modal-open {
 /* Modal aviso*/
 .aviso .modal-content {
     min-width: 80%;
-    min-height: 100%;
+    min-height: 140%;
 }
 
 .aviso .modal-dialog {
