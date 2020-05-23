@@ -39,8 +39,21 @@ function getEventoArea(idArea, callback) {
     });
 };
 
+function getEventoTipo(tipoEvento, callback) {
+    global.connect.con.query('SELECT * from evento where tipoEvento="'+tipoEvento+'"', function(err, rows, fields) {
+        var string = JSON.stringify(rows);
+        var json = JSON.parse(string);
+        if (!err) {
+            callback(null, json);
+        }
+        else
+            console.log('Error while performing Query.', err);
+    });
+};
+
 module.exports = {
     readEventosForum: readEventosForum,
     getEventoInfo: getEventoInfo,
-    getEventoArea: getEventoArea
+    getEventoArea: getEventoArea,
+    getEventoTipo: getEventoTipo
     }
