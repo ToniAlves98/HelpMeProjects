@@ -5,15 +5,19 @@ $(document).ready(function() {
 
 var x = 5;
 var y = 0;
+var buttonP = "<a class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previous()\">Anterior</a>";
+var buttonN = "<a class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"next()\">Seguinte</a>";
 
 function next() {
     x += 5;
     y += 5;
+    getPerguntasInicio();
 }
 
 function previous() {
     x -= 5;
     y -= 5;
+    getPerguntasInicio();
 }
 
 
@@ -21,8 +25,7 @@ function getPerguntasInicio() {
     var lin = document.getElementById("lin").textContent;
     var data = {};
     data.lingua = lin;
-    console.log('id: ' + lin);
-
+    
     $.ajax({
         type: "POST",
         url: '/readPerguntas',
@@ -34,6 +37,17 @@ function getPerguntasInicio() {
                 var txt = "";
 
                 data.slice(y, x).forEach(function(row) {
+                    if(y == 0){
+                        $("#pageN").html(buttonN);
+                        console.log('NEXT!!!');
+                    }else if (row.length === 0){
+                        console.log('Previous?');
+                        $("#pageP").html(buttonP);
+                    }else{
+                        console.log('Ambos');
+                        $("#pageN").html(buttonN);
+                        $("#pageP").html(buttonP);
+                    }
                     txt += "<div class='panel panel-default'>";
                     txt += "<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
                     txt += "<h4 style='font-size: 15px'>";
