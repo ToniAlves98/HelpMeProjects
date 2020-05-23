@@ -95,10 +95,18 @@ $('#formNewRelatorio').on('submit', function (e) {
                 console.log(result.status)
 
                 if ( result.status == 200 ) {
-                    alert("Relatório adicionado com sucesso!");
+                    $('#adicionar_relatorio').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoRelatorioAdd').modal('show');
                 }
                 else {
-                    alert("Não foi adicionado adicionado com sucesso");
+                    $('#adicionar_relatorio').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoRelatorioAddMal').modal('show');
                 }
                 $('#formNewRelatorio')[0].reset();
                 getRelatorios();
@@ -187,10 +195,18 @@ $('#formEditarRelatorio').on('submit', function(e) {
             dataType: 'json',
             success: function(result) {
                 if (result.status == 200 ) {
-                    alert("Relatório editado com sucesso");
+                    $('#editar_relatorio').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoRelatorioEdi').modal('show');
                 }
                 else {
-                    alert("Naõ foi editado com sucesso");
+                    $('#editar_relatorio').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoRelatorioEdiMal').modal('show');
                 }
                 $('#formEditarRelatorio')[0].reset();
                 getRelatorios();
@@ -214,10 +230,10 @@ function removeRelatorio() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                alert("Eliminado com sucesso");
+                $('#avisoRelatorioEli').modal('show');
             }
             else {
-                console.log("Erro");
+                $('#avisoRelatorioEliMal').modal('show');
             }
             getRelatorios();
         },
