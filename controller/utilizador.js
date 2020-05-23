@@ -88,11 +88,10 @@ $('#formNewRegisto').on('submit', function (e) {
                 console.log(status)
                 if (result.status == 200 ) {
                     $('#formNewRegisto')[0].reset();
-                    alert("Bem Vindo à HeplMe Projects")
                     window.location.assign("/");
                 }
                 else if (result.status == 201) {
-                    alert("Já existe  utilizador registado com esse e-mail");
+                    $('#avisoRegistardMal').modal('show');
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -294,10 +293,10 @@ $('#formUtilizador').on('submit', function (e) {
             dataType: 'json',
             success: function (result) {
                 if (result.status == 200 ) {
-                    alert("Editador com sucesso");
+                    $('#avisoEditar').modal('show');
                 }
                 else {
-                    alert("Não foi editado com sucesso")
+                    $('#avisoEditarMal').modal('show');
                 }
                 $("#formUtilziador")[0].reset();
                 dadosUtilizador();
