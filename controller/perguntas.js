@@ -42,7 +42,9 @@ function getPerguntasInicio() {
 
                 data.slice(y, x).forEach(function(row) {
                     if(lin == "PT"){
-                        if(y == 0){
+                        if(y == 0 && (data.length - x) <= 0){
+                            console.log('noButtons');
+                        }if(y == 0){
                             $("#page").html(buttonS);
                         }else if ((data.length - x) <= 0){
                             $("#page").html(buttonA);
@@ -50,7 +52,9 @@ function getPerguntasInicio() {
                             $("#page").html(buttonFPT);
                         }
                     }else if(lin == "EN"){
-                        if(y == 0){
+                        if(y == 0 && (data.length - x) <= 0){
+                            console.log('noButtons');
+                        }else if(y == 0){
                             $("#page").html(buttonN);
                         }else if ((data.length - x) <= 0){
                             $("#page").html(buttonP);
