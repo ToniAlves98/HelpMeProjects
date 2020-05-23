@@ -11,6 +11,7 @@
       <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Eventos</h1>
       <div class="tipo-evento" style="margin-top: 80px; margin-right: 260px;" align="right">
          <select id="area" onchange="seeArea()"></select>
+         <select id="tipo" onchange="seeTipo()"></select>
       </div>
    </div>
    <div class="container cta-80" align="center">
@@ -160,6 +161,18 @@
    options += "<option value=\"10\">" + "Gestão de Stakeholders" + "</option>";
    document.getElementById("area").innerHTML = options;
    /*fim area eventos*/
+
+   /*tipo eventos*/
+   var options = "";
+   options += "<option value=\"0\">" + "Todos os tipos" + "</option>";
+   options += "<option value=\"Workshop\">" + "Workshop" + "</option>";
+   options += "<option value=\"Palestra\">" + "Palestra" + "</option>";
+   options += "<option value=\"Trainee\">" + "Trainee" + "</option>";
+   options += "<option value=\"Conferência\">" + "Conferência" + "</option>";
+   options += "<option value=\"Feira de emprego\">" + "Feira de Emprego" + "</option>";
+   options += "<option value=\"Outro\">" + "Outro" + "</option>";
+   document.getElementById("tipo").innerHTML = options;
+   /*fim tipo eventos*/
 
 </script>
 <script type="text/javascript" src="../../../controller/pedidos.js"></script>

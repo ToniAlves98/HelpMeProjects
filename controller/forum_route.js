@@ -70,6 +70,18 @@ global.helpme.post('/getEventoArea', function (req, res) {
     });
 });
 
+global.helpme.post('/getEventoTipo', function (req, res) {
+    global.model_eventos_forum.getEventoTipo(req.body.tipoEvento, function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
 global.helpme.post('/readPerguntasPorArea', function (req, res) {
     global.model_perguntas.readPerguntasPorArea(req.body.lingua, req.body.AreaConhecimento_idAreaConhecimento, function (err, data) {
         if (err) {

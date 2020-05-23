@@ -93,6 +93,40 @@ function seeArea() {
     }
 };
 
+function seeTipo() {
+    var id = document.getElementById("tipo").value;
+    var data = {};
+    data.tipoEvento = id;
+
+    if (id == 0) {
+        tabelaEventos();
+    } else {
+        $.ajax({
+            type: "POST",
+            url: '/getEventoTipo',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function(result, data) {
+                txt = "";
+                result.forEach(function(row) {
+                    txt += "<div class=\"col-md-3\" style=\"margin-right:6em; margin-bottom: 60px\"><div class=\"item-box-blog-image\">";
+                    txt += "<div class=\"item-box-blog-date bg-blue-ui white\"><span class=\"mon\">" + row.data_inicio + "</span></div>";
+                    txt += "<div class=\"crop\"><img class=\"img-responsive\" src=\"../../../uploads/" + row.imagem + "\" alt=\"\"></div>";
+                    txt += "</div><div class=\"item-box-blog-body\">";
+                    txt += "<div class=\"item-box-blog-heading\"><a href=\"#\" tabindex=\"0\"><h5>" + row.nomeEvento + "</h5></a></div>";
+                    txt += "<div class=\"mt\"> <a data-toggle=\"modal\" data-target=\"#myModal\" tabindex=\"0\" class=\"btn bg-blue-ui white read\" onclick=\"seeEvento(" + row.idEvento + ")\">read more</a></div></div></div>";
+                });
+
+                $("#alleventos").html(txt);
+            },
+            error: function(data) {
+                console.log(data)
+            }
+        });
+    }
+};
+
 function getCarousel() {
     var data = {};
     var n = 0;
