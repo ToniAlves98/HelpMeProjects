@@ -111,8 +111,13 @@ global.helpme.post('/saveEvento', function (req, res) {
 
 global.helpme.post('/savePedido', function (req, res) {
     global.model_pedidos.savePedido(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
-});
+    if (global.session.idUser != null){
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+        else {
+            res.end('{"success" : "Updated Successfully", "status" : 201}');
+        }
+    });
 
 global.helpme.post('/setEvento', function (req, res) {
     global.model_eventos.setEvento(req.body.idEvento, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim);

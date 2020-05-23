@@ -205,6 +205,10 @@ $('#formNewPedido').on('submit', function(e) {
                 if (result.status == 200) {
                     alert("Pedido adicionado com sucesso");
                 }
+                else {
+                    alert("É necessário fazer login para criar pedido de evento!");
+                }
+                $('#formNewPedido')[0].reset();
             },
             
         });
