@@ -26,7 +26,12 @@ global.helpme.get('/readRelatorios', function (req, res) {
 
 global.helpme.post('/saveRelatorio', function (req, res) {
     global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.estado);
+    if (global.session.idUser != null){
     res.end('{"success" : "Updated Successfully", "status" : 200}');
+    }
+    else {
+        res.end('{"success" : "Updated Successfully", "status" : 201}');
+    }
 });
 
 global.helpme.post('/', (req, res) => {

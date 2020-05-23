@@ -82,16 +82,20 @@ $('#formNewRelatorio').on('submit', function (e) {
         data.estado = "ativo"
 
         console.log(data);
-
+       
         $.ajax({
             type: 'POST',
             url: '/saveRelatorio',
             data: JSON.stringify(data),
             contentType: 'application/json',
             dataType: 'json',
-            success: function (result) {
-                if (result.status == 200 ) {
-                    alert("Relatório adicionado com sucesso");
+            success: function (result, status, data) {
+                console.log(result);
+                console.log(data);
+                console.log(result.status)
+
+                if ( result.status == 200 ) {
+                    alert("Relatório adicionado com sucesso!");
                 }
                 else {
                     alert("Não foi adicionado adicionado com sucesso");
