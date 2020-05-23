@@ -218,10 +218,18 @@ $('#formNewPergunta').on('submit', function(e) {
             dataType: 'json',
             success: function(result) {
                 if (result.status == 200) {
-                    alert("Pergunta adicionada com sucesso");
+                    $('#add_pergunta').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPerguntaAdd').modal('show');
                 }
                 else {
-                    alert("Pergunta não foi adicionada com sucesso");
+                    $('#add_pergunta').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPerguntaAddMal').modal('show');
                 }
                 $("#formNewPergunta")[0].reset();
                 getPerguntasInicio();
@@ -442,6 +450,7 @@ $('#novaResposta').on('submit', function(e) {
                     seePergunta(row.idP);
                 });
                 //window.location.reload(false);
+                $('#avisoRespostaAdd').modal('show');
                 pages("perg_resp");
             },
             error: function(data) {
