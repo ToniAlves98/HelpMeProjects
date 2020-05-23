@@ -332,11 +332,11 @@ $('#formResetPassword').on('submit', function (e) {
             dataType: 'json',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("E-mail enviado com sucesso");
+                    $('#avisoEmail').modal('show');
                     $("#formResetPassword")[0].reset();
                 }
                 else {
-                    console.log("Erro");
+                    $('#avisoEmailMal').modal('show');
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -350,7 +350,7 @@ $('#formResetPassword').on('submit', function (e) {
 });
 
 //Enviar nova password
-$('#formNewPassword').on('submit', function (e) {
+$('#formNewPassword2').on('submit', function (e) {
 
     if (e.isDefaultPrevented()) {
         alert("formulário com erros")
@@ -374,12 +374,12 @@ $('#formNewPassword').on('submit', function (e) {
             dataType: 'json',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Password redefinida com sucesso.");
-                    $("#formNewPassword")[0].reset();
-                    window.location.assign("/");
+                    $('#avisoPassword').modal('show');
+                    $("#formNewPassword2")[0].reset();
+                    //window.location.assign("/");
                 }
                 else {
-                    console.log("Erro");
+                    $('#avisoPasswordMal').modal('show');
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
