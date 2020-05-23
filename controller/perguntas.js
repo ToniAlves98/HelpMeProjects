@@ -68,7 +68,7 @@ function getPerguntasInicio() {
                     if (row.idUser != null && row.idUser != 0) {
                         txt += "<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"pages('perg_resp'); seePergunta(" + row.idPergunta + ")\">"
                     } else {
-                        txt += "<a class='panel-title-child' role='button' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='collapseOne' onclick=\"alert('Precisas fazer login para ter acesso às perguntas completas')\">"
+                        txt += "<a class='panel-title-child' role='button' data-parent='#accordion' data-toggle='modal' data-target='#avisoPLoginNec'>"
                     }
                     txt += row.titulo_pergunta + "</a></h4><p>" + row.pergunta + "</p></div></div>";
                 });
