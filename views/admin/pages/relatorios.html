@@ -125,7 +125,7 @@
                         <form id="formEditarRelatorio" class="user text-center" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="nomeRelatorio_edi" aria-describedby="" placeholder="Nome do relatório">
-                            </div>    
+                            </div>
                             <div class="form-group">
                                 <select class="form-control form-control-user" data-live-search="true" id="area_conhecimento_edi">
                                     <option value="" disabled selected>Área de Conhecimento</option>
@@ -165,7 +165,7 @@
             <div class="modal-body" style="padding: 40px 60px;">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form id="formNewRelatorio"  enctype="multipart/form-data" action="/" class="user text-center" method="post">
+                        <form id="formNewRelatorio" enctype="multipart/form-data" action="/" class="user text-center" method="post">
                             <div class="form-group">
                                 <input type="file" name="file" id="file" />
                                 <span>(apenas ficheiros em formato pdf)</span>
@@ -180,7 +180,113 @@
     </div>
 </div>
 
+<!-- Modal pop-up adicionar -->
+<div class="modal fadeIn aviso" id="avisoRelatorioAdd" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-bell"><span>Nofiticação</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <div class="col-lg-12 text-center">
+                    <p>Relatório adicionado com sucesso!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Modal pop-up adicionar mal -->
+<div class="modal fadeIn aviso" id="avisoRelatorioAddMal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-bell"><span>Nofiticação</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <div class="col-lg-12 text-center">
+                    <p>Relatório não foi adicionado com sucesso!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pop-up editar -->
+<div class="modal fadeIn aviso" id="avisoRelatorioEdi" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-bell"><span>Nofiticação</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <div class="col-lg-12 text-center">
+                    <p>Relatório editado com sucesso!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pop-up editar mal -->
+<div class="modal fadeIn aviso" id="avisoRelatorioEdiMal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-bell"><span>Nofiticação</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <div class="col-lg-12 text-center">
+                    <p>Relatório não foi editado com sucesso!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pop-up eliminar-->
+<div class="modal fadeIn aviso" id="avisoRelatorioEli" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-bell"><span>Nofiticação</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <div class="col-lg-12 text-center">
+                    <p>Relatório eliminado com sucesso!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pop-up eliminar mal-->
+<div class="modal fadeIn aviso" id="avisoRelatorioEliMal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-bell"><span>Nofiticação</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <div class="col-lg-12 text-center">
+                    <p>Relatório não foi eliminado com sucesso!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript" src="../../../controller/relatorios.js"></script>
 
