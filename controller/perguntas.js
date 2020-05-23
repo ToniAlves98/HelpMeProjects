@@ -5,9 +5,12 @@ $(document).ready(function() {
 
 var x = 5;
 var y = 0;
-var buttonP = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previous()\">Anterior</a>";
-var buttonN = "<a class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"next()\">Seguinte</a>";
-var buttonF = "<div class=\"row\">" + buttonP + buttonN + "</div>";
+var buttonP = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previous()\">Previous</a>";
+var buttonN = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"next()\">Next</a>";
+var buttonA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previous()\">Anterior</a>";
+var buttonS = "<a class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"next()\">Seguinte</a>";
+var buttonFPT = "<div class=\"row\">" + buttonA + buttonS + "</div>";
+var buttonFEN = "<div class=\"row\">" + buttonP + buttonN + "</div>";
 
 function next() {
     x += 5;
@@ -38,12 +41,22 @@ function getPerguntasInicio() {
                 var txt = "";
 
                 data.slice(y, x).forEach(function(row) {
-                    if(y == 0){
-                        $("#page").html(buttonN);
-                    }else if ((data.length - x) <= 0){
-                        $("#page").html(buttonP);
-                    }else{
-                        $("#page").html(buttonF);
+                    if(lin == "PT"){
+                        if(y == 0){
+                            $("#page").html(buttonS);
+                        }else if ((data.length - x) <= 0){
+                            $("#page").html(buttonA);
+                        }else{
+                            $("#page").html(buttonFPT);
+                        }
+                    }else if(lin == "EN"){
+                        if(y == 0){
+                            $("#page").html(buttonN);
+                        }else if ((data.length - x) <= 0){
+                            $("#page").html(buttonP);
+                        }else{
+                            $("#page").html(buttonFEN);
+                        }
                     }
                     txt += "<div class='panel panel-default'>";
                     txt += "<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
