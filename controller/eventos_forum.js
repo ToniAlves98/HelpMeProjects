@@ -148,16 +148,6 @@ function getCarousel() {
                 if(n == 0){
                     txt+="<div id=\"slide"+id+"\" class=\"item active\">";
                     txt+="<div class=\"row\">";
-                    if(f < data.length){
-                        console.log('f: ' + f);
-                        console.log('data: ' + row.nomeEvento);
-                        i, f += 3;
-                    }else if(f >= data.length){
-                        console.log('f2: ' + f);
-                        console.log('data2: ' + row.nomeEvento);
-                        i = 0;
-                        f = 3;
-                    }
                 }
                 txt+="<div class=\"col-md-4\">";
                 txt+="<div class=\"item-box-blog\">";
@@ -181,7 +171,13 @@ function getCarousel() {
                     $("#eventCarrosel").html(txt);
                     console.log('clean');
                     txt="";
-                    //setTimeout(function(){getCarousel()}, 1 * 60 * 1000);
+                    if(f < data.length){
+                        i +=3;
+                        f += 3;
+                    }else if(f >= data.length){
+                        i = 0;
+                        f = 3;
+                    }
                     setTimeout(function(){getCarousel()}, 9000);
                 }
             });
