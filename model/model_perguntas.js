@@ -18,13 +18,10 @@ function readPerguntas(lingua, callback) {
 
 function getNumPerguntas(lingua, callback) {
     global.connect.con.query('SELECT count(*) as numero from pergunta where AreaConhecimento_idAreaConhecimento = 1 AND lingua = \''+lingua+'\'UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 2 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 3 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 4 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 5 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 6 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 7 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 8 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 9 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 10 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta', function (err, rows, fields) {
-        console.log(rows);
-        var string = JSON.stringify(rows);
-        console.log(string);
+    var string = JSON.stringify(rows);
     var json = JSON.parse(string);
 
     if (!err) {
-        console.log(rows);
         callback(null, json);
     }
     else

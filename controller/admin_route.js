@@ -1,9 +1,9 @@
 //rota admi
-global.helpme.get('/admin', function (req, res) {
+/*global.helpme.get('/admin', function (req, res) {
     global.helpme.use(global.express.static('views/admin'));
     global.helpme.use('/admin', global.express.static('views/admin'));
     res.sendFile(global.root + '/views/admin/' + 'index.html');
-});
+});*/
 
 global.helpme.get('/resetPassword2', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));

@@ -177,7 +177,7 @@ global.helpme.get('/readRespostas', function (req, res) {
 });
 
 global.helpme.post('/login', function (req, res) {
-    console.log('body: ' + JSON.stringify(req.body));
+    req.session.idUser =1;
     global.connect.con.query('SELECT email, password FROM utilizador where email ="' + req.body.email + '"and password="' + req.body.password + '"', function (err, rows, fields) {
         console.log(rows)
         if (rows.length == 0) {
@@ -199,6 +199,7 @@ global.helpme.post('/login', function (req, res) {
 });
 
 global.helpme.get('/logout', function (req, res) {
+    req.session.idUser =0;
     global.model_utilizador.logout(function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
@@ -208,7 +209,7 @@ global.helpme.get('/logout', function (req, res) {
         }
     });
 });
-
+/*
 global.helpme.get('/inicial', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/inicial', global.express.static('views/forum'));
@@ -219,7 +220,7 @@ global.helpme.get('/inicial_en', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));
     global.helpme.use('/inicial_en', global.express.static('views/forum'));
     res.sendFile(global.root + '/views/forum/' + 'inicial_en.html');
-});
+});*/
 
 global.helpme.get('/index_en', function (req, res) {
     global.helpme.use(global.express.static('views/forum'));

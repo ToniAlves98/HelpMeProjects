@@ -70,41 +70,37 @@ global.forum_route = require('./controller/forum_route.js');
 //route protection
 const redirectLogin = (req, res, next) =>{
     if (req.session.idUser == null || req.session.idUser == 0){
-        alert('Por favor inicie sessão');
-        res.redirect('/')
+        res.redirect('/notFound')
     }else{
         next();
     }
 }
 
 //Teste session
-global.helpme.get('/teste', (req, res) => {
-    if(req.session.idUser == null){
-        console.log('No session');
-        //global.session.idUser = 1;
-        req.session.idUser = 1;
-        res.send('<h1>First Time!</h1><a href="/teste">login</a>')
-    } else {
-        console.log('Session!' + req.session.idUser);
-        //global.session.idUser += 1;
-        req.session.idUser +=1;
-        res.send('<h1>It works?</h1><a href="/">login</a>')
-        //res.sendfile(path.join(__dirname + '/views/forum/index.html'));
-    }
-    res.send('<h1>Welcome!</h1><a href="/readPerguntas">login</a>')
+global.helpme.get('/notFound', (req, res) => {
+    res.send('<h1>Pedimos desculpa mas não tem acesso a esta parte da plataforma sem login e/ou resgito.</h1><a href="/">Voltar</a>')
+});
+
+global.helpme.get('/inicial',redirectLogin, function (req, res) {
+    global.helpme.use(global.express.static('views/forum'));
+    global.helpme.use('/inicial', global.express.static('views/forum'));
+    res.sendFile(global.root + '/views/forum/' + 'inicial.html');
+});
+
+global.helpme.get('/inicial_en', redirectLogin, function (req, res) {
+    global.helpme.use(global.express.static('views/forum'));
+    global.helpme.use('/inicial_en', global.express.static('views/forum'));
+    res.sendFile(global.root + '/views/forum/' + 'inicial_en.html');
+});
+
+global.helpme.get('/admin', redirectLogin, function (req, res) {
+    global.helpme.use(global.express.static('views/admin'));
+    global.helpme.use('/admin', global.express.static('views/admin'));
+    res.sendFile(global.root + '/views/admin/' + 'index.html');
 });
 
 //rota inicio
 global.helpme.get('/', function (req, res) {
-    /*if(req.session.idUser == null){
-        console.log('No session');
-        //global.session.idUser = 1;
-        req.session.idUser = 1;
-    } else {
-        console.log('Session!' + req.session.idUser);
-        //global.session.idUser += 1;
-        req.session.idUser +=1;
-    }*/
     res.sendFile(path.join(__dirname + '/views/forum/index.html'));
 });
 
