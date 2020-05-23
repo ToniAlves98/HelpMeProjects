@@ -127,6 +127,39 @@ function seeTipo() {
     }
 };
 
+function pages(page) {
+    load_home("about", page);
+
+    function getEventTarget(e) {
+        e = e || window.event;
+        return e.target || e.srcElement;
+    }
+
+    function load_home(var1, var2) {
+        $.ajax({
+            type: "GET",
+            url: "./pages/" + var2 + ".html",
+            data: {},
+            success: function(data) {
+                $("#" + var1).html(data);
+            },
+            error: function(data, err, err2) {
+                console.log(data);
+                console.log(err);
+                console.log(err2);
+                console.log(err2);
+            }
+        });
+        var body = document.body;
+        var html = document.documentElement;
+    }
+    $("#accordionSidebar").children("li").on('click', function() {
+        var targetID = $(this).children('a').attr('id');
+        //alert(targetID);
+        load_home("content-wrapper", targetID);
+    });
+};
+
 var i = 0;
 var f = 3;
 
@@ -161,7 +194,7 @@ function getCarousel() {
                 txt+="<a href=\"#\" tabindex=\"0\">";
                 txt+="<h5>"+row.nomeEvento+"</h5>";
                 txt+="</a></div>";
-                txt+="<div class=\"mt\"> <a href=\"#\" tabindex=\"0\" class=\"btn bg-blue-ui white read\" read\" onclick=\"seeEvento(" + row.idEvento + ")\">read more</a> </div>";
+                txt+="<div class=\"mt\"> <a tabindex=\"0\" class=\"btn bg-blue-ui white read\" read\" onclick=\"pages('eventos')\">read more</a> </div>";
                 txt+="</div></div></div>";
                 n+=1;
                 if(n == 3){
