@@ -209,7 +209,7 @@ $('#formNewPedido').on('submit', function(e) {
                     $('.modal-backdrop').remove();
                     $('#avisoPedidoAdd').modal('show');
                 }
-                else {
+                else if (result.status != 200) {
                     $('#adicionar_pedido').modal('hide');
                     $('body').removeClass('modal-open');
                     $('body').css('padding-right', '0px');

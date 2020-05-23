@@ -101,7 +101,7 @@ $('#formNewRelatorio').on('submit', function (e) {
                     $('.modal-backdrop').remove();
                     $('#avisoRelatorioAdd').modal('show');
                 }
-                else {
+                else if (result.status == 201 ) {
                     $('#adicionar_relatorio').modal('hide');
                     $('body').removeClass('modal-open');
                     $('body').css('padding-right', '0px');
