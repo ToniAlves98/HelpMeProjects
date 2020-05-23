@@ -203,10 +203,18 @@ $('#formNewPedido').on('submit', function(e) {
             dataType: 'json',
             success: function(result) {
                 if (result.status == 200) {
-                    alert("Pedido adicionado com sucesso");
+                    $('#adicionar_pedido').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPedidoAdd').modal('show');
                 }
                 else {
-                    alert("É necessário fazer login para criar pedido de evento!");
+                    $('#adicionar_pedido').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPedidoAddMal').modal('show');
                 }
                 $('#formNewPedido')[0].reset();
             },

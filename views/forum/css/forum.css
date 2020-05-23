@@ -185,6 +185,15 @@ body.modal-open {
             box-shadow: 0 0 0 0.1rem #FF4500;
         }
 
+    .pedidoEvento .close {
+        color: #FD871F;
+    }
+
+        .pedidoEvento .close:hover,
+        .close:focus {
+            color: #FF4500;
+        }
+
 #btEvento {
     font-size: 19px;
     border-radius: 40px;
@@ -223,6 +232,77 @@ body.modal-open {
 }
 
 .pedidoEvento .custom-checkbox {
+    position: relative;
+    width: 15px;
+    height: 15px;
+}
+
+/*Adicionar Relatório*/
+.addRelatorio {
+    border-radius: 15px;
+}
+
+    .addRelatorio h1 {
+        color: #FD871F;
+    }
+
+    .addRelatorio .form-control {
+        border-color: #FD871F;
+    }
+
+        .addRelatorio .form-control:focus {
+            border-color: #FF4500;
+            box-shadow: 0 0 0 0.1rem #FF4500;
+        }
+
+
+    .addRelatorio .close {
+        color: #FD871F;
+    }
+
+        .addRelatorio .close:hover,
+        .close:focus {
+            color: #FF4500;
+        }
+
+#btRelatorio {
+    font-size: 19px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btRelatorio:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+#btRel {
+    font-size: 17px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btRel:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+.addRelatorio textarea {
+    border-radius: 30px;
+}
+
+.addRelatorio label {
+    font-size: 17px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 3px;
+}
+
+.addRelatorio .custom-checkbox {
     position: relative;
     width: 15px;
     height: 15px;
@@ -445,6 +525,88 @@ body.modal-open {
     color: #ff0000;
 }
 
+/* Modal aviso*/
+.aviso .modal-content {
+    min-width: 80%;
+    min-height: 100%;
+}
+
+.aviso .modal-dialog {
+    margin: 20rem 0rem 0rem 40rem;
+}
+
+.aviso .modal-header {
+    border-bottom: 2px solid #FD871F;
+}
+
+.aviso i {
+    color: #FD871F;
+    font-size: 25px;
+    position: relative;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+}
+
+    .aviso i span {
+        color: #FD871F;
+        font-size: 25px;
+        position: relative;
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+
+.aviso h1 {
+    color: #FD871F;
+    font-weight: bold;
+}
+
+.aviso p {
+    font-size: 23px;
+    color: #4a4c56;
+}
+
+.aviso form.user .form-control-user {
+    font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+}
+
+.aviso .form-control {
+    border-color: #FD871F;
+}
+
+    .aviso .form-control:focus {
+        border-color: #FF4500;
+        box-shadow: 0 0 0 0.1rem #FF4500;
+    }
+
+.aviso .close {
+    color: #FD871F;
+    font-size: 3rem;
+    margin-right: 0.5rem;
+}
+
+    .aviso .close:hover,
+    .close:focus {
+        color: #FF4500;
+    }
+
+#btaviso {
+    font-size: 15px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btaviso:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+.aviso textarea {
+    border-radius: 1px;
+}
 /*
 #registo .custom-control {
   position: relative;
