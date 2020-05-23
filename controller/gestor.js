@@ -147,10 +147,18 @@ $('#formEditarGestor').on('submit', function (e) {
             dataType: 'json',
             success: function (result) {
                 if (result.status == 200 ) {
-                    alert("Editado com sucesso");
+                    $('#editar_gestor').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoG').modal('show');
                 }
                 else {
-                    alert("Não foi editado com sucesso")
+                    $('#editar_gestor').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoGMal').modal('show');
                 }
                 $('#formEditarGestor')[0].reset();
                 getGestor();
@@ -180,10 +188,10 @@ function removeGestor() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                alert("Eliminado com sucesso");
+                $('#avisoGEli').modal('show');
             }
             else {
-                console.log("Erro");
+                $('#avisoGEliMal').modal('show');
             }
             getGestor();
         },

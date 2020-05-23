@@ -178,3 +178,86 @@
 .selected {
     background-color: #e3e6f0;
 }
+
+/* Modal aviso*/
+.aviso .modal-content {
+    min-width: 80%;
+    max-height: 80%;
+}
+
+.aviso .modal-dialog {
+    margin: 12rem auto;
+}
+
+.aviso .modal-header {
+    border-bottom: 2px solid #FD871F;
+}
+
+.aviso i {
+    color: #FD871F;
+    font-size: 25px;
+    position: relative;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.aviso i span {
+    color: #FD871F;
+    font-size: 25px;
+    position: relative;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.aviso h1 {
+    color: #FD871F;
+    font-weight: bold;
+}
+
+.aviso p {
+    font-size: 23px;
+    color: #4a4c56;
+}
+
+.aviso form.user .form-control-user {
+    font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+}
+
+.aviso .form-control {
+    border-color: #FD871F;
+}
+
+    .aviso .form-control:focus {
+        border-color: #FF4500;
+        box-shadow: 0 0 0 0.1rem #FF4500;
+    }
+
+.aviso .close {
+    color: #FD871F;
+    font-size: 3rem;
+    margin-right:0.5rem;
+}
+
+    .aviso .close:hover,
+    .close:focus {
+        color: #FF4500;
+    }
+
+#btaviso {
+    font-size: 15px;
+    border-radius: 40px;
+    border-color: #FD871F;
+    background-color: #FD871F;
+}
+
+    #btaviso:hover {
+        border-color: #FF4500;
+        background-color: #FF4500;
+        box-shadow: 0 0 0 0.2rem #FF4500;
+    }
+
+.aviso textarea {
+    border-radius: 1px;
+}

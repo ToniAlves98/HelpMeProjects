@@ -138,10 +138,18 @@ $('#formEditarEmpresa').on('submit', function (e) {
             dataType: 'json',
             success: function (result) {
                 if (result.status == 200 ) {
-                    alert("Editado com sucesso");
+                    $('#editar_empresa').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoEmp').modal('show');
                 }
                 else {
-                    alert("Não foi editado com sucesso")
+                    $('#editar_empresa').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoEmpMal').modal('show');
                 }
                 $('#formEditarEmpresa')[0].reset();
                 getEmpresa();
@@ -171,10 +179,10 @@ function removeEmpresa() {
         success: function (data, status, result) {
 
             if (result.status == 200) {
-                alert("Eliminado com sucesso");
+                $('#avisoEmpEli').modal('show');
             }
             else {
-                console.log("Erro");
+                $('#avisoEmpEliMal').modal('show');
             }
             getEmpresa();
         },

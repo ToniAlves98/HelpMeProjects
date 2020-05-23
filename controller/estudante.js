@@ -145,10 +145,18 @@ $('#formEditarEstudante').on('submit', function (e) {
             dataType: 'json',
             success: function (result) {
                 if (result.status == 200 ) {
-                    alert("Editado com sucesso");
+                    $('#editar_estudante').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPop').modal('show');
                 }
                 else {
-                    alert("Não foi editado com sucesso")
+                    $('#editar_estudante').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoMal').modal('show');
                 }
                 $('#formEditarEstudante')[0].reset();
                 getEstudante();
@@ -178,10 +186,10 @@ function removeEstudante() {
         success: function (data, status, result) {
 
             if (result.status == 200) { 
-                alert("Eliminado com sucesso");
-            }
+                $('#avisoEli').modal('show');
+            } 
             else {
-                console.log("Erro");
+                $('#avisoEliMal').modal('show');
             }
             getEstudante();
         },
