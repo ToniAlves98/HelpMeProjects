@@ -68,10 +68,10 @@ function aceitarEvento() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                alert("Pedido aceite com sucesso");
+                $('#avisoPedidoAceite').modal('show');
             }
             else {
-                console.log("Erro");
+                $('#avisoPedidoAceiteMal').modal('show');
             }
             getEventosPendentes();
         },
@@ -104,10 +104,10 @@ $("#aceitarEvento").on("click", function() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                alert("Pedido eliminado com sucesso");
+                $('#avisoPedidoEli').modal('show');
             }
             else {
-                console.log("Erro");
+                $('#avisoPedidoEliMal').modal('show');
             }
             getEventosPendentes();
         },

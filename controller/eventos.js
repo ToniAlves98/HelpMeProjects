@@ -96,10 +96,18 @@ $('#formNewEvento').on('submit', function(e) {
             dataType: 'json',
             success: function(result) {
                 if (result.status == 200) {
-                    alert("Evento adicionado com sucesso");
+                    $('#adicionar_evento').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoEventoAdd').modal('show');
                 } 
                 else{
-                    alert("Não foi adicionado adicionado com sucesso");
+                    $('#avisoEventoAddMal').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoEventoEdi').modal('show');
                 }
                 $("#formNewEvento")[0].reset();
                 getEventos();
@@ -200,10 +208,18 @@ $('#formEditarEvento').on('submit', function(e) {
             dataType: 'json',
             success: function(result) {
                 if (result.status == 200) {
-                    alert("Evento editado com sucesso");
+                    $('#editar_evento').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoEventoEdi').modal('show');
                 }
                 else {
-                    alert("Não foi editado com sucesso editado com sucesso");
+                    $('#editar_evento').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoEventoEdiMal').modal('show');
                 }
                 $("#formEditarEvento")[0].reset();
                 getEventos();
@@ -228,10 +244,10 @@ function removeEvento() {
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                alert("Elimnado com sucesso");
+                $('#avisoEventoEdiEli').modal('show');
             }
             else {
-                console.log("Erro");
+                $('#avisoEventoEdiEliMal').modal('show');
             }
             getEventos();
         },

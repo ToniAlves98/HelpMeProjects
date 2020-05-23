@@ -53,16 +53,15 @@ function eliminarSugestao() {
         type: 'POST',
         url: '/deleteSugestao',
         data: JSON.stringify(data),
-        dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        
+        dataType: 'json',
         success: function (data, status, request) {
 
             if (request.status == 200) {
-                alert("Sugestão eliminada com sucesso");
+                $('#avisoSugestaoEli').modal('show');
             }
             else {
-                console.log("Erro");
+                $('#avisoSugestaoEliMal').modal('show');
             }
             getSugestoes();
         },
