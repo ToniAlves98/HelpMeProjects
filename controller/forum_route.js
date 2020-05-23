@@ -10,6 +10,18 @@ global.helpme.post('/readPerguntas', function (req, res) {
     });
 });
 
+global.helpme.post('/getNumPerguntas', function (req, res) {
+    global.model_perguntas.getNumPerguntas(req.body.lingua,function (err, data) {
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
 global.helpme.get('/readRelatoriosForum', function (req, res) {
     global.model_relatorios_forum.readRelatoriosForum(function (err, data) {
         if (err) {

@@ -16,6 +16,22 @@ function readPerguntas(lingua, callback) {
     });
 };
 
+function getNumPerguntas(lingua, callback) {
+    global.connect.con.query('SELECT count(*) as numero from pergunta where AreaConhecimento_idAreaConhecimento = 1 AND lingua = \''+lingua+'\'UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 2 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 3 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 4 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 5 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 6 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 7 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 8 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 9 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta where AreaConhecimento_idAreaConhecimento = 10 AND lingua = \''+lingua+'\' UNION ALL SELECT count(*) from pergunta', function (err, rows, fields) {
+        console.log(rows);
+        var string = JSON.stringify(rows);
+        console.log(string);
+    var json = JSON.parse(string);
+
+    if (!err) {
+        console.log(rows);
+        callback(null, json);
+    }
+    else
+        console.log('Error while performing Query.', err);
+    });
+};
+
 function readPerguntasPorArea(lingua, id, callback){
     global.connect.con.query('SELECT * FROM pergunta WHERE AreaConhecimento_idAreaConhecimento =\''+ id +'\' AND lingua = \''+lingua+'\' order by num_likes DESC', function(err, rows, fields) {
         var string = JSON.stringify(rows);
@@ -86,5 +102,6 @@ module.exports = {
     getResposta: getResposta,
     savePergunta: savePergunta,
     saveLikes: saveLikes,
-    readPerguntasPorArea: readPerguntasPorArea
+    readPerguntasPorArea: readPerguntasPorArea,
+    getNumPerguntas: getNumPerguntas
     }

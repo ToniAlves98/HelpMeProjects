@@ -1,0 +1,219 @@
+﻿<link href="../css/layout.bar.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../css/eventos.css" />
+<link href="./css/forum.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--========== PAGE LAYOUT =====-->
+<!--div style="background-image: url('./img/1920x1080/long01.png');"-->
+<!--div style="background-color: #a6a7aa; margin-top: 90px;"-->
+<div id="about" class="bg-color-sky-light" style="margin-top: 100px;" onload="tabelaEventos()">
+    <div class="row">
+        <h1 class="col-md-4" style="margin-left:170px; margin-top: 70px; margin-bottom: 30px">Events</h1>
+        <div class="tipo-evento" style="margin-top: 80px; margin-right: 260px;" align="right">
+            <select id="area" onchange="seeArea()"></select>
+            <select id="tipo" onchange="seeTipo()"></select>
+        </div>
+    </div>
+    <div class="container cta-80" align="center">
+        <div class="row" style="margin-bottom:80px">
+            <div id="alleventos"></div>
+        </div>
+    </div>
+    <div style="margin-left: 170px; margin-bottom: 30px;">
+        <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#adicionar_pedido">Make New Event Request</a>
+    </div>
+    <div style="margin-left: 170px; margin-bottom: 60px;">
+        <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase" data-toggle="modal" data-target="#associar_imagem">Associate Image with Request</a>
+    </div>
+</div>
+<!-- Modal Evento-->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h1 class="modal-title" id="nomeEvento" style="color: #FD871F;" align="center">Nome do Evento</h1>
+            </div>
+            <div class="row">
+                <figure class="crop-modal" style="margin-top: 20px;" align="center" id="modalImg"> <img alt="" src="./img/carousel/101.png"> </figure>
+                <div class="modal-body">
+                    <p style="margin-left: 20px; margin-right: 20px; margin-top: 20px;" align="center" id="descricaoEvento">
+                        Description: The image could be on the left and the description instead of on the bottom could be on the right.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Modal Evento-->
+<!-- Modal add Evento-->
+<div class="modal fadeIn pedidoEvento" id="adicionar_pedido" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-lg-12 text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <h1 style="color: #FD871F;">Place event request</h1>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 40px 60px;">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <form id="formNewPedido" class="user text-center" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="testeEvento" placeholder="Event Name">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control form-control-user" id="per_are">
+                                    <option value="" disabled selected>All Areas of expertise</option>
+                                    <option value="Gestão do Âmbito">Scope Management</option>
+                                    <option value="Gestão de Aquisições">Acquisition Management</option>
+                                    <option value="Gestão da Comunicação">Communication Management</option>
+                                    <option value="Gestão do Cronograma">Schedule Management</option>
+                                    <option value="Gestão do Custo">Cost Management</option>
+                                    <option value="Gestão da Integração">Integration Management</option>
+                                    <option value="Gestão da Qualidade">Quality management</option>
+                                    <option value="Gestão dos Recursos">Resource management</option>
+                                    <option value="Gestão de Riscos">Risk management</option>
+                                    <option value="Gestão dos Stakeholders">Stakeholder Management</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control form-control-user" data-live-search="true" id="tipoEvento">
+                                    <option value="" disabled selected>All Event Types</option>
+                                    <option value="Workshop">Workshop</option>
+                                    <option value="Palestra">Lecture</option>
+                                    <option value="Conferência">Conference</option>
+                                    <option value="Trainee">Trainee</option>
+                                    <option value="Feira de Emprego">Job Fair</option>
+                                    <option value="Outro">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="descricao" placeholder="descricao">
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control form-control-user" id="inicioEvento" placeholder="Data de início">
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control form-control-user" id="fimEvento" placeholder="Data de fim">
+                            </div>
+                            <br />
+                            <button type="submit" style="background-color: #FD871F; border: none;" method="post" id="btEvento" class="btn btn-primary btn-user btn-block">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Modal add Evento-->
+<!-- Modal img-->
+<div class="modal fadeIn pedidoEvento" id="associar_imagem" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-lg-12 text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <h2 style="color: #FD871F;">Associate image with request</h2>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 40px 60px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="formNewRelatorio" enctype="multipart/form-data" action="/g" class="user text-center" method="post">
+                            <div class="form-group">
+                                <input type="file" name="file" id="file" />
+                                <span>(PNG files only)</span>
+                            </div>
+                            <br />
+                            <button type="submit" style="background-color: #FD871F; border: none;" value="upload" class="btn btn-primary btn-user btn-block" id="btImg">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pop-up pedido -->
+<div class="modal fadeIn aviso" id="avisoPedidoAdd" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="glyphicon glyphicon-bell"><span>Notification</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <div class="col-lg-12 text-center">
+                    <p>Event request added successfully!</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pop-up pedido mal -->
+<div class="modal fadeIn aviso" id="avisoPedidoAddMal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="glyphicon glyphicon-bell"><span>Notification</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <div class="col-lg-12 text-center">
+                    <p>Event request is not possible!<br />
+                        Please login to request an event!</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- /Modal img-->
+<!-- dropdown -->
+<script>
+
+    /*area eventos*/
+    var options = "";
+    options += "<option value=\"0\">" + "All Areas of Expertise" + "</option>";
+    options += "<option value=\"1\">" + "Scope Management" + "</option>";
+    options += "<option value=\"2\">" + "Acquisition Management" + "</option>";
+    options += "<option value=\"3\">" + "Communication Management" + "</option>";
+    options += "<option value=\"4\">" + "Schedule Management" + "</option>";
+    options += "<option value=\"5\">" + "Cost Management" + "</option>";
+    options += "<option value=\"6\">" + "Integration Management" + "</option>";
+    options += "<option value=\"7\">" + "Quality management" + "</option>";
+    options += "<option value=\"8\">" + "Resource management" + "</option>";
+    options += "<option value=\"9\">" + "Risk management" + "</option>";
+    options += "<option value=\"10\">" + "Stakeholder Management" + "</option>";
+    document.getElementById("area").innerHTML = options;
+    /*fim area eventos*/
+
+    /*tipo eventos*/
+    var options = "";
+    options += "<option value=\"0\">" + "All Types of Events" + "</option>";
+    options += "<option value=\"Workshop\">" + "Workshop" + "</option>";
+    options += "<option value=\"Palestra\">" + "Lecture" + "</option>";
+    options += "<option value=\"Trainee\">" + "Trainee" + "</option>";
+    options += "<option value=\"Conferência\">" + "Conference" + "</option>";
+    options += "<option value=\"Feira de emprego\">" + "Job Fair" + "</option>";
+    options += "<option value=\"Outro\">" + "Other" + "</option>";
+    document.getElementById("tipo").innerHTML = options;
+   /*fim tipo eventos*/
+
+</script>
+<script type="text/javascript" src="../../../controller/pedidos.js"></script>
+<script type="text/javascript" src="../../../controller/eventos_forum.js"></script>

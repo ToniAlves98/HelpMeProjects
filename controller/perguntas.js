@@ -382,11 +382,17 @@ function getAreaConhecimento(id) {
 };
 
 function countArea() {
+    var lin = document.getElementById("lin").textContent;
+    var data = {};
+    data.lingua = lin;
 
     //chamada ajax
     $.ajax({
-        type: 'GET',
-        url: '/graficoPerguntaArea',
+        type: 'POST',
+        url: '/getNumPerguntas',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        dataType: 'json',
         //os dados recebidos do model estão na variável data
         success: function(data) {
             console.log(data)
