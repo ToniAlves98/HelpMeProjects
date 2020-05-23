@@ -111,7 +111,7 @@ $('#tabela_sugestoes').on('click', 'tr', function () {
             dataType: 'json',
             success: function (result) {
                 if (result.status == 200) {
-                    alert("Sugestão adicionada com sucesso");
+                    $('#avisoSugestaoAdd').modal('show');
                 }
                 $('#formSugestao')[0].reset();
             },

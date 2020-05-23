@@ -1,4 +1,4 @@
-﻿<link rel="stylesheet" href="../css/carousel.css"/>
+﻿<link rel="stylesheet" href="../css/carousel.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="carousel-inner" role="listbox">
     <div style=" width: 100%">
@@ -246,7 +246,7 @@
                                         Excelência – procuramos partilhar conhecimento de forma mais simples e inovadora.
                                         Confiança – os gestores de projetos com mais experiência são o motor da plataforma.
                                         Ambição – procuramos melhorar o sucesso das PME portuguesas.
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -261,9 +261,9 @@
                                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                     <div class="panel-body">
                                         A missão da HELP PME PROJECTS é apoiar as PME portuguesas e gerar um impacto positivo na sociedade contribuindo para a adotação e melhoria das práticas de Gestão de Projetos por parte das PME portuguesas.
-                                        A visão é que a HELP PME PROJECTS se torne numa plataforma de referência em Portugal da área de Gestão de Projetos. 
+                                        A visão é que a HELP PME PROJECTS se torne numa plataforma de referência em Portugal da área de Gestão de Projetos.
                                         O propósito da HELP PME PROJECTS é contribuir para a melhoria das práticas de gestão de projetos, passando pelo apoio aos gestores de projetos das PME, aos alunos, e outros utilizadores potenciais.
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -300,67 +300,86 @@
 </div>
 <!--Fim Modal ref-->
 
+<!-- Modal pop-up adicionar -->
+<div class="modal fadeIn aviso" id="avisoSugestaoAdd" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="glyphicon glyphicon-bell"><span>Nofiticação</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <div class="col-lg-12 text-center">
+                    <p>Sugestão adicionada com sucesso!</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     function showRef(ac) {
-        if(ac == "GI" ) {
-        var txt = "A gestão da integração tem como objetivo identificar, definir, combinar, unificar e coordenar os processos e atividades da gestão de projetos. Divide-se em 7 processos: desenvolvimento do termo de abertura do projeto, desenvolvimento do plano e gestão de projetos, gerir o trabalho do projeto, gerir o conhecimento do projeto, monitorizar e controlar o trabalho do projeto, controlar as mudanças e fechar projeto/fase (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        if (ac == "GI") {
+            var txt = "A gestão da integração tem como objetivo identificar, definir, combinar, unificar e coordenar os processos e atividades da gestão de projetos. Divide-se em 7 processos: desenvolvimento do termo de abertura do projeto, desenvolvimento do plano e gestão de projetos, gerir o trabalho do projeto, gerir o conhecimento do projeto, monitorizar e controlar o trabalho do projeto, controlar as mudanças e fechar projeto/fase (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
-        else if(ac == "GA" ) {
-        var txt = "A gestão do âmbito tem como objetivo definir e controlar o que faz parte do projeto ou não. Preocupa-se em incluir todo, mas apenas, o trabalho necessário que permita concluir o projeto com sucesso. Divide-se em 6 processos: plano de gestão do âmbito, recolha de requisitos, definição do âmbito, criação da WBS, validação do âmbito e controlo do âmbito (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        else if (ac == "GA") {
+            var txt = "A gestão do âmbito tem como objetivo definir e controlar o que faz parte do projeto ou não. Preocupa-se em incluir todo, mas apenas, o trabalho necessário que permita concluir o projeto com sucesso. Divide-se em 6 processos: plano de gestão do âmbito, recolha de requisitos, definição do âmbito, criação da WBS, validação do âmbito e controlo do âmbito (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
-        else if(ac == "GC" ) {
-        var txt = "A gestão do cronograma consiste na gestão do tempo de forma a garantir que não são ultrapassados os prazos acordados. Divide-se em 6 processos: plano de gestão do cronograma, definição das atividades, sequenciação das atividades, estimação de duração das atividades, desenvolvimento do cronograma e controlo do cronograma (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        else if (ac == "GC") {
+            var txt = "A gestão do cronograma consiste na gestão do tempo de forma a garantir que não são ultrapassados os prazos acordados. Divide-se em 6 processos: plano de gestão do cronograma, definição das atividades, sequenciação das atividades, estimação de duração das atividades, desenvolvimento do cronograma e controlo do cronograma (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
-        else if(ac == "GCU" ) {
-        var txt = "A gestão dos custos consiste na gestão e controlo dos custos de forma a garantir que estes não ultrapassem o orçamento aprovado. Divide-se em 4 processos: planeamento da gestão dos custos, estimação dos custos, determinação do orçamento e controlo dos custos (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        else if (ac == "GCU") {
+            var txt = "A gestão dos custos consiste na gestão e controlo dos custos de forma a garantir que estes não ultrapassem o orçamento aprovado. Divide-se em 4 processos: planeamento da gestão dos custos, estimação dos custos, determinação do orçamento e controlo dos custos (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
-        else if(ac == "GQ" ) {
-        var txt = "A gestão da qualidade dá suporte às atividades de melhoria contínua, assim, consiste em integrar uma política de qualidade da organização no que concerne a planear, gerir e controlar os requisitos de qualidade, tendo sempre em vista a satisfação dos stakeholders. Divide-se em 3 processos: planeamento da gestão da qualidade, gestão da qualidade e controlo da qualidade (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        else if (ac == "GQ") {
+            var txt = "A gestão da qualidade dá suporte às atividades de melhoria contínua, assim, consiste em integrar uma política de qualidade da organização no que concerne a planear, gerir e controlar os requisitos de qualidade, tendo sempre em vista a satisfação dos stakeholders. Divide-se em 3 processos: planeamento da gestão da qualidade, gestão da qualidade e controlo da qualidade (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
-        else if(ac == "GR  " ) {
-        var txt = "A gestão dos recursos consiste em identificar, adquirir e gerir os recursos necessário para o sucesso do projeto. Os recursos devem estar disponíveis no momento e local certo. Divide-se em 5 processos: planear a gestão dos recursos, estimar os recursos necessários, adquirir os recursos, desenvolver a equipa e gerir a equipa (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        else if (ac == "GR  ") {
+            var txt = "A gestão dos recursos consiste em identificar, adquirir e gerir os recursos necessário para o sucesso do projeto. Os recursos devem estar disponíveis no momento e local certo. Divide-se em 5 processos: planear a gestão dos recursos, estimar os recursos necessários, adquirir os recursos, desenvolver a equipa e gerir a equipa (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
-        else if(ac == "GCO" ) {
-        var txt = "A gestão da comunicação de um projeto consiste no desenvolvimento e implementação de uma estratégia de comunicação que permita a comunicação eficaz com os stakeholders. Divide-se em 3 processos: planear a gestão da comunicação, gerir a comunicação e controlar a comunicação (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        else if (ac == "GCO") {
+            var txt = "A gestão da comunicação de um projeto consiste no desenvolvimento e implementação de uma estratégia de comunicação que permita a comunicação eficaz com os stakeholders. Divide-se em 3 processos: planear a gestão da comunicação, gerir a comunicação e controlar a comunicação (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
-        else if(ac == "GRI" ) {
-        var txt = "A gestão dos riscos tem por objetivo aumentar a probabilidade de ocorrência de riscos positivos que impactam positivamente o projeto e diminuir a probabilidade de ocorrência de riscos negativos que impactam negativamente o projeto e diminuem as possibilidades de sucesso do mesmo. Divide-se em 3 processos: planeamento e gestão dos riscos, identificação dos riscos, análise qualitativa dos riscos, análise quantitativa dos riscos, planeamento das respostas aos riscos, implementação das respostas aos riscos e monitorização dos riscos (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        else if (ac == "GRI") {
+            var txt = "A gestão dos riscos tem por objetivo aumentar a probabilidade de ocorrência de riscos positivos que impactam positivamente o projeto e diminuir a probabilidade de ocorrência de riscos negativos que impactam negativamente o projeto e diminuem as possibilidades de sucesso do mesmo. Divide-se em 3 processos: planeamento e gestão dos riscos, identificação dos riscos, análise qualitativa dos riscos, análise quantitativa dos riscos, planeamento das respostas aos riscos, implementação das respostas aos riscos e monitorização dos riscos (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
-        else if(ac == "GAQ" ) {
-        var txt = "A gestão das aquisições consiste em comprar ou adquirir produtos, serviços ou resultados necessários. Trata da gestão e controlo de contratos, pedidos de compra, entre outros. Divide-se em 3 processos: planear e gerir as aquisições, gerir as aquisições e controlar as aquisições (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        else if (ac == "GAQ") {
+            var txt = "A gestão das aquisições consiste em comprar ou adquirir produtos, serviços ou resultados necessários. Trata da gestão e controlo de contratos, pedidos de compra, entre outros. Divide-se em 3 processos: planear e gerir as aquisições, gerir as aquisições e controlar as aquisições (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
-        else if(ac == "GS" ) {
-        var txt = "A gestão dos stakeholders tem como objetivo apoiar o trabalho da equipa no sentido em que procura avaliar o impacto de cada um dos stakeholders no projeto e vice-versa. Assim como analisar as expectativas dos mesmos. Divide-se em 4 processos: identificação dos stakeholders, planear o envolvimento dos stakeholders, gerir o envolvimento dos stakeholders e monitorização o envolvimento dos stakeholders (PMI, 2017a)." + ac;
-        //$("#info").html(txt);
-        var div = document.getElementById('info');
-        div.innerHTML = txt;
+        else if (ac == "GS") {
+            var txt = "A gestão dos stakeholders tem como objetivo apoiar o trabalho da equipa no sentido em que procura avaliar o impacto de cada um dos stakeholders no projeto e vice-versa. Assim como analisar as expectativas dos mesmos. Divide-se em 4 processos: identificação dos stakeholders, planear o envolvimento dos stakeholders, gerir o envolvimento dos stakeholders e monitorização o envolvimento dos stakeholders (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
         }
     };
 
