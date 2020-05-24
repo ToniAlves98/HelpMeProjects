@@ -20,9 +20,13 @@ function saveResposta(resposta, callback){
     var json = JSON.parse(string);
     //var ler = JSON.stringify(rows);
      if (!err) {
+        json.forEach(function (row) {
+            row.idPergunta = global.session.idPergunta;
+            console.log(row); 
+        });
         //console.log("Number of records inserted: " + rows.affectedRows);
         //console.log(string + ': : ' + json.idPergunta);
-        console.log('ler' + ': : ' + JSON.stringify(json));
+        //console.log('ler' + ': : ' + JSON.stringify(json));
         callback(null, json);
      }
      else
@@ -32,5 +36,5 @@ function saveResposta(resposta, callback){
 
 module.exports = {
     readRespostas: readRespostas,
-    saveResposta: saveResposta,
+    saveResposta: saveResposta
     }

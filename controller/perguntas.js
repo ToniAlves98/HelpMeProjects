@@ -365,6 +365,8 @@ function getAreaConhecimento(id) {
     data.AreaConhecimento_idAreaConhecimento = id;
     data.lingua = lin;
     var txt = "";
+    x=5;
+    y=0;
 
     $.ajax({
         type: 'POST',
@@ -373,10 +375,29 @@ function getAreaConhecimento(id) {
         contentType: 'application/json',
         dataType: 'json',
         success: function(result, data) {
-            console.log("result " + result);
-            console.log("data " + data);
 
             result.slice(y, x).forEach(function(row) {
+                if(lin == "PT"){
+                    if(y == 0 && (data.length - x) <= 0){
+                        console.log('noButtons');
+                    }if(y == 0){
+                        $("#page").html(buttonS);
+                    }else if ((data.length - x) <= 0){
+                        $("#page").html(buttonA);
+                    }else{
+                        $("#page").html(buttonFPT);
+                    }
+                }else if(lin == "EN"){
+                    if(y == 0 && (data.length - x) <= 0){
+                        console.log('noButtons');
+                    }else if(y == 0){
+                        $("#page").html(buttonN);
+                    }else if ((data.length - x) <= 0){
+                        $("#page").html(buttonP);
+                    }else{
+                        $("#page").html(buttonFEN);
+                    }
+                }
                 txt += "<div class='panel panel-default'>";
                 txt += "<div class='panel-heading' role='tab' id='pIntegracao' style='background-color:white'>";
                 txt += "<h4 style='font-size: 15px'>";
