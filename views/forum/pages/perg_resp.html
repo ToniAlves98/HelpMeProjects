@@ -11,89 +11,122 @@
                     <!-- Accordion -->
                     <div class="accordion">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <h2 style="font-size: 24px">Áreas de Conhecimento</h2>
-                            <div class="panel panel-default" style="height: 60px">
+                            <h2 style="font-size: 24px;">Áreas de Conhecimento</h2>
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px;">
+                                <div class="panel-heading" role="tab" id="heading">
+                                    <h4 style="font-size: 15px">
+                                        <a class="collapsed panel-title-child" role="button" onclick="getAreaConhecimento(1)" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GA')" style="margin-right: 10px;"></i>
+                                            Gestão de Âmbito
+                                            <p id="gAmbito" class="text-center" style="color:#81848f; font-weight:bold"></p>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <a id="collapse1"></a>
+                            </div>
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px;">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 style="font-size: 15px">
-                                        <a class="panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#pIntegracao" aria-expanded="true" aria-controls="collapseOne">
+                                        <a class="panel-title-child" role="button" onclick="getAreaConhecimento(6)" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GI')" style="margin-right: 10px;"></i>
                                             Gestão da Integração
+                                            <p id="gIntegracao" class="text-center" style="color:#81848f; font-weight:bold"></p>
                                         </a>
                                     </h4>
                                 </div>
+                                <a id="collapse2"></a>
                             </div>
-                            <div class="panel panel-default" style="height: 60px">
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px;">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                     <h4 style="font-size: 15px">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#pCronograma" aria-expanded="false" aria-controls="collapseTwo">
+                                        <a class="collapsed panel-title-child" role="button" onclick="getAreaConhecimento(4)" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GC')" style="margin-right: 10px;"></i>
                                             Gestão do Cronograma
+                                            <p id="gCronograma" class="text-center" style="color:#81848f; font-weight:bold"></p>
                                         </a>
                                     </h4>
                                 </div>
+                                <a id="collapse3"></a>
                             </div>
-                            <div class="panel panel-default" style="height: 60px">
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px; margin-bottom: 25px;">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#pCusto" aria-expanded="false" aria-controls="collapseThree">
+                                        <a class="collapsed panel-title-child" role="button" onclick="getAreaConhecimento(5)" data-toggle="collapse" data-parent="#accordion" href="#collapse31" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GCU')" style="margin-right: 10px;"></i>
                                             Gestão de Custo
+                                            <p id="gCusto" class="text-center" style="color:#81848f; font-weight:bold"></p>
                                         </a>
                                     </h4>
                                 </div>
+                                <a id="collapse31"></a>
                             </div>
-                            <div class="panel panel-default" style="height: 60px">
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px;">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapseThree">
+                                        <a class="collapsed panel-title-child" role="button" onclick="getAreaConhecimento(7)" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GQ')" style="margin-right: 10px;"></i>
                                             Gestão de Qualidade
+                                            <p id="gQualidade" class="text-center" style="color:#81848f; font-weight:bold"></p>
                                         </a>
                                     </h4>
                                 </div>
                                 <a id="collapse4"></a>
                             </div>
-                            <div class="panel panel-default" style="height: 60px">
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px;">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapseThree">
+                                        <a class="collapsed panel-title-child" role="button" onclick="getAreaConhecimento(8)" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GR')" style="margin-right: 10px;"></i>
                                             Gestão de Recursos
+                                            <p id="gRecursos" class="text-center" style="color:#81848f; font-weight:bold"></p>
                                         </a>
                                     </h4>
                                 </div>
                                 <a id="collapse5"></a>
                             </div>
-                            <div class="panel panel-default" style="height: 60px">
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px;">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapseThree">
+                                        <a class="collapsed panel-title-child" role="button" onclick="getAreaConhecimento(3)" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GCO')" style="margin-right: 10px;"></i>
                                             Gestão de Comunicação
+                                            <p id="gComunicacao" class="text-center" style="color:#81848f; font-weight:bold"></p>
                                         </a>
                                     </h4>
                                 </div>
                                 <a id="collapse6"></a>
                             </div>
-                            <div class="panel panel-default" style="height: 60px">
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px;">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapseThree">
+                                        <a class="collapsed panel-title-child" role="button" onclick="getAreaConhecimento(9)" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GRI')" style="margin-right: 10px;"></i>
                                             Gestão de Riscos
+                                            <p id="gRiscos" class="text-center" style="color:#81848f; font-weight:bold"></p>
                                         </a>
                                     </h4>
                                 </div>
                                 <a id="collapse7"></a>
                             </div>
-                            <div class="panel panel-default" style="height: 60px">
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px;">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapseThree">
+                                        <a class="collapsed panel-title-child" role="button" onclick="getAreaConhecimento(2)" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GAQ')" style="margin-right: 10px;"></i>
                                             Gestão de Aquisições
+                                            <p id="gAquisicoes" class="text-center" style="color:#81848f; font-weight:bold"></p>
                                         </a>
                                     </h4>
                                 </div>
                                 <a id="collapse8"></a>
                             </div>
-                            <div class="panel panel-default" style="height: 60px">
+                            <div class="panel panel-default" style="height: 60px; margin-bottom: 25px;">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 style="font-size: 15px">
-                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapseThree">
+                                        <a class="collapsed panel-title-child" role="button" onclick="getAreaConhecimento(10)" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fa fa-chevron-down" aria-hidden="true" role="button" data-toggle="modal" data-target="#ref" onclick="showRef('GS')" style="margin-right: 10px;"></i>
                                             Gestão de Stakeholders
+                                            <p id="gStakeholders" class="text-center" style="color:#81848f; font-weight:bold"></p>
                                         </a>
                                     </h4>
                                 </div>
@@ -169,5 +202,93 @@
         </div>
     </div>
 </div>
+
+<!--Modal Ref-->
+<div class="modal fadeIn" id="ref" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-lg-12 text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br />
+                    <h1>Descrição da Área de Conhecimento</h1>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 40px 60px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="info"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fim Modal ref-->
+
+<script>
+        function showRef(ac) {
+        if (ac == "GI") {
+            var txt = "A gestão da integração tem como objetivo identificar, definir, combinar, unificar e coordenar os processos e atividades da gestão de projetos. Divide-se em 7 processos: desenvolvimento do termo de abertura do projeto, desenvolvimento do plano e gestão de projetos, gerir o trabalho do projeto, gerir o conhecimento do projeto, monitorizar e controlar o trabalho do projeto, controlar as mudanças e fechar projeto/fase (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+        else if (ac == "GA") {
+            var txt = "A gestão do âmbito tem como objetivo definir e controlar o que faz parte do projeto ou não. Preocupa-se em incluir todo, mas apenas, o trabalho necessário que permita concluir o projeto com sucesso. Divide-se em 6 processos: plano de gestão do âmbito, recolha de requisitos, definição do âmbito, criação da WBS, validação do âmbito e controlo do âmbito (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+        else if (ac == "GC") {
+            var txt = "A gestão do cronograma consiste na gestão do tempo de forma a garantir que não são ultrapassados os prazos acordados. Divide-se em 6 processos: plano de gestão do cronograma, definição das atividades, sequenciação das atividades, estimação de duração das atividades, desenvolvimento do cronograma e controlo do cronograma (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+        else if (ac == "GCU") {
+            var txt = "A gestão dos custos consiste na gestão e controlo dos custos de forma a garantir que estes não ultrapassem o orçamento aprovado. Divide-se em 4 processos: planeamento da gestão dos custos, estimação dos custos, determinação do orçamento e controlo dos custos (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+        else if (ac == "GQ") {
+            var txt = "A gestão da qualidade dá suporte às atividades de melhoria contínua, assim, consiste em integrar uma política de qualidade da organização no que concerne a planear, gerir e controlar os requisitos de qualidade, tendo sempre em vista a satisfação dos stakeholders. Divide-se em 3 processos: planeamento da gestão da qualidade, gestão da qualidade e controlo da qualidade (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+        else if (ac == "GR  ") {
+            var txt = "A gestão dos recursos consiste em identificar, adquirir e gerir os recursos necessário para o sucesso do projeto. Os recursos devem estar disponíveis no momento e local certo. Divide-se em 5 processos: planear a gestão dos recursos, estimar os recursos necessários, adquirir os recursos, desenvolver a equipa e gerir a equipa (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+        else if (ac == "GCO") {
+            var txt = "A gestão da comunicação de um projeto consiste no desenvolvimento e implementação de uma estratégia de comunicação que permita a comunicação eficaz com os stakeholders. Divide-se em 3 processos: planear a gestão da comunicação, gerir a comunicação e controlar a comunicação (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+        else if (ac == "GRI") {
+            var txt = "A gestão dos riscos tem por objetivo aumentar a probabilidade de ocorrência de riscos positivos que impactam positivamente o projeto e diminuir a probabilidade de ocorrência de riscos negativos que impactam negativamente o projeto e diminuem as possibilidades de sucesso do mesmo. Divide-se em 3 processos: planeamento e gestão dos riscos, identificação dos riscos, análise qualitativa dos riscos, análise quantitativa dos riscos, planeamento das respostas aos riscos, implementação das respostas aos riscos e monitorização dos riscos (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+        else if (ac == "GAQ") {
+            var txt = "A gestão das aquisições consiste em comprar ou adquirir produtos, serviços ou resultados necessários. Trata da gestão e controlo de contratos, pedidos de compra, entre outros. Divide-se em 3 processos: planear e gerir as aquisições, gerir as aquisições e controlar as aquisições (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+        else if (ac == "GS") {
+            var txt = "A gestão dos stakeholders tem como objetivo apoiar o trabalho da equipa no sentido em que procura avaliar o impacto de cada um dos stakeholders no projeto e vice-versa. Assim como analisar as expectativas dos mesmos. Divide-se em 4 processos: identificação dos stakeholders, planear o envolvimento dos stakeholders, gerir o envolvimento dos stakeholders e monitorização o envolvimento dos stakeholders (PMI, 2017a)." + ac;
+            //$("#info").html(txt);
+            var div = document.getElementById('info');
+            div.innerHTML = txt;
+        }
+    };
+</script>
 
 <script src="../../../controller/perguntas.js" type="text/javascript"></script>
