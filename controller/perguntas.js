@@ -3,6 +3,7 @@ $(document).ready(function() {
     countArea();
 });
 
+var idA=0;
 var x = 5;
 var y = 0;
 var buttonP = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previous()\">Previous</a>";
@@ -11,6 +12,13 @@ var buttonA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-t
 var buttonS = "<a class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"next()\">Seguinte</a>";
 var buttonFPT = "<div class=\"row\">" + buttonA + buttonS + "</div>";
 var buttonFEN = "<div class=\"row\">" + buttonP + buttonN + "</div>";
+var buttonPA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previous()\">Previous</a>";
+var buttonNA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"next()\">Next</a>";
+var buttonAA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previous()\">Anterior</a>";
+var buttonSA = "<a class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"next()\">Seguinte</a>";
+var buttonFPTA = "<div class=\"row\">" + buttonAA + buttonSA + "</div>";
+var buttonFENA = "<div class=\"row\">" + buttonPA + buttonNA + "</div>";
+
 
 function next() {
     x += 5;
@@ -22,6 +30,18 @@ function previous() {
     x -= 5;
     y -= 5;
     getPerguntasInicio();
+}
+
+function nextA(id) {
+    x += 5;
+    y += 5;
+    getAreaConhecimento(id);
+}
+
+function previousA(id) {
+    x -= 5;
+    y -= 5;
+    getAreaConhecimento(id);
 }
 
 
@@ -360,13 +380,22 @@ function getPerfil(id) {
 };
 
 function getAreaConhecimento(id) {
+    if(idA != id){
+        x=5;
+        y=0;
+        idA = id;
+    }
     var lin = document.getElementById("lin").textContent;
     var data = {};
     data.AreaConhecimento_idAreaConhecimento = id;
     data.lingua = lin;
     var txt = "";
-    x=5;
-    y=0;
+    
+    var buttonPA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previousA("+id+")\">Previous</a>";
+    var buttonNA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"nextA("+id+")\">Next</a>";
+    var buttonAA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previousA("+id+")\">Anterior</a>";
+    var buttonSA = "<a class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"nextA("+id+")\">Seguinte</a>";
+    console.log('buttons updated');
 
     $.ajax({
         type: 'POST',
@@ -375,27 +404,29 @@ function getAreaConhecimento(id) {
         contentType: 'application/json',
         dataType: 'json',
         success: function(result, data) {
+            console.log('buttons pre');
 
             result.slice(y, x).forEach(function(row) {
                 if(lin == "PT"){
                     if(y == 0 && (data.length - x) <= 0){
                         console.log('noButtons');
                     }if(y == 0){
-                        $("#page").html(buttonS);
+                        $("#page").html(buttonSA);
+                        console.log('buttons next');
                     }else if ((data.length - x) <= 0){
-                        $("#page").html(buttonA);
+                        $("#page").html(buttonAA);
                     }else{
-                        $("#page").html(buttonFPT);
+                        $("#page").html(buttonFPTA);
                     }
                 }else if(lin == "EN"){
                     if(y == 0 && (data.length - x) <= 0){
                         console.log('noButtons');
                     }else if(y == 0){
-                        $("#page").html(buttonN);
+                        $("#page").html(buttonNA);
                     }else if ((data.length - x) <= 0){
-                        $("#page").html(buttonP);
+                        $("#page").html(buttonPA);
                     }else{
-                        $("#page").html(buttonFEN);
+                        $("#page").html(buttonFENA);
                     }
                 }
                 txt += "<div class='panel panel-default'>";
