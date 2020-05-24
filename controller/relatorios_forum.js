@@ -17,7 +17,7 @@ function allRelatorios() {
             data.forEach(function(row) {
                 txt += "<div style=\"border-bottom: 1px solid #515769;\">";
                 txt += "<h3>" + row.nomeRelatorio + "</h3>";
-                txt += "<p>" + row.nome + "</p>";
+                txt += "<p data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\">" + row.nome + "</p>";
                 txt += "<a onclick=\"window.open('../../../uploads/" + row.pdf + "')\">" + row.pdf + "</a>";
                 txt += "</div>";
             });
@@ -52,7 +52,7 @@ function seeAreaRel() {
             result.forEach(function(row) {
                 txt += "<div style=\"border-bottom: 1px solid #515769;\">";
                 txt += "<h3>" + row.nomeRelatorio + "</h3>";
-                txt += "<p>" + row.nome + "    " + row.AreaConhecimento_idAreaConhecimento + "</p>";
+                txt += "<p data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\">" + row.nome + "</p>";
                 txt += "<a onclick=\"window.open('../../../uploads/" + row.pdf + "')\">" + row.pdf + "</a>";
                 txt += "</div>";
             });

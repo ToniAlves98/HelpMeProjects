@@ -260,8 +260,10 @@ function like(x, y) {
         contentType: 'application/json',
         dataType: 'json',
         success: function(result) {
-            console.log('It works: ' + data.num_likes);
-            $("#num_likes").html(data.num_likes);
+            result.forEach(function(row) {
+                console.log('It works: ' + row.num_likes);
+                $("#num_likes").html(row.num_likes);
+            });
         },
     });
 }
@@ -280,6 +282,7 @@ function likeResp(x, y) {
         x.classList.remove("fa", "fa-thumbs-down");
         x.classList.add("fa", "fa-thumbs-up");
     }
+    console.log('please....');
 
     $.ajax({
         type: 'POST',
@@ -287,9 +290,12 @@ function likeResp(x, y) {
         data: JSON.stringify(data),
         contentType: 'application/json',
         dataType: 'json',
-        success: function(result) {
-            console.log('It works: ' + data.num_likes);
-            $("#num_likes").html(data.num_likes);
+        success: function(data, result) {
+            console.log('please....2'+result);
+            data.forEach(function(row) {
+                console.log('It works: ' + row.num_likes);
+                $("#num_likes").html(row.num_likes);
+            });
         },
     });
 }
