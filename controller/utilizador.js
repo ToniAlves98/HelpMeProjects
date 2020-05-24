@@ -86,12 +86,15 @@ $('#formNewRegisto').on('submit', function (e) {
             success: function (result) {
                 console.log(result.status)
                 console.log(status)
-                if (result.status == 200 ) {
+                if (result.status == 200) {
                     $('#formNewRegisto')[0].reset();
                     window.location.assign("/");
                 }
                 else if (result.status == 201) {
                     $('#avisoRegistardMal').modal('show');
+                }
+                else if (result.status == 202) {
+                    $('#avisoRegistardMal2').modal('show');
                 }
             },
             error: function (xhr, textStatus, errorThrown) {

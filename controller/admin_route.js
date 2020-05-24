@@ -26,8 +26,8 @@ global.helpme.get('/readRelatorios', function (req, res) {
 
 global.helpme.post('/saveRelatorio', function (req, res) {
     global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.estado);
-    if (global.session.idUser != null){
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
+    if (global.session.idUser != null) {
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
     }
     else {
         res.end('{"success" : "Updated Successfully", "status" : 201}');
@@ -111,13 +111,13 @@ global.helpme.post('/saveEvento', function (req, res) {
 
 global.helpme.post('/savePedido', function (req, res) {
     global.model_pedidos.savePedido(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
-    if (global.session.idUser != null){
+    if (global.session.idUser != null) {
         res.end('{"success" : "Updated Successfully", "status" : 200}');
-        }
-        else {
-            res.end('{"success" : "Updated Successfully", "status" : 201}');
-        }
-    });
+    }
+    else {
+        res.end('{"success" : "Updated Successfully", "status" : 201}');
+    }
+});
 
 global.helpme.post('/setEvento', function (req, res) {
     global.model_eventos.setEvento(req.body.idEvento, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim);
@@ -169,17 +169,34 @@ global.helpme.get('/readUtilizador', function (req, res) {
 //rota de gravação utilizador
 global.helpme.post('/saveUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
-    global.connect.con.query('SELECT email FROM utilizador where email ="' + req.body.email + '"', function (err, rows, fields) {
-        console.log(rows)
-        if (rows.length == 0) {
-            global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
-                req.body.gp_nome_emp, req.body.ramo_emp, req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, req.body.estado);
-            res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
-        }
-        else {
-            res.end('{"success" : "Email já existe", "status" : 201}');
-        }
-    });
+    if (req.body.profissao == null) {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
+    }
+    else if (req.body.profissao == "Estudante" && (req.body.nome == "" || req.body.idade == "" || req.body.genero == "" || req.body.email == "" || req.body.password == "" || req.body.descricao == "" || req.body.ciclo_estudo == "")) {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
+    }
+    else if (req.body.profissao == "Professor/Investigador" && (req.body.nome == "" || req.body.idade == "" || req.body.genero == "" || req.body.email == "" || req.body.password == "" || req.body.descricao == "" || req.body.area_cientifica == "")) {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
+    }
+    else if (req.body.profissao == "Empresa" && (req.body.nome == "" || req.body.email == "" || req.body.password == "" || req.body.descricao == "" || req.body.ramo_emp == "" || req.body.num_trabalhadores == "" || req.body.regiao_pais == "")) {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
+    }
+    else if (req.body.profissao == "Gestor de Projeto" && (req.body.nome == "" || req.body.idade == "" || req.body.genero == "" || req.body.email == "" || req.body.password == "" || req.body.descricao == "" || req.body.gp_nome_emp == "" || req.body.ramo_emp == "" || req.body.num_trabalhadores == "" || req.body.regiao_pais == "")) {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
+    }
+    else {
+        global.connect.con.query('SELECT email FROM utilizador where email ="' + req.body.email + '"', function (err, rows, fields) {
+            console.log(rows)
+            if (rows.length == 0) {
+                global.model_utilizador.saveUtilizador(req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
+                    req.body.gp_nome_emp, req.body.ramo_emp, req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil, req.body.estado);
+                res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
+            }
+            else {
+                res.end('{"success" : "Email já existe", "status" : 201}');
+            }
+        });
+    }
 });
 
 //rota de editar utilizador
