@@ -245,10 +245,12 @@ function like(x, y) {
 
     if (x.classList == "fa fa-thumbs-up") {
         data.num_likes = y + 1;
-        x.classList.toggle("fa-thumbs-down");
+        x.classList.remove("fa", "fa-thumbs-up");
+        x.classList.add("fa", "fa-thumbs-down");
     } else {
         data.num_likes = y - 1;
-        x.classList.toggle("fa fa-thumbs-up");
+        x.classList.remove("fa", "fa-thumbs-down");
+        x.classList.add("fa", "fa-thumbs-up");
     }
 
     $.ajax({
@@ -258,8 +260,8 @@ function like(x, y) {
         contentType: 'application/json',
         dataType: 'json',
         success: function(result) {
-            console.log('It works: ' + y);
-            $("#num_likes").html(y);
+            console.log('It works: ' + data.num_likes);
+            $("#num_likes").html(data.num_likes);
         },
     });
 }
@@ -269,10 +271,14 @@ function likeResp(x, y) {
 
     if (x.classList == "fa fa-thumbs-up") {
         data.num_likes = y + 1;
-        x.classList.toggle("fa-thumbs-down");
+        //x.classList.toggle("fa-thumbs-down");
+        x.classList.remove("fa", "fa-thumbs-up");
+        x.classList.add("fa", "fa-thumbs-down");
     } else {
         data.num_likes = y - 1;
-        x.classList.toggle("fa fa-thumbs-up");
+        //x.classList.toggle("fa fa-thumbs-up");
+        x.classList.remove("fa", "fa-thumbs-down");
+        x.classList.add("fa", "fa-thumbs-up");
     }
 
     $.ajax({

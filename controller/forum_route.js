@@ -148,8 +148,27 @@ global.helpme.post('/saveResposta', function (req, res) {
 });
 
 global.helpme.post('/saveLikes', function (req, res) {
-    global.model_perguntas.saveLikes(req.body.num_likes);
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
+    global.model_perguntas.saveLikes(req.body.num_likes, function (err, data){
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
+});
+
+global.helpme.post('/saveLikesResp', function (req, res) {
+    global.model_perguntas.saveLikesResp(req.body.num_likes, function (err, data){
+        if (err) {
+            console.log("ERROR : ", err);
+        }
+        else {
+            res.send(data);
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+    });
 });
 
 global.helpme.post('/getUtilizador', function (req, res) {

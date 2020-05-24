@@ -96,6 +96,18 @@ function saveLikes(num_likes, callback){
  });
  }
 
+function saveLikesResp(num_likes, callback){
+    var id = global.session.idPergunta;
+    var query = global.connect.con.query('UPDATE resposta SET num_likes = ' + num_likes + ' WHERE Pergunta_idPergunta = ' + id, function(err, rows, fields) {
+     console.log(query.sql);
+     if (!err) {
+         console.log("Number of records updated: " + rows.affectedRows);
+     }
+     else
+         console.log('Error while performing Query.', err);
+ });
+ }
+
 module.exports = {
     readPerguntas: readPerguntas,
     getPergunta: getPergunta,
@@ -103,5 +115,6 @@ module.exports = {
     savePergunta: savePergunta,
     saveLikes: saveLikes,
     readPerguntasPorArea: readPerguntasPorArea,
-    getNumPerguntas: getNumPerguntas
+    getNumPerguntas: getNumPerguntas,
+    saveLikesResp: saveLikesResp
     }
