@@ -282,8 +282,8 @@ function likeResp(x, y) {
         contentType: 'application/json',
         dataType: 'json',
         success: function(result) {
-            console.log('It works: ' + y);
-            $("#num_likes").html(y);
+            console.log('It works: ' + data.num_likes);
+            $("#num_likes").html(data.num_likes);
         },
     });
 }

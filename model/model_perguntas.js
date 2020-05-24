@@ -34,6 +34,9 @@ function readPerguntasPorArea(lingua, id, callback){
         var string = JSON.stringify(rows);
         var json = JSON.parse(string);
         if (!err) {
+            json.forEach(function (row) {
+                row.idUser = global.session.idUser; 
+            });
             callback(null, json);
         }
         else
