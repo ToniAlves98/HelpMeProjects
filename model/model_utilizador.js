@@ -16,7 +16,7 @@ function login(email, password, callback) {
 }
 
 function logout(callback) {
-    global.session.idUser = 0;
+    global.session.idUser = null;
     var string = JSON.stringify('{"success" : "Updated Successfully", "status" : 200}');
     var json = JSON.parse(string);
     callback(null, json);
