@@ -25,7 +25,7 @@ global.helpme.get('/readRelatorios', function (req, res) {
 });
 
 global.helpme.post('/saveRelatorio', function (req, res) {
-    if (req.body.nomeRelatorio == "" || req.body.AreaConhecimento_idAreaConhecimento == "") {
+    if (req.body.nomeRelatorio == "" || req.body.AreaConhecimento_idAreaConhecimento == null) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
     else {
