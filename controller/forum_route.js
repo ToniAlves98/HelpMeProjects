@@ -1,5 +1,5 @@
 global.helpme.post('/readPerguntas', function (req, res) {
-    global.model_perguntas.readPerguntas(req.body.lingua,function (err, data) {
+    global.model_perguntas.readPerguntas(req.body.lingua, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -11,7 +11,7 @@ global.helpme.post('/readPerguntas', function (req, res) {
 });
 
 global.helpme.post('/getNumPerguntas', function (req, res) {
-    global.model_perguntas.getNumPerguntas(req.body.lingua,function (err, data) {
+    global.model_perguntas.getNumPerguntas(req.body.lingua, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -146,19 +146,23 @@ global.helpme.post('/savePergunta', function (req, res) {
 });
 
 global.helpme.post('/saveResposta', function (req, res) {
-    global.model_respostas.saveResposta(req.body.resposta, function (err, data){
-        if (err) {
-            console.log("ERROR : ", err);
-        }
-        else {
-            res.send(data);
-            res.end('{"success" : "Updated Successfully", "status" : 200}');
-        }
-    });
+    if (req.body.resposta == "") {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
+    }
+    else {
+        global.model_respostas.saveResposta(req.body.resposta, function (err, data) {
+            if (err) {
+                console.log("ERROR : ", err);
+            }
+            else {
+                res.end('{"success" : "Updated Successfully", "status" : 200}');
+            }
+        });
+    }
 });
 
 global.helpme.post('/saveLikes', function (req, res) {
-    global.model_perguntas.saveLikes(req.body.num_likes, function (err, data){
+    global.model_perguntas.saveLikes(req.body.num_likes, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -170,7 +174,7 @@ global.helpme.post('/saveLikes', function (req, res) {
 });
 
 global.helpme.post('/saveLikesResp', function (req, res) {
-    global.model_perguntas.saveLikesResp(req.body.num_likes, function (err, data){
+    global.model_perguntas.saveLikesResp(req.body.num_likes, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -182,7 +186,7 @@ global.helpme.post('/saveLikesResp', function (req, res) {
 });
 
 global.helpme.post('/getUtilizador', function (req, res) {
-    global.model_utilizador.getUtilizador(req.body.idUtilizador, function (err, data){
+    global.model_utilizador.getUtilizador(req.body.idUtilizador, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -206,7 +210,7 @@ global.helpme.get('/readRespostas', function (req, res) {
 });
 
 global.helpme.post('/login', function (req, res) {
-    req.session.idUser =1;
+    req.session.idUser = 1;
     global.connect.con.query('SELECT email, password FROM utilizador where email ="' + req.body.email + '"and password="' + req.body.password + '"', function (err, rows, fields) {
         console.log(rows)
         if (rows.length == 0) {
@@ -228,7 +232,7 @@ global.helpme.post('/login', function (req, res) {
 });
 
 global.helpme.get('/logout', function (req, res) {
-    req.session.idUser =0;
+    req.session.idUser = 0;
     global.model_utilizador.logout(function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
