@@ -25,12 +25,17 @@ global.helpme.get('/readRelatorios', function (req, res) {
 });
 
 global.helpme.post('/saveRelatorio', function (req, res) {
-    global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.estado);
-    if (global.session.idUser != null) {
-        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    if (req.body.nomeRelatorio == "" || req.body.AreaConhecimento_idAreaConhecimento == "") {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
     else {
-        res.end('{"success" : "Updated Successfully", "status" : 201}');
+        global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.estado);
+        if (global.session.idUser != null) {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+        else {
+            res.end('{"success" : "Updated Successfully", "status" : 201}');
+        }
     }
 });
 
@@ -105,17 +110,28 @@ global.helpme.get('/readEventosPendentes', function (req, res) {
 });
 
 global.helpme.post('/saveEvento', function (req, res) {
-    global.model_eventos.saveEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
+    if (req.body.nomeEvento == "" || req.body.AreaConhecimento_idAreaConhecimento == "" || req.body.tipoEvento == "" || req.body.descricao == "" || req.body.data_inicio == "" || req.body.data_fim == "") {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
+    }
+    else {
+        global.model_eventos.saveEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
+        res.end('{"success" : "Updated Successfully", "status" : 200}');
+    }
 });
 
 global.helpme.post('/savePedido', function (req, res) {
-    global.model_pedidos.savePedido(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
-    if (global.session.idUser != null) {
-        res.end('{"success" : "Updated Successfully", "status" : 200}');
+
+    if (req.body.nomeEvento == "" || req.body.AreaConhecimento_idAreaConhecimento == "" || req.body.tipoEvento == "" || req.body.descricao == "" || req.body.data_inicio == "" || req.body.data_fim == "") {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
     else {
-        res.end('{"success" : "Updated Successfully", "status" : 201}');
+        global.model_pedidos.savePedido(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
+        if (global.session.idUser != null) {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+        else {
+            res.end('{"success" : "Updated Successfully", "status" : 201}');
+        }
     }
 });
 

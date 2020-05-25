@@ -102,13 +102,20 @@ $('#formNewEvento').on('submit', function(e) {
                     $('.modal-backdrop').remove();
                     $('#avisoEventoAdd').modal('show');
                 } 
-                else{
-                    $('#avisoEventoAddMal').modal('hide');
+                else if (result.status == 202) {
+                    $('#adicionar_evento').modal('hide');
                     $('body').removeClass('modal-open');
                     $('body').css('padding-right', '0px');
                     $('.modal-backdrop').remove();
-                    $('#avisoEventoEdi').modal('show');
+                    $('#avisoEventoAddMal2').modal('show');
                 }
+                else {
+                    $('#adicionar_evento').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoEventoAddMal').modal('show');
+            }
                 $("#formNewEvento")[0].reset();
                 getEventos();
             },

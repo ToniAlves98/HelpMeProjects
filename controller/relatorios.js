@@ -94,14 +94,20 @@ $('#formNewRelatorio').on('submit', function (e) {
                 console.log(data);
                 console.log(result.status)
 
-                if ( result.status == 200 ) {
+                if (result.status == 200) {
                     $('#adicionar_relatorio').modal('hide');
                     $('body').removeClass('modal-open');
                     $('body').css('padding-right', '0px');
                     $('.modal-backdrop').remove();
                     $('#avisoRelatorioAdd').modal('show');
                 }
-                else if (result.status != 200 ) {
+                else if (result.status == 202) {
+                    $('#adicionar_relatorio').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoRelatorioAddMal2').modal('show');
+                } else {
                     $('#adicionar_relatorio').modal('hide');
                     $('body').removeClass('modal-open');
                     $('body').css('padding-right', '0px');

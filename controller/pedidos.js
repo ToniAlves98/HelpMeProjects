@@ -209,7 +209,13 @@ $('#formNewPedido').on('submit', function(e) {
                     $('.modal-backdrop').remove();
                     $('#avisoPedidoAdd').modal('show');
                 }
-                else if (result.status != 200) {
+                else if (result.status == 202) {
+                    $('#adicionar_pedido').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPedidoAddMal2').modal('show');
+                } else {
                     $('#adicionar_pedido').modal('hide');
                     $('body').removeClass('modal-open');
                     $('body').css('padding-right', '0px');
