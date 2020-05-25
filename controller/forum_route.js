@@ -131,8 +131,18 @@ global.helpme.post('/getResposta', function (req, res) {
 });
 
 global.helpme.post('/savePergunta', function (req, res) {
-    global.model_perguntas.savePergunta(req.body.titulo_pergunta, req.body.pergunta, req.body.data_pergunta, req.body.lingua, req.body.num_likes, req.body.AreaConhecimento_idAreaConhecimento);
-    res.end('{"success" : "Updated Successfully", "status" : 200}');
+    if (req.body.titulo_pergunta == "" || req.body.AreaConhecimento_idAreaConhecimento == null || req.body.pergunta == "") {
+        res.end('{"success" : "Preencha todos os campos", "status" : 202}');
+    }
+    else {
+        global.model_perguntas.savePergunta(req.body.titulo_pergunta, req.body.pergunta, req.body.data_pergunta, req.body.lingua, req.body.num_likes, req.body.AreaConhecimento_idAreaConhecimento);
+        if (global.session.idUser != null) {
+            res.end('{"success" : "Updated Successfully", "status" : 200}');
+        }
+        else {
+            res.end('{"success" : "Updated Successfully", "status" : 201}');
+        }
+    }
 });
 
 global.helpme.post('/saveResposta', function (req, res) {

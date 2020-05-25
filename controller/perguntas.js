@@ -244,12 +244,25 @@ $('#formNewPergunta').on('submit', function(e) {
                     $('.modal-backdrop').remove();
                     $('#avisoPerguntaAdd').modal('show');
                 }
-                else {
+                else if (result.status == 202) {
                     $('#add_pergunta').modal('hide');
                     $('body').removeClass('modal-open');
                     $('body').css('padding-right', '0px');
                     $('.modal-backdrop').remove();
-                    $('#avisoPerguntaAddMal').modal('show');
+                    $('#avisoPerguntaAddMal2').modal('show');
+                }
+                else if (result.status == 201) {
+                    $('#add_pergunta').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPLoginNec').modal('show');
+                } else {
+                    $('#add_pergunta').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPLoginNec2').modal('show');
                 }
                 $("#formNewPergunta")[0].reset();
                 getPerguntasInicio();
