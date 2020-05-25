@@ -15,15 +15,18 @@ function saveResposta(resposta, callback){
     var post = {resposta: resposta, num_likes: 0, Utilizador_idUtilizador: idU, Pergunta_idPergunta: idP}
     var query = global.connect.con.query('INSERT INTO resposta SET ?', post, function(err, rows, fields) {
     console.log(query.sql);
-    var data = {idPergunta:idP};
+    var data = '{\"idPergunta\":\"'+idP+'\"}';
+    console.log(data);
     var string = JSON.stringify(data);
+    console.log(string);
     var json = JSON.parse(string);
+    console.log(json);
     //var ler = JSON.stringify(rows);
      if (!err) {
-        json.forEach(function (row) {
-            row.idPergunta = global.session.idPergunta;
-            console.log(row); 
-        });
+        //json.forEach(function (row) {
+            json.idPergunta = global.session.idPergunta;
+            console.log(json.idPergunta); 
+        //});
         //console.log("Number of records inserted: " + rows.affectedRows);
         //console.log(string + ': : ' + json.idPergunta);
         //console.log('ler' + ': : ' + JSON.stringify(json));
