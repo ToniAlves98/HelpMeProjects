@@ -151,10 +151,12 @@ global.helpme.post('/saveResposta', function (req, res) {
     }
     else {
         global.model_respostas.saveResposta(req.body.resposta, function (err, data) {
+            console.log(data)
             if (err) {
                 console.log("ERROR : ", err);
             }
             else {
+                res.send(data);
                 res.end('{"success" : "Updated Successfully", "status" : 200}');
             }
         });
