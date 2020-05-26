@@ -21,11 +21,11 @@ $('#formNewLogin').on('submit', function (e) {
             success: function (result) {
                 console.log(result);
                 console.log(result.status);
-                if (result.status == 200 && $('#email').val() == "admin@gmail.com") {
+                if (result.status == 200 && $('#email').val() == "helppmeprojects@gmail.com") {
                     $('#formNewLogin')[0].reset();
                     window.location.assign("/admin");
                 }
-                else if (result.status == 200 && $('#email').val() != "admin@gmail.com") {
+                else if (result.status == 200 && $('#email').val() != "helppmeprojects@gmail.com") {
                     $('#formNewLogin')[0].reset();
                     if (lin == 'PT') {
                         window.location.href = "/inicial";
