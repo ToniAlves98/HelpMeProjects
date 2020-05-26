@@ -144,7 +144,7 @@
                         <form id="novaResposta" method=post action="do_addtopic.php">
                             <textarea class="form-control form-control-user" id="texto" name="texto" rows=4 cols=90 wrap=virtual placeholder="Escreva aqui o seu texto"></textarea>
                             <!--input type="text" class="form-control form-control-user" id="text" name="text" placeholder="Escreva aqui o seu texto"-->
-                            <p><input class="btn-theme btn-theme-sm btn-white-bg text-uppercase" type="submit" name="submit" value="Add Topic"></p>
+                            <p><input class="btn-theme btn-theme-sm btn-white-bg text-uppercase" type="submit" name="submit" value="Enviar resposta"></p>
                             <!--a class="btn-theme btn-theme-sm btn-white-bg text-uppercase" type="submit" name="submit">Submeter</a-->
                         </form>
                     </div>
@@ -195,6 +195,22 @@
             <br />
             <div class="modal-body" style="padding: 20px 40px 30px;">
                 <p>Resposta adicionada com sucesso!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pop-up adicionar -->
+<div class="modal fadeIn aviso" id="avisoRespostaAddMal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="glyphicon glyphicon-bell"><span>Notificação</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <p>Não é permitido o envio de respostas vazias.</p>
             </div>
         </div>
     </div>

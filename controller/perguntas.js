@@ -1,9 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
     getPerguntasInicio();
     countArea();
 });
 
-var idA=0;
+var idA = 0;
 var x = 5;
 var y = 0;
 var buttonP = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previous()\">Previous</a>";
@@ -49,36 +49,36 @@ function getPerguntasInicio() {
     var lin = document.getElementById("lin").textContent;
     var data = {};
     data.lingua = lin;
-    
+
     $.ajax({
         type: "POST",
         url: '/readPerguntas',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        success: function(data, status, request) {
+        success: function (data, status, request) {
             if (request.status == 200) {
                 var txt = "";
 
-                data.slice(y, x).forEach(function(row) {
-                    if(lin == "PT"){
-                        if(y == 0 && (data.length - x) <= 0){
+                data.slice(y, x).forEach(function (row) {
+                    if (lin == "PT") {
+                        if (y == 0 && (data.length - x) <= 0) {
                             console.log('noButtons');
-                        }if(y == 0){
+                        } if (y == 0) {
                             $("#page").html(buttonS);
-                        }else if ((data.length - x) <= 0){
+                        } else if ((data.length - x) <= 0) {
                             $("#page").html(buttonA);
-                        }else{
+                        } else {
                             $("#page").html(buttonFPT);
                         }
-                    }else if(lin == "EN"){
-                        if(y == 0 && (data.length - x) <= 0){
+                    } else if (lin == "EN") {
+                        if (y == 0 && (data.length - x) <= 0) {
                             console.log('noButtons');
-                        }else if(y == 0){
+                        } else if (y == 0) {
                             $("#page").html(buttonN);
-                        }else if ((data.length - x) <= 0){
+                        } else if ((data.length - x) <= 0) {
                             $("#page").html(buttonP);
-                        }else{
+                        } else {
                             $("#page").html(buttonFEN);
                         }
                     }
@@ -98,7 +98,7 @@ function getPerguntasInicio() {
                 console.log("Erro");
             }
         },
-        error: function(xhr, textStatus, errorThrown) {
+        error: function (xhr, textStatus, errorThrown) {
             console.log(xhr.responseText);
             console.log(textStatus);
             console.log(errorThrown);
@@ -122,10 +122,10 @@ function pages(page) {
             type: "GET",
             url: "./pages/" + var2 + ".html",
             data: {},
-            success: function(data) {
+            success: function (data) {
                 $("#" + var1).html(data);
             },
-            error: function(data, err, err2) {
+            error: function (data, err, err2) {
                 console.log(data);
                 console.log(err);
                 console.log(err2);
@@ -135,7 +135,7 @@ function pages(page) {
         var body = document.body;
         var html = document.documentElement;
     }
-    $("#accordionSidebar").children("li").on('click', function() {
+    $("#accordionSidebar").children("li").on('click', function () {
         var targetID = $(this).children('a').attr('id');
         //alert(targetID);
         load_home("content-wrapper", targetID);
@@ -155,10 +155,10 @@ function seePergunta(id) {
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        success: function(result, data) {
+        success: function (result, data) {
 
             var txt = "";
-            result.forEach(function(row) {
+            result.forEach(function (row) {
                 txt += "<h2>" + row.titulo_pergunta + "</h2>";
                 txt += "<p style=\"margin-top:2px\" data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\"><strong>" + row.nome + "</strong></p>";
                 txt += "<p style=\"border-bottom: 1px solid #515769;\">" + row.pergunta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"like(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p>";
@@ -169,15 +169,15 @@ function seePergunta(id) {
                     data: JSON.stringify(data2),
                     contentType: 'application/json; charset=utf-8',
 
-                    success: function(result, data) {
+                    success: function (result, data) {
 
                         var resp = "";
-                        result.forEach(function(row) {
+                        result.forEach(function (row) {
                             resp += "<div style=\"border-bottom: 1px solid #515769;\"><p data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\"><strong>" + row.nome + "</strong><br><p>" + row.resposta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"likeResp(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p></div>";
                         });
                         $("#resposta").html(resp);
                     },
-                    error: function(data) {
+                    error: function (data) {
                         console.log(data)
                     }
                 });
@@ -185,16 +185,16 @@ function seePergunta(id) {
             $("#pergunta").html(txt);
 
         },
-        error: function(data) {
+        error: function (data) {
             console.log(data)
         }
     });
 };
 
-$('#formNewPergunta').on('submit', function(e) {
-    
+$('#formNewPergunta').on('submit', function (e) {
+
     var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
     if (e.isDefaultPrevented()) {
         alert("A Questão possui erros")
@@ -227,7 +227,7 @@ $('#formNewPergunta').on('submit', function(e) {
         } else if ($('#per_are').val() == "Gestão dos Stakeholders") {
             data.AreaConhecimento_idAreaConhecimento = 10;
         };
-        
+
         console.log(data);
 
         $.ajax({
@@ -236,7 +236,7 @@ $('#formNewPergunta').on('submit', function(e) {
             data: JSON.stringify(data),
             contentType: 'application/json',
             dataType: 'json',
-            success: function(result) {
+            success: function (result) {
                 if (result.status == 200) {
                     $('#add_pergunta').modal('hide');
                     $('body').removeClass('modal-open');
@@ -244,12 +244,25 @@ $('#formNewPergunta').on('submit', function(e) {
                     $('.modal-backdrop').remove();
                     $('#avisoPerguntaAdd').modal('show');
                 }
-                else {
+                else if (result.status == 202) {
                     $('#add_pergunta').modal('hide');
                     $('body').removeClass('modal-open');
                     $('body').css('padding-right', '0px');
                     $('.modal-backdrop').remove();
-                    $('#avisoPerguntaAddMal').modal('show');
+                    $('#avisoPerguntaAddMal2').modal('show');
+                }
+                else if (result.status == 201) {
+                    $('#add_pergunta').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPLoginNec').modal('show');
+                } else {
+                    $('#add_pergunta').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('body').css('padding-right', '0px');
+                    $('.modal-backdrop').remove();
+                    $('#avisoPLoginNec2').modal('show');
                 }
                 $("#formNewPergunta")[0].reset();
                 getPerguntasInicio();
@@ -279,8 +292,8 @@ function like(x, y) {
         data: JSON.stringify(data),
         contentType: 'application/json',
         dataType: 'json',
-        success: function(result) {
-            result.forEach(function(row) {
+        success: function (result) {
+            result.forEach(function (row) {
                 console.log('It works: ' + row.num_likes);
                 $("#num_likes").html(row.num_likes);
             });
@@ -310,9 +323,9 @@ function likeResp(x, y) {
         data: JSON.stringify(data),
         contentType: 'application/json',
         dataType: 'json',
-        success: function(data, result) {
-            console.log('please....2'+result);
-            data.forEach(function(row) {
+        success: function (data, result) {
+            console.log('please....2' + result);
+            data.forEach(function (row) {
                 console.log('It works: ' + row.num_likes);
                 $("#num_likes").html(row.num_likes);
             });
@@ -330,9 +343,9 @@ function getPerfil(id) {
         data: JSON.stringify(data),
         contentType: 'application/json',
         dataType: 'json',
-        success: function(result, data) {
+        success: function (result, data) {
 
-            result.forEach(function(row) {
+            result.forEach(function (row) {
                 if (row.perfil == "privado") {
                     console.log('Privado');
                     alert('Este perfil é privado!');
@@ -380,9 +393,9 @@ function getPerfil(id) {
 };
 
 function getAreaConhecimento(id) {
-    if(idA != id){
-        x=5;
-        y=0;
+    if (idA != id) {
+        x = 5;
+        y = 0;
         idA = id;
     }
     var lin = document.getElementById("lin").textContent;
@@ -390,11 +403,11 @@ function getAreaConhecimento(id) {
     data.AreaConhecimento_idAreaConhecimento = id;
     data.lingua = lin;
     var txt = "";
-    
-    var buttonPA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previousA("+id+")\">Previous</a>";
-    var buttonNA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"nextA("+id+")\">Next</a>";
-    var buttonAA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previousA("+id+")\">Anterior</a>";
-    var buttonSA = "<a class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"nextA("+id+")\">Seguinte</a>";
+
+    var buttonPA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previousA(" + id + ")\">Previous</a>";
+    var buttonNA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"nextA(" + id + ")\">Next</a>";
+    var buttonAA = "<a style=\"margin-right: 10px; margin-left: 20px;\" class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"previousA(" + id + ")\">Anterior</a>";
+    var buttonSA = "<a class=\"btn-theme btn-theme-sm btn-white-bg text-uppercase\" onclick=\"nextA(" + id + ")\">Seguinte</a>";
     console.log('buttons updated');
 
     $.ajax({
@@ -403,29 +416,29 @@ function getAreaConhecimento(id) {
         data: JSON.stringify(data),
         contentType: 'application/json',
         dataType: 'json',
-        success: function(result, data) {
+        success: function (result, data) {
             console.log('buttons pre');
 
-            result.slice(y, x).forEach(function(row) {
-                if(lin == "PT"){
-                    if(y == 0 && (data.length - x) <= 0){
+            result.slice(y, x).forEach(function (row) {
+                if (lin == "PT") {
+                    if (y == 0 && (data.length - x) <= 0) {
                         console.log('noButtons');
-                    }if(y == 0){
+                    } if (y == 0) {
                         $("#page").html(buttonSA);
                         console.log('buttons next');
-                    }else if ((data.length - x) <= 0){
+                    } else if ((data.length - x) <= 0) {
                         $("#page").html(buttonAA);
-                    }else{
+                    } else {
                         $("#page").html(buttonFPTA);
                     }
-                }else if(lin == "EN"){
-                    if(y == 0 && (data.length - x) <= 0){
+                } else if (lin == "EN") {
+                    if (y == 0 && (data.length - x) <= 0) {
                         console.log('noButtons');
-                    }else if(y == 0){
+                    } else if (y == 0) {
                         $("#page").html(buttonNA);
-                    }else if ((data.length - x) <= 0){
+                    } else if ((data.length - x) <= 0) {
                         $("#page").html(buttonPA);
-                    }else{
+                    } else {
                         $("#page").html(buttonFENA);
                     }
                 }
@@ -458,7 +471,7 @@ function countArea() {
         contentType: 'application/json',
         dataType: 'json',
         //os dados recebidos do model estão na variável data
-        success: function(data) {
+        success: function (data) {
             console.log(data)
             //criação de uma tabela para demonstração dos resultados recebidos
             //$('#gIntegracao').val(data[5].numero);
@@ -488,7 +501,7 @@ function countArea() {
 
 };
 
-$('#novaResposta').on('submit', function(e) {
+$('#novaResposta').on('submit', function (e) {
     //se submeter com erros
     if (e.isDefaultPrevented()) {
         alert("Formulario com erros")
@@ -498,32 +511,34 @@ $('#novaResposta').on('submit', function(e) {
         var data = {};
         data.resposta = $('#texto').val();
 
-        if(data.resposta == null){
-            alert('Não é permitido o envio de respostas vazias');
-        }
-
         $.ajax({
             type: 'POST',
             url: '/saveResposta',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
-            success: function(result, status, data) {
-                console.log('result '+ result);
+            success: function (data, status, result) {
+                console.log('result ' + result);
+                console.log('result.status ' + result.status);
                 console.log('data ' + data);
                 console.log('status ' + status);
-                console.log('data2 ' + data.idPergunta);
+                console.log('idPergunta ' + data.idPergunta);
                 var string = JSON.stringify(data);
                 console.log('string ' + string);
-                //data.quotesArray.forEach(function(row) {
-                result.forEach(function(row) {
-                    seePergunta(row.idP);
-                });
-                //window.location.reload(false);
-                $('#avisoRespostaAdd').modal('show');
-                pages("perg_resp");
+
+                if (result.status == 200) {
+                    //data.quotesArray.forEach(function(row) {
+                    $('#avisoRespostaAdd').modal('show');
+                    seePergunta(data.idPergunta);
+                    //window.location.reload(false);
+                    //pages("perg_resp");
+                }
+                else if (result.status == 202 || data.status == 202) {
+                    $('#avisoRespostaAddMal').modal('show');
+                }
+
             },
-            error: function(data) {
+            error: function (data) {
                 console.log(data)
             }
         });
