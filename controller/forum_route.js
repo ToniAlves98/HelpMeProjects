@@ -176,7 +176,7 @@ global.helpme.post('/saveLikes', function (req, res) {
 });
 
 global.helpme.post('/saveLikesResp', function (req, res) {
-    global.model_perguntas.saveLikesResp(req.body.num_likes, function (err, data) {
+    global.model_perguntas.saveLikesResp(req.body.idResposta, req.body.num_likes, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }

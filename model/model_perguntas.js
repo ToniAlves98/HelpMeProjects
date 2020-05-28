@@ -96,9 +96,9 @@ function saveLikes(num_likes, callback){
  });
  }
 
-function saveLikesResp(num_likes, callback){
-    var id = global.session.idPergunta;
-    var query = global.connect.con.query('UPDATE resposta SET num_likes = ' + num_likes + ' WHERE Pergunta_idPergunta = ' + id, function(err, rows, fields) {
+function saveLikesResp(idResposta, num_likes, callback){
+    //var id = global.session.idPergunta;
+    var query = global.connect.con.query('UPDATE resposta SET num_likes = ' + num_likes + ' WHERE idResposta = ' + idResposta, function(err, rows, fields) {
      console.log(query.sql);
      if (!err) {
          console.log("Number of records updated: " + rows.affectedRows);

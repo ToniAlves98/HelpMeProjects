@@ -66,10 +66,13 @@ function getPerguntasInicio() {
                             console.log('noButtons');
                         } if (y == 0) {
                             $("#page").html(buttonS);
+                            console.log(y+' seg '+x);
                         } else if ((data.length - x) <= 0) {
                             $("#page").html(buttonA);
+                            console.log('ant');
                         } else {
                             $("#page").html(buttonFPT);
+                            console.log('amb');
                         }
                     } else if (lin == "EN") {
                         if (y == 0 && (data.length - x) <= 0) {
@@ -111,6 +114,8 @@ function getPerguntasInicio() {
 
 function pages(page) {
     load_home("about", page);
+    var x = 5;
+    var y = 0;
 
     function getEventTarget(e) {
         e = e || window.event;
@@ -143,11 +148,13 @@ function pages(page) {
 };
 
 function seePergunta(id) {
-
+    console.log('seePergunta');
     var data = {};
     data.idPergunta = $(id);
     var data2 = {};
     data2.idPergunta = $(id);
+    
+    var txt = "";
 
     $.ajax({
         type: "POST",
@@ -156,8 +163,8 @@ function seePergunta(id) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function (result, data) {
+            console.log('seePergunta:pergunta' + result);
 
-            var txt = "";
             result.forEach(function (row) {
                 txt += "<h2>" + row.titulo_pergunta + "</h2>";
                 txt += "<p style=\"margin-top:2px\" data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\"><strong>" + row.nome + "</strong></p>";
@@ -170,10 +177,11 @@ function seePergunta(id) {
                     contentType: 'application/json; charset=utf-8',
 
                     success: function (result, data) {
+                        console.log('seePergunta:resposta'  + result);
 
                         var resp = "";
                         result.forEach(function (row) {
-                            resp += "<div style=\"border-bottom: 1px solid #515769;\"><p data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\"><strong>" + row.nome + "</strong><br><p>" + row.resposta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"likeResp(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p></div>";
+                            resp += "<div style=\"border-bottom: 1px solid #515769;\"><p data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\"><strong>" + row.nome + "</strong><br><p>" + row.resposta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"likeResp(this," + row.num_likes + ","+row.idResposta+")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p></div>";
                         });
                         $("#resposta").html(resp);
                     },
@@ -191,7 +199,66 @@ function seePergunta(id) {
     });
 };
 
+function seeSoPergunta(id) {
+    console.log('seeSoPergunta');
+    var data = {};
+    data.idPergunta = $(id);
+    
+    var txt = "";
+
+    $.ajax({
+        type: "POST",
+        url: '/getPergunta',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result, data) {
+            console.log('seeSoPergunta:pergunta' + result);
+
+            result.forEach(function (row) {
+                txt += "<h2>" + row.titulo_pergunta + "</h2>";
+                txt += "<p style=\"margin-top:2px\" data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\"><strong>" + row.nome + "</strong></p>";
+                txt += "<p style=\"border-bottom: 1px solid #515769;\">" + row.pergunta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"like(this," + row.num_likes + ")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p>";
+            });
+            $("#pergunta").html(txt);
+
+        },
+        error: function (data) {
+            console.log(data)
+        }
+    });
+};
+
+function seeSoResposta(id) {
+    console.log('seeSoResposta');
+    var data2 = {};
+    data2.idPergunta = $(id);
+    
+    var resp = "";
+
+    $.ajax({
+        type: "POST",
+        url: '/getResposta',
+        data: JSON.stringify(data2),
+        contentType: 'application/json; charset=utf-8',
+
+        success: function (result, data) {
+            console.log('seeSoResposta:resposta'  + result);
+
+            result.forEach(function (row) {
+                resp += "<div style=\"border-bottom: 1px solid #515769;\"><p data-toggle=\"modal\" data-target=\"#perfil_view\" onclick=\"getPerfil(" + row.Utilizador_idUtilizador + ")\"><strong>" + row.nome + "</strong><br><p>" + row.resposta + "<i class=\"fa fa-thumbs-up\" style = \"position: absolute;right: 15px;\" onclick=\"likeResp(this," + row.num_likes + ","+row.idResposta+")\"></i><a id=\"num_likes\" style = \"position: absolute;right: 0px;\">" + row.num_likes + "</a></p></div>";
+            });
+            $("#resposta").html(resp);
+        },
+        error: function (data) {
+            console.log(data)
+        }
+    });
+};
+
 $('#formNewPergunta').on('submit', function (e) {
+
+    var lin = document.getElementById("lin").textContent;
 
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -204,7 +271,7 @@ $('#formNewPergunta').on('submit', function (e) {
         data.titulo_pergunta = $('#tit_pergunta').val();
         data.pergunta = $('#descricao').val();
         data.data_pergunta = date;
-        data.lingua = "PT";
+        data.lingua = lin;
         data.num_likes = 0;
         if ($('#per_are').val() == "Gestão do Âmbito") {
             data.AreaConhecimento_idAreaConhecimento = 1;
@@ -227,8 +294,6 @@ $('#formNewPergunta').on('submit', function (e) {
         } else if ($('#per_are').val() == "Gestão dos Stakeholders") {
             data.AreaConhecimento_idAreaConhecimento = 10;
         };
-
-        console.log(data);
 
         $.ajax({
             type: 'POST',
@@ -264,8 +329,8 @@ $('#formNewPergunta').on('submit', function (e) {
                     $('.modal-backdrop').remove();
                     $('#avisoPLoginNec2').modal('show');
                 }
-                $("#formNewPergunta")[0].reset();
                 getPerguntasInicio();
+                $("#formNewPergunta")[0].reset();
                 countArea();
             },
 
@@ -301,8 +366,9 @@ function like(x, y) {
     });
 }
 
-function likeResp(x, y) {
+function likeResp(x, y, z) {
     var data = {};
+    data.idResposta = z;
 
     if (x.classList == "fa fa-thumbs-up") {
         data.num_likes = y + 1;
@@ -518,20 +584,15 @@ $('#novaResposta').on('submit', function (e) {
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             success: function (data, status, result) {
-                console.log('result ' + result);
-                console.log('result.status ' + result.status);
-                console.log('data ' + data);
-                console.log('status ' + status);
-                console.log('idPergunta ' + data.idPergunta);
-                var string = JSON.stringify(data);
-                console.log('string ' + string);
 
                 if (result.status == 200) {
-                    //data.quotesArray.forEach(function(row) {
                     $('#avisoRespostaAdd').modal('show');
                     seePergunta(data.idPergunta);
-                    //window.location.reload(false);
-                    //pages("perg_resp");
+                    console.log('data id: '+data.idPergunta);
+                    console.log('id: '+id);
+                    $("#novaResposta")[0].reset();
+                    //seeSoPergunta(data.idPergunta);
+                    //seeSoResposta(data.idPergunta);
                 }
                 else if (result.status == 202 || data.status == 202) {
                     $('#avisoRespostaAddMal').modal('show');
