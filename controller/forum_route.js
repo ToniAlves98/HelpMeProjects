@@ -1,5 +1,5 @@
 global.helpme.post('/readPerguntas', function (req, res) {
-    global.model_perguntas.readPerguntas(req.body.lingua, function (err, data) {
+    global.model_perguntas.readPerguntas(req.cookies.idUser, req.body.lingua, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -95,7 +95,7 @@ global.helpme.post('/getEventoTipo', function (req, res) {
 });
 
 global.helpme.post('/readPerguntasPorArea', function (req, res) {
-    global.model_perguntas.readPerguntasPorArea(req.body.lingua, req.body.AreaConhecimento_idAreaConhecimento, function (err, data) {
+    global.model_perguntas.readPerguntasPorArea(req.cookies.idUser, req.body.lingua, req.body.AreaConhecimento_idAreaConhecimento, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -107,6 +107,7 @@ global.helpme.post('/readPerguntasPorArea', function (req, res) {
 });
 
 global.helpme.post('/getPergunta', function (req, res) {
+    res.cookie('idPergunta', req.body.idPergunta);
     global.model_perguntas.getPergunta(req.body.idPergunta, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
@@ -135,7 +136,7 @@ global.helpme.post('/savePergunta', function (req, res) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
     else {
-        global.model_perguntas.savePergunta(req.body.titulo_pergunta, req.body.pergunta, req.body.data_pergunta, req.body.lingua, req.body.num_likes, req.body.AreaConhecimento_idAreaConhecimento);
+        global.model_perguntas.savePergunta(req.cookies.idUser, req.body.titulo_pergunta, req.body.pergunta, req.body.data_pergunta, req.body.lingua, req.body.num_likes, req.body.AreaConhecimento_idAreaConhecimento);
         if (global.session.idUser != null) {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         }
@@ -150,7 +151,7 @@ global.helpme.post('/saveResposta', function (req, res) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
     else {
-        global.model_respostas.saveResposta(req.body.resposta, function (err, data) {
+        global.model_respostas.saveResposta(req.cookies.idUser, req.cookies.idPergunta, req.body.resposta, function (err, data) {
             console.log(data)
             if (err) {
                 console.log("ERROR : ", err);
@@ -164,7 +165,7 @@ global.helpme.post('/saveResposta', function (req, res) {
 });
 
 global.helpme.post('/saveLikes', function (req, res) {
-    global.model_perguntas.saveLikes(req.body.num_likes, function (err, data) {
+    global.model_perguntas.saveLikes(req.cookies.idPergunta, req.body.num_likes, function (err, data) {
         if (err) {
             console.log("ERROR : ", err);
         }
@@ -212,14 +213,17 @@ global.helpme.get('/readRespostas', function (req, res) {
 });
 
 global.helpme.post('/login', function (req, res) {
-    req.session.idUser = 1;
     global.connect.con.query('SELECT email, password FROM utilizador where email ="' + req.body.email + '"and password="' + req.body.password + '"', function (err, rows, fields) {
         console.log(rows)
         if (rows.length == 0) {
             res.end('{"success" : "Login realizado sem sucesso", "status" : 201}');
         }
         else {
+            req.session.idUser = 1;
             global.model_utilizador.login(req.body.email, req.body.password, function (err, data) {
+                data.forEach(function (row){
+                    res.cookie('idUser', row.idUtilizador);
+                });
                 console.log(data)
                 if (err) {
                     console.log("ERRO", err);
@@ -240,6 +244,7 @@ global.helpme.get('/logout', function (req, res) {
             console.log("ERROR : ", err);
         }
         else {
+            res.clearCookie('idUser');
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         }
     });

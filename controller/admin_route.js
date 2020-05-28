@@ -29,8 +29,8 @@ global.helpme.post('/saveRelatorio', function (req, res) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
     else {
-        global.model_relatorios.saveRelatorio(req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.estado);
-        if (global.session.idUser != null) {
+        global.model_relatorios.saveRelatorio(req.cookies.idUser, req.body.nomeRelatorio, req.body.pdf, req.body.AreaConhecimento_idAreaConhecimento, req.body.estado);
+        if (req.cookies.idUser != null) {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         }
         else {
@@ -114,7 +114,7 @@ global.helpme.post('/saveEvento', function (req, res) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
     else {
-        global.model_eventos.saveEvento(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
+        global.model_eventos.saveEvento(req.cookies.idUser, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
         res.end('{"success" : "Updated Successfully", "status" : 200}');
     }
 });
@@ -125,8 +125,8 @@ global.helpme.post('/savePedido', function (req, res) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
     else {
-        global.model_pedidos.savePedido(req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
-        if (global.session.idUser != null) {
+        global.model_pedidos.savePedido(req.cookies.idUser, req.body.nomeEvento, req.body.AreaConhecimento_idAreaConhecimento, req.body.tipoEvento, req.body.descricao, req.body.imagem, req.body.data_inicio, req.body.data_fim, req.body.estado);
+        if (req.cookies.idUser != null) {
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         }
         else {
@@ -170,7 +170,7 @@ global.helpme.get('/utilizador', function (req, res) {
 
 //rota de leitura utilizador
 global.helpme.get('/readUtilizador', function (req, res) {
-    global.model_utilizador.readUtilizador(function (err, data) {
+    global.model_utilizador.readUtilizador(req.cookies.idUser, function (err, data) {
         console.log(data);
         if (err) {
             console.log("ERROR : ", err);
@@ -218,7 +218,7 @@ global.helpme.post('/saveUtilizador', function (req, res) {
 //rota de editar utilizador
 global.helpme.post('/setUtilizador', function (req, res) {
     console.log('body: ' + JSON.stringify(req.body));
-    global.model_utilizador.setUtilizador(req.body.idUtilizador, req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
+    global.model_utilizador.setUtilizador(req.cookies.idUser, req.body.nome, req.body.idade, req.body.genero, req.body.profissao, req.body.email, req.body.password, req.body.descricao,
         req.body.gp_nome_emp, req.body.ramo_emp, req.body.num_trabalhadores, req.body.regiao_pais, req.body.area_cientifica, req.body.ciclo_estudo, req.body.perfil);
     res.end('{"success" : "Utilizador editado com sucesso", "status" : 200}');
 });

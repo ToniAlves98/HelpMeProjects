@@ -8,8 +8,8 @@ function readRelatorios(callback) {
     });
 };
 
-function saveRelatorio(nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, estado, callback) {
-    var linha = { nomeRelatorio: nomeRelatorio, pdf: pdf, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, estado: estado, Utilizador_idUtilizador: global.session.idUser };
+function saveRelatorio(idUser, nomeRelatorio, pdf, AreaConhecimento_idAreaConhecimento, estado, callback) {
+    var linha = { nomeRelatorio: nomeRelatorio, pdf: pdf, AreaConhecimento_idAreaConhecimento: AreaConhecimento_idAreaConhecimento, estado: estado, Utilizador_idUtilizador: idUser };
     var query = global.connect.con.query('INSERT INTO relatorio SET ?', linha, function(err, rows, fields) {
         console.log(query.sql);
         if (!err) {

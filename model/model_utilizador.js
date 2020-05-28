@@ -5,9 +5,9 @@ function login(email, password, callback) {
         var string = JSON.stringify(rows);
         var json = JSON.parse(string);
         if (!err) {
-            json.forEach(function (row) {
+            /*json.forEach(function (row) {
                 global.session.idUser = row.idUtilizador;
-            });
+            });*/
             callback(null, rows);
         } else {
             console.log('Erro na Query.', err);
@@ -16,15 +16,15 @@ function login(email, password, callback) {
 }
 
 function logout(callback) {
-    global.session.idUser = null;
+    //global.session.idUser = null;
     var string = JSON.stringify('{"success" : "Updated Successfully", "status" : 200}');
     var json = JSON.parse(string);
     callback(null, json);
 }
 
 //função de leitura que retorna o resultado no callback
-function readUtilizador(callback) {
-    var id = global.session.idUser;
+function readUtilizador(id, callback) {
+    //var id = global.session.idUser;
     //criar e executar a query de leitura na BD
     global.connect.con.query('SELECT idUtilizador, nome, idade, genero, profissao, email, password, descricao, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil from utilizador WHERE idUtilizador ="' + id + '"', function (err, rows, fields) {
         if (!err) {
@@ -71,8 +71,8 @@ function saveUtilizador(nome, idade, genero, profissao, email, password, descric
 }
 
 //função de edição utilizador
-function setUtilizador(idUtilizador, nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
-    var id = global.session.idUser;
+function setUtilizador(id, nome, idade, genero, profissao, email, password, descricao, gp_nome_emp, ramo_emp, num_trabalhadores, regiao_pais, area_cientifica, ciclo_estudo, perfil, callback) {
+    //var id = global.session.idUser;
     /*var post = {
         idUtilizador: idUtilizador, nome: nome, idade: idade, genero: genero, profissao: profissao, email: email, password: password, descricao: descricao,
         ramo_emp: ramo_emp, num_trabalhadores: num_trabalhadores, regiao_pais: regiao_pais, area_cientifica: area_cientifica, ciclo_estudo: ciclo_estudo, perfil: perfil

@@ -9,32 +9,24 @@ function readRespostas(callback) {
     });
 };
 
-function saveResposta(resposta, callback){
-    var idU = global.session.idUser;
-    var idP = global.session.idPergunta;
-    var post = {resposta: resposta, num_likes: 0, Utilizador_idUtilizador: idU, Pergunta_idPergunta: idP}
+function saveResposta(idUser, idPergunta, resposta, callback){
+    //var idU = global.session.idUser;
+    var idP = idPergunta[0];
+    var post = {resposta: resposta, num_likes: 0, Utilizador_idUtilizador: idUser, Pergunta_idPergunta: idP}
     var query = global.connect.con.query('INSERT INTO resposta SET ?', post, function(err, rows, fields) {
-    console.log(query.sql);
-    var data = '{\"idPergunta\":\"'+idP+'\"}';
-    console.log(data);
-    var string = JSON.stringify(data);
-    console.log(string);
-    var json = JSON.parse(string);
-    console.log(json);
-    //var ler = JSON.stringify(rows);
      if (!err) {
-        //json.forEach(function (row) {
-            json.idPergunta = global.session.idPergunta;
-            console.log(json.idPergunta); 
-        //});
-        //console.log("Number of records inserted: " + rows.affectedRows);
-        //console.log(string + ': : ' + json.idPergunta);
-        //console.log('ler' + ': : ' + JSON.stringify(json));
-        callback(null, json);
+        console.log("Number of records inserted: " + rows.affectedRows);
      }
      else
          console.log('Error while performing Query.', err);
     });
+    global.connect.con.query('SELECT Pergunta_idPergunta from resposta where Pergunta_idPergunta='+idP, function(err, rows2, fields) {
+        if (!err) {
+            callback(null, rows2);
+         }
+         else
+             console.log('Error while performing Query.', err);
+        });
 }
 
 module.exports = {

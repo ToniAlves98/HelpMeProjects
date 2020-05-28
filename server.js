@@ -69,8 +69,14 @@ global.forum_route = require('./controller/forum_route.js');
 
 //route protection
 const redirectLogin = (req, res, next) =>{
-    if (req.session.idUser == null || req.session.idUser == 0){
-        res.redirect('/notFound')
+    /*if (req.session.idUser == null || req.session.idUser == 0){
+        res.redirect('/notFound');
+        console.log('cookie '+req.cookies.idUser);
+    }else{
+        next();
+    }*/
+    if (req.cookies.idUser == null || req.cookies.idUser == 0){
+        res.redirect('/notFound');
     }else{
         next();
     }
