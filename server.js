@@ -34,7 +34,7 @@ global.helpme.use(global.session({
     resave: false,
     saveUninitialized: true,
     //saveUninitialized: false,
-    cookie: { secure: false }
+    cookie: { secure: true }
 }));
 global.helpme.use(flash());
 global.helpme.use((req,res,next)=>{
@@ -69,12 +69,7 @@ global.forum_route = require('./controller/forum_route.js');
 
 //route protection
 const redirectLogin = (req, res, next) =>{
-    /*if (req.session.idUser == null || req.session.idUser == 0){
-        res.redirect('/notFound');
-        console.log('cookie '+req.cookies.idUser);
-    }else{
-        next();
-    }*/
+    console.log('redirect');
     if (req.cookies.idUser == null || req.cookies.idUser == 0){
         res.redirect('/notFound');
     }else{

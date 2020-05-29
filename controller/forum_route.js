@@ -245,6 +245,7 @@ global.helpme.get('/logout', function (req, res) {
         }
         else {
             res.clearCookie('idUser');
+            res.clearCookie('idPergunta');
             res.end('{"success" : "Updated Successfully", "status" : 200}');
         }
     });
