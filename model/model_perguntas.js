@@ -98,7 +98,7 @@ function saveLikes(idPergunta, num_likes, callback){
  });
     global.connect.con.query('select num_likes from pergunta WHERE idPergunta = ' + id, function(err, rows2, fields) {
         if (!err) {
-            console.log("Number of records updated: " + rows2.affectedRows);
+            console.log("Data Selected: " + rows2.affectedRows);
             callback(null, rows2);
         }
         else
@@ -117,7 +117,7 @@ function saveLikesResp(idResposta, num_likes, callback){
  });
  global.connect.con.query('select num_likes, idResposta from resposta WHERE idResposta = ' + idResposta, function(err, rows2, fields) {
     if (!err) {
-        console.log("Number of records updated: " + rows2.affectedRows);
+        console.log("Data Selected: " + rows2);
         callback(null, rows2);
     }
     else

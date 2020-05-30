@@ -315,6 +315,7 @@ function like(x, y) {
 function likeResp(x, y, z) {
     var data = {};
     data.idResposta = z;
+    y = document.getElementById("num_likes_resp"+z+"").textContent;
 
     if (x.classList == "fa fa-thumbs-up") {
         data.num_likes = y + 1;

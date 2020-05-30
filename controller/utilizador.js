@@ -75,7 +75,6 @@ $('#formNewRegisto').on('submit', function (e) {
         
         else { };
         data.estado = "ativo"
-        console.log(data);
 
         $.ajax({
             type: 'POST',
