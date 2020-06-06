@@ -1,0 +1,133 @@
+﻿<link href="../css/layout.bar.css" rel="stylesheet" type="text/css" />
+<link href="../css/forum.css" rel="stylesheet" type="text/css" />
+<!--========== PAGE LAYOUT ==========-->
+<!-- Forum -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<div id="bodyperfil">
+    <div id="blogCarousel"></div>
+    <div class="container content">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9" id="perfilSection">
+                <div class="col-lg-12">
+                    <div class="col-lg-6">
+                        <h1>Profile</h1>
+                        <br />
+                    </div>
+                </div>
+                <br />
+                <div class="col-lg-12">
+                    <form id="formUtilizador" class="user text-center>">
+                        <div id="aluno_section"></div>
+                        <div id="pi_section"></div>
+                        <div id="gp_section"></div>
+                        <div id="empresa_section"></div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label class="custom-label">Profile:</label>
+                                <select class="form-control form-control-user" data-live-search="true" id="perfil">
+                                    <option value="Perfil público">Public</option>
+                                    <option value="Perfil privado">Private</option>
+                                </select>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <button type="submit" href="" id="btperfil" class="btn btn-primary btn-user btn-block">Edit Profile</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+</div>
+
+<!-- Modal pop-up editar -->
+<div class="modal fadeIn aviso" id="avisoEditar" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="glyphicon glyphicon-bell"><span>Notification</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <p>Successfully Edited!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pop-up registar mal -->
+<div class="modal fadeIn aviso" id="avisoEditarMal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="glyphicon glyphicon-bell"><span>Notification</span></i>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <br />
+            <div class="modal-body" style="padding: 20px 40px 30px;">
+                <p>Not Successfully Edited!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Check escolhas profissões-->
+<script type="text/javascript">
+    function checkProfissao(that) {
+        if (that.value == "Empresa") {
+            document.getElementById("Empresa").style.display = "block";
+            document.getElementById("idadeDiv").style.display = "none";
+            document.getElementById("generoDiv").style.display = "none";
+            document.getElementById("GP").style.display = "none";
+            document.getElementById("PI").style.display = "none";
+            document.getElementById("Estudante").style.display = "none";
+        } else if (that.value == "Gestor de Projetos") {
+            document.getElementById("Empresa").style.display = "none";
+            document.getElementById("idadeDiv").style.display = "block";
+            document.getElementById("generoDiv").style.display = "block";
+            document.getElementById("GP").style.display = "block";
+            document.getElementById("PI").style.display = "none";
+            document.getElementById("Estudante").style.display = "none";
+        } else if (that.value == "Professor/Investigador") {
+            document.getElementById("Empresa").style.display = "none";
+            document.getElementById("idadeDiv").style.display = "block";
+            document.getElementById("generoDiv").style.display = "block";
+            document.getElementById("GP").style.display = "none";
+            document.getElementById("PI").style.display = "block";
+            document.getElementById("Estudante").style.display = "none";
+        } else if (that.value == "Estudante") {
+            document.getElementById("Empresa").style.display = "none";
+            document.getElementById("idadeDiv").style.display = "block";
+            document.getElementById("generoDiv").style.display = "block";
+            document.getElementById("GP").style.display = "none";
+            document.getElementById("PI").style.display = "none";
+            document.getElementById("Estudante").style.display = "block";
+        }
+        else {
+            document.getElementById("Empresa").style.display = "none";
+            document.getElementById("GP").style.display = "none";
+            document.getElementById("PI").style.display = "none";
+            document.getElementById("Estudante").style.display = "none";
+        }
+    };
+
+    //Check GP
+    function checkPME(that) {
+        if (that.value == "simPME" && that.checked) {
+            document.getElementById("gpPME").style.display = "block";
+        } else {
+            document.getElementById("gpPME").style.display = "none";
+        }
+    };
+</script>
+<script type="text/javascript" src="../../controller/utilizador.js"></script>
