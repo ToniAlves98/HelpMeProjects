@@ -131,7 +131,7 @@ function dadosUtilizador() {
                     aluno += '</div>';
                     aluno += '<div class="col-lg-3">';
                     aluno += '<div class="form-group"><label class="custom-label">E-mail:</label><input type = "email" class="form-control form-control-user" id = "email" aria - describedby="" value = "' + data[0].email + '"></div>';
-                    aluno += '<div class="form-group"><label class="custom-label">Password:</label><input type = "text" class="form-control form-control-user" id = "password" aria - describedby="" value = "' + data[0].password + '"></div>';
+                    aluno += '<div class="form-group"><label class="custom-label">Password:</label><input type = "password" class="form-control form-control-user" id = "password" aria - describedby="" value = "' + data[0].password + '"></div>';
                     aluno += '</div>';
                     aluno += '<div class="col-lg-3">';
                     aluno += '<div class="form-group"><label class="custom-label">Descrição:</label><textarea class="form-control form-control-user" id = "descricao" rows = "5" cols = "30" value ="">' + data[0].descricao +'</textarea ></div>';
@@ -151,7 +151,7 @@ function dadosUtilizador() {
                     pi += '</div>';
                     pi += '<div class="col-lg-3">';
                     pi += '<div class="form-group"><label class="custom-label">E-mail:</label><input type = "email" class="form-control form-control-user" id = "email" aria - describedby="" value = "' + data[0].email + '"></div>';
-                    pi += '<div class="form-group"><label class="custom-label">Password:</label><input type = "text" class="form-control form-control-user" id = "password" aria - describedby="" value = "' + data[0].password + '"></div>';
+                    pi += '<div class="form-group"><label class="custom-label">Password:</label><input type = "password" class="form-control form-control-user" id = "password" aria - describedby="" value = "' + data[0].password + '"></div>';
                     pi += '</div>';
                     pi += '<div class="col-lg-3">';
                     pi += '<div class="form-group"><label class="custom-label">Descrição:</label><textarea class="form-control form-control-user" id = "descricao" name = "message" rows = "5" cols = "30" value = "">' + data[0].descricao +'</textarea></div>';
@@ -171,7 +171,7 @@ function dadosUtilizador() {
                     gp += '</div>';
                     gp += '<div class="col-lg-3">';
                     gp += '<div class="form-group"><label class="custom-label">E-mail:</label><input type = "email" class="form-control form-control-user" id = "email" aria - describedby="" value = "' + data[0].email + '" ></div>';
-                    gp += '<div class="form-group"><label class="custom-label">Password:</label><input type = "text" class="form-control form-control-user" id = "password" aria - describedby="" value = "' + data[0].password + '"></div>';
+                    gp += '<div class="form-group"><label class="custom-label">Password:</label><input type = "password" class="form-control form-control-user" id = "password" aria - describedby="" value = "' + data[0].password + '"></div>';
                     gp += '<div class="form-group"><label class="custom-label">Descrição:</label><textarea class="form-control form-control-user" id = "descricao" name = "message" rows = "5" cols = "30" value = "">' + data[0].descricao +'</textarea ></div>';
                     gp += '</div>';
                     gp += '<div class="col-lg-3">';
@@ -193,7 +193,7 @@ function dadosUtilizador() {
                     empresa += '</div>';
                     empresa += '<div class="col-lg-3">';
                     empresa += '<div class="form-group"><label class="custom-label">E-mail:</label><input type = "email" class="form-control form-control-user" id = "email" aria - describedby="" value = "' + data[0].email + '"></div>';
-                    empresa += '<div class="form-group"><label class="custom-label">Password:</label><input type = "text" class="form-control form-control-user" id = "password" aria - describedby="" value = "' + data[0].password + '"></div>';
+                    empresa += '<div class="form-group"><label class="custom-label">Password:</label><input type = "password" class="form-control form-control-user" id = "password" aria - describedby="" value = "' + data[0].password + '"></div>';
                     empresa += '<div class="form-group"><label class="custom-label">Descrição:</label><textarea class="form-control form-control-user" id = "descricao" name = "message" rows = "5" cols = "30" value = "">' + data[0].descricao +'</textarea ></div>';
                     empresa += '</div>';
                     empresa += '<div class="col-lg-3">';
