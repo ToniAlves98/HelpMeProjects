@@ -5,7 +5,7 @@ var app = express();
 var con = mysql.createPool({
 //var con = mysql.createConnection({
     host: '193.136.11.169',
-	user: 'pintas',
+	user: 'normal',
 	password : 'Pegadahelp!.2020', 
 	database : 'ptsi_bd',
 });

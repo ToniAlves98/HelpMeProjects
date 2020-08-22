@@ -188,16 +188,16 @@ global.helpme.post('/saveUtilizador', function (req, res) {
     if (req.body.profissao == null) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
-    else if (req.body.profissao == "Estudante" && (req.body.nome == "" || req.body.idade == "" || req.body.genero == "" || req.body.email == "" || req.body.password == "" || req.body.descricao == "" || req.body.ciclo_estudo == "")) {
+    else if (req.body.profissao == "Estudante" && (req.body.nome == "" || req.body.idade == "" || req.body.genero == "" || req.body.email == "" || req.body.password == "" ||  req.body.ciclo_estudo == "")) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
-    else if (req.body.profissao == "Professor/Investigador" && (req.body.nome == "" || req.body.idade == "" || req.body.genero == "" || req.body.email == "" || req.body.password == "" || req.body.descricao == "" || req.body.area_cientifica == "")) {
+    else if (req.body.profissao == "Professor/Investigador" && (req.body.nome == "" || req.body.idade == "" || req.body.genero == "" || req.body.email == "" || req.body.password == "" ||  req.body.area_cientifica == "")) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
-    else if (req.body.profissao == "Empresa" && (req.body.nome == "" || req.body.email == "" || req.body.password == "" || req.body.descricao == "" || req.body.ramo_emp == "" || req.body.num_trabalhadores == "" || req.body.regiao_pais == "")) {
+    else if (req.body.profissao == "Empresa" && (req.body.nome == "" || req.body.email == "" || req.body.password == "" || req.body.ramo_emp == "" || req.body.num_trabalhadores == "" || req.body.regiao_pais == "")) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
-    else if (req.body.profissao == "Gestor de Projeto" && (req.body.nome == "" || req.body.idade == "" || req.body.genero == "" || req.body.email == "" || req.body.password == "" || req.body.descricao == "" || req.body.gp_nome_emp == "" || req.body.ramo_emp == "" || req.body.num_trabalhadores == "" || req.body.regiao_pais == "")) {
+    else if (req.body.profissao == "Gestor de Projeto" && (req.body.nome == "" || req.body.idade == "" || req.body.genero == "" || req.body.email == "" || req.body.password == "" || req.body.gp_nome_emp == "" || req.body.ramo_emp == "" || req.body.num_trabalhadores == "" || req.body.regiao_pais == "")) {
         res.end('{"success" : "Preencha todos os campos", "status" : 202}');
     }
     else {
